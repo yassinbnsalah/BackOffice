@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Reservation } from 'src/app/model/Reservation';
 import { ReservationService } from 'src/app/service/reservation.service';
 
@@ -9,7 +10,8 @@ import { ReservationService } from 'src/app/service/reservation.service';
 })
 export class ReservationListeComponent implements OnInit {
   reservations !: Reservation[] ; 
-  constructor(private reservationService : ReservationService){}
+  constructor(private reservationService : ReservationService,
+    private router : Router){}
   ngOnInit(): void {
     this.getListeReservation() ; 
   }
@@ -21,4 +23,7 @@ export class ReservationListeComponent implements OnInit {
       
     })
   }
+  GoToReservationDetails(id:any){
+      this.router.navigate(["reservation/",id])
+  } 
 }
