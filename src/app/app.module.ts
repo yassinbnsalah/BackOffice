@@ -8,6 +8,9 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { ReservationListeComponent } from './core/reservation-liste/reservation-liste.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReservationDetailsComponent } from './core/reservation-details/reservation-details.component';
+import { UniversiteDetailComponent } from './core/universite/universite-detail/universite-detail.component';
+import { UniversiteListeComponent } from './core/universite/universite-liste/universite-liste.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -15,11 +18,14 @@ import { ReservationDetailsComponent } from './core/reservation-details/reservat
     SidebarComponent,
     NavbarComponent,
     ReservationListeComponent,
-    ReservationDetailsComponent
+    ReservationDetailsComponent,
+    UniversiteDetailComponent,
+    UniversiteListeComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     AppRoutingModule
   ],
   providers: [],
