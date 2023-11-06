@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {environment} from "../../../environments/environment.development";
-import {Universite} from "../../model/Universite";
+import { Universite } from 'src/app/model/Universite';
+import { environment } from 'src/environments/environment.development';
+
 
 @Injectable({
   providedIn: 'root'
@@ -18,13 +19,13 @@ export class UniversiteService {
 
   constructor(private http : HttpClient) { }
   getAllUniversite():Observable<Universite[]>{
-    return this.http.get<Universite[]>(environment.baseURL
-     +"/findAllU",this.httpOptions)
+    return this.http.get<Universite[]>(environment.baseURL+environment.UniversiteBackendAPIS+
+     "/findAll",this.httpOptions)
   }
 
   getUniversiteByID(id:any):Observable<Universite>{
     return this.http.get<Universite>(environment.baseURL
-      +environment.UniversiteBackendAPIS+"/findByIdU/"+id,this.httpOptions)
+      +environment.UniversiteBackendAPIS+"/findById/"+id,this.httpOptions)
   }
 
 

@@ -1,7 +1,7 @@
 <div class="page-wrapper" id="main-wrapper" data-layout="vertical"
      data-navbarbg="skin6" data-sidebartype="full"
      data-sidebar-position="fixed" data-header-position="fixed">
-  <app-sidebar></app-sidebar>
+  <app-sidebar-admin></app-sidebar-admin>
   <div class="body-wrapper">
     <app-navbar></app-navbar>
     <div class="container-fluid">
@@ -12,7 +12,7 @@
               <h5 class="card-title fw-semibold mb-4">Liste des universités</h5>
               <div class="table-responsive">
                 <table class="table text-nowrap mb-0 align-middle">
-                  <thead class="text-dark fs-4">
+                  <thead class=" table-info  text-dark fs-4">
                   <tr>
                     <th class="border-bottom-0">
                       <h6 class="fw-semibold mb-0">Id</h6>
@@ -42,7 +42,7 @@
                       <p class="mb-0 fw-normal">{{ universite.nomUniversite }}</p>
                     </td>
                     <td class="border-bottom-0">
-                      <p class="mb-0 fw-normal">{{ universite.adresse }}</p>
+                      <p class="mb-0 fw-normal">{{ universite.adress }}</p>
                     </td>
                     <td class="border-bottom-0">
                       <a href="#" class="btn btn-primary btn-sm">See Details</a>

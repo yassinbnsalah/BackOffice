@@ -11,6 +11,9 @@ import { ReservationDetailsComponent } from './core/reservation-details/reservat
 import { UniversiteDetailComponent } from './core/universite/universite-detail/universite-detail.component';
 import { UniversiteListeComponent } from './core/universite/universite-liste/universite-liste.component';
 import {FormsModule} from "@angular/forms";
+import { LoginComponent } from './core/login/login.component';
+import { ForgetPasswordComponent } from './core/forget-password/forget-password.component';
+import { SidebarAdminComponent } from './shared/sidebar-admin/sidebar-admin.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import {FormsModule} from "@angular/forms";
     ReservationListeComponent,
     ReservationDetailsComponent,
     UniversiteDetailComponent,
-    UniversiteListeComponent
+    UniversiteListeComponent,
+    LoginComponent,
+    ForgetPasswordComponent,
+    SidebarAdminComponent
   ],
   imports: [
     BrowserModule,

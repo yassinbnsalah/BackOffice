@@ -10,10 +10,14 @@ import { ReservationService } from 'src/app/service/reservation.service';
 })
 export class ReservationListeComponent implements OnInit {
   reservations !: Reservation[] ; 
+  currentRouter !: String ; 
   constructor(private reservationService : ReservationService,
     private router : Router){}
   ngOnInit(): void {
     this.getListeReservation() ; 
+    this.currentRouter = this.router.url  ;
+    console.log(this.currentRouter);
+    
   }
 
   getListeReservation(){

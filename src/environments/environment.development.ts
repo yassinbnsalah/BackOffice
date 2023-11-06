@@ -1,6 +1,7 @@
 export const environment = {
-    baseURL : "http://localhost:8080",
     ReservationBackendAPIS : "ReservationRestController",
-    UniversiteBackendAPIS : "UniversiteRestController"
+    UniversiteBackendAPIS : "UniversiteRestController",
+    baseURL : "http://localhost:8081/",
+    ChamberBackendAPIS : "ChamberRestController",
 };
 
