@@ -1,0 +1,39 @@
+.f1 {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+label {
+  margin: 10px;
+  font-size: 18px;
+  color: #333; /* Adjust the color as needed */
+}
+
+input {
+  margin: 10px;
+  height: 35px;
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc; /* Add a border for a cleaner look */
+  border-radius: 5px; /* Optional: Add rounded corners */
+}
+
+.btn {
+
+  background-color: deepskyblue;
+  color: white; /* Set the text color */
+
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.card {
+  width: 50%;
+  margin: 0 auto;
+}

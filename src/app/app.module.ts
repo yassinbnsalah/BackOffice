@@ -11,6 +11,7 @@ import { ReservationDetailsComponent } from './core/reservation-details/reservat
 import { UniversiteDetailComponent } from './core/universite/universite-detail/universite-detail.component';
 import { UniversiteListeComponent } from './core/universite/universite-liste/universite-liste.component';
 import {FormsModule} from "@angular/forms";
+import { AddBlocComponent } from './core/Bloc/Add bloc/add-bloc/add-bloc.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {FormsModule} from "@angular/forms";
     ReservationListeComponent,
     ReservationDetailsComponent,
     UniversiteDetailComponent,
-    UniversiteListeComponent
+    UniversiteListeComponent,
+    AddBlocComponent
   ],
   imports: [
     BrowserModule,
