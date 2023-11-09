@@ -11,7 +11,8 @@ import { ReservationDetailsComponent } from './core/reservation-details/reservat
 import { UniversiteDetailComponent } from './core/universite/universite-detail/universite-detail.component';
 import { UniversiteListeComponent } from './core/universite/universite-liste/universite-liste.component';
 import {FormsModule} from "@angular/forms";
-import { AddBlocComponent } from './core/Bloc/Add bloc/add-bloc/add-bloc.component';
+import { AddBlocComponent } from './core/Bloc/Add bloc/add-bloc.component';
+import { ListBlocComponent } from './core/Bloc/list-bloc/list-bloc.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AddBlocComponent } from './core/Bloc/Add bloc/add-bloc/add-bloc.compone
     ReservationDetailsComponent,
     UniversiteDetailComponent,
     UniversiteListeComponent,
-    AddBlocComponent
+    AddBlocComponent,
+    ListBlocComponent
   ],
   imports: [
     BrowserModule,

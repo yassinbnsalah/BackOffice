@@ -18,7 +18,12 @@ export class BlocService {
   constructor(private http:HttpClient) {
     }
   addBloc(nom:String,bloc:Bloc):Observable<Bloc>{
-    console.log(environment.baseURL+environment.BlocBackendAPIS+"/addBloc/"+nom);
     return this.http.post<Bloc>(environment.baseURl2+environment.BlocBackendAPIS+"/addBloc/"+nom,bloc,this.httpOptions);
+  }
+  getallBloc():Observable<Bloc[]>{
+    return this.http.get<Bloc[]>(environment.baseURl2+environment.BlocBackendAPIS+"/findAll",this.httpOptions);
+  }
+  deleteBloc(id:any):Observable<Bloc>{
+    return this.http.delete<Bloc>(environment.baseURl2+environment.BlocBackendAPIS+"/deleteByID/"+id,this.httpOptions);
   }
 }

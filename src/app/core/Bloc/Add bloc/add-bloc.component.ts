@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {Bloc} from "../../../../model/Bloc";
-import {BlocService} from "../../../../service/BlocService/bloc.service";
+import {Bloc} from "../../../model/Bloc";
+import {BlocService} from "../../../service/BlocService/bloc.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {NgForm} from "@angular/forms";
 

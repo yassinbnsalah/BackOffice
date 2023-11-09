@@ -4,7 +4,8 @@ import { ReservationListeComponent } from './core/reservation-liste/reservation-
 import { ReservationDetailsComponent } from './core/reservation-details/reservation-details.component';
 import {UniversiteListeComponent} from "./core/universite/universite-liste/universite-liste.component";
 import {UniversiteDetailComponent} from "./core/universite/universite-detail/universite-detail.component";
-import { AddBlocComponent } from './core/Bloc/Add bloc/add-bloc/add-bloc.component';
+import { AddBlocComponent } from './core/Bloc/Add bloc/add-bloc.component';
+import {ListBlocComponent} from "./core/Bloc/list-bloc/list-bloc.component";
 
 const routes: Routes = [
   {path:"reservation" , component:ReservationListeComponent},
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path:"universite",component:UniversiteListeComponent},
   {path:"universite/:id",component:UniversiteDetailComponent},
   //bloc Route
-  {path:"bloc",component:AddBlocComponent}
+  {path:"addBloc",component:AddBlocComponent},
+  {path:"listBloc",component:ListBlocComponent}
 
 ];
 
