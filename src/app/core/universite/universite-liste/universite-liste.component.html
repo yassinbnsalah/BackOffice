@@ -45,7 +45,8 @@
                       <p class="mb-0 fw-normal">{{ universite.adress }}</p>
                     </td>
                     <td class="border-bottom-0">
-                      <a href="#" class="btn btn-primary btn-sm">See Details</a>
+                      <button class="btn btn-primary btn-sm" [routerLink]="['/universite-details', universite.idUniversite]">See Details</button>
+
                     </td>
                     <!-- ... -->
                     <td class="border-bottom-0">

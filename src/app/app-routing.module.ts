@@ -39,7 +39,10 @@ const routes: Routes = [
   {path:"chamber" , component:ChamberListeComponent},
   {path:"chamber/add", component: ChamberAddComponent },
   {path:"chamber/:id" , component:ChamberDetailsComponent},
-  {path:"chamber/update/:id", component: ChamberUpdateComponent }
+  {path:"chamber/update/:id", component: ChamberUpdateComponent },
+  //{path:"universite",component:UniversiteListeComponent},
+  { path: 'universite-details/:id', component: UniversiteDetailComponent }
+
 ];
 
 @NgModule({
