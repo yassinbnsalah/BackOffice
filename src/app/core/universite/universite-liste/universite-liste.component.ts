@@ -40,17 +40,17 @@ export class UniversiteListeComponent implements OnInit{
 
   cycleStatus(universite: Universite) {
     switch (universite.statuts) {
-      case 'En attente':
+      case 'En_attente':
         this.updateStatus(universite, 'Accepté');
         break;
       case 'Accepté':
         this.updateStatus(universite, 'Refusé');
         break;
       case 'Refusé':
-        this.updateStatus(universite, 'En attente');
+        this.updateStatus(universite, 'En_attente');
         break;
       default:
-        this.updateStatus(universite, 'En attente');
+        this.updateStatus(universite, 'En_attente');
         break;
     }
   }

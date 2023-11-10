@@ -14,6 +14,17 @@ import {FormsModule} from "@angular/forms";
 import { LoginComponent } from './core/login/login.component';
 import { ForgetPasswordComponent } from './core/forget-password/forget-password.component';
 import { SidebarAdminComponent } from './shared/sidebar-admin/sidebar-admin.component';
+import { ChamberListeComponent } from './core/chamber-liste/chamber-liste/chamber-liste.component';
+import { ChamberDetailsComponent } from './core/chamber-details/chamber-details/chamber-details.component';
+import { ChamberAddComponent } from './core/chambre-add/chamber-add/chamber-add.component';
+import { ChamberUpdateComponent } from './core/chamber-update/chamber-update/chamber-update.component';
+
+
+import { FoyerListeComponent } from './core/foyer/foyer-liste/foyer-liste.component';
+import { BlocListeComponent } from './core/bloc/bloc-liste/bloc-liste.component';
+import { AgentUniListeComponent } from './core/users/agent-uni-liste/agent-uni-liste.component';
+import { EtudiantListeComponent } from './core/users/etudiant-liste/etudiant-liste.component';
+import { UniversiteUpdateComponent } from './core/universite/universite-update/universite-update.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +37,16 @@ import { SidebarAdminComponent } from './shared/sidebar-admin/sidebar-admin.comp
     UniversiteListeComponent,
     LoginComponent,
     ForgetPasswordComponent,
-    SidebarAdminComponent
+    SidebarAdminComponent,
+    ChamberListeComponent,
+    ChamberDetailsComponent,
+    ChamberAddComponent,
+    ChamberUpdateComponent,
+    FoyerListeComponent,
+    BlocListeComponent,
+    AgentUniListeComponent,
+    EtudiantListeComponent,
+    UniversiteUpdateComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Chamber } from 'src/app/model/Chamber';
+import { Etudiant } from 'src/app/model/Etudiant';
 import { Reservation } from 'src/app/model/Reservation';
 import { ChamberService } from 'src/app/service/chamber.service';
 import { ReservationService } from 'src/app/service/reservation.service';
@@ -14,6 +15,7 @@ export class ReservationDetailsComponent implements OnInit {
   reservation !: Reservation;
   chamber !: Chamber;
   currentRouter !: String;
+  etudiants !: Etudiant[] ; 
   constructor(private serviceReservation: ReservationService, private router: Router,
     private activatedRoute: ActivatedRoute, private chamberService: ChamberService) { }
   ngOnInit(): void {
@@ -31,8 +33,21 @@ export class ReservationDetailsComponent implements OnInit {
       (d) => {
         console.log(d);
         this.reservation = d;
+        this.etudiants = d.etudiants ; 
+        console.log(this.etudiants);
+        
       }
     )
+  }
+  updateReservationState(state:any){
+    console.log("update Reservation State  ",state);
+    this.serviceReservation.updateReservationState(this.activatedRoute.snapshot.params['id'], state).subscribe((d)=>
+    {
+      console.log("reservation State update successfully");
+      this.reservation.status = state ; 
+      
+    })
+    
   }
 
 }

@@ -23,5 +23,10 @@ export class ReservationService {
     return this.http.get<Reservation>(environment.baseURL
       +environment.ReservationBackendAPIS+"/findReservationByID/"+id,this.httpOptions)
   }
+
+  updateReservationState(id:any , state : any):Observable<Reservation>{
+    return this.http.put<Reservation>(environment.baseURL+environment.ReservationBackendAPIS
+      +"/updateReservationStatus/"+id+"/"+state , this.httpOptions)
+  }
   
 }

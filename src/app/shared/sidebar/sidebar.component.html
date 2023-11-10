@@ -27,7 +27,7 @@
           <span class="hide-menu">FOYER</span>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" href="./ui-buttons.html" aria-expanded="false">
+          <a class="sidebar-link"  [routerLink]="'/chamber'" aria-expanded="false">
             <span>
               <i class="ti ti-bed"></i>
             </span>
@@ -57,11 +57,24 @@
           <span class="hide-menu">Réservation</span>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" href="#" aria-expanded="false">
+          <a class="sidebar-link" [routerLink]="'/reservation'" aria-expanded="false">
             <span>
               <i class="ti ti-login"></i>
             </span>
             <span class="hide-menu">Liste Reservation</span>
+          </a>
+        </li>
+
+        <li class="nav-small-cap">
+          <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+          <span class="hide-menu">Universite</span>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link" [routerLink]="'/universite'" aria-expanded="false">
+            <span>
+              <i class="ti ti-login"></i>
+            </span>
+            <span class="hide-menu">Universite</span>
           </a>
         </li>
        

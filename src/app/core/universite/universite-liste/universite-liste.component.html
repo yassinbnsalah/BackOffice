@@ -52,7 +52,7 @@
                       <button type="button" class="btn"
                               [class.btn-success]="universite.statuts === 'Accepté'"
                               [class.btn-danger]="universite.statuts === 'Refusé'"
-                              [class.btn-warning]="universite.statuts === 'En attente'"
+                              [class.btn-warning]="universite.statuts === 'En_attente'"
                               (click)="cycleStatus(universite)">
                         {{ universite.statuts }}
                       </button>

@@ -39,8 +39,9 @@ export class UniversiteService {
   }*/
 
   updateStatus(id: number, status: string): Observable<Universite> {
-    const url = `${environment.baseURL}/updateStatus/${id}?status=${status}`;
-    return this.http.put<Universite>(url, null, this.httpOptions);
+   // const url = `${environment.baseURL}/updateStatus/${id}?status=${status}`;
+    return this.http.put<Universite>(environment.baseURL
+      +environment.UniversiteBackendAPIS+"/updateStatus/"+id+"?status="+status, null, this.httpOptions);
   }
 
 
