@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import { Observable } from 'rxjs';
 import {Bloc} from "../../model/Bloc";
 import { environment } from 'src/environments/environment.development';
+import {ɵElement, ɵFormGroupValue, ɵTypedOrUntyped} from "@angular/forms";
 
 
 @Injectable({
@@ -17,7 +18,8 @@ export class BlocService {
 
   constructor(private http:HttpClient) {
     }
-  addBloc(nom:String,bloc:Bloc):Observable<Bloc>{
+
+  addBloc(nom: String, bloc: Bloc):Observable<Bloc>{
     return this.http.post<Bloc>(environment.baseURl2+environment.BlocBackendAPIS+"/addBloc/"+nom,bloc,this.httpOptions);
   }
   getallBloc():Observable<Bloc[]>{

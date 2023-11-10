@@ -5,26 +5,34 @@
   <div class="body-wrapper">
     <app-navbar></app-navbar>
     <div class="container-fluid">
-      <div class="card">
+
         <h1 class="title">Ajouter un Bloc</h1>
         <div class="main">
           <form #f="ngForm">
-            <div class="f1">
-              <label>Nom université</label>
-              <input type="text" name="nomuniversite" placeholder="nom université" [(ngModel)]="nom" required #nominput="ngModel"  minlength="3" pattern="[a-zA-Z]*">
+            <div class="mb-3">
+              <label for="nomUniversite" class="form-label">Nom universite</label>
+              <input type="text" class="form-control" id="nomUniversite" [(ngModel)]="nomUniversite" required #nominput="ngModel">
             </div>
-            <div class="f1">
-              <label>nom Bloc</label>
-              <input type="text" name="nomBloc" placeholder="nom bloc" [(ngModel)]="bloc.nomBloc" required #nomBloc="ngModel"  minlength="3">
+            <div class="mb-3">
+              <label for="nomBloc" class="form-label">Nom bloc</label>
+              <input type="text" class="form-control" id="nomBloc" [(ngModel)]="bloc.nomBloc" required #nominput="ngModel">
             </div>
-           <div class="f1">
-             <label>CapaciteBloc</label>
-             <input type="text" name="CapaciteBloc" placeholder="capacite bloc" [(ngModel)]="bloc.capaciteBloc" required  minlength="3" #CapaciteBloc="ngModel">
-           </div>
-            <input class="btn" type="submit" value="Ajouter Bloc" (click)="showbloc(f)" [disabled]="f.invalid">
+            <div class="mb-3">
+              <label for="capaciteBloc" class="form-label">Capacite bloc</label>
+              <input type="number" class="form-control" id="capaciteBloc" [(ngModel)]="bloc.capaciteBloc" required #nominput="ngModel">
+            </div>
+            <div class="mb-3">
+              <label for="status" class="form-label">Status</label>
+              <input type="text" class="form-control" id="status" [(ngModel)]="bloc.status" required #nominput="ngModel" >
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label>
+              <textarea type="text" class="form-control" id="description" [(ngModel)]="bloc.description" required #nominput="ngModel">  </textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" (click)="addbloc(f)" [disabled]="f.invalid">Add bloc</button>
           </form>
         </div>
-      </div>
+
     </div>
   </div>
 </div>

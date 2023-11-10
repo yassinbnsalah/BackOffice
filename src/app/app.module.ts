@@ -10,7 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReservationDetailsComponent } from './core/reservation-details/reservation-details.component';
 import { UniversiteDetailComponent } from './core/universite/universite-detail/universite-detail.component';
 import { UniversiteListeComponent } from './core/universite/universite-liste/universite-liste.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { AddBlocComponent } from './core/Bloc/Add bloc/add-bloc.component';
 import { ListBlocComponent } from './core/Bloc/list-bloc/list-bloc.component';
 
@@ -30,7 +30,8 @@ import { ListBlocComponent } from './core/Bloc/list-bloc/list-bloc.component';
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

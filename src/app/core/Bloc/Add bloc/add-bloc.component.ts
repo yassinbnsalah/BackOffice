@@ -13,12 +13,12 @@ export class AddBlocComponent {
   constructor(private blocService:BlocService,private route:ActivatedRoute,private router:Router) {
   }
   bloc = new Bloc();
-nom:String="";
-  showbloc(f:NgForm){
+  nomUniversite:String="";
+  addbloc(f:NgForm){
 
 
-    this.blocService.addBloc(this.nom,this.bloc).subscribe((d)=>{
-      console.log("this is title"+this.nom)
+    this.blocService.addBloc(this.nomUniversite,this.bloc).subscribe((d)=>{
+      console.log("this is title"+this.nomUniversite)
       this.bloc=d;
       console.log(this.bloc);
     })
