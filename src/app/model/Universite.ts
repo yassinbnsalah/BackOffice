@@ -6,5 +6,9 @@ export class Universite {
   adresse!: string;
   statuts!: string;
   foyer!: Foyer;
-
+  description!:string;
+  email!:string;
+  firstNameAgent!:string;
+  lastNameAgent!:string;
+  logo!:File
 }

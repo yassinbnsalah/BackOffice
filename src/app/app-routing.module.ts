@@ -10,7 +10,7 @@ const routes: Routes = [
   {path:"reservation/:id" , component:ReservationDetailsComponent},
   //Universite Route
   {path:"universite",component:UniversiteListeComponent},
-  {path:"universite/:id",component:UniversiteDetailComponent}
+  { path: 'universite-details/:id', component: UniversiteDetailComponent }
 
 ];
 
