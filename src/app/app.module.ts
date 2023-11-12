@@ -12,6 +12,7 @@ import { DetailsfoyerComponent } from './core/detailsfoyer/detailsfoyer.componen
 import { AddfoyerComponent } from './core/addfoyer/addfoyer.component';
 import { UpdatefoyerComponent } from './core/updatefoyer/updatefoyer.component';
 import { FormsModule } from '@angular/forms';
+import { ReservationDetailsComponent } from './core/reservation-details/reservation-details.component';
 
 @NgModule({
   declarations: [
@@ -22,8 +23,9 @@ import { FormsModule } from '@angular/forms';
     FoyerlisteComponent,
     DetailsfoyerComponent,
     AddfoyerComponent,
-    UpdatefoyerComponent
+    UpdatefoyerComponent,
     
+    ReservationDetailsComponent
   ],
   imports: [
     BrowserModule,

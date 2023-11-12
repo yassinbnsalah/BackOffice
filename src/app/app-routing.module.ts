@@ -5,12 +5,13 @@ import { FoyerlisteComponent } from './core/foyerliste/foyerliste.component';
 import { DetailsfoyerComponent } from './core/detailsfoyer/detailsfoyer.component';
 import { UpdatefoyerComponent } from './core/updatefoyer/updatefoyer.component';
 import { AddfoyerComponent } from './core/addfoyer/addfoyer.component';
-
+import { ReservationDetailsComponent } from './core/reservation-details/reservation-details.component';
 const routes: Routes = [
   {path:"addFoyerr" , component:AddfoyerComponent},
   {path:"reservation" , component:ReservationListeComponent},
   {path:"foyer",component:FoyerlisteComponent},
   {path:"foyer/:id" , component:DetailsfoyerComponent},
+  {path:"reservation/:id" , component:ReservationDetailsComponent},
 
   {path:"foyer/update/:id" , component:UpdatefoyerComponent}
 

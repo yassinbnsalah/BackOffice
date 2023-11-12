@@ -18,4 +18,9 @@ export class ReservationService {
     return this.http.get<Reservation[]>(environment.baseURL
       +environment.ReservationBackendAPIS+"/findAllReservation",this.httpOptions)
   }
+
+  getReservationByID(id:any):Observable<Reservation>{
+    return this.http.get<Reservation>(environment.baseURL
+      +environment.ReservationBackendAPIS+"/findReservationByID/"+id,this.httpOptions)
+  }
 }
