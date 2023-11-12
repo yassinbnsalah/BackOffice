@@ -1,0 +1,88 @@
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+  data-sidebar-position="fixed" data-header-position="fixed">
+  <app-sidebar></app-sidebar>
+  <div class="body-wrapper">
+    <app-navbar></app-navbar>
+    <div class="container-fluid">
+      <div class="row">
+
+        <div class="col-lg-12 d-flex align-items-stretch">
+          <div class="card w-100">
+            <div class="card-body p-4">
+              <h5 class="card-title fw-semibold mb-4">Foyer Liste</h5>
+              <div class="table-responsive">
+
+                <span style="margin-left: 900px;"> <a routerLink="/addFoyerr" routerLinkActive="active"
+                    class="btn btn-primary">Add Foyer</a></span>
+
+                <table class="table text-nowrap mb-0 align-middle">
+                  <thead class="text-dark fs-4">
+                    <tr>
+                      <th class="border-bottom-0">
+                        <h6 class="fw-semibold mb-0">Id</h6>
+                      </th>
+                      <th class="border-bottom-0">
+                        <h6 class="fw-semibold mb-0">Name Foyer </h6>
+                      </th>
+                      <th class="border-bottom-0">
+                        <h6 class="fw-semibold mb-0">Capacite Foyer</h6>
+                      </th>
+                      <th class="border-bottom-0">
+                        <h6 class="fw-semibold mb-0">Universite</h6>
+                      </th>
+                      <th class="border-bottom-0">
+                        <h6 class="fw-semibold mb-0">Created At</h6>
+                      </th>
+                      <th class="border-bottom-0">
+                        <h6 class="fw-semibold mb-0">Updated At</h6>
+                      </th>
+                      <th class="border-bottom-0">
+                        <h6 class="fw-semibold mb-0">Details</h6>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody *ngFor="let foyer of foyers">
+                    <tr *ngIf="foyer.etat === false">
+
+                      <td class="border-bottom-0">
+                        <h6 class="fw-semibold mb-0">{{foyer.idFoyer}}</h6>
+                      </td>
+
+                      <td class="border-bottom-0">
+                        <p class="mb-0 fw-normal">{{foyer.nomFoyer}}</p>
+                      </td>
+                      <td class="border-bottom-0">
+                        <h6 class="fw-semibold mb-0 fs-4">{{foyer.capaciteFoyer}}</h6>
+                      </td>
+                      <td class="border-bottom-0">
+                        <h6 class="fw-semibold mb-1">{{foyer.universite.nomUniversite}}</h6>
+                      </td>
+                      <td class="border-bottom-0">
+                        <h6 class="fw-semibold mb-1">{{ foyer.createdAt | date:'yy-MM-dd' }}</h6>
+
+                      </td>
+                      <td class="border-bottom-0">
+                        <h6 class="fw-semibold mb-1">{{foyer.updatedAt | date:'yy-MM-dd'}}</h6>
+                      </td>
+                      <td class="border-bottom-0">
+
+                        <a routerLink="/foyer/{{foyer.idFoyer}}" routerLinkActive="active"
+                          class="btn btn-primary btn-sm">See Details </a>
+                        <span style="margin-left: 20px;"> <button (click)="updateFoyerEtat(foyer.idFoyer)"
+                            class="btn btn-danger btn-sm">Delete</button></span>
+                      </td>
+
+                    </tr>
+
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
