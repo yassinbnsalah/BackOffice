@@ -1,5 +1,10 @@
+import { Universite } from "./Universite";
 export class Foyer {
-  idFoyer!: string;
-  nomFoyer!: string;
-  capaciteFoyer!: number;
-}
+    idFoyer !: number;
+    nomFoyer!: string
+    capaciteFoyer!: number;
+    etat!:boolean;
+    createdAt!:Date;
+    updatedAt!:Date;
+    universite !: Universite ;
+} 

@@ -1,0 +1,73 @@
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical"
+  data-navbarbg="skin6" data-sidebartype="full"
+  data-sidebar-position="fixed" data-header-position="fixed">
+  <app-sidebar></app-sidebar>
+  <div class="body-wrapper">
+    <app-navbar></app-navbar>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12 d-flex">
+          <div class="card w-100">
+            <div class="card-body p-4">
+              <h5 class="card-title fw-semibold mb-4">Update Foyer</h5>
+              <form (ngSubmit)="updateFoyer()">
+              
+                <div>
+                  <label for="nomfoyer">nom Foyer</label>
+                  <input
+                    type="text"
+                    name="nomfoyer"
+                    [(ngModel)]="foyer.nomFoyer"
+                    required
+                    class="form-control"
+                  >
+                </div>
+                <div>
+                  <label for="capacitefoyer">capacite Foyer</label>
+                  <input
+                    type="number"
+                    name="capacitefoyer"
+                    [(ngModel)]="foyer.capaciteFoyer"
+                    required
+                    class="form-control"
+                  >
+                </div>
+                <div>
+                  <label 
+                  [hidden]="true"
+                  for="CreatedAt">CreatedAt</label>
+                  <input
+                  [hidden]="true"
+                    type="date"
+                    name="CreatedAt"
+                    [(ngModel)]="foyer.createdAt"
+                    required
+                    class="form-control"
+                  >
+                </div>
+                <div>
+                  <label 
+                  [hidden]="true"
+                  for="UpdatedAt">UpdatedAt</label>
+                  <input
+                  [hidden]="true"
+                    type="date"
+                    name="UpdatedAt"
+                    [(ngModel)]="foyer.updatedAt"
+                    required
+                    class="form-control"
+                  >
+                </div>
+                
+
+          
+
+                <button type="submit" class="btn btn-primary">Update Foyer</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

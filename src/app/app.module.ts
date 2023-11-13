@@ -7,10 +7,14 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { ReservationListeComponent } from './core/reservation-liste/reservation-liste.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DetailsfoyerComponent } from './core/detailsfoyer/detailsfoyer.component';
+import { AddfoyerComponent } from './core/addfoyer/addfoyer.component';
+import { UpdatefoyerComponent } from './core/updatefoyer/updatefoyer.component';
+import { FormsModule } from '@angular/forms';
 import { ReservationDetailsComponent } from './core/reservation-details/reservation-details.component';
 import { UniversiteDetailComponent } from './core/universite/universite-detail/universite-detail.component';
 import { UniversiteListeComponent } from './core/universite/universite-liste/universite-liste.component';
-import {FormsModule} from "@angular/forms";
+
 import { LoginComponent } from './core/login/login.component';
 import { ForgetPasswordComponent } from './core/forget-password/forget-password.component';
 import { SidebarAdminComponent } from './shared/sidebar-admin/sidebar-admin.component';
@@ -48,7 +52,14 @@ import { SideComponent } from './shared/side/side.component';
     AgentUniListeComponent,
     EtudiantListeComponent,
     UniversiteUpdateComponent,
-    SideComponent
+    SideComponent,
+
+
+    DetailsfoyerComponent,
+    AddfoyerComponent,
+    UpdatefoyerComponent
+    
+    
   ],
   imports: [
     BrowserModule,
@@ -58,5 +69,6 @@ import { SideComponent } from './shared/side/side.component';
   ],
   providers: [],
   bootstrap: [AppComponent]
+  
 })
 export class AppModule { }

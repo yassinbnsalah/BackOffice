@@ -1,0 +1,56 @@
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical"
+  data-navbarbg="skin6" data-sidebartype="full"
+  data-sidebar-position="fixed" data-header-position="fixed">
+  <app-sidebar></app-sidebar>
+  <div class="body-wrapper">
+    <app-navbar></app-navbar>
+    <div class="container-fluid">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title fw-semibold mb-4">Foyer {{foyer.idFoyer}}</h5>
+            <p class="mb-0">Nom Foyer : {{foyer.nomFoyer}} </p>
+            <p class="mb-0">Foyer Capacite : {{foyer.capaciteFoyer}} </p>
+            <table class="table  text-nowrap mb-0 align-middle">
+                <thead class=" table-info text-dark fs-4">
+                  <tr>
+                    <th class="border-bottom-0">
+                      <h6 class="fw-semibold mb-0">Id</h6>
+                    </th>
+                    <th class="border-bottom-0">
+                      <h6 class="fw-semibold mb-0">Universite Name </h6>
+                    </th>
+                    <th class="border-bottom-0">
+                      <h6 class="fw-semibold mb-0">Universite Adress</h6>
+                    </th>
+                   
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr >
+                    <td class="border-bottom-0">
+                   
+                        <h6 class="fw-semibold mb-0">{{foyer.universite.idUniversite}}</h6></td>
+                    <td class="border-bottom-0">
+                        <h6 class="fw-semibold mb-1">{{foyer.universite.nomUniversite}}</h6>
+                                            
+                    </td>
+                    <td class="border-bottom-0">
+                        <h6 class="fw-semibold mb-1">{{foyer.universite.adress}}</h6>
+                                            
+                    </td>
+                    
+                   
+                  </tr> 
+                                    
+                </tbody>
+              </table>
+              
+              <div class="border-bottom-0" style="margin-left: 800px;">
+                <a (click)="redirectToUpdateFoyer(foyer.idFoyer)" class="btn btn-primary btn-sm" >Modifier</a>
+                <span style="margin-left: 20px;" > <a routerLink="/foyer" routerLinkActive="active" class="btn btn-secondary btn-sm">Back</a></span>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
