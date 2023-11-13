@@ -19,13 +19,13 @@ export class UniversiteService {
 
   constructor(private http : HttpClient) { }
   getAllUniversite():Observable<Universite[]>{
-    return this.http.get<Universite[]>(environment.baseURL+environment.UniversiteBackendAPIS+
-     "/findAll",this.httpOptions)
+    return this.http.get<Universite[]>(environment.baseURL+
+     "findAllU",this.httpOptions)
   }
 
   getUniversiteByID(id:any):Observable<Universite>{
     return this.http.get<Universite>(environment.baseURL
-      +environment.UniversiteBackendAPIS+"/findById/"+id,this.httpOptions)
+     +"findByIdU/"+id,this.httpOptions)
   }
 
 
@@ -41,7 +41,7 @@ export class UniversiteService {
   updateStatus(id: number, status: string): Observable<Universite> {
    // const url = `${environment.baseURL}/updateStatus/${id}?status=${status}`;
     return this.http.put<Universite>(environment.baseURL
-      +environment.UniversiteBackendAPIS+"/updateStatus/"+id+"?status="+status, null, this.httpOptions);
+      +"updateStatus/"+id+"?status="+status, null, this.httpOptions);
   }
 
 
