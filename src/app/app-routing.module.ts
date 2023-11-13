@@ -6,6 +6,7 @@ import {UniversiteListeComponent} from "./core/universite/universite-liste/unive
 import {UniversiteDetailComponent} from "./core/universite/universite-detail/universite-detail.component";
 import { AddBlocComponent } from './core/Bloc/Add bloc/add-bloc.component';
 import {ListBlocComponent} from "./core/Bloc/list-bloc/list-bloc.component";
+import {UpdateBlocComponent} from "./core/Bloc/update-bloc/update-bloc.component";
 
 const routes: Routes = [
   {path:"reservation" , component:ReservationListeComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path:"universite/:id",component:UniversiteDetailComponent},
   //bloc Route
   {path:"addBloc",component:AddBlocComponent},
-  {path:"listBloc",component:ListBlocComponent}
+  {path:"listBloc",component:ListBlocComponent},
+  {path:"updateBloc",component:UpdateBlocComponent}
 
 ];
 

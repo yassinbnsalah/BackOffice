@@ -9,21 +9,21 @@ import { ReservationService } from 'src/app/service/reservation.service';
   styleUrls: ['./reservation-liste.component.css']
 })
 export class ReservationListeComponent implements OnInit {
-  reservations !: Reservation[] ; 
+  reservations !: Reservation[] ;
   constructor(private reservationService : ReservationService,
     private router : Router){}
   ngOnInit(): void {
-    this.getListeReservation() ; 
+    this.getListeReservation() ;
   }
 
   getListeReservation(){
     this.reservationService.getAllReservation().subscribe((d)=>{
       this.reservations = d ;
       console.log(d);
-      
+
     })
   }
   GoToReservationDetails(id:any){
       this.router.navigate(["reservation/",id])
-  } 
+  }
 }

@@ -32,4 +32,8 @@ this.getListBloc();
   GoToAdd(){
       this.route.navigate(["addBloc/"])
   }
+  GoToUpdateBloc(bloc:Bloc){
+    this.blocService.setBloc(bloc);
+    this.route.navigate(["updateBloc"],{queryParams:{bloc:bloc}});
+  }
 }

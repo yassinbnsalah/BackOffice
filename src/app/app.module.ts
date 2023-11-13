@@ -13,6 +13,7 @@ import { UniversiteListeComponent } from './core/universite/universite-liste/uni
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { AddBlocComponent } from './core/Bloc/Add bloc/add-bloc.component';
 import { ListBlocComponent } from './core/Bloc/list-bloc/list-bloc.component';
+import { UpdateBlocComponent } from './core/Bloc/update-bloc/update-bloc.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ListBlocComponent } from './core/Bloc/list-bloc/list-bloc.component';
     UniversiteDetailComponent,
     UniversiteListeComponent,
     AddBlocComponent,
-    ListBlocComponent
+    ListBlocComponent,
+    UpdateBlocComponent
   ],
   imports: [
     BrowserModule,

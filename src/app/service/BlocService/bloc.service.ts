@@ -15,9 +15,15 @@ export class BlocService {
       'Content-Type': 'application/json'
     })
   }
-
+bloc!:Bloc;
   constructor(private http:HttpClient) {
-    }
+  }
+  setBloc(data:Bloc){
+    this.bloc=data;
+  }
+  getBloc(){
+    return this.bloc;
+  }
 
   addBloc(nom: String, bloc: Bloc):Observable<Bloc>{
     return this.http.post<Bloc>(environment.baseURl2+environment.BlocBackendAPIS+"/addBloc/"+nom,bloc,this.httpOptions);
@@ -27,5 +33,9 @@ export class BlocService {
   }
   deleteBloc(id:any):Observable<Bloc>{
     return this.http.delete<Bloc>(environment.baseURl2+environment.BlocBackendAPIS+"/deleteByID/"+id,this.httpOptions);
+  }
+  updatebloc(bloc:Bloc):Observable<Bloc>{
+    console.log()
+    return this.http.put<Bloc>(environment.baseURl2+environment.BlocBackendAPIS+"/editBloc",bloc,this.httpOptions);
   }
 }
