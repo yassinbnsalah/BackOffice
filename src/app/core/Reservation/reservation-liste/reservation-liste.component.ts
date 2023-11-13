@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { StorageService } from 'src/app/AuthServices/storage.service';
 import { Reservation } from 'src/app/model/Reservation';
 import { ReservationService } from 'src/app/service/reservation.service';
 
@@ -9,9 +10,11 @@ import { ReservationService } from 'src/app/service/reservation.service';
   styleUrls: ['./reservation-liste.component.css']
 })
 export class ReservationListeComponent implements OnInit {
+  CurrentUser: any;
   reservations !: Reservation[] ; 
   currentRouter !: String ; 
   constructor(private reservationService : ReservationService,
+    private storage : StorageService,
     private router : Router){}
   ngOnInit(): void {
     this.getListeReservation() ; 
@@ -29,6 +32,12 @@ export class ReservationListeComponent implements OnInit {
     })
   }
   GoToReservationDetails(id:any){
+    this.CurrentUser = this.storage.getUser();
+    if(this.CurrentUser.role[0]== "ADMIN"){
+      this.router.navigate(["admin/reservation/",id])
+    }else{
       this.router.navigate(["reservation/",id])
+    }
+     
   } 
 }

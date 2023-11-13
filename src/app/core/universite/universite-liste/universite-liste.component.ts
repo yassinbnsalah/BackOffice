@@ -1,26 +1,27 @@
-import {Component, OnInit} from '@angular/core';
-import {Reservation} from "../../../model/Reservation";
-import {Universite} from "../../../model/Universite";
-import {ReservationService} from "../../../service/reservation.service";
-import {Router} from "@angular/router";
-import {UniversiteService} from "../../../service/universiteService/universite.service";
+import { Component, OnInit } from '@angular/core';
+import { Reservation } from "../../../model/Reservation";
+import { Universite } from "../../../model/Universite";
+import { ReservationService } from "../../../service/reservation.service";
+import { Router } from "@angular/router";
+import { UniversiteService } from "../../../service/universiteService/universite.service";
+import { StorageService } from 'src/app/AuthServices/storage.service';
 
 @Component({
   selector: 'app-universite-liste',
   templateUrl: './universite-liste.component.html',
   styleUrls: ['./universite-liste.component.css']
 })
-export class UniversiteListeComponent implements OnInit{
-  universites !: Universite[] ;
+export class UniversiteListeComponent implements OnInit {
+  universites !: Universite[];
   universite: Universite = new Universite();
+  CurrentUser: any;
 
-
-  constructor(private universiteService : UniversiteService,
-              private router : Router){
+  constructor(private universiteService: UniversiteService, private storage: StorageService,
+    private router: Router) {
     this.universite.statuts = 'En attente';
   }
   ngOnInit() {
-    this.getListeUniversite() ;
+    this.getListeUniversite();
   }
 
   getListeUniversite() {
@@ -34,8 +35,11 @@ export class UniversiteListeComponent implements OnInit{
       }
     );
   }
-  GoToUniversiteDetails(id:any){
-    this.router.navigate(["universite/",id])
+  GoToUniversiteDetails(id: any) {
+    this.CurrentUser = this.storage.getUser();
+    if (this.CurrentUser.role[0] == "ADMIN") {
+      this.router.navigate(["admin/universite/", id])
+    }
   }
 
   cycleStatus(universite: Universite) {
@@ -69,6 +73,9 @@ export class UniversiteListeComponent implements OnInit{
       }
     );
   }
+
+
+
 
 
 }
