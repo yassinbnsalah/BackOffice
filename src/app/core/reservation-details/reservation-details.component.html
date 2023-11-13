@@ -1,8 +1,7 @@
 <div class="page-wrapper" id="main-wrapper" data-layout="vertical"
   data-navbarbg="skin6" data-sidebartype="full"
   data-sidebar-position="fixed" data-header-position="fixed">
-  <app-sidebar *ngIf="currentRouter != '/admin/reservation'"></app-sidebar>
-  <app-sidebar-admin *ngIf="currentRouter == '/admin/reservation'"></app-sidebar-admin>
+  <app-side></app-side>
   <div class="body-wrapper">
     <app-navbar></app-navbar>
     <div class="container-fluid">

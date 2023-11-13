@@ -1,13 +1,34 @@
 <div class="page-wrapper" id="main-wrapper" data-layout="vertical"
   data-navbarbg="skin6" data-sidebartype="full"
   data-sidebar-position="fixed" data-header-position="fixed">
-  <app-sidebar *ngIf="currentRouter != '/admin/reservation'"></app-sidebar>
-  <app-sidebar-admin *ngIf="currentRouter == '/admin/reservation'"></app-sidebar-admin>
+<app-side></app-side>
   <div class="body-wrapper">
     <app-navbar></app-navbar>
     <div class="container-fluid">
     <div class="row">
-     
+ 
+      
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
       <div class="col-lg-12 d-flex ">
         <div class="card w-100">
           <div class="card-body p-4">
@@ -76,3 +97,4 @@
     </div>
   </div>
 </div>
+

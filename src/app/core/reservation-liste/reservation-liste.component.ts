@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Reservation } from 'src/app/model/Reservation';
 import { ReservationService } from 'src/app/service/reservation.service';
 
@@ -21,6 +21,7 @@ export class ReservationListeComponent implements OnInit {
   }
 
   getListeReservation(){
+    
     this.reservationService.getAllReservation().subscribe((d)=>{
       this.reservations = d ;
       console.log(d);

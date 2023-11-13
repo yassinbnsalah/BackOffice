@@ -23,7 +23,6 @@ export class UniversiteDetailComponent {
       (data) => {
       console.log(data);
       this.universite = data ;
-
     })
   }
 }
