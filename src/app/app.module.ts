@@ -24,12 +24,12 @@ import { ChamberAddComponent } from './core/chambre-add/chamber-add/chamber-add.
 import { ChamberUpdateComponent } from './core/chamber-update/chamber-update/chamber-update.component';
 
 
-import { FoyerListeComponent } from './core/foyer/foyer-liste/foyer-liste.component';
 import { BlocListeComponent } from './core/bloc/bloc-liste/bloc-liste.component';
 import { AgentUniListeComponent } from './core/users/agent-uni-liste/agent-uni-liste.component';
 import { EtudiantListeComponent } from './core/users/etudiant-liste/etudiant-liste.component';
 import { UniversiteUpdateComponent } from './core/universite/universite-update/universite-update.component';
 import { SideComponent } from './shared/side/side.component';
+import { FoyerlisteComponent } from './core/foyerliste/foyerliste.component';
 
 @NgModule({
   declarations: [
@@ -47,17 +47,15 @@ import { SideComponent } from './shared/side/side.component';
     ChamberDetailsComponent,
     ChamberAddComponent,
     ChamberUpdateComponent,
-    FoyerListeComponent,
     BlocListeComponent,
     AgentUniListeComponent,
     EtudiantListeComponent,
     UniversiteUpdateComponent,
     SideComponent,
-
-
     DetailsfoyerComponent,
     AddfoyerComponent,
-    UpdatefoyerComponent
+    UpdatefoyerComponent,
+    FoyerlisteComponent
     
     
   ],

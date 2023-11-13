@@ -33,6 +33,7 @@ const routes: Routes = [
   // Foyer Route 
   {path:"admin/foyer" , component:FoyerlisteComponent },
   {path:"foyer" , component:FoyerlisteComponent},
+  {path:"addFoyer" , component:AddfoyerComponent},
   {path:"foyer/:id" , component:DetailsfoyerComponent},
   {path:"foyer/update/:id" , component:UpdatefoyerComponent},
   // User Route 

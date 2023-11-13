@@ -30,7 +30,7 @@ export class FoyerService {
  
   updateFoyer(foyer: Foyer): Observable<Foyer> {
     return this.http.put<Foyer>(environment.baseURL
-      +environment.FoyerBackendAPIS+"/updateFoyer", foyer);
+      +environment.FoyerBackendAPIS+"/UpdateFoyer", foyer);
   }
   updateFoyerEtat(idFoyer: number): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });

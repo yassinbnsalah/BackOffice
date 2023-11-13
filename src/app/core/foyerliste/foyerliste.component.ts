@@ -12,6 +12,7 @@ import { FoyerService } from 'src/app/service/foyer.service';
 export class FoyerlisteComponent implements OnInit {
   foyers !: Foyer[] ; 
   idFoyer!: number; 
+  search='';
   newEtat!: true; 
   constructor(private foyerService : FoyerService,
     private router:Router){}
@@ -26,7 +27,12 @@ export class FoyerlisteComponent implements OnInit {
       
     })
   }
-
+  filterData() {
+    if (this.search.trim() === '') {
+      return this.foyers;
+    }
+    return this.foyers.filter(item => item.nomFoyer.toLowerCase().includes(this.search.toLowerCase()));
+  }
 
   updateFoyerEtat(idFoyer: number): void {
     this.foyerService.updateFoyerEtat(idFoyer)
