@@ -24,8 +24,9 @@
                       <h6 class="fw-semibold mb-0">Adresse</h6>
                     </th>
                     <th class="border-bottom-0">
-                      <h6 class="fw-semibold mb-0">Details</h6>
+                      <h6 class="fw-semibold mb-0">Foyer</h6>
                     </th>
+                  
                     <th class="border-bottom-0">
                       <h6 class="fw-semibold mb-0">Accepté ou Non ?</h6>
                     </th>
@@ -39,15 +40,15 @@
                       </a>
                     </td>
                     <td class="border-bottom-0">
-                      <p class="mb-0 fw-normal">{{ universite.nomUniversite }}</p>
+                      <p class="mb-0 fw-normal"  (click)="GoToUniversiteDetails(universite.idUniversite)">{{ universite.nomUniversite }}</p>
                     </td>
                     <td class="border-bottom-0">
                       <p class="mb-0 fw-normal">{{ universite.adresse }}</p>
                     </td>
                     <td class="border-bottom-0">
-                      <button class="btn btn-primary btn-sm" (click)="GoToUniversiteDetails(universite.idUniversite)">See Details</button>
-
+                      <p class="mb-0 fw-normal">{{ universite.foyer.nomFoyer }}</p>
                     </td>
+                 
                     <!-- ... -->
                     <td class="border-bottom-0">
                       <button type="button" class="btn"

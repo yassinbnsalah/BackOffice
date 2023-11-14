@@ -1,7 +1,8 @@
 <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
   data-sidebar-position="fixed" data-header-position="fixed">
-
+  <app-side></app-side>
   <div class="body-wrapper">
+    <app-navbar></app-navbar>
     <div class="container-fluid">
       <div class="row">
 
@@ -9,11 +10,14 @@
           <div class="card w-100">
             <div class="card-body p-4">
               <h5 class="card-title fw-semibold mb-4">Foyer Liste</h5>
+              <div class="row g-3">
+                <div class="col-auto">
+                  <input type="text" [(ngModel)]="search" class="form-control" placeholder="Search by Name">
+                </div>
+              </div>
               <div class="table-responsive">
-
-                <span style="margin-left: 900px;"> <a routerLink="/addFoyerr" routerLinkActive="active"
+                <span style="margin-left: 900px;"> <a (click)="GoToAddFoyer()" routerLinkActive="active"
                     class="btn btn-primary">Add Foyer</a></span>
-
                 <table class="table text-nowrap mb-0 align-middle">
                   <thead class="text-dark fs-4">
                     <tr>
@@ -40,7 +44,7 @@
                       </th>
                     </tr>
                   </thead>
-                  <tbody *ngFor="let foyer of foyers">
+                  <tbody *ngFor="let foyer of foyers of filterData()">
                     <tr *ngIf="foyer.etat === false">
 
                       <td class="border-bottom-0">
@@ -57,15 +61,15 @@
                         <h6 class="fw-semibold mb-1">{{foyer.universite.nomUniversite}}</h6>
                       </td>
                       <td class="border-bottom-0">
-                        <h6 class="fw-semibold mb-1">{{ foyer.createdAt }}</h6>
+                        <h6 class="fw-semibold mb-1">{{ foyer.createdAt | date:'yy-MM-dd' }}</h6>
 
                       </td>
                       <td class="border-bottom-0">
-                        <h6 class="fw-semibold mb-1">{{foyer.updatedAt}}</h6>
+                        <h6 class="fw-semibold mb-1">{{foyer.updatedAt | date:'yy-MM-dd'}}</h6>
                       </td>
                       <td class="border-bottom-0">
 
-                        <a 
+                        <a routerLink="/foyer/{{foyer.idFoyer}}" routerLinkActive="active"
                           class="btn btn-primary btn-sm">See Details </a>
                         <span style="margin-left: 20px;"> <button (click)="updateFoyerEtat(foyer.idFoyer)"
                             class="btn btn-danger btn-sm">Delete</button></span>
@@ -84,4 +88,3 @@
     </div>
   </div>
 </div>
-

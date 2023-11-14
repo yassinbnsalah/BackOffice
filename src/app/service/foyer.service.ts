@@ -16,6 +16,12 @@ export class FoyerService {
     private apiUrl0 = 'http://localhost:8081/FoyerRestController';
   constructor(private http : HttpClient) { }
 
+  
+  getFoyerByUniversiteName(nom:any):Observable<Foyer[]>{
+    return this.http.get<Foyer[]>(environment.baseURL
+      +environment.FoyerBackendAPIS+"/findFoyerByUnversiteName/"+nom , this.httpOptions)
+  }
+
   getAllFoyer():Observable<Foyer[]>{
     return this.http.get<Foyer[]>(environment.baseURL
       +environment.FoyerBackendAPIS+"/findAllFoyer",this.httpOptions)
@@ -24,13 +30,13 @@ export class FoyerService {
     return this.http.get<Foyer>(environment.baseURL
       +environment.FoyerBackendAPIS+"/findByIdFoyer/"+id,this.httpOptions)
   }
-  addFoyer(foyer: Foyer): Observable<Foyer> {
+  addFoyer(name:any , foyer: Foyer): Observable<Foyer> {
     return this.http.post<Foyer>(environment.baseURL
-      +environment.FoyerBackendAPIS+"/AddFoyer/esprit",foyer,this.httpOptions);}
+      +environment.FoyerBackendAPIS+"/AddFoyer/"+name,foyer,this.httpOptions);}
  
   updateFoyer(foyer: Foyer): Observable<Foyer> {
     return this.http.put<Foyer>(environment.baseURL
-      +environment.FoyerBackendAPIS+"/updateFoyer", foyer);
+      +environment.FoyerBackendAPIS+"/UpdateFoyer", foyer);
   }
   updateFoyerEtat(idFoyer: number): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
