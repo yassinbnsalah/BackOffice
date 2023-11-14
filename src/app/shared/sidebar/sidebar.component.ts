@@ -1,3 +1,4 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent {
+  constructor(private  activatedRoute : ActivatedRoute,private router : Router){}
 
+
+  GoToChamber(){this.router.navigate([this.activatedRoute.snapshot.params['universite']+"/chamber"])}
+  GoToBlocs(){this.router.navigate([this.activatedRoute.snapshot.params['universite']])}
+  GoToFoyer(){this.router.navigate([this.activatedRoute.snapshot.params['universite']])}
+  GoToReservation(){this.router.navigate([this.activatedRoute.snapshot.params['universite']+"/reservation"])}
+  GoToUniversite(){this.router.navigate([this.activatedRoute.snapshot.params['universite']])}
 }

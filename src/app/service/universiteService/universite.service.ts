@@ -28,6 +28,10 @@ export class UniversiteService {
       +environment.UniversiteBackendAPIS+"/findById/"+id,this.httpOptions)
   }
 
+  getUniByEmail(email:any):Observable<Universite>{
+    return this.http.get<Universite>(environment.baseURL
+      +environment.UniversiteBackendAPIS+"/findUniversiteByEmailAgent/"+email,this.httpOptions)
+  }
 
   /*
   updateStatus(universite: Universite): Observable<Universite> {

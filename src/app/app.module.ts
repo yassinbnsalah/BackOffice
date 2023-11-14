@@ -30,6 +30,7 @@ import { AgentUniListeComponent } from './core/users/agent-uni-liste/agent-uni-l
 import { EtudiantListeComponent } from './core/users/etudiant-liste/etudiant-liste.component';
 import { UniversiteUpdateComponent } from './core/universite/universite-update/universite-update.component';
 import { SideComponent } from './shared/side/side.component';
+import { AddReservationComponent } from './core/Reservation/add-reservation/add-reservation.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { SideComponent } from './shared/side/side.component';
 
     DetailsfoyerComponent,
     AddfoyerComponent,
-    UpdatefoyerComponent
+    UpdatefoyerComponent,
+    AddReservationComponent
     
     
   ],

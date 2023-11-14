@@ -14,6 +14,11 @@ export class ReservationService {
     }
   constructor(private http : HttpClient) { }
 
+    getReservationByUniversiteName(nom:any):Observable<Reservation[]>{
+      return this.http.get<Reservation[]>(environment.baseURL
+        +environment.ReservationBackendAPIS+"/findReservationByUniversiteName/"+nom,this.httpOptions)
+    }
+
   getAllReservation():Observable<Reservation[]>{
     return this.http.get<Reservation[]>(environment.baseURL
       +environment.ReservationBackendAPIS+"/findAllReservation",this.httpOptions)

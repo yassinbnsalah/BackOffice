@@ -13,7 +13,9 @@ export class ReservationListeComponent implements OnInit {
   CurrentUser: any;
   reservations !: Reservation[] ; 
   currentRouter !: String ; 
+  
   constructor(private reservationService : ReservationService,
+    private activatedRoute :ActivatedRoute , 
     private storage : StorageService,
     private router : Router){}
   ngOnInit(): void {
@@ -23,9 +25,11 @@ export class ReservationListeComponent implements OnInit {
     
   }
 
+  GoToAddReservation(){return this.router.navigate([this.activatedRoute.snapshot.params['universite']+"/reservation/add"])}
+
   getListeReservation(){
     
-    this.reservationService.getAllReservation().subscribe((d)=>{
+    this.reservationService.getReservationByUniversiteName(this.activatedRoute.snapshot.params["universite"]).subscribe((d)=>{
       this.reservations = d ;
       console.log(d);
       
@@ -36,7 +40,7 @@ export class ReservationListeComponent implements OnInit {
     if(this.CurrentUser.role[0]== "ADMIN"){
       this.router.navigate(["admin/reservation/",id])
     }else{
-      this.router.navigate(["reservation/",id])
+      this.router.navigate([this.activatedRoute.snapshot.params['universite']+"/reservation/"+id])
     }
      
   } 

@@ -3,7 +3,7 @@ import {Foyer} from "./Foyer";
 export class Universite {
   idUniversite!: number;
   nomUniversite!: string;
-  adress!: string;
+  adresse!: string;
   statuts!: string;
   foyer!: Foyer;
   description!:string;

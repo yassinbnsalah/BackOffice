@@ -19,17 +19,18 @@ import { EtudiantListeComponent } from './core/users/etudiant-liste/etudiant-lis
 import { ChamberListeComponent } from './core/chamber/chamber-liste/chamber-liste.component';
 import { UniversiteUpdateComponent } from './core/universite/universite-update/universite-update.component';
 import { FoyerlisteComponent } from './core/foyerliste/foyerliste.component';
+import { AddReservationComponent } from './core/Reservation/add-reservation/add-reservation.component';
 
 const routes: Routes = [
   //reservation Route 
-  {path:"reservation" , component:ReservationListeComponent},
   {path:"admin/reservation" , component:ReservationListeComponent},
-  {path:"reservation/:id" , component:ReservationDetailsComponent},
   {path:"admin/reservation/:id" , component:ReservationDetailsComponent},
-  //Universite Route
-  {path:"universite" , component:UniversiteUpdateComponent},
-  {path:"admin/universite",component:UniversiteListeComponent},
-  {path:"admin/universite/:id",component:UniversiteDetailComponent},
+
+  {path:":universite/reservation" , component:ReservationListeComponent},
+  {path:":universite/reservation/add" , component:AddReservationComponent},
+  {path:":universite/reservation/:id" , component:ReservationDetailsComponent},
+  
+  
   // Foyer Route 
   {path:"admin/foyer" , component:FoyerlisteComponent },
   {path:"foyer" , component:FoyerlisteComponent},
@@ -42,12 +43,18 @@ const routes: Routes = [
   {path:"login" , component:LoginComponent},
   {path:"forgetpassword" , component:ForgetPasswordComponent},
   // chamber URLS 
-  {path:"chamber" , component:ChamberListeComponent},
+  {path:":universite/chamber" , component:ChamberListeComponent},
   {path:"chamber/add", component: ChamberAddComponent },
   {path:"chamber/:id" , component:ChamberDetailsComponent},
   {path:"chamber/update/:id", component: ChamberUpdateComponent },
   //{path:"universite",component:UniversiteListeComponent},
-  { path: 'universite-details/:id', component: UniversiteDetailComponent }
+  { path: 'universite-details/:id', component: UniversiteDetailComponent },
+
+
+  //Universite Route
+  {path:":universite" , component:UniversiteUpdateComponent},
+  {path:"admin/universite",component:UniversiteListeComponent},
+  {path:"admin/universite/:id",component:UniversiteDetailComponent},
 
 ];
 

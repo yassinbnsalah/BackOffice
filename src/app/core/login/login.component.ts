@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/AuthServices/auth.service';
 import { JwtService } from 'src/app/AuthServices/jwt.service';
 import { StorageService } from 'src/app/AuthServices/storage.service';
 import { AuthentificaitonService } from 'src/app/service/authentificaiton.service';
+import { UniversiteService } from 'src/app/service/universiteService/universite.service';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +21,7 @@ export class LoginComponent {
   }
   roles: string = "ROLE_USER";
   constructor(private authService : AuthService, private router : Router, 
+    private universiteService:UniversiteService , 
     private storageService: StorageService,private jwtService:JwtService){}
 
   login(){
@@ -39,7 +41,13 @@ export class LoginComponent {
         if(this.roles[0] == "ADMIN"){
           this.router.navigate(['admin/reservation'])
         }else{
-          this.router.navigate(['reservation'])
+          this.universiteService.getUniByEmail(decodedToken.email).subscribe(
+            (data) =>{
+              console.log(data);
+              this.router.navigate([data.nomUniversite+'/reservation'])
+            }
+          )
+        //  this.router.navigate(['reservation'])
         }
       
         /// REDIRECTION AGENT AND ADMIN 
