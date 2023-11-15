@@ -20,6 +20,9 @@ import { ChamberListeComponent } from './core/chamber/chamber-liste/chamber-list
 import { UniversiteUpdateComponent } from './core/universite/universite-update/universite-update.component';
 import { FoyerlisteComponent } from './core/foyer/foyerliste/foyerliste.component';
 import { AddReservationComponent } from './core/Reservation/add-reservation/add-reservation.component';
+import { AddBlocComponent } from './core/bloc/Add bloc/add-bloc.component';
+import { ListBlocComponent } from './core/bloc/list-bloc/list-bloc.component';
+import { UpdateBlocComponent } from './core/bloc/update-bloc/update-bloc.component';
 
 const routes: Routes = [
   //reservation Route 
@@ -29,7 +32,11 @@ const routes: Routes = [
   {path:":universite/reservation" , component:ReservationListeComponent},
   {path:":universite/reservation/add" , component:AddReservationComponent},
   {path:":universite/reservation/:id" , component:ReservationDetailsComponent},
-  
+
+
+  {path:":universite/addBloc",component:AddBlocComponent},
+  {path:":universite/bloc",component:ListBlocComponent},
+  {path:"updateBloc",component:UpdateBlocComponent},
   
   // Foyer Route 
   {path:"admin/foyer" , component:FoyerlisteComponent },
@@ -45,17 +52,20 @@ const routes: Routes = [
   {path:"forgetpassword" , component:ForgetPasswordComponent},
   // chamber URLS 
   {path:":universite/chamber" , component:ChamberListeComponent},
-  {path:"chamber/add", component: ChamberAddComponent },
-  {path:"chamber/:id" , component:ChamberDetailsComponent},
-  {path:"chamber/update/:id", component: ChamberUpdateComponent },
+  {path:":universite/chamber/add", component: ChamberAddComponent },
+  {path:":universite/chamber/:id" , component:ChamberDetailsComponent},
+  {path:":universite/chamber/update/:id", component: ChamberUpdateComponent },
   //{path:"universite",component:UniversiteListeComponent},
-  { path: 'universite-details/:id', component: UniversiteDetailComponent },
+  {path:"universite-details/:id", component: UniversiteDetailComponent },
 
 
   //Universite Route
   {path:":universite" , component:UniversiteUpdateComponent},
   {path:"admin/universite",component:UniversiteListeComponent},
   {path:"admin/universite/:id",component:UniversiteDetailComponent},
+
+  //bloc Route
+ 
 
 ];
 

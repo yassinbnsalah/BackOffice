@@ -14,6 +14,12 @@ export class ChamberService {
     })
     }
   constructor(private http : HttpClient) { }
+
+
+  getChamberByUniversiteName(nom:any):Observable<Chamber[]>{
+    return this.http.get<Chamber[]>(environment.baseURL  +
+      environment.ChamberBackendAPIS+"/findChambersbyUniversite/"+nom,this.httpOptions)
+  }
   getAllChamber():Observable<Chamber[]>{
     return this.http.get<Chamber[]>(environment.baseURL
       +environment.ChamberBackendAPIS+"/findAllChambers",this.httpOptions)

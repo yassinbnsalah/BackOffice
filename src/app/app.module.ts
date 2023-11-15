@@ -24,13 +24,17 @@ import { ChamberAddComponent } from './core/chamber/chamber-add/chamber-add.comp
 import { ChamberUpdateComponent } from './core/chamber/chamber-update/chamber-update.component';
 
 
-import { BlocListeComponent } from './core/bloc/bloc-liste/bloc-liste.component';
 import { AgentUniListeComponent } from './core/users/agent-uni-liste/agent-uni-liste.component';
 import { EtudiantListeComponent } from './core/users/etudiant-liste/etudiant-liste.component';
 import { UniversiteUpdateComponent } from './core/universite/universite-update/universite-update.component';
 import { SideComponent } from './shared/side/side.component';
 import { AddReservationComponent } from './core/Reservation/add-reservation/add-reservation.component';
 import { FoyerlisteComponent } from './core/foyer/foyerliste/foyerliste.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import { AddBlocComponent } from './core/bloc/Add bloc/add-bloc.component';
+import { ListBlocComponent } from './core/bloc/list-bloc/list-bloc.component';
+import { UpdateBlocComponent } from './core/bloc/update-bloc/update-bloc.component';
+
 
 @NgModule({
   declarations: [
@@ -48,7 +52,6 @@ import { FoyerlisteComponent } from './core/foyer/foyerliste/foyerliste.componen
     ChamberDetailsComponent,
     ChamberAddComponent,
     ChamberUpdateComponent,
-    BlocListeComponent,
     AgentUniListeComponent,
     EtudiantListeComponent,
     UniversiteUpdateComponent,
@@ -57,15 +60,19 @@ import { FoyerlisteComponent } from './core/foyer/foyerliste/foyerliste.componen
     AddfoyerComponent,
     UpdatefoyerComponent,
     AddReservationComponent,
-    FoyerlisteComponent
+    FoyerlisteComponent,
     
     
+    AddBlocComponent,
+    ListBlocComponent,
+    UpdateBlocComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

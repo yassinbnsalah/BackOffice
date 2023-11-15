@@ -18,4 +18,9 @@ export class UserService {
     return this.http.get<User>(environment.baseURL
       +environment.ReservationBackendAPIS+"/findReservationByID/"+id,this.httpOptions)
   }
+
+  getUserbyUniversiteAndRole(nom:any , role:String):Observable<User[]>{
+    return this.http.get<User[]>(environment.baseURL
+      +environment.UserBackendAPIS+"/findEtudiantByEcoleAndRole/"+nom+"/"+role,this.httpOptions)
+  }
 }

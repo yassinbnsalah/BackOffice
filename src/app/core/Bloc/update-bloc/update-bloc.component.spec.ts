@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BlocListeComponent } from './bloc-liste.component';
+import { UpdateBlocComponent } from './update-bloc.component';
 
-describe('BlocListeComponent', () => {
-  let component: BlocListeComponent;
-  let fixture: ComponentFixture<BlocListeComponent>;
+describe('UpdateBlocComponent', () => {
+  let component: UpdateBlocComponent;
+  let fixture: ComponentFixture<UpdateBlocComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BlocListeComponent ]
+      declarations: [ UpdateBlocComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(BlocListeComponent);
+    fixture = TestBed.createComponent(UpdateBlocComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

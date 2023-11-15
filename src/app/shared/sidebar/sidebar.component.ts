@@ -11,7 +11,7 @@ export class SidebarComponent {
 
 
   GoToChamber(){this.router.navigate([this.activatedRoute.snapshot.params['universite']+"/chamber"])}
-  GoToBlocs(){this.router.navigate([this.activatedRoute.snapshot.params['universite']])}
+  GoToBlocs(){this.router.navigate([this.activatedRoute.snapshot.params['universite']+"/bloc"])}
   GoToFoyer(){this.router.navigate([this.activatedRoute.snapshot.params['universite']+"/foyer"])}
   GoToReservation(){this.router.navigate([this.activatedRoute.snapshot.params['universite']+"/reservation"])}
   GoToUniversite(){this.router.navigate([this.activatedRoute.snapshot.params['universite']])}
