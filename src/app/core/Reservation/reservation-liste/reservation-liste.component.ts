@@ -10,7 +10,7 @@ import { ReservationService } from 'src/app/service/reservation.service';
   styleUrls: ['./reservation-liste.component.css']
 })
 export class ReservationListeComponent implements OnInit {
-  CurrentUser: any;
+  CurrentUser = this.storage.getUser();
   reservations !: Reservation[] ; 
   currentRouter !: String ; 
   
@@ -28,15 +28,23 @@ export class ReservationListeComponent implements OnInit {
   GoToAddReservation(){return this.router.navigate([this.activatedRoute.snapshot.params['universite']+"/reservation/add"])}
 
   getListeReservation(){
+    if(this.CurrentUser.role[0]== "ADMIN"){
+      this.reservationService.getAllReservation().subscribe((d)=>{
+        this.reservations = d ;
+        console.log(d);
+        
+      })
+    }else{
+      this.reservationService.getReservationByUniversiteName(this.activatedRoute.snapshot.params["universite"]).subscribe((d)=>{
+        this.reservations = d ;
+        console.log(d);
+        
+      })
+    }
     
-    this.reservationService.getReservationByUniversiteName(this.activatedRoute.snapshot.params["universite"]).subscribe((d)=>{
-      this.reservations = d ;
-      console.log(d);
-      
-    })
   }
   GoToReservationDetails(id:any){
-    this.CurrentUser = this.storage.getUser();
+    this.CurrentUser 
     if(this.CurrentUser.role[0]== "ADMIN"){
       this.router.navigate(["admin/reservation/",id])
     }else{

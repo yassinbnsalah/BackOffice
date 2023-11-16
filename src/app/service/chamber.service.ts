@@ -20,6 +20,11 @@ export class ChamberService {
     return this.http.get<Chamber[]>(environment.baseURL  +
       environment.ChamberBackendAPIS+"/findChambersbyUniversite/"+nom,this.httpOptions)
   }
+
+  getAvailabeChamberByUniversiteName(nom:any):Observable<Chamber[]>{
+    return this.http.get<Chamber[]>(environment.baseURL  +
+      environment.ChamberBackendAPIS+"/findAvailableChambersbyUniversite/"+nom,this.httpOptions)
+  }
   getAllChamber():Observable<Chamber[]>{
     return this.http.get<Chamber[]>(environment.baseURL
       +environment.ChamberBackendAPIS+"/findAllChambers",this.httpOptions)

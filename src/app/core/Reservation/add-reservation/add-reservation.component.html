@@ -13,7 +13,7 @@
           <div class="card-body p-4">
             <div class="row">
               <h5 class="card-title fw-semibold mb-4 col-10">Create Reservation</h5>
-              <a href="#" class="btn  btn-primary col-2"> Enregistrer</a>
+              <a (click)="saveReservation()" class="btn  btn-primary col-2"> Enregistrer</a>
             </div>
             <h5 class="card-title fw-semibold mb-4 col-10">Liste Chambers </h5>
             <div class="table-responsive">
@@ -67,10 +67,7 @@
                 </tbody>
               </table>
             </div>
-            <div> Date start </div>
-            <input type="date" class="form-control">
-            <div> Date End </div>
-            <input type="date" class="form-control">
+          
             <table class="table  text-nowrap mb-0 align-middle">
               <thead class=" table-info text-dark fs-4">
                 <tr>
@@ -100,7 +97,7 @@
                    <input type="checkbox" (click)="pickEtudiants(etudiant)">
                   </td>
                   <td class="border-bottom-0">
-                    <h6 class="fw-semibold mb-1">{{etudiant.nomEt}}</h6>
+                    <h6 class="fw-semibold mb-1" >{{etudiant.nomEt}}</h6>
                   </td>
                   <td class="border-bottom-0">
                     <h6 class="fw-semibold mb-1">{{etudiant.prenomEt}}</h6>
