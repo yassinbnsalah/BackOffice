@@ -18,6 +18,7 @@ export class AddReservationComponent implements OnInit {
   nbAvailable !: number; 
   etudiantsInReservation : User[] = [];
   reservedChamber !: Chamber;
+  CinListe:number[]= [];
   constructor(private serviceChamber: ChamberService,
     private serviceReservation : ReservationService, 
     private activatedRoute: ActivatedRoute,
@@ -28,10 +29,17 @@ export class AddReservationComponent implements OnInit {
     this.getEtudiantList();
   }
 
+  extractCinList(){
+    this.etudiantsInReservation.forEach(res =>{
+      this.CinListe.push(res.cin)
+    })
+    console.log(this.CinListe);
+    
+  }
   saveReservation(){
-    console.log(  this.reservedChamber.numerochamber , this.etudiantsInReservation[0].cin); 
+    this.extractCinList()
     this.serviceReservation.CreateReservation(
-      this.reservedChamber.numerochamber , this.etudiantsInReservation[0].cin).subscribe(
+      this.reservedChamber.numerochamber, this.CinListe).subscribe(
         (data)=>{
           console.log("finaly reservation");
           console.log(data);
