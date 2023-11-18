@@ -6,35 +6,42 @@
     <app-navbar></app-navbar>
     <div class="container-fluid">
 
-        <h1 class="title">Ajouter un Bloc</h1>
-        <div class="main">
-          <form #f="ngForm">
-            <div class="mb-3">
-              <label for="nomUniversite" class="form-label">Nom universite</label>
-              <input type="text" class="form-control" id="nomUniversite" [(ngModel)]="nomUniversite" required #nominput="ngModel">
+      <h1 class="title">Ajouter un Bloc</h1>
+      <div class="main">
+        <form [formGroup]="form" (ngSubmit)="addbloc()">
+
+          <div class="mb-3">
+            <label for="nomBloc" class="form-label">Nom bloc</label>
+            <input type="text" class="form-control" id="nomBloc" formControlName="nomBloc">
+            <div *ngIf="form.get('nomBloc')?.invalid && form.get('nomBloc')?.dirty" class="alert alert-danger" role="alert">
+              Nom bloc is required!
             </div>
-            <div class="mb-3">
-              <label for="nomBloc" class="form-label">Nom bloc</label>
-              <input type="text" class="form-control" id="nomBloc" [(ngModel)]="bloc.nomBloc" required #nominput="ngModel">
+          </div>
+          <div class="mb-3">
+            <label for="capaciteBloc" class="form-label">Capacite bloc</label>
+            <input type="number" class="form-control" id="capaciteBloc" formControlName="capaciteBloc">
+            <div *ngIf="form.get('capaciteBloc')?.invalid && form.get('capaciteBloc')?.dirty" class="alert alert-danger" role="alert">
+              Capacite bloc is required!
             </div>
-            <div class="mb-3">
-              <label for="capaciteBloc" class="form-label">Capacite bloc</label>
-              <input type="number" class="form-control" id="capaciteBloc" [(ngModel)]="bloc.capaciteBloc" required #nominput="ngModel">
+          </div>
+          <div class="mb-3">
+            <label for="status" class="form-label">Status</label>
+            <input type="text" class="form-control" id="status" formControlName="status" >
+            <div *ngIf="form.get('status')?.invalid && form.get('status')?.dirty" class="alert alert-danger" role="alert">
+              Status is required!
             </div>
-            <div class="mb-3">
-              <label for="status" class="form-label">Status</label>
-              <input type="text" class="form-control" id="status" [(ngModel)]="bloc.status" required #nominput="ngModel" >
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea type="text" class="form-control" id="description" formControlName="description">  </textarea>
+            <div *ngIf="form.get('description')?.invalid && form.get('description')?.dirty" class="alert alert-danger" role="alert">
+              Description is required!
             </div>
-            <div class="mb-3">
-              <label for="description" class="form-label">Description</label>
-              <textarea type="text" class="form-control" id="description" [(ngModel)]="bloc.description" required #nominput="ngModel">  </textarea>
-            </div>
-            <button type="submit" class="btn btn-primary" (click)="addbloc(f)" [disabled]="f.invalid">Add bloc</button>
-          </form>
-        </div>
+          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Add bloc</button>
+        </form>
+      </div>
 
     </div>
   </div>
 </div>
-
-

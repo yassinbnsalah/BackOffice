@@ -10,8 +10,13 @@
         <div class="col-lg-12 d-flex ">
           <div class="card w-100">
             <div class="card-body p-4">
+
               <h5 class="card-title fw-semibold mb-4">Bloc Liste</h5>
-                <button type="button" class="btn btn-primary" (click)="GoToAdd()">Ajouter un bloc</button>
+              <div class="input-group mt-3 mb-3" style="width: 50%">
+                <input type="text" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" [(ngModel)]="search" />
+
+              </div>
+              <button type="button" class="btn btn-primary" (click)="GoToAdd()">Ajouter un bloc</button>
               <div class="table-responsive">
                 <table class="table text-nowrap mb-0 align-middle">
                   <thead class="text-dark fs-4">
@@ -35,22 +40,26 @@
                   </thead>
                   <tbody>
                   <tr *ngFor="let bloc of blocs">
-                    <td class="border-bottom-0">
-                      <h6 class="fw-semibold mb-1">{{bloc.idBloc}} </h6>
-                    </td>
-                    <td class="border-bottom-0">
-                      <p class="mb-0 fw-normal">{{bloc.nomBloc}}</p>
-                    </td>
-                    <td class="border-bottom-0">
-                      <p class="mb-0 fw-normal">{{bloc.capaciteBloc}}</p>
-                    </td>
-                    <td class="border-bottom-0">
-                      <p class="mb-0 fw-normal">{{bloc.status}}</p>
-                    </td>
-                    <td class="border-bottom-0">
-                      <button type="button" class="btn btn-success" (click)="GoToUpdateBloc(bloc)" style="margin-right: 10px;">Update</button>
-                      <button type="button" class="btn btn-danger" style="margin-left: 10px;" (click)="deleteBloc(bloc.idBloc)">Delete</button>
-                    </td>
+
+                    <ng-container *ngIf="bloc.nomBloc.toLocaleLowerCase().includes(search.toLocaleLowerCase()) || search==''">
+                      <td class="border-bottom-0">
+                        <h6 class="fw-semibold mb-1">{{bloc.idBloc}}</h6>
+                      </td>
+                      <td class="border-bottom-0">
+                        <p class="mb-0 fw-normal">{{bloc.nomBloc}}</p>
+                      </td>
+                      <td class="border-bottom-0">
+                        <p class="mb-0 fw-normal">{{bloc.capaciteBloc}}</p>
+                      </td>
+                      <td class="border-bottom-0">
+                        <p class="mb-0 fw-normal">{{bloc.status}}</p>
+                      </td>
+                      <td class="border-bottom-0">
+                        <button type="button" class="btn btn-success" (click)="GoToUpdateBloc(bloc)" style="margin-right: 10px;">Update</button>
+                        <button type="button" class="btn btn-danger" style="margin-left: 10px;" (click)="deleteBloc(bloc.idBloc)">Delete</button>
+                      </td>
+                    </ng-container>
+
 
                   </tr>
 
