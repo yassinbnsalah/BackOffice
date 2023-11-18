@@ -17,6 +17,7 @@ export class ChamberListeComponent implements OnInit {
   }
 
   getListeChamber(){
+   
     this.chamberService.getAllChamber().subscribe((d)=>{
       this.chambers = d ;
       console.log(d);
