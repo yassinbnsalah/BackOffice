@@ -20,8 +20,19 @@ export class ChamberListeComponent implements OnInit {
     this.chamberService.getAllChamber().subscribe((d)=>{
       this.chambers = d ;
       console.log(d);
+      this.chambers.forEach((chamber,index)=>{
+        this.chamberService.getBLocByChamber(chamber.idChamber).subscribe((d)=>{
+         
+          this.chambers[index].blocname = d.nomBloc
+        
+          
+        })
+      })
+      
+    
       
     })
+    console.log(this.chambers);
   }
   GoToChamberDetails(id:any){
       this.router.navigate(["chamber/",id])

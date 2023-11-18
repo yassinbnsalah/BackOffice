@@ -11,6 +11,6 @@ export class Chamber{
     UpdatedAt!:Date;
     res!:Reservation[];
     bloc!:Bloc;
-    
+    blocname!:String;
 
 }

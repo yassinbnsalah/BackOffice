@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Chamber } from '../model/Chamber';
 import { environment } from 'src/environments/environment.development';
+import { Bloc } from '../model/Bloc';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,11 @@ export class ChamberService {
     }
   constructor(private http : HttpClient) { }
 
-
+  getBLocByChamber(id:any):Observable<Bloc>{
+    return this.http.get<Bloc>(environment.baseURL
+      +environment.BlocBackendAPIS+"/findBLocByChamber/"+id , this.httpOptions)
+  
+  }
   getChamberByUniversiteName(nom:any):Observable<Chamber[]>{
     return this.http.get<Chamber[]>(environment.baseURL  +
       environment.ChamberBackendAPIS+"/findChambersbyUniversite/"+nom,this.httpOptions)
