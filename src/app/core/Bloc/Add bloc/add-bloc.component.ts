@@ -22,7 +22,7 @@ export class AddBlocComponent {
       this.bloc=d;
       console.log(this.bloc);
     })
-    this.router.navigate(["/listBloc"])
+    //this.router.navigate(["/listBloc"])
 
   }
 

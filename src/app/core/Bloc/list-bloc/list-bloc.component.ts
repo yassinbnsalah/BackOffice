@@ -30,7 +30,7 @@ this.getListBloc();
     })
   }
   GoToAdd(){
-      this.route.navigate(["addBloc/"])
+      this.route.navigate([this.activatedRoute.snapshot.params["universite"]+"/addBloc/"])
   }
   GoToUpdateBloc(bloc:Bloc){
     this.blocService.setBloc(bloc);

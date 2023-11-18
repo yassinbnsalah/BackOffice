@@ -1,0 +1,44 @@
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical"
+  data-navbarbg="skin6" data-sidebartype="full"
+  data-sidebar-position="fixed" data-header-position="fixed">
+  <app-side></app-side>
+  <div class="body-wrapper">
+    <app-navbar></app-navbar>
+    <div class="container-fluid">
+    <div class="row">
+     
+      <div class="col-lg-12 d-flex align-items-stretch">
+        <div class="card w-100">
+          <div class="card-body p-4">
+            <h5 class="card-title fw-semibold mb-4">Foyer Add</h5>
+            <div class="table-responsive">
+              <form (ngSubmit)="ajout()" class="php-email-form" >
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <input type="text" name="nomFoyer"  [(ngModel)]="foyer.nomFoyer"  class="form-control form-control-lg form-control-a"placeholder="Foyer Name" required>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <input type="Number" name="capaciteFoyer"  [(ngModel)]="foyer.capaciteFoyer" placeholder="capaciteFoyer" required  class="form-control form-control-lg form-control-a" >
+                    </div>
+                  </div>
+                
+
+                 
+
+                  <div class="col-md-12 text-center">
+                    <button type="submit" class="btn btn-primary btn-sm">Create New Foyer</button>
+                    <span style="margin-left: 20px;" > <a routerLink="/foyer" routerLinkActive="active" class="btn btn-secondary btn-sm">Back</a></span>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
