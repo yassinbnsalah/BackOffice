@@ -29,7 +29,6 @@ export class UpdateBlocComponent implements OnInit {
     }
     console.log(this.bloc);
   }
-
   updateBloc() {
     this.serviceBloc.updatebloc(this.bloc).subscribe((data)=>{
       console.log(data);
