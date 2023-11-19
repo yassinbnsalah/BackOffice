@@ -48,9 +48,10 @@ const routes: Routes = [
   {path:"login" , component:LoginComponent},
   {path:"forgetpassword" , component:ForgetPasswordComponent},
   // chamber URLS 
-  {path:":universite/chamber/:id" , component:ChamberDetailsComponent},
+ 
   {path:":universite/chamber" , component:ChamberListeComponent},
   {path:":universite/chamber/add", component: ChamberAddComponent },
+  {path:":universite/chamber/:id" , component:ChamberDetailsComponent},
   {path:":universite/chamber/update/:id", component: ChamberUpdateComponent },
   //{path:"universite",component:UniversiteListeComponent},
   {path:"universite-details/:id", component: UniversiteDetailComponent },

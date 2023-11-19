@@ -11,8 +11,8 @@
             <div class="card-body p-4">
               <h5 class="card-title fw-semibold mb-4">Détails de la Chambre</h5>
               <div class="table-responsive">
-                <table class="table text-nowrap mb-0 align-middle">
-                  <thead class="text-dark fs-4">
+                <table class="table  text-nowrap mb-0 align-middle">
+                  <thead class="table-info text-dark fs-4">
                     <tr>
                       <th class="border-bottom-0">
                         <h6 class="fw-semibold mb-0">Id</h6>
@@ -26,12 +26,8 @@
                       <th class="border-bottom-0">
                         <h6 class="fw-semibold mb-0">Description</h6>
                       </th>
-                      <th class="border-bottom-0">
-                        <h6 class="fw-semibold mb-0">nbChambresDisponibles</h6>
-                      </th>
-                      <th class="border-bottom-0">
-                        <h6 class="fw-semibold mb-0">idBloc</h6>
-                      </th>
+                      
+                     
                       <th class="border-bottom-0">
                         <h6 class="fw-semibold mb-0">Etat</h6>
                       </th>
@@ -58,20 +54,16 @@
                       <td class="border-bottom-0">
                         <p class="mb-0 fw-normal">{{chamber.description}}</p>
                       </td>
-                      <td class="border-bottom-0">
-                        <p class="title-single"> {{ nbChambresDisponibles }}</p>
-                      </td>
-                      <td class="border-bottom-0">
-                        <p class="title-single"> {{ bloc.idBloc }}</p>
-                      </td>
+                   
+                      
                       <td class="border-bottom-0">
                         <p class="mb-0 fw-normal">{{chamber.etat }}</p>
                       </td>
                       <td class="border-bottom-0">
-                        <p class="mb-0 fw-normal">{{chamber.createdAt}}</p>
+                        <p class="mb-0 fw-normal">{{chamber.createdAt | date: 'yyyy-MM-dd'}}</p>
                       </td>
                       <td class="border-bottom-0">
-                        <p class="mb-0 fw-normal">{{chamber.updatedAt}}</p>
+                        <p class="mb-0 fw-normal">{{chamber.updatedAt | date: 'yyyy-MM-dd'}}</p>
                       </td>
                     
                       <td class="border-bottom-0">
@@ -80,10 +72,7 @@
 
                     </td>
 
-                      <td class="border-bottom-0">
-                    
-                        <a href="#" class="btn btn-primary btn-sm">Supprimer </a>
-                      </td>
+                     
                     </tr>
                   </tbody>
                 </table>

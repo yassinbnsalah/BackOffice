@@ -31,16 +31,19 @@ export class ChamberListeComponent implements OnInit {
       (chambers: Chamber[]) => {
         this.chambers = chambers;
 
-        this.chambers.forEach((chamber) => {
+        this.chambers.forEach((chamber,index) => {
           this.chamberService.getBLocByChamber(chamber.idChamber).subscribe(
-            (blocData) => {
-              console.log(blocData.nomBloc);
-             
+            (data) => {
+              console.log("data ok");
+              console.log(data.nomBloc);
+              this.chambers[index].blocname = data.nomBloc
             },
             (error) => {
               console.error('Error getting bloc data:', error);
             }
           );
+        console.log("wiwi ye tahfouna");
+        console.log(chamber);
         });
 
         console.log(this.chambers);

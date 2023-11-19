@@ -16,10 +16,10 @@ export class ChamberService {
     }
   constructor(private http : HttpClient) { }
 
-  getBLocByChamber(id:any):Observable<Bloc>{
+  getBLocByChamber(id: any): Observable<Bloc> {
     return this.http.get<Bloc>(environment.baseURL
-      +environment.BlocBackendAPIS+"/findBLocByChamber/"+id , this.httpOptions)
-  
+      + environment.BlocBackendAPIS + "/findBLocByChamber/" + id)
+
   }
   getChamberByUniversiteName(nom:any):Observable<Chamber[]>{
     return this.http.get<Chamber[]>(environment.baseURL  +

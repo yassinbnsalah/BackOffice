@@ -19,7 +19,7 @@
              
             <div class="table-responsive">
               <table class="table text-nowrap mb-0 align-middle">
-                <thead class="text-dark fs-4">
+                <thead class="table-info text-dark fs-4">
                   <tr>
                     <th class="border-bottom-0">
                       <h6 class="fw-semibold mb-0">Id</h6>
@@ -34,7 +34,7 @@
                       <h6 class="fw-semibold mb-0">Description </h6>
                     </th>
                     <th class="border-bottom-0">
-                      <h6 class="fw-semibold mb-0">Bloc </h6>
+                      <h6 class="fw-semibold mb-0">Nom Bloc </h6>
                     </th>
                     <th class="border-bottom-0">
                       <h6 class="fw-semibold mb-0">Etat</h6>
@@ -62,7 +62,9 @@
                       <td class="border-bottom-0">
                         <p class="mb-0 fw-normal">{{chamber.description}}</p>
                       </td>
-                
+                      <td class="border-bottom-0">
+                        <p class="mb-0 fw-normal">{{chamber.blocname}}</p>
+                      </td>
                    
                       <td class="border-bottom-0">
                         <p class="mb-0 fw-normal">{{chamber.etat}}</p>
@@ -74,13 +76,9 @@
                         <p class="mb-0 fw-normal">{{chamber.updatedAt| date: 'yyyy-MM-dd'}}</p>
                       </td>
                       <td class="border-bottom-0">
-                        <span style="margin-left: 900px;"> <a (click)="GoToDetailsChamber(chamber.idChamber)" routerLinkActive="active"
+                        <span style="margin-left: 9px;"> <a (click)="GoToDetailsChamber(chamber.idChamber)" routerLinkActive="active"
                           class="btn btn-primary">Show Details</a></span>
                       </td>
-                      
-                    
-                       
-               
                   </tr> 
                                     
                 </tbody>
