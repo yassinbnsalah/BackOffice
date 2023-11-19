@@ -25,8 +25,10 @@ export class AddReservationComponent implements OnInit {
     private storage : StorageService,
     private userService: UserService) { }
   ngOnInit(): void {
-    this.getChamberList();
-    this.getEtudiantList();
+    this.chambers =  this.activatedRoute.snapshot.data['data'].chambers;
+    this.etudiants =  this.activatedRoute.snapshot.data['data'].etudiants;
+   //this.getChamberList();
+  //  this.getEtudiantList();
   }
 
   extractCinList(){

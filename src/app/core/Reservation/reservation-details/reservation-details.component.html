@@ -11,15 +11,27 @@
             {{reservation.idReservation}}</h5>
           <p class="mb-0">Reservation Date : {{reservation.anneeReservation|
             date: 'yyyy-MM-dd'}} </p>
-          <div class="alert alert-sm alert-primary" role="alert">Reservation
-            State : {{reservation.status}}</div>
-          update reservation State ?
-          <select>
-            <option value="confirmed"
-              (click)="updateReservationState('confirmed')"> Confirme </option>
-            <option value="cancel" (click)="updateReservationState('Cancel')">
-              Cancel </option>
-          </select>
+            <div class="row">
+            <div class="alert alert-sm alert-success col-md-6" role="alert">Date Debut 
+               : <strong>{{reservation.dateDebut}}</strong></div>
+               <div class="alert alert-sm alert-success col-md-6" role="alert">Date Fin 
+                : <strong>{{reservation.dateFin}}</strong></div>
+              </div>
+              <div class="row">
+                <div class="alert alert-sm alert-primary col-md-6" role="alert">Reservation
+                  State : {{reservation.status}}</div>
+                  <div class="col-md-6">
+                  <h4>update reservation State ?</h4>
+                  <select class="form-control">
+                    <option value="confirmed"
+                      (click)="updateReservationState('confirmed')"> Confirme </option>
+                    <option value="cancel" (click)="updateReservationState('Cancel')">
+                      Cancel </option>
+                  </select>
+                </div>
+                </div>
+
+        
           <h5 class="card-title fw-semibold mb-4">Reservation Owner </h5>
           <table class="table  text-nowrap mb-0 align-middle">
             <thead class=" table-info text-dark fs-4">

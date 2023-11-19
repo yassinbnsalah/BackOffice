@@ -11,11 +11,21 @@
       <div class="col-lg-12 d-flex ">
         <div class="card w-100">
           <div class="card-body p-4">
-            <div class="row">
-              <h5 class="card-title fw-semibold mb-4 col-10">Create Reservation</h5>
-              <a (click)="saveReservation()" class="btn  btn-primary col-2"> Enregistrer</a>
+           
+              <div class="card-title">
+                <div class="row">
+              <h5 class=" fw-semibold  col-10">Create Reservation</h5>
+              <button (click)="saveReservation()" class="btn  btn-danger btn-sm col-md-2" 
+              style="float: right;" > Enregistrer</button>
             </div>
+            </div>
+              
+            <div class="alert alert-primary" role="alert">
+              A simple primary alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+            </div>
+            
             <h5 class="card-title fw-semibold mb-4 col-10">Liste Chambers </h5>
+            <div></div>
             <div class="table-responsive">
               <table class="table text-nowrap mb-0 align-middle">
                 <thead class="table-info text-dark fs-4">

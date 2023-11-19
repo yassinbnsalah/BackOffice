@@ -7,7 +7,7 @@ export class Chamber{
     typeC!:string;
     description!:string;
     etat!:boolean;
-    CreatedAt!:Date;
+    createdAt!:Date;
     UpdatedAt!:Date;
     res!:Reservation[];
     bloc!:Bloc;
