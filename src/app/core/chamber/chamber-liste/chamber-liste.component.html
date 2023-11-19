@@ -12,7 +12,8 @@
           <div class="card-body p-4">
             <h5 class="card-title fw-semibold mb-4">
                 La liste des chambres
-                <a [routerLink]="['/chamber/add']" class="btn btn-primary btn-sm" style="float: right;">Add Chamber</a>
+                <span style="margin-left: 900px;"> <a (click)="GoToAddChamber()" routerLinkActive="active"
+                  class="btn btn-primary">Ajouter Chambre</a></span>
               </h5>
               
              
@@ -30,7 +31,10 @@
                       <h6 class="fw-semibold mb-0">Type Chambre </h6>
                     </th>
                     <th class="border-bottom-0">
-                      <h6 class="fw-semibold mb-0">bloc </h6>
+                      <h6 class="fw-semibold mb-0">Description </h6>
+                    </th>
+                    <th class="border-bottom-0">
+                      <h6 class="fw-semibold mb-0">Bloc </h6>
                     </th>
                     <th class="border-bottom-0">
                       <h6 class="fw-semibold mb-0">Etat</h6>
@@ -56,19 +60,22 @@
                         <p class="mb-0 fw-normal">{{chamber.typeC}}</p>
                       </td>
                       <td class="border-bottom-0">
-                        <p class="mb-0 fw-normal">{{chamber.blocname}}</p>
+                        <p class="mb-0 fw-normal">{{chamber.description}}</p>
                       </td>
+                
+                   
                       <td class="border-bottom-0">
                         <p class="mb-0 fw-normal">{{chamber.etat}}</p>
                       </td>
                       <td class="border-bottom-0">
-                        <p class="mb-0 fw-normal">{{chamber.CreatedAt| date: 'yyyy-MM-dd'}}</p>
+                        <p class="mb-0 fw-normal">{{chamber.createdAt| date: 'yyyy-MM-dd'}}</p>
                       </td>
                       <td class="border-bottom-0">
-                        <p class="mb-0 fw-normal">{{chamber.UpdatedAt| date: 'yyyy-MM-dd'}}</p>
+                        <p class="mb-0 fw-normal">{{chamber.updatedAt| date: 'yyyy-MM-dd'}}</p>
                       </td>
                       <td class="border-bottom-0">
-                        <a [routerLink]="['/chamber', chamber.idChamber]" class="btn btn-primary btn-sm">Show Details</a>
+                        <span style="margin-left: 900px;"> <a (click)="GoToDetailsChamber(chamber.idChamber)" routerLinkActive="active"
+                          class="btn btn-primary">Show Details</a></span>
                       </td>
                       
                     

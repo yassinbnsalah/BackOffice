@@ -7,10 +7,10 @@ export class Chamber{
     typeC!:string;
     description!:string;
     etat!:boolean;
-    CreatedAt!:Date;
-    UpdatedAt!:Date;
+    createdAt!:Date;
+    updatedAt!:Date;
     res!:Reservation[];
     bloc!:Bloc;
-    blocname!:String;
+   
 
 }

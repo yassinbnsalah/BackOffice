@@ -32,7 +32,7 @@
                   [hidden]="true"
                     type="date"
                     name="CreatedAt"
-                    [(ngModel)]="chamber.CreatedAt"
+                    [(ngModel)]="chamber.createdAt"
                     required
                     class="form-control"
                   >
@@ -45,7 +45,7 @@
                   [hidden]="true"
                     type="date"
                     name="UpdatedAt"
-                    [(ngModel)]="chamber.UpdatedAt"
+                    [(ngModel)]="chamber.updatedAt"
                     required
                     class="form-control"
                   >
@@ -87,7 +87,7 @@
 
                 <p>Status: {{ chamber.etat ? 'Valid' : 'Invalid' }}</p>
 
-                <button type="submit" class="btn btn-primary">Update Chamber</button>
+                <button type="submit" class="btn btn-primary">Update Chambre</button>
               </form>
             </div>
           </div>

@@ -20,9 +20,8 @@ import { ChamberListeComponent } from './core/chamber/chamber-liste/chamber-list
 import { UniversiteUpdateComponent } from './core/universite/universite-update/universite-update.component';
 import { FoyerlisteComponent } from './core/foyer/foyerliste/foyerliste.component';
 import { AddReservationComponent } from './core/Reservation/add-reservation/add-reservation.component';
-import { AddBlocComponent } from './core/bloc/Add bloc/add-bloc.component';
-import { ListBlocComponent } from './core/bloc/list-bloc/list-bloc.component';
-import { UpdateBlocComponent } from './core/bloc/update-bloc/update-bloc.component';
+
+
 
 const routes: Routes = [
   //reservation Route 
@@ -34,9 +33,7 @@ const routes: Routes = [
   {path:":universite/reservation/:id" , component:ReservationDetailsComponent},
 
 
-  {path:":universite/addBloc",component:AddBlocComponent},
-  {path:":universite/bloc",component:ListBlocComponent},
-  {path:"updateBloc",component:UpdateBlocComponent},
+
   
   // Foyer Route 
   {path:"admin/foyer" , component:FoyerlisteComponent },
@@ -51,9 +48,9 @@ const routes: Routes = [
   {path:"login" , component:LoginComponent},
   {path:"forgetpassword" , component:ForgetPasswordComponent},
   // chamber URLS 
+  {path:":universite/chamber/:id" , component:ChamberDetailsComponent},
   {path:":universite/chamber" , component:ChamberListeComponent},
   {path:":universite/chamber/add", component: ChamberAddComponent },
-  {path:":universite/chamber/:id" , component:ChamberDetailsComponent},
   {path:":universite/chamber/update/:id", component: ChamberUpdateComponent },
   //{path:"universite",component:UniversiteListeComponent},
   {path:"universite-details/:id", component: UniversiteDetailComponent },
