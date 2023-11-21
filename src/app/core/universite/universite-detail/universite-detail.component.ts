@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import { Universite } from 'src/app/model/Universite';
 import { UniversiteService } from 'src/app/service/universiteService/universite.service';
 
@@ -13,8 +13,8 @@ import { UniversiteService } from 'src/app/service/universiteService/universite.
 export class UniversiteDetailComponent {
   universite !: Universite ;
   constructor(private serviceUniversite: UniversiteService,
-              private activatedRoute: ActivatedRoute) { }
-
+              private activatedRoute: ActivatedRoute,
+              private router: Router){}
 
 
   ngOnInit(): void {
@@ -25,4 +25,11 @@ export class UniversiteDetailComponent {
       this.universite = data ;
     })
   }
+  redirectToUpdateChamber(id: number) {
+    const universite = this.activatedRoute.snapshot.params['universite'];
+    this.router.navigate([`/admin/updateUniversite/${id}`]);
+  }
+
+
+
 }

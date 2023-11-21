@@ -62,13 +62,13 @@ import { AcceptedUniversiteComponent } from './core/universite/accepted-universi
     UpdatefoyerComponent,
     AddReservationComponent,
     FoyerlisteComponent,
-    
-    
+
+
     AddBlocComponent,
     ListBlocComponent,
     UpdateBlocComponent,
-    AcceptedUniversiteComponent
-  ],
+    AcceptedUniversiteComponent,
+    UniversiteUpdateComponent  ],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -78,6 +78,6 @@ import { AcceptedUniversiteComponent } from './core/universite/accepted-universi
   ],
   providers: [],
   bootstrap: [AppComponent]
-  
+
 })
 export class AppModule { }

@@ -64,7 +64,7 @@ const routes: Routes = [
   {path:"admin/universite",component:UniversiteListeComponent},
   {path:"admin/universite/:id",component:UniversiteDetailComponent},
   {path: "admin/acceptedUniversite", component: AcceptedUniversiteComponent },
-
+  {path:"admin/updateUniversite/:id", component:UniversiteUpdateComponent}
   //bloc Route
 
 
