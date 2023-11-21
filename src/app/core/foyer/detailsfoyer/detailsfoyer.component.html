@@ -7,47 +7,68 @@
     <div class="container-fluid">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title fw-semibold mb-4">Foyer {{foyer.idFoyer}}</h5>
-            <p class="mb-0">Nom Foyer : {{foyer.nomFoyer}} </p>
+           <!-- <h5 class="card-title fw-semibold mb-4">Foyer {{foyer.idFoyer}}</h5>-->
+            <h2 style="text-align: center;">Nom Foyer : {{foyer.nomFoyer}} </h2>
             <p class="mb-0">Foyer Capacite : {{foyer.capaciteFoyer}} </p>
             <table class="table  text-nowrap mb-0 align-middle">
                 <thead class=" table-info text-dark fs-4">
                   <tr>
+                    
                     <th class="border-bottom-0">
-                      <h6 class="fw-semibold mb-0">Id</h6>
+                      <h6 class="fw-semibold mb-0">Bloc Name </h6>
                     </th>
                     <th class="border-bottom-0">
-                      <h6 class="fw-semibold mb-0">Universite Name </h6>
-                    </th>
-                    <th class="border-bottom-0">
-                      <h6 class="fw-semibold mb-0">Universite Adress</h6>
+                      <h6 class="fw-semibold mb-0">Capacite Bloc</h6>
                     </th>
                    
                   </tr>
                 </thead>
-                <tbody>
-                  <tr >
+                <tbody >
+                 <tr *ngFor="let bloc of blocs">
                     <td class="border-bottom-0">
                    
-                        <h6 class="fw-semibold mb-0">{{foyer.universite.idUniversite}}</h6></td>
+                        <h6 class="fw-semibold mb-0">{{bloc.nomBloc}}</h6></td>
                     <td class="border-bottom-0">
-                        <h6 class="fw-semibold mb-1">{{foyer.universite.nomUniversite}}</h6>
+                        <h6 class="fw-semibold mb-1">{{bloc.capaciteBloc}}</h6>
                                             
                     </td>
-                    <td class="border-bottom-0">
-                        <h6 class="fw-semibold mb-1">{{foyer.universite.adresse}}</h6>
-                                            
-                    </td>
+                   
                     
                    
                   </tr> 
                                     
                 </tbody>
               </table>
-              
+              <table class="table  text-nowrap mb-0 align-middle">
+                <thead class=" table-info text-dark fs-4">
+                  <tr>
+                    
+                    <th class="border-bottom-0">
+                      <h6 class="fw-semibold mb-0">Universite Name </h6>
+                    </th>
+                    <th class="border-bottom-0">
+                      <h6 class="fw-semibold mb-0">Adresse</h6>
+                    </th>
+                   
+                  </tr>
+                </thead>
+                <tbody >
+                 <tr *ngFor="let universite of universites">
+                    <td class="border-bottom-0">
+                   
+                        <h6 class="fw-semibold mb-0">{{universite.nomUniversite}}</h6></td>
+                    <td class="border-bottom-0">
+                        <h6 class="fw-semibold mb-1">{{universite.adresse}}</h6>
+                                            
+                    </td>
+                                    
+                  </tr> 
+                                    
+                </tbody>
+              </table>
               <div class="border-bottom-0" style="margin-left: 800px;">
                 <a (click)="redirectToUpdateFoyer(foyer.idFoyer)" class="btn btn-primary btn-sm" >Modifier</a>
-                <span style="margin-left: 20px;" > <a routerLink="/foyer" routerLinkActive="active" class="btn btn-secondary btn-sm">Back</a></span>
+                <span style="margin-left: 20px;" > <a (click)="GoBack()" routerLinkActive="active" class="btn btn-secondary btn-sm">Back</a></span>
             </div>
           </div>
         </div>

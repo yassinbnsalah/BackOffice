@@ -26,7 +26,7 @@ export class UpdatefoyerComponent implements OnInit {
     console.log(this.foyer);
     this.serviceFoyer.updateFoyer(this.foyer).subscribe((response) => {
       console.log('foyer updated:', response);
-      this.router.navigate(['/foyer/' + this.foyer.idFoyer]);
+      this.router.navigate([this.activatedRoute.snapshot.params["universite"]+'/foyer/' + this.foyer.idFoyer]);
     });
   }
 }

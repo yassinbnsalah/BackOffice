@@ -55,7 +55,7 @@ const routes: Routes = [
   //Universite Route
   {path:":universite" , component:UniversiteUpdateComponent},
   {path:"admin/universite",component:UniversiteListeComponent},
-  {path:"admin/universite/:id",component:UniversiteDetailComponent},
+  {path:"admin/universite/:id",component:UniversiteDetailComponent}
 
 ];
 

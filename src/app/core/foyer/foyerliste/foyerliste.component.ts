@@ -37,6 +37,10 @@ export class FoyerlisteComponent implements OnInit {
     this.router.navigate([this.activatedRoute.snapshot.params["universite"]+'/addFoyer'])
   }
 
+  GoToFoyerDetail(id:any){
+    this.router.navigate([this.activatedRoute.snapshot.params["universite"]+'/foyer/'+id])
+  }
+  
   getListeFoyer(){
     console.log(this.router.url);
     

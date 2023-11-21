@@ -22,7 +22,7 @@
                   <thead class="text-dark fs-4">
                     <tr>
                       <th class="border-bottom-0">
-                        <h6 class="fw-semibold mb-0">Id</h6>
+                        <h6 class="fw-semibold mb-0">Image</h6>
                       </th>
                       <th class="border-bottom-0">
                         <h6 class="fw-semibold mb-0">Name Foyer </h6>
@@ -30,9 +30,9 @@
                       <th class="border-bottom-0">
                         <h6 class="fw-semibold mb-0">Capacite Foyer</h6>
                       </th>
-                      <th class="border-bottom-0">
+                       <!--  <th class="border-bottom-0">
                         <h6 class="fw-semibold mb-0">Universite</h6>
-                      </th>
+                      </th>-->
                       <th class="border-bottom-0">
                         <h6 class="fw-semibold mb-0">Created At</h6>
                       </th>
@@ -48,7 +48,7 @@
                     <tr *ngIf="foyer.etat === false">
 
                       <td class="border-bottom-0">
-                        <h6 class="fw-semibold mb-0">{{foyer.idFoyer}}</h6>
+                        <img style="width: 100px; height: 100px;" [src]="'data:' + foyer.image?.image_type + ';base64,' + foyer.imagebyte" alt="Universite Image">
                       </td>
 
                       <td class="border-bottom-0">
@@ -57,9 +57,9 @@
                       <td class="border-bottom-0">
                         <h6 class="fw-semibold mb-0 fs-4">{{foyer.capaciteFoyer}}</h6>
                       </td>
-                      <td class="border-bottom-0">
+                       <!--  <td class="border-bottom-0">
                         <h6 class="fw-semibold mb-1">{{foyer.universite.nomUniversite}}</h6>
-                      </td>
+                      </td>-->
                       <td class="border-bottom-0">
                         <h6 class="fw-semibold mb-1">{{ foyer.createdAt | date:'yy-MM-dd' }}</h6>
 
@@ -69,7 +69,7 @@
                       </td>
                       <td class="border-bottom-0">
 
-                        <a routerLink="/foyer/{{foyer.idFoyer}}" routerLinkActive="active"
+                        <a (click)="GoToFoyerDetail(foyer.idFoyer)" routerLinkActive="active"
                           class="btn btn-primary btn-sm">See Details </a>
                         <span style="margin-left: 20px;"> <button (click)="updateFoyerEtat(foyer.idFoyer)"
                             class="btn btn-danger btn-sm">Delete</button></span>
