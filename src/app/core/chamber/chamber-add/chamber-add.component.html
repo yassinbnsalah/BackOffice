@@ -11,8 +11,8 @@
           <div class="card w-100">
             <div class="card-body p-4">
               <h5 class="card-title fw-semibold mb-4">Ajouter une chambre</h5>
-              <form #chamberForm="ngForm" (Click)="saveChamber(chamberForm.value)">
-
+          
+                <form (ngSubmit)="onSubmit()" class="php-email-form">
 
                 <div>
                   <label for="numerochamber">Numéro de chambre</label>
@@ -73,7 +73,11 @@
                 </div>
               
                 <p>État: {{ chamber.etat ? 'Valide' : 'Invalide' }}</p>
-                <input type="submit" (click)="saveChamber(chamberForm.value)" value="ADD CHAMBER">
+                <div>
+                  <label for="image">Image:</label>
+                  <input type="file" id="image" (change)="onFileSelected($event)" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm">Create New Chambre</button>
                
               </form>
               

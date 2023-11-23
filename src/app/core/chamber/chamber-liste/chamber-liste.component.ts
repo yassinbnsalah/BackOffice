@@ -11,6 +11,9 @@ import { ChamberService } from 'src/app/service/chamber.service';
 export class ChamberListeComponent implements OnInit {
   chambers!: Chamber[];
   blocNames: string[] = []; // Tableau pour stocker les noms des blocs
+   search='';
+
+
 
   constructor(
     private chamberService: ChamberService,
@@ -62,4 +65,11 @@ export class ChamberListeComponent implements OnInit {
   GoToDetailsChamber(id: any) {
     this.router.navigate([this.activatedRoute.snapshot.params['universite'] + "/chamber/" + id]);
   }
+  filterData() {
+    if (this.search.trim() === '') {
+      return this.chambers;
+    }
+    return this.chambers.filter(item => item.typeC.toLowerCase().includes(this.search.toLowerCase()));
+  }
+  
 }

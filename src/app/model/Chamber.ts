@@ -1,6 +1,6 @@
 import { Bloc } from "./Bloc";
 import { Reservation } from "./Reservation";
-
+import {Image} from  "./Image";
 export class Chamber{
     idChamber!:number;
     numerochamber!:number;
@@ -12,6 +12,8 @@ export class Chamber{
     res!:Reservation[];
     bloc!:Bloc;
     blocname!:string;
+    imagebyte!:string ;
+    image?: Image | null;
    
 
 }

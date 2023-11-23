@@ -14,6 +14,8 @@ export class ChamberService {
     'Content-Type': 'application/json'
     })
     }
+    private api = 'http://localhost:8081/ChamberRestController/uploadImg/';
+    private apiUrl = 'http://localhost:8081/ChamberRestController/AddChamber';
   constructor(private http : HttpClient) { }
 
   getBLocByChamber(id: any): Observable<Bloc> {
@@ -75,5 +77,20 @@ getBlocNameById(idBloc: number): Observable<string> {
   return this.http.get<number>(url, this.httpOptions);
 }
 
+uploadImg(formData: FormData, idChamber : any) : Observable<Chamber>{
+  return this.http.post<Chamber>(this.api+idChamber, formData);
+}
+addChamberWithImage(chamber: Chamber): Observable<any> {
+    const formData: FormData = new FormData();
 
+    Object.entries(chamber).forEach(([key, value]) => {
+        if (key === 'image' && value) {
+            formData.append('image', value as Blob, (value as File).name);
+        } else {
+            formData.append(key, String(value));
+        }
+    });
+
+    return this.http.post(`${this.apiUrl}`, formData);
+}
 }
