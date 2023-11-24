@@ -8,36 +8,73 @@
 
       <h1 class="title">Ajouter un Bloc</h1>
       <div class="main">
-        <form [formGroup]="form" (ngSubmit)="addbloc()">
-
-          <div class="mb-3">
+        <form class="row g-3 needs-validation" [formGroup]="form" (ngSubmit)="addbloc()">
+          <div class="col-md-4">
             <label for="nomBloc" class="form-label">Nom bloc</label>
-            <input type="text" class="form-control" id="nomBloc" formControlName="nomBloc">
-            <div *ngIf="form.get('nomBloc')?.invalid && form.get('nomBloc')?.dirty" class="alert alert-danger" role="alert">
+            <input type="text" class="form-control" id="nomBloc" formControlName="nomBloc" required>
+            <div class="invalid-feedback" *ngIf="form.get('nomBloc')?.invalid && form.get('nomBloc')?.dirty">
               Nom bloc is required!
             </div>
           </div>
-          <div class="mb-3">
-            <label for="capaciteBloc" class="form-label">Capacite bloc</label>
-            <input type="number" class="form-control" id="capaciteBloc" formControlName="capaciteBloc">
-            <div *ngIf="form.get('capaciteBloc')?.invalid && form.get('capaciteBloc')?.dirty" class="alert alert-danger" role="alert">
-              Capacite bloc is required!
-            </div>
-          </div>
-          <div class="mb-3">
+          <div class="col-md-4">
             <label for="status" class="form-label">Status</label>
-            <input type="text" class="form-control" id="status" formControlName="status" >
-            <div *ngIf="form.get('status')?.invalid && form.get('status')?.dirty" class="alert alert-danger" role="alert">
+            <input type="text" class="form-control" id="status" formControlName="status" required>
+            <div class="invalid-feedback" *ngIf="form.get('status')?.invalid && form.get('status')?.dirty">
               Status is required!
             </div>
           </div>
-          <div class="mb-3">
+          <div class="col-md-5">
             <label for="description" class="form-label">Description</label>
-            <textarea type="text" class="form-control" id="description" formControlName="description">  </textarea>
-            <div *ngIf="form.get('description')?.invalid && form.get('description')?.dirty" class="alert alert-danger" role="alert">
+            <textarea class="form-control" id="description" formControlName="description" required></textarea>
+            <div class="invalid-feedback" *ngIf="form.get('description')?.invalid && form.get('description')?.dirty">
               Description is required!
             </div>
           </div>
+          <!-- Add other form fields as needed -->
+
+
+      <div class="mb-3" *ngIf="addChamberPressed==false">
+          <button type="button" class="btn btn-primary" (click)="addChamber()">Add chmabers</button>
+      </div>
+          <div formArrayName="chambers" *ngIf="show == true">
+            <div *ngFor="let control of chambers.controls; let i = index" [formGroupName]="i" class="row">
+              <h2>Chambre {{chamberCount[i]}}</h2>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="numerochamber" class="form-label">Numero Chamber</label>
+                  <input type="text" class="form-control" id="numerochamber" formControlName="numerochamber">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label class="form-label">TypeC</label>
+                  <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" formControlName="typeC">
+                    <option selected>Select Type</option>
+                    <option value="Simple">Simple</option>
+                    <option value="Double">Double</option>
+                    <option value="Triple">Triple</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="Description" class="form-label">Description</label>
+                  <input type="text" class="form-control" id="Descriptionch" formControlName="Description">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="Etat" class="form-label">Etat</label>
+                  <input type="text" class="form-control" id="Etat" formControlName="Etat">
+                </div>
+              </div>
+              <div class="mb-3" *ngIf="addChamberPressed==true && chambers.length - 1 === i">
+                <button type="button" class="btn btn-primary" (click)="addChamber()">Add chmabers</button>
+              </div>
+            </div>
+          </div>
+
+
           <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Add bloc</button>
         </form>
       </div>

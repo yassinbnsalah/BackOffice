@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Bloc } from '../../../model/Bloc';
 import { BlocService } from '../../../service/BlocService/bloc.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -12,6 +12,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class AddBlocComponent {
   form: FormGroup;
   bloc = new Bloc();
+  nbChambere:number=1;
+  capacite:number=0;
+  addChamberPressed:boolean=false;
+  chamberCount: number[] = [];
 
   constructor(
     private blocService: BlocService,
@@ -24,20 +28,81 @@ export class AddBlocComponent {
       capaciteBloc: [null, Validators.required],
       status: ['', Validators.required],
       description: ['', Validators.required],
+      chambers: this.fb.array([]),
     });
+    const capaciteBlocControl = this.form.get('capaciteBloc');
+    if (capaciteBlocControl) {
+      capaciteBlocControl.setValue(0); // Set the desired value
+    }
+  }
+
+  labelNames: string[] = ['numerochamber', 'typeC', 'Description', 'Etat'];
+  show: boolean = false;
+
+  addChamber() {
+    this.addChamberPressed=true
+    this.show = true
+    if (this.show) {
+      this.addChamberControl();
+      this.chamberCount.push(this.nbChambere++);
+    }
+  }
+
+  addChamberControl() {
+    const chamberGroup = this.fb.group({
+      numerochamber: [''],
+      typeC: [''],
+      Description: [''],
+      Etat: [''],
+    });
+
+    this.chambers.push(chamberGroup);
+  }
+
+  removeChamberControl(index: number) {
+    this.chambers.removeAt(index);
   }
 
   addbloc() {
+    const capaciteBlocControl = this.form.get('capaciteBloc');
+
+
     if (this.form.valid) {
+      for (let i = 0; i < this.chamberCount.length; i++) {
+        const chamberControl = this.chambers.controls[i] as FormGroup;
+        const typeC = chamberControl.get('typeC')?.value;
+
+        switch (typeC) {
+          case 'Simple':
+           this.capacite++;
+            break;
+          case 'Double':
+            this.capacite=this.capacite+2;
+            break;
+          case 'Triple':
+            this.capacite=this.capacite+3;
+            break;
+          default:
+            break;
+        }
+      }
+      if (capaciteBlocControl) {
+        capaciteBlocControl.setValue(this.capacite);
+        console.log("this is capacite = "+this.capacite)// Set the desired value
+      }
       this.blocService.addBloc("esprit", this.form.value).subscribe((d) => {
-        console.log('this is title' + this.form.get('nomUniversite')?.value);
+        console.log('this is title' + this.form.get('nomBloc')?.value);
         this.bloc = d;
-        console.log(this.bloc);
+        console.log(d);
       });
-      this.router.navigate([":universite/bloc"])
+      this.router.navigate([":universite/bloc"]);
     } else {
       console.log('form is invalid');
     }
-    //this.router.navigate(["/listBloc"])
   }
+
+  get chambers(): FormArray {
+    return this.form.get('chambers') as FormArray;
+  }
+
 }

@@ -34,6 +34,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { AddBlocComponent } from './core/bloc/Add bloc/add-bloc.component';
 import { ListBlocComponent } from './core/bloc/list-bloc/list-bloc.component';
 import { UpdateBlocComponent } from './core/bloc/update-bloc/update-bloc.component';
+import { DetailBlocComponent } from './core/bloc/detail-bloc/detail-bloc.component';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import { UpdateBlocComponent } from './core/bloc/update-bloc/update-bloc.compone
     
     AddBlocComponent,
     ListBlocComponent,
-    UpdateBlocComponent
+    UpdateBlocComponent,
+    DetailBlocComponent
   ],
   imports: [
     BrowserModule,

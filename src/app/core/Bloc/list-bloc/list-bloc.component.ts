@@ -37,4 +37,8 @@ export class ListBlocComponent implements OnInit{
     this.blocService.setBloc(bloc);
     this.route.navigate(["updateBloc"],{queryParams:{bloc:bloc}});
   }
+  GoToDetail(bloc:Bloc){
+    this.blocService.setBloc(bloc);
+    this.route.navigate(["detailBloc"],{queryParams:{bloc:bloc}})
+  }
 }
