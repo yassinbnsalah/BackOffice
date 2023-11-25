@@ -28,6 +28,11 @@ export class UniversiteService {
       +environment.UniversiteBackendAPIS+"/findById/"+id,this.httpOptions)
   }
 
+  getUniversiteByNomU(name:any):Observable<Universite>{
+    return this.http.get<Universite>(environment.baseURL
+      +environment.UniversiteBackendAPIS+"/findByUniversiteNom/"+name,this.httpOptions)
+  }
+
   getUniByEmail(email:any):Observable<Universite>{
     return this.http.get<Universite>(environment.baseURL
       +environment.UniversiteBackendAPIS+"/findUniversiteByEmailAgent/"+email,this.httpOptions)
@@ -44,5 +49,9 @@ export class UniversiteService {
       +environment.UniversiteBackendAPIS+"/updateStatus/"+id+"?status="+status, null, this.httpOptions);
   }
 
+  findUniversiteByNomUniversiteAndEmail(name: string, email: string): Observable<Universite> {
+    const url = `${environment.baseURL}${environment.UniversiteBackendAPIS}/find/${name}/${email}`;
+    return this.http.get<Universite>(url, this.httpOptions);
+  }
 
 }

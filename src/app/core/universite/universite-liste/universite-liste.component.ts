@@ -15,6 +15,8 @@ export class UniversiteListeComponent implements OnInit {
   universites !: Universite[];
   universite: Universite = new Universite();
   CurrentUser: any;
+  filteredUniversites: Universite[] = [];
+
 
   constructor(private universiteService: UniversiteService, private storage: StorageService,
     private router: Router) {
@@ -72,12 +74,15 @@ export class UniversiteListeComponent implements OnInit {
         console.error('Error updating status:', error);
       }
     );
+  }
+    onSearch(searchQuery: string) {
+      // Perform filtering based on the search query
+      this.filteredUniversites = this.universites.filter(universite =>
+        universite.nomUniversite.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    }
 
 
   }
 
 
-
-
-
-}

@@ -46,7 +46,7 @@ const routes: Routes = [
   {path:":universite/foyer/:id" , component:DetailsfoyerComponent},
   {path:":universite/foyer/update/:id" , component:UpdatefoyerComponent},
   // User Route
-  {path:"admin/agentuniliste" , component:AgentUniListeComponent},
+  { path: ':universite/agentuniversite', component: AgentUniListeComponent },
   {path:"admin/etudiantliste" , component:EtudiantListeComponent},
   // Login URLS
   {path:"login" , component:LoginComponent},
