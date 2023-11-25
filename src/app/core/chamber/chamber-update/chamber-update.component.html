@@ -11,7 +11,7 @@
         <div class="col-lg-12 d-flex">
           <div class="card w-100">
             <div class="card-body p-4">
-              <h5 class="card-title fw-semibold mb-4">Update Chamber</h5>
+              <h5 class="card-title fw-semibold mb-4">Modifier la chambre</h5>
               <form (ngSubmit)="updateChamber()">
 
                 <div>
@@ -24,6 +24,7 @@
                     class="form-control"
                   >
                 </div>
+           
                 <div>
                   <label 
                   [hidden]="true"
@@ -37,6 +38,7 @@
                     class="form-control"
                   >
                 </div>
+           
                 <div>
                   <label 
                   [hidden]="true"
@@ -50,6 +52,7 @@
                     class="form-control"
                   >
                 </div>
+                <br>
                 <div>
                   <label for="typeC">Type chambre</label>
                   <select
@@ -63,7 +66,7 @@
                     <option value="Triple">Triple</option>
                   </select>
                 </div>
-
+                <br>
                 <div>
                   <label for="description">Description</label>
                   <textarea
@@ -73,21 +76,10 @@
                     class="form-control"
                   ></textarea>
                 </div>
+                <br>
+                
 
-                <div>
-                  <label for="etat">Status</label>
-                  <input
-                    type="checkbox"
-                    name="etat"
-                    [(ngModel)]="chamber.etat"
-                    class="form-check-input"
-                  >
-                  <label class="form-check-label" for="etat">Status</label>
-                </div>
-
-                <p>Status: {{ chamber.etat ? 'Valid' : 'Invalid' }}</p>
-
-                <button type="submit" class="btn btn-primary">Update Chambre</button>
+                <button type="submit" class="btn btn-primary">Modifier</button>
               </form>
             </div>
           </div>

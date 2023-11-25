@@ -37,6 +37,7 @@
                     class="form-control"
                   >
                 </div>
+                <br>
                 <div>
                   <label for="typeC">Type de chambre</label>
                   <select
@@ -50,7 +51,7 @@
                     <option value="Triple">Triple</option>
                   </select>
                 </div>
-              
+                <br>
                 <div>
                   <label for="description">Description</label>
                   <textarea
@@ -60,24 +61,14 @@
                     class="form-control"
                   ></textarea>
                 </div>
-              
-                <div>
-                  <label for="etat">État</label>
-                  <input
-                    type="checkbox"
-                    name="etat"
-                    [(ngModel)]="chamber.etat"
-                    class="form-check-input"
-                  >
-                  <label class="form-check-label" for="etat">État</label>
-                </div>
-              
-                <p>État: {{ chamber.etat ? 'Valide' : 'Invalide' }}</p>
+              <br>
+                
                 <div>
                   <label for="image">Image:</label>
                   <input type="file" id="image" (change)="onFileSelected($event)" required>
                 </div>
-                <button type="submit" class="btn btn-primary btn-sm">Create New Chambre</button>
+                <br>
+                <button type="submit" class="btn btn-primary btn-sm">Ajouter</button>
                
               </form>
               
