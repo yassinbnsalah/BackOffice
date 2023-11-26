@@ -35,6 +35,8 @@ import { AddBlocComponent } from './core/bloc/Add bloc/add-bloc.component';
 import { ListBlocComponent } from './core/bloc/list-bloc/list-bloc.component';
 import { UpdateBlocComponent } from './core/bloc/update-bloc/update-bloc.component';
 import { StepperTestComponent } from './core/stepper-test/stepper-test.component';
+import { AcceptedUniversiteComponent } from './core/universite/accepted-universite/accepted-universite.component';
+import { DemandeListeComponent } from './core/demande-liste/demande-liste.component';
 
 
 @NgModule({
@@ -62,12 +64,15 @@ import { StepperTestComponent } from './core/stepper-test/stepper-test.component
     UpdatefoyerComponent,
     AddReservationComponent,
     FoyerlisteComponent,
-    
-    
+
+
     AddBlocComponent,
     ListBlocComponent,
     UpdateBlocComponent,
-    StepperTestComponent
+    StepperTestComponent,
+    AcceptedUniversiteComponent,
+    UniversiteUpdateComponent ,
+    DemandeListeComponent
   ],
   imports: [
     BrowserModule,
@@ -78,6 +83,6 @@ import { StepperTestComponent } from './core/stepper-test/stepper-test.component
   ],
   providers: [],
   bootstrap: [AppComponent]
-  
+
 })
 export class AppModule { }

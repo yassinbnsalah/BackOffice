@@ -6,6 +6,7 @@ export const environment = {
     AuthentificationBackendURL : "auth/login",
     FoyerBackendAPIS : "FoyerRestController",
     BlocBackendAPIS:"BlocRestController",
-    UserBackendAPIS:"UserRestController"
+    UserBackendAPIS:"UserRestController",
+    DemandeBackendURL : "DemandeRestController"
 };
 

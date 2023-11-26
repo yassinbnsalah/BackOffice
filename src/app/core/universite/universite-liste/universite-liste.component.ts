@@ -72,6 +72,8 @@ export class UniversiteListeComponent implements OnInit {
         console.error('Error updating status:', error);
       }
     );
+
+
   }
 
 

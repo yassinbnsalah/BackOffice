@@ -25,6 +25,8 @@ import { ListBlocComponent } from './core/bloc/list-bloc/list-bloc.component';
 import { UpdateBlocComponent } from './core/bloc/update-bloc/update-bloc.component';
 import { LoaderResolver } from './core/Data-resolver/loader.resolver';
 import { StepperTestComponent } from './core/stepper-test/stepper-test.component';
+import { AcceptedUniversiteComponent } from "./core/universite/accepted-universite/accepted-universite.component";
+import { DemandeListeComponent } from './core/demande-liste/demande-liste.component';
 
 
 const routes: Routes = [
@@ -63,6 +65,8 @@ const routes: Routes = [
   },
 
 
+  { path:":universite/demande" ,component:DemandeListeComponent},
+
   { path: ":universite/addBloc", component: AddBlocComponent },
   { path: ":universite/bloc", component: ListBlocComponent },
   { path: "updateBloc", component: UpdateBlocComponent },
@@ -92,7 +96,8 @@ const routes: Routes = [
   { path: ":universite", component: UniversiteUpdateComponent },
   { path: "admin/universite", component: UniversiteListeComponent },
   { path: "admin/universite/:id", component: UniversiteDetailComponent },
-
+  { path: "admin/acceptedUniversite", component: AcceptedUniversiteComponent },
+  { path: "admin/updateUniversite/:id", component: UniversiteUpdateComponent }
   //bloc Route
 
 

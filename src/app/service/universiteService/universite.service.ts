@@ -33,14 +33,10 @@ export class UniversiteService {
       +environment.UniversiteBackendAPIS+"/findUniversiteByEmailAgent/"+email,this.httpOptions)
   }
 
-  /*
-  updateStatus(universite: Universite): Observable<Universite> {
-    return this.http.put<Universite>(
-      `${environment.baseURL}/updateStatus/${universite.idUniversite}`,
-      universite, // Send the Universite object as the request body
-      this.httpOptions
-    );
-  }*/
+  updateUniversite(universite: Universite): Observable<Universite> {
+    return this.http.put<Universite>(environment.baseURL
+      +environment.UniversiteBackendAPIS+"/editUniversite", universite);
+  }
 
   updateStatus(id: number, status: string): Observable<Universite> {
    // const url = `${environment.baseURL}/updateStatus/${id}?status=${status}`;
