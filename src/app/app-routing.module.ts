@@ -93,6 +93,7 @@ const routes: Routes = [
 
 
   //Universite Route
+  { path: ":universite/information", component: UniversiteDetailComponent },
   { path: ":universite", component: UniversiteUpdateComponent },
   { path: "admin/universite", component: UniversiteListeComponent },
   { path: "admin/universite/:id", component: UniversiteDetailComponent },

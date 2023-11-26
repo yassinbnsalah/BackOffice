@@ -18,11 +18,10 @@ export class UniversiteUpdateComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-    
-    const universiteId = this.activatedRoute.snapshot.params['id'];
+    const universiteNom = this.activatedRoute.snapshot.params['universite'];
 
-    if (universiteId) {
-      this.serviceUniversite.getUniversiteByID(universiteId).subscribe((data) => {
+    if (universiteNom) {
+      this.serviceUniversite.getUniversiteByNomU(universiteNom).subscribe((data) => {
         this.universite = data;
       });
     } else {
@@ -41,7 +40,7 @@ export class UniversiteUpdateComponent implements OnInit{
     console.log(this.universite);
     this.serviceUniversite.updateUniversite(this.universite).subscribe((response) => {
       console.log('Universite updated:', response);
-      this.router.navigate(['/admin/updateUniversite', this.universite.idUniversite]);
+    //  this.router.navigate(['/admin/updateUniversite', this.universite.idUniversite]);
     });
   }
 

@@ -7,7 +7,7 @@
     <div class="container-fluid">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title fw-semibold mb-4">Les détails de cet université {{universite?.idUniversite}}</h5>
+          <h5 class="card-title fw-semibold mb-4">Les détails de cet université {{universite.idUniversite}}</h5>
           <p class="mb-0">Nom Université  : {{universite.nomUniversite}} </p>
           <p class="mb-0">Adresse universite: {{universite.adresse}} </p>
           <table class="table  text-nowrap mb-0 align-middle">
@@ -69,7 +69,7 @@
             </tbody>
           </table>
           <div class="mt-4">
-            <button class="btn btn-primary" (click)="redirectToUpdateChamber(universite.idUniversite)">Update</button>
+            <button class="btn btn-primary" (click)="redirectToUpdateChamber()">Update</button>
           </div>
         </div>
       </div>
