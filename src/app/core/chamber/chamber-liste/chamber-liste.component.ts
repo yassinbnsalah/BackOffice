@@ -25,9 +25,7 @@ export class ChamberListeComponent implements OnInit {
     this.getListeChamber();
   }
 
-  GoToChamberDetails(id: any) {
-    this.router.navigate(["chamber/", id]);
-  }
+
 
   getListeChamber() {
     this.chamberService.getAllChamber().subscribe(

@@ -1,7 +1,9 @@
+
+import { Bloc } from 'src/app/model/Bloc';
+import { BlocService } from 'src/app/service/BlocService/bloc.service';
 import {Component, OnInit} from '@angular/core';
-import {BlocService} from "../../../service/BlocService/bloc.service";
+
 import {ActivatedRoute, Router} from "@angular/router";
-import {Bloc} from "../../../model/Bloc";
 
 @Component({
   selector: 'app-list-bloc',

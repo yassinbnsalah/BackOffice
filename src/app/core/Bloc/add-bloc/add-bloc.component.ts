@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Bloc } from '../../../model/Bloc';
-import { BlocService } from '../../../service/BlocService/bloc.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Bloc } from 'src/app/model/Bloc';
+import { BlocService } from 'src/app/service/BlocService/bloc.service';
 
+
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-add-bloc',
   templateUrl: './add-bloc.component.html',
-  styleUrls: ['./add-bloc.component.css'],
+  styleUrls: ['./add-bloc.component.css']
 })
 export class AddBlocComponent {
   form: FormGroup;
@@ -18,6 +19,7 @@ export class AddBlocComponent {
   chamberCount: number[] = [];
 
   constructor(
+    private activatedRoute : ActivatedRoute   ,
     private blocService: BlocService,
     private route: ActivatedRoute,
     private router: Router,
@@ -90,7 +92,7 @@ export class AddBlocComponent {
         capaciteBlocControl.setValue(this.capacite);
         console.log("this is capacite = "+this.capacite)// Set the desired value
       }
-      this.blocService.addBloc("esprit", this.form.value).subscribe((d) => {
+      this.blocService.addBloc(this.route.snapshot.params["universite"], this.form.value).subscribe((d) => {
         console.log('this is title' + this.form.get('nomBloc')?.value);
         this.bloc = d;
         console.log(d);
@@ -106,3 +108,4 @@ export class AddBlocComponent {
   }
 
 }
+

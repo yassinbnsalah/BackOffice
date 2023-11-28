@@ -7,6 +7,6 @@ export const environment = {
     FoyerBackendAPIS : "FoyerRestController",
     BlocBackendAPIS:"BlocRestController",
     UserBackendAPIS:"UserRestController",
-    
+    DemandeBackendURL : "DemandeRestController"
 };
 

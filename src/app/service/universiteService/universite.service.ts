@@ -28,19 +28,20 @@ export class UniversiteService {
       +environment.UniversiteBackendAPIS+"/findById/"+id,this.httpOptions)
   }
 
+  getUniversiteByNomU(name:any):Observable<Universite>{
+    return this.http.get<Universite>(environment.baseURL
+      +environment.UniversiteBackendAPIS+"/findByUniversiteNom/"+name,this.httpOptions)
+  }
+
   getUniByEmail(email:any):Observable<Universite>{
     return this.http.get<Universite>(environment.baseURL
       +environment.UniversiteBackendAPIS+"/findUniversiteByEmailAgent/"+email,this.httpOptions)
   }
 
-  /*
-  updateStatus(universite: Universite): Observable<Universite> {
-    return this.http.put<Universite>(
-      `${environment.baseURL}/updateStatus/${universite.idUniversite}`,
-      universite, // Send the Universite object as the request body
-      this.httpOptions
-    );
-  }*/
+  updateUniversite(universite: Universite): Observable<Universite> {
+    return this.http.put<Universite>(environment.baseURL
+      +environment.UniversiteBackendAPIS+"/editUniversite", universite);
+  }
 
   updateStatus(id: number, status: string): Observable<Universite> {
    // const url = `${environment.baseURL}/updateStatus/${id}?status=${status}`;
@@ -48,5 +49,9 @@ export class UniversiteService {
       +environment.UniversiteBackendAPIS+"/updateStatus/"+id+"?status="+status, null, this.httpOptions);
   }
 
+  findUniversiteByNomUniversiteAndEmail(name: string, email: string): Observable<Universite> {
+    const url = `${environment.baseURL}${environment.UniversiteBackendAPIS}/find/${name}/${email}`;
+    return this.http.get<Universite>(url, this.httpOptions);
+  }
 
 }

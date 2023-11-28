@@ -1,6 +1,7 @@
+
 import {Component, OnInit} from '@angular/core';
-import {BlocService} from "../../../service/BlocService/bloc.service";
-import {Bloc} from "../../../model/Bloc";
+import { Bloc } from 'src/app/model/Bloc';
+import { BlocService } from 'src/app/service/BlocService/bloc.service';
 
 @Component({
   selector: 'app-detail-bloc',
@@ -22,3 +23,4 @@ export class DetailBlocComponent implements OnInit{
 
 
 }
+

@@ -31,10 +31,15 @@ import { SideComponent } from './shared/side/side.component';
 import { AddReservationComponent } from './core/Reservation/add-reservation/add-reservation.component';
 import { FoyerlisteComponent } from './core/foyer/foyerliste/foyerliste.component';
 import {ReactiveFormsModule} from "@angular/forms";
-import { AddBlocComponent } from './core/bloc/Add bloc/add-bloc.component';
-import { ListBlocComponent } from './core/bloc/list-bloc/list-bloc.component';
-import { UpdateBlocComponent } from './core/bloc/update-bloc/update-bloc.component';
-import { DetailBlocComponent } from './core/bloc/detail-bloc/detail-bloc.component';
+
+import { StepperTestComponent } from './core/stepper-test/stepper-test.component';
+import { AcceptedUniversiteComponent } from './core/universite/accepted-universite/accepted-universite.component';
+import { DemandeListeComponent } from './core/demande-liste/demande-liste.component';
+import { AddBlocComponent } from './core/add-bloc/add-bloc.component';
+import { ListBlocComponent } from './core/list-bloc/list-bloc.component';
+import { UpdateBlocComponent } from './core/update-bloc/update-bloc.component';
+import { DetailBlocComponent } from './core/detail-bloc/detail-bloc.component';
+
 
 
 @NgModule({
@@ -62,11 +67,13 @@ import { DetailBlocComponent } from './core/bloc/detail-bloc/detail-bloc.compone
     UpdatefoyerComponent,
     AddReservationComponent,
     FoyerlisteComponent,
-    
-    
     AddBlocComponent,
     ListBlocComponent,
     UpdateBlocComponent,
+    StepperTestComponent,
+    AcceptedUniversiteComponent,
+    UniversiteUpdateComponent ,
+    DemandeListeComponent,
     DetailBlocComponent
   ],
   imports: [
@@ -78,6 +85,6 @@ import { DetailBlocComponent } from './core/bloc/detail-bloc/detail-bloc.compone
   ],
   providers: [],
   bootstrap: [AppComponent]
-  
+
 })
 export class AppModule { }
