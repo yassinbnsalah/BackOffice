@@ -12,13 +12,14 @@
             </div>
           </div>
           <div class="col-md-6">
+            <p class="fs-5"><strong>Nom Bloc:</strong> {{ chamber.bloc.nomBloc }}</p>
             <p class="fs-5"><strong>Numero Chambre:</strong> {{ chamber.numerochamber }}</p>
             <p class="fs-5"><strong>Chambre:</strong> {{ chamber.typeC }}</p>
             <p class="fs-5"><strong>Description:</strong> {{ chamber.description }}</p>
             <p class="fs-5"><strong>Etat:</strong> {{ chamber.etat }}</p>
             <p class="fs-5"><strong>Date de Création:</strong> {{ chamber.createdAt | date: 'yyyy-MM-dd' }}</p>
             <p class="fs-5"><strong>Date de Modification:</strong> {{ chamber.updatedAt | date: 'yyyy-MM-dd' }}</p>
-            <a (click)="redirectToUpdateChamber(chamber.idChamber)" class="btn btn-primary mt-3">Modifier</a>
+
           </div>
         </div>
       </div>

@@ -69,5 +69,14 @@ export class ChamberListeComponent implements OnInit {
     }
     return this.chambers.filter(item => item.typeC.toLowerCase().includes(this.search.toLowerCase()));
   }
-  
+  redirectToUpdateChamber(id: number) {
+    const universite = this.activatedRoute.snapshot.params['universite'];
+    this.router.navigate([`${universite}/chamber/update/${id}`]);
+  }
+  deleteChamber(id:any){
+    this.chamberService.deleteChamber(id).subscribe((data)=>{
+      this.chambers=this.chambers.filter(chamber=>chamber.idChamber!=id);
+      alert("Chaber deleted")
+    })
+  }
 }

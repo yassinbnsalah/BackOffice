@@ -15,8 +15,7 @@
                 La liste des chambres
             
               </h5>
-              <a (click)="GoToAddChamber()" routerLinkActive="active"
-              class="btn  btn-primary col-2" style="float: right;">Ajouter une Chambre</a>
+             
                 <input type="text" [(ngModel)]="search" class="form-control col-md-12 mt-3 mb-3" placeholder="Rechercher par type  chambre">
              
             </div>
@@ -39,7 +38,9 @@
                     <th class="border-bottom-0">
                       <h6 class="fw-semibold mb-0">Nom Bloc </h6>
                     </th>
-              
+                    <th class="border-bottom-0">
+                      <h6 class="fw-semibold mb-0">Actions </h6>
+                    </th>
                   </tr>
                 </thead>
                
@@ -64,23 +65,23 @@
                    
                       
                       <td class="border-bottom-0">
-                        <span style="margin-left: 9px;"> <a (click)="GoToDetailsChamber(chamber.idChamber)" routerLinkActive="active"
-                          class="btn btn-info">Show Details</a></span>
+                        <a (click)="redirectToUpdateChamber(chamber.idChamber)" routerLinkActive="active" class="btn btn-success mt-3" style="margin-right: 10px;">Update</a>
+                        <button type="button" class="btn btn-danger mt-3" style="margin-left: 10px;" (click)="deleteChamber(chamber.idChamber)">Delete</button>
+                        <a (click)="GoToDetailsChamber(chamber.idChamber)" routerLinkActive="active" class="btn btn-info mt-3" style="margin-left: 10px;">Details</a>
                       </td>
                       
-                    
-                       
                
                   </tr> 
                                     
                 </tbody>
               </table>
+
             </div>
           </div>
         </div>
       </div>
 
-      
+      <a (click)="GoToAddChamber()" routerLinkActive="active" class="btn btn-light" style="float: left;">Ajouter une Chambre</a>
     </div>
     </div>
   </div>

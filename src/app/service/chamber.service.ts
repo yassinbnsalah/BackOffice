@@ -93,4 +93,15 @@ addChamberWithImage(chamber: Chamber): Observable<any> {
 
     return this.http.post(`${this.apiUrl}`, formData);
 }
+
+affecterBlocAChambre(idChamber: number, idBloc: number): Observable<any> {
+  const url = `${environment.baseURL}${environment.ChamberBackendAPIS}/affecterBlocAChambre?idChamber=${idChamber}&idBloc=${idBloc}`;
+  return this.http.post(url, null);
+}
+getAllBlocs(): Observable<Bloc[]> {
+  return this.http.get<Bloc[]>(`${environment.baseURL}${environment.BlocBackendAPIS}/findAll`, this.httpOptions);
+}
+deleteChamber(id:any):Observable<Chamber>{
+  return this.http.delete<Chamber>(environment.baseURL+environment.ChamberBackendAPIS+"/deleteChamberById/"+id,this.httpOptions);
+}
 }

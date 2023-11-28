@@ -35,10 +35,11 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { StepperTestComponent } from './core/stepper-test/stepper-test.component';
 import { AcceptedUniversiteComponent } from './core/universite/accepted-universite/accepted-universite.component';
 import { DemandeListeComponent } from './core/demande-liste/demande-liste.component';
-import { AddBlocComponent } from './core/add-bloc/add-bloc.component';
-import { ListBlocComponent } from './core/list-bloc/list-bloc.component';
-import { UpdateBlocComponent } from './core/update-bloc/update-bloc.component';
-import { DetailBlocComponent } from './core/detail-bloc/detail-bloc.component';
+import { AddBlocComponent } from './core/Bloc/add-bloc/add-bloc.component';
+import { ListBlocComponent } from './core/Bloc/list-bloc/list-bloc.component';
+import { UpdateBlocComponent } from './core/Bloc/update-bloc/update-bloc.component';
+import { DetailBlocComponent } from './core/Bloc/detail-bloc/detail-bloc.component';
+
 
 
 

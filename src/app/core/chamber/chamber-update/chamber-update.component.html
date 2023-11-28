@@ -76,6 +76,19 @@
                     class="form-control"
                   ></textarea>
                 </div>
+                <div *ngIf="chamber.bloc">
+                  <div>
+                    <label for="nomBloc">Nom Bloc</label>
+                    <input
+                      type="text"
+                      name="nomBloc"
+                      [(ngModel)]="chamber.bloc.nomBloc"
+                      required
+                      class="form-control"
+                    >
+                  </div>
+                </div>
+                
                 <br>
                 
 
