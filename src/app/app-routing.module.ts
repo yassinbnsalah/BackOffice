@@ -1,3 +1,4 @@
+import { ReservationModule } from './core/Reservation/reservation/reservation.module';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ReservationListeComponent } from './core/Reservation/reservation-liste/reservation-liste.component';
@@ -33,39 +34,18 @@ const routes: Routes = [
   //reservation Route 
   { path: "test", component: StepperTestComponent },
   {
-    path: "admin/reservation", component: ReservationListeComponent,
-    resolve: {
-      data: LoaderResolver
-    }
+    path: "admin/reservation", loadChildren:()=>
+    import('./core/Reservation/reservation/reservation.module').then(m=>m.ReservationModule)
   },
   {
-    path: "admin/reservation/:id", component: ReservationDetailsComponent,
-    resolve: {
-      data: LoaderResolver
-    }
+    path: ":universite/reservation", loadChildren:()=>
+    import('./core/Reservation/reservation/reservation.module').then(m=>m.ReservationModule)
   },
-
-  {
-    path: ":universite/reservation", component: ReservationListeComponent,
-    resolve: {
-      data: LoaderResolver
-    }
-  },
-  {
-    path: ":universite/reservation/add", component: AddReservationComponent,
-    resolve: {
-      data: LoaderResolver
-    }
-  },
-  {
-    path: ":universite/reservation/:id", component: ReservationDetailsComponent,
-    resolve: {
-      data: LoaderResolver
-    }
-  },
+ 
 
 
   { path: ":universite/demande", component: DemandeListeComponent },
+  //bloc Route
 
   { path: ":universite/addBloc", component: AddBlocComponent },
   { path: ":universite/bloc", component: ListBlocComponent },
@@ -100,7 +80,6 @@ const routes: Routes = [
   { path: "admin/universite/:id", component: UniversiteDetailComponent },
   { path: "admin/acceptedUniversite", component: AcceptedUniversiteComponent },
   { path: "admin/updateUniversite/:id", component: UniversiteUpdateComponent }
-  //bloc Route
 
 
 ];

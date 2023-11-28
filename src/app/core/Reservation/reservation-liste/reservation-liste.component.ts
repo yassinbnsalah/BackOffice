@@ -19,6 +19,8 @@ export class ReservationListeComponent implements OnInit {
     private storage: StorageService,
     private router: Router) { }
   ngOnInit(): void {
+    console.log("reserrvatoijn");
+    
     //this.getListeReservation() ; 
     this.currentRouter = this.router.url;
     //console.log(this.currentRouter);

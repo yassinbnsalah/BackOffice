@@ -8,7 +8,7 @@ export class Chamber{
     description!:string;
     etat!:boolean;
     createdAt!:Date;
-    UpdatedAt!:Date;
+    updatedAt!:Date;
     res!:Reservation[];
     bloc!:Bloc;
     blocname!:string;
