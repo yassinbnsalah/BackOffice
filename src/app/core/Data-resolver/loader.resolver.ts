@@ -36,7 +36,7 @@ export class LoaderResolver implements
       chambers: Chamber[], etudiants: User[]
     }> {
 
-      let chamberByReservation = this.chamberService.
+    let chamberByReservation = this.chamberService.
       getChamberByReservationID(route.params["id"])
 
     const reservationDetails = this.reservationService.
@@ -45,6 +45,8 @@ export class LoaderResolver implements
     if (this.storage.getUser().role[0] == "ADMIN") {
       reservationsListe = this.reservationService.getAllReservation();
     } else {
+      console.log("loading reservation");
+      
       reservationsListe = this.reservationService.
         getReservationByUniversiteName(route.params["universite"]);
     }

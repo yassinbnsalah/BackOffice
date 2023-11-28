@@ -23,6 +23,8 @@ export class ReservationListeComponent implements OnInit {
     this.currentRouter = this.router.url;
     //console.log(this.currentRouter);
     this.reservations =  this.activatedRoute.snapshot.data['data'].reservations;
+    console.log(this.reservations);
+    
     this.filterData()
   }
   filterData() {

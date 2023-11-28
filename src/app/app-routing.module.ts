@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ReservationListeComponent } from './core/Reservation/reservation-liste/reservation-liste.component';
@@ -27,6 +26,7 @@ import { LoaderResolver } from './core/Data-resolver/loader.resolver';
 import { StepperTestComponent } from './core/stepper-test/stepper-test.component';
 import { AcceptedUniversiteComponent } from "./core/universite/accepted-universite/accepted-universite.component";
 import { DemandeListeComponent } from './core/demande-liste/demande-liste.component';
+import { DetailBlocComponent } from './core/bloc/detail-bloc/detail-bloc.component';
 
 
 const routes: Routes = [
@@ -65,11 +65,12 @@ const routes: Routes = [
   },
 
 
-  { path:":universite/demande" ,component:DemandeListeComponent},
+  { path: ":universite/demande", component: DemandeListeComponent },
 
   { path: ":universite/addBloc", component: AddBlocComponent },
   { path: ":universite/bloc", component: ListBlocComponent },
   { path: "updateBloc", component: UpdateBlocComponent },
+  { path: "detailBloc", component: DetailBlocComponent },
 
   // Foyer Route 
   { path: "admin/foyer", component: FoyerlisteComponent },

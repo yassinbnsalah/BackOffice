@@ -15,8 +15,11 @@ export class UpdateBlocComponent implements OnInit {
     nomBloc: '',
     capaciteBloc: 0,
     status: '',
+    CreatedAt: new Date(),
+    UpdatedAt: new Date(),
     description: '',
-    foyer: this.serviceBloc.getBloc().foyer
+    foyer: this.serviceBloc.getBloc().foyer,
+    chambers:[]
   };
 
   constructor(private activatedRoute: ActivatedRoute, private route: Router, private serviceBloc: BlocService) {}
@@ -29,7 +32,6 @@ export class UpdateBlocComponent implements OnInit {
     }
     console.log(this.bloc);
   }
-
   updateBloc() {
     this.serviceBloc.updatebloc(this.bloc).subscribe((data)=>{
       console.log(data);

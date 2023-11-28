@@ -37,6 +37,7 @@ import { UpdateBlocComponent } from './core/bloc/update-bloc/update-bloc.compone
 import { StepperTestComponent } from './core/stepper-test/stepper-test.component';
 import { AcceptedUniversiteComponent } from './core/universite/accepted-universite/accepted-universite.component';
 import { DemandeListeComponent } from './core/demande-liste/demande-liste.component';
+import { DetailBlocComponent } from './core/bloc/detail-bloc/detail-bloc.component';
 
 
 @NgModule({
@@ -72,7 +73,8 @@ import { DemandeListeComponent } from './core/demande-liste/demande-liste.compon
     StepperTestComponent,
     AcceptedUniversiteComponent,
     UniversiteUpdateComponent ,
-    DemandeListeComponent
+    DemandeListeComponent,
+    DetailBlocComponent
   ],
   imports: [
     BrowserModule,

@@ -18,11 +18,13 @@ export class BlocService {
 bloc!:Bloc;
   constructor(private http:HttpClient) {
   }
-  setBloc(data:Bloc){
-    this.bloc=data;
+  private readonly storageKey = 'storedBloc';
+  getBloc(): Bloc {
+    const storedBloc = localStorage.getItem(this.storageKey);
+    return storedBloc ? JSON.parse(storedBloc) : null;
   }
-  getBloc(){
-    return this.bloc;
+  setBloc(bloc: Bloc): void {
+    localStorage.setItem(this.storageKey, JSON.stringify(bloc));
   }
 
   addBloc(nom: String, bloc: Bloc):Observable<Bloc>{
@@ -38,4 +40,5 @@ bloc!:Bloc;
     console.log()
     return this.http.put<Bloc>(environment.baseURL+environment.BlocBackendAPIS+"/editBloc",bloc,this.httpOptions);
   }
+
 }
