@@ -1,4 +1,4 @@
-import { ReservationModule } from './core/Reservation/reservation/reservation.module';
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ReservationListeComponent } from './core/Reservation/reservation-liste/reservation-liste.component';
@@ -23,63 +23,50 @@ import { AddReservationComponent } from './core/Reservation/add-reservation/add-
 import { AddBlocComponent } from './core/bloc/Add bloc/add-bloc.component';
 import { ListBlocComponent } from './core/bloc/list-bloc/list-bloc.component';
 import { UpdateBlocComponent } from './core/bloc/update-bloc/update-bloc.component';
-import { LoaderResolver } from './core/Data-resolver/loader.resolver';
-import { StepperTestComponent } from './core/stepper-test/stepper-test.component';
-import { AcceptedUniversiteComponent } from "./core/universite/accepted-universite/accepted-universite.component";
-import { DemandeListeComponent } from './core/demande-liste/demande-liste.component';
-import { DetailBlocComponent } from './core/bloc/detail-bloc/detail-bloc.component';
-
+import {DetailBlocComponent} from "./core/bloc/detail-bloc/detail-bloc.component";
 
 const routes: Routes = [
-  //reservation Route 
-  { path: "test", component: StepperTestComponent },
-  {
-    path: "admin/reservation", loadChildren:()=>
-    import('./core/Reservation/reservation/reservation.module').then(m=>m.ReservationModule)
-  },
-  {
-    path: ":universite/reservation", loadChildren:()=>
-    import('./core/Reservation/reservation/reservation.module').then(m=>m.ReservationModule)
-  },
- 
+  //reservation Route
+  {path:"admin/reservation" , component:ReservationListeComponent},
+  {path:"admin/reservation/:id" , component:ReservationDetailsComponent},
+
+  {path:":universite/reservation" , component:ReservationListeComponent},
+  {path:":universite/reservation/add" , component:AddReservationComponent},
+  {path:":universite/reservation/:id" , component:ReservationDetailsComponent},
 
 
-  { path: ":universite/demande", component: DemandeListeComponent },
-  //bloc Route
+  {path:":universite/addBloc",component:AddBlocComponent},
+  {path:":universite/bloc",component:ListBlocComponent},
+  {path:"updateBloc",component:UpdateBlocComponent},
+  {path:"detailBloc",component:DetailBlocComponent},
 
-  { path: ":universite/addBloc", component: AddBlocComponent },
-  { path: ":universite/bloc", component: ListBlocComponent },
-  { path: "updateBloc", component: UpdateBlocComponent },
-  { path: "detailBloc", component: DetailBlocComponent },
-
-  // Foyer Route 
-  { path: "admin/foyer", component: FoyerlisteComponent },
-  { path: ":universite/foyer", component: FoyerlisteComponent },
-  { path: ":universite/addFoyer", component: AddfoyerComponent },
-  { path: ":universite/foyer/:id", component: DetailsfoyerComponent },
-  { path: ":universite/foyer/update/:id", component: UpdatefoyerComponent },
-  // User Route 
-  { path: "admin/agentuniliste", component: AgentUniListeComponent },
-  { path: "admin/etudiantliste", component: EtudiantListeComponent },
-  // Login URLS 
-  { path: "login", component: LoginComponent },
-  { path: "forgetpassword", component: ForgetPasswordComponent },
-  // chamber URLS 
-  { path: ":universite/chamber", component: ChamberListeComponent },
-  { path: ":universite/chamber/add", component: ChamberAddComponent },
-  { path: ":universite/chamber/:id", component: ChamberDetailsComponent },
-  { path: ":universite/chamber/update/:id", component: ChamberUpdateComponent },
+  // Foyer Route
+  {path:"admin/foyer" , component:FoyerlisteComponent },
+  {path:":universite/foyer" , component:FoyerlisteComponent},
+  {path:":universite/addFoyer" , component:AddfoyerComponent},
+  {path:":universite/foyer/:id" , component:DetailsfoyerComponent},
+  {path:":universite/foyer/update/:id" , component:UpdatefoyerComponent},
+  // User Route
+  {path:"admin/agentuniliste" , component:AgentUniListeComponent},
+  {path:"admin/etudiantliste" , component:EtudiantListeComponent},
+  // Login URLS
+  {path:"login" , component:LoginComponent},
+  {path:"forgetpassword" , component:ForgetPasswordComponent},
+  // chamber URLS
+  {path:":universite/chamber" , component:ChamberListeComponent},
+  {path:":universite/chamber/add", component: ChamberAddComponent },
+  {path:":universite/chamber/:id" , component:ChamberDetailsComponent},
+  {path:":universite/chamber/update/:id", component: ChamberUpdateComponent },
   //{path:"universite",component:UniversiteListeComponent},
-  { path: "universite-details/:id", component: UniversiteDetailComponent },
+  {path:"universite-details/:id", component: UniversiteDetailComponent },
 
 
   //Universite Route
-  { path: ":universite/information", component: UniversiteDetailComponent },
-  { path: ":universite", component: UniversiteUpdateComponent },
-  { path: "admin/universite", component: UniversiteListeComponent },
-  { path: "admin/universite/:universite", component: UniversiteDetailComponent },
-  { path: "admin/acceptedUniversite", component: AcceptedUniversiteComponent },
-  { path: "admin/updateUniversite/:id", component: UniversiteUpdateComponent }
+  {path:":universite" , component:UniversiteUpdateComponent},
+  {path:"admin/universite",component:UniversiteListeComponent},
+  {path:"admin/universite/:id",component:UniversiteDetailComponent},
+
+  //bloc Route
 
 
 ];

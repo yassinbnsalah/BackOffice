@@ -12,11 +12,8 @@
         <div class="card w-100">
           <div class="card-body p-4">
             <div class="row">
-              <h5 class="card-title fw-semibold mb-4 col-10">Reservation Liste
-               
-              </h5>
-              <a (click)="GoToAddReservation()" class="btn  btn-primary col-2" style="float: right;"> add reservation</a>
-              <input class="form-control col-md-12 mt-3 mb-3" placeholder="Recherche Reservation"  [(ngModel)]='searchTerm' type="text">
+              <h5 class="card-title fw-semibold mb-4 col-10">Reservation Liste</h5>
+              <a (click)="GoToAddReservation()" class="btn  btn-primary col-2"> add reservation</a>
             </div>
             
             <div class="table-responsive">
@@ -35,20 +32,22 @@
                     <th class="border-bottom-0">
                       <h6 class="fw-semibold mb-0">State</h6>
                     </th>
-                   
+                    <th class="border-bottom-0">
+                      <h6 class="fw-semibold mb-0">Price</h6>
+                    </th>
                     <th class="border-bottom-0">
                       <h6 class="fw-semibold mb-0">Details</h6>
                     </th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let reservation of filterData()">
+                  <tr *ngFor="let reservation of reservations">
                     <td class="border-bottom-0">
                       <a (click)="GoToReservationDetails(reservation.idReservation)">
                         <h6 class="fw-semibold mb-0">{{reservation.idReservation}}</h6></a></td>
                     <td class="border-bottom-0">
                         <h6 class="fw-semibold mb-1">{{reservation!.etudiants[0].nomEt}}</h6>
-                        <span class="fw-normal">{{reservation!.etudiants[0].email}}</span>                          
+                        <span class="fw-normal">yacinbnsalh@gmail.com</span>                          
                     </td>
                     <td class="border-bottom-0">
                       <p class="mb-0 fw-normal">{{reservation.anneeReservation | date: 'yyyy-MM-dd'}}</p>
@@ -58,7 +57,9 @@
                         <span class="badge bg-primary rounded-3 fw-semibold">{{reservation.status}}</span>
                       </div>
                     </td>
-                  
+                    <td class="border-bottom-0">
+                      <h6 class="fw-semibold mb-0 fs-4">$3.9</h6>
+                    </td>
                     <td class="border-bottom-0">
                     
                       <a href="#" class="btn btn-primary btn-sm">See Details </a>

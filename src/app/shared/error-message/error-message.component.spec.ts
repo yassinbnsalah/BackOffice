@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DemandeListeComponent } from './demande-liste.component';
+import { ErrorMessageComponent } from './error-message.component';
 
-describe('DemandeListeComponent', () => {
-  let component: DemandeListeComponent;
-  let fixture: ComponentFixture<DemandeListeComponent>;
+describe('ErrorMessageComponent', () => {
+  let component: ErrorMessageComponent;
+  let fixture: ComponentFixture<ErrorMessageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DemandeListeComponent ]
+      declarations: [ ErrorMessageComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DemandeListeComponent);
+    fixture = TestBed.createComponent(ErrorMessageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

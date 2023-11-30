@@ -11,8 +11,8 @@
           <div class="card w-100">
             <div class="card-body p-4">
               <h5 class="card-title fw-semibold mb-4">Ajouter une chambre</h5>
-          
-                <form (ngSubmit)="onSubmit()" class="php-email-form">
+              <form #chamberForm="ngForm" (Click)="saveChamber(chamberForm.value)">
+
 
                 <div>
                   <label for="numerochamber">Numéro de chambre</label>
@@ -32,12 +32,11 @@
                   [hidden]="true"
                     type="date"
                     name="CreatedAt"
-                    [(ngModel)]="chamber.createdAt"
+                    [(ngModel)]="chamber.CreatedAt"
                     required
                     class="form-control"
                   >
                 </div>
-                <br>
                 <div>
                   <label for="typeC">Type de chambre</label>
                   <select
@@ -51,7 +50,7 @@
                     <option value="Triple">Triple</option>
                   </select>
                 </div>
-                <br>
+              
                 <div>
                   <label for="description">Description</label>
                   <textarea
@@ -61,14 +60,20 @@
                     class="form-control"
                   ></textarea>
                 </div>
-              <br>
-                
+              
                 <div>
-                  <label for="image">Image:</label>
-                  <input type="file" id="image" (change)="onFileSelected($event)" required>
+                  <label for="etat">État</label>
+                  <input
+                    type="checkbox"
+                    name="etat"
+                    [(ngModel)]="chamber.etat"
+                    class="form-check-input"
+                  >
+                  <label class="form-check-label" for="etat">État</label>
                 </div>
-                <br>
-                <button type="submit" class="btn btn-primary btn-sm">Ajouter</button>
+              
+                <p>État: {{ chamber.etat ? 'Valide' : 'Invalide' }}</p>
+                <input type="submit" (click)="saveChamber(chamberForm.value)" value="ADD CHAMBER">
                
               </form>
               

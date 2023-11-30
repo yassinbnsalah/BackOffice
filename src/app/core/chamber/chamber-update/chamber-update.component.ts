@@ -26,12 +26,10 @@ export class ChamberUpdateComponent implements OnInit {
   }
 
   updateChamber() {
-    console.log(this.chamber);
     this.serviceChamber.updateChamber(this.chamber).subscribe((response) => {
-      console.log('chamber updated:', response);
-      this.router.navigate([this.activatedRoute.snapshot.params["universite"]+'/chamber'])
+      console.log('Chamber updated:', response);
+      // Redirigez vers la page de détails de la chambre mise à jour après la mise à jour.
+      this.router.navigate(['/chamber/' + this.chamber.idChamber]);
     });
   }
-  
 }
-

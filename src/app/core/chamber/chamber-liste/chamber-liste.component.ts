@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Chamber } from 'src/app/model/Chamber';
 import { ChamberService } from 'src/app/service/chamber.service';
 
@@ -9,67 +9,33 @@ import { ChamberService } from 'src/app/service/chamber.service';
   styleUrls: ['./chamber-liste.component.css']
 })
 export class ChamberListeComponent implements OnInit {
-  chambers!: Chamber[];
-  blocNames: string[] = []; // Tableau pour stocker les noms des blocs
-   search='';
-
-
-
-  constructor(
-    private chamberService: ChamberService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router
-  ) {}
-
+  chambers !: Chamber[] ; 
+  constructor(private chamberService : ChamberService,
+    private router : Router){}
   ngOnInit(): void {
-    this.getListeChamber();
+    this.getListeChamber() ; 
   }
 
-  GoToChamberDetails(id: any) {
-    this.router.navigate(["chamber/", id]);
+  getListeChamber(){
+    this.chamberService.getAllChamber().subscribe((d)=>{
+      this.chambers = d ;
+      console.log(d);
+      this.chambers.forEach((chamber,index)=>{
+        this.chamberService.getBLocByChamber(chamber.idChamber).subscribe((d)=>{
+         
+          this.chambers[index].blocname = d.nomBloc
+        
+          
+        })
+      })
+      
+    
+      
+    })
+    console.log(this.chambers);
   }
-
-  getListeChamber() {
-    this.chamberService.getAllChamber().subscribe(
-      (chambers: Chamber[]) => {
-        this.chambers = chambers;
-
-        this.chambers.forEach((chamber,index) => {
-          this.chamberService.getBLocByChamber(chamber.idChamber).subscribe(
-            (data) => {
-              console.log("data ok");
-              console.log(data.nomBloc);
-              this.chambers[index].blocname = data.nomBloc
-            },
-            (error) => {
-              console.error('Error getting bloc data:', error);
-            }
-          );
-        console.log("wiwi ye tahfouna");
-        console.log(chamber);
-        });
-
-        console.log(this.chambers);
-       
-      },
-      (error) => {
-        console.error('Error getting chamber data:', error);
-      }
-    );
-  }
-
-  GoToAddChamber() {
-    this.router.navigate([this.activatedRoute.snapshot.params["universite"] + '/chamber/add']);
-  }
-
-  GoToDetailsChamber(id: any) {
-    this.router.navigate([this.activatedRoute.snapshot.params['universite'] + "/chamber/" + id]);
-  }
-  filterData() {
-    if (this.search.trim() === '') {
-      return this.chambers;
-    }
-    return this.chambers.filter(item => item.typeC.toLowerCase().includes(this.search.toLowerCase()));
-  }
-  
+  GoToChamberDetails(id:any){
+      this.router.navigate(["chamber/",id])
+  } 
 }
+

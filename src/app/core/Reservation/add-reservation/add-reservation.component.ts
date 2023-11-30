@@ -1,4 +1,4 @@
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Chamber } from './../../../model/Chamber';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/model/User';
@@ -13,24 +13,20 @@ import { ReservationService } from 'src/app/service/reservation.service';
   styleUrls: ['./add-reservation.component.css']
 })
 export class AddReservationComponent implements OnInit {
-  DisplayLoad : boolean = true; 
   chambers !: Chamber[];
   etudiants !: User[] ;
   nbAvailable !: number; 
-  etudiantsInReservation !: User[]
+  etudiantsInReservation : User[] = [];
   reservedChamber !: Chamber;
   CinListe:number[]= [];
   constructor(private serviceChamber: ChamberService,
     private serviceReservation : ReservationService, 
     private activatedRoute: ActivatedRoute,
-    private router : Router , 
     private storage : StorageService,
     private userService: UserService) { }
   ngOnInit(): void {
-    this.chambers =  this.activatedRoute.snapshot.data['data'].chambers;
-    this.etudiants =  this.activatedRoute.snapshot.data['data'].etudiants;
-   //this.getChamberList();
-  //  this.getEtudiantList();
+    this.getChamberList();
+    this.getEtudiantList();
   }
 
   extractCinList(){
@@ -41,14 +37,12 @@ export class AddReservationComponent implements OnInit {
     
   }
   saveReservation(){
-    this.DisplayLoad = false ; 
     this.extractCinList()
     this.serviceReservation.CreateReservation(
       this.reservedChamber.numerochamber, this.CinListe).subscribe(
         (data)=>{
           console.log("finaly reservation");
           console.log(data);
-          this.router.navigate([this.activatedRoute.snapshot.params['universite']+"/reservation"])
         }
       )
   }

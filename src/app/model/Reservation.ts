@@ -1,5 +1,4 @@
 import { Etudiant } from "./Etudiant";
-import { User } from "./User";
 
 export class Reservation {
     idReservation!: string; 
@@ -8,5 +7,5 @@ export class Reservation {
     dateFin !: string; 
     estValide!: boolean ;
     status !: string ; 
-    etudiants !: User[] ;
+    etudiants !: Etudiant[] ;
 }

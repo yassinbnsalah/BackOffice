@@ -1,303 +1,128 @@
 <div class="page-wrapper" id="main-wrapper" data-layout="vertical"
   data-navbarbg="skin6" data-sidebartype="full"
   data-sidebar-position="fixed" data-header-position="fixed">
-  <app-side></app-side>
+<app-side></app-side>
   <div class="body-wrapper">
     <app-navbar></app-navbar>
     <div class="container-fluid">
-      <div class="row">
+    <div class="row">
+ 
 
-        <div class="col-lg-12 d-flex ">
-          <div class="card w-100">
-            <div class="card-body p-4">
-
-              <div class="card-title">
-                <div class="row">
-                  <h5 class=" fw-semibold  col-10">Create Reservation</h5>
-                  <div class="spinner-border text-primary" role="status" [hidden]="DisplayLoad">
-                  </div>
-                </div>
-              </div>
-
-              <div class="accordion accordion-flush" id="accordionFlushExample">
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" 
-                    type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" 
-                    aria-expanded="true" aria-controls="flush-collapseOne">
-                      #1 Choisie une chambre 
-                    </button>
-                  </h2>
-                  <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                    <div class="row mt-3">
-                      <h5 class="card-title fw-semibold mb-4 col-6">Liste Chambers
-                      </h5>
-                      <div class="alert alert-danger col-6" role="alert" hidden>
-                        Erreur
-                      </div>
-                    </div>
-                    <div class="table-responsive">
-                      <table class="table text-nowrap mb-0 align-middle">
-                        <thead class="table-info text-dark fs-4">
-                          <tr>
-                            <th class="border-bottom-0">
-      
-                            </th>
-                            <th class="border-bottom-0">
-                              <h6 class="fw-semibold mb-0">Id</h6>
-                            </th>
-                            <th class="border-bottom-0">
-                              <h6 class="fw-semibold mb-0">Numbero Chamber </h6>
-                            </th>
-                            <th class="border-bottom-0">
-                              <h6 class="fw-semibold mb-0">Type</h6>
-                            </th>
-                            <th class="border-bottom-0">
-                              <h6 class="fw-semibold mb-0">State</h6>
-                            </th>
-                           
-      
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let chamber of chambers">
-                            <td class="border-bottom-0">
-                              <input type="radio" name="checkedChamber"
-                                (click)="pickReservedChamber(chamber)"></td>
-                            <td class="border-bottom-0">
-                              <h6 class="fw-semibold mb-0">{{chamber.idChamber}}</h6></td>
-                            <td class="border-bottom-0">
-                              <h6 class="fw-semibold mb-1">{{chamber.numerochamber}}</h6>
-                            </td>
-                            <td class="border-bottom-0">
-                              <p class="mb-0 fw-normal">{{chamber.typeC }}</p>
-                            </td>
-                            <td class="border-bottom-0">
-                              <div class="d-flex align-items-center gap-2">
-                                <span class="badge bg-primary rounded-3 fw-semibold">{{chamber.etat}}</span>
-                              </div>
-                            </td>
-                          
-                          </tr>
-                        </tbody>
-                      </table>
-                  
-                     
-                        <a data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" 
-                        aria-expanded="false" aria-controls="flush-collapseTwo" class="btn btn-primary col-md-2"> Next </a>
-                    
-                      
-                    </div>
-                  </div>
-                </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button disabled class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                      #2 Choisie les Etudiants
-                    </button>
-                  </h2>
-                  <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                    <div class="row mt-6">
-                      <h5 class="card-title fw-semibold mb-4 col-6">Liste Etudiants
-                      </h5>
-                      <div class="alert alert-danger col-6" role="alert" hidden>
-                        Erreur
-                      </div>
-                    </div>
-                    <table class="table  text-nowrap mb-0 align-middle">
-                      <thead class=" table-success text-dark fs-4">
-                        <tr>
-                          <th class="border-bottom-0">
-      
-                          </th>
-                          <th class="border-bottom-0">
-                            <h6 class="fw-semibold mb-0">Etudiant Name </h6>
-                          </th>
-                          <th class="border-bottom-0">
-                            <h6 class="fw-semibold mb-0">Etudiant prenomEt</h6>
-                          </th>
-                          <th class="border-bottom-0">
-                            <h6 class="fw-semibold mb-0">Email</h6>
-                          </th>
-                          <th class="border-bottom-0">
-                            <h6 class="fw-semibold mb-0">Cin</h6>
-                          </th>
-                          <th class="border-bottom-0">
-                            <h6 class="fw-semibold mb-0">Universite</h6>
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr *ngFor="let etudiant of etudiants">
-                          <td class="border-bottom-0">
-                            <input type="checkbox" (click)="pickEtudiants(etudiant)">
-                          </td>
-                          <td class="border-bottom-0">
-                            <h6 class="fw-semibold mb-1">{{etudiant.nomEt}}</h6>
-                          </td>
-                          <td class="border-bottom-0">
-                            <h6 class="fw-semibold mb-1">{{etudiant.prenomEt}}</h6>
-                          </td>
-                          <td class="border-bottom-0" *ngIf="etudiant.email != null">
-                            <p class="mb-0 fw-normal">{{etudiant.email}}</p>
-                          </td>
-      
-                          <td class="border-bottom-0" *ngIf="etudiant.email == null">
-                            <p
-                              class="mb-0 fw-normal badge bg-danger rounded-3 fw-semibold">no
-                              mail for this user</p>
-                          </td>
-                          <td class="border-bottom-0">
-                            <div class="d-flex align-items-center gap-2">
-                              <span class="badge bg-primary rounded-3 fw-semibold">{{etudiant.cin}}</span>
-                            </div>
-                          </td>
-                          <td class="border-bottom-0">
-                            <h6 class="fw-semibold mb-0 fs-4">{{etudiant.ecole}}</h6>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <a data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" 
-                    aria-expanded="false" aria-controls="flush-collapseOne" class="btn btn-primary col-md-2"> 9balha </a>
-                    <a data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" 
-                    aria-expanded="false" aria-controls="flush-collapseThree" class="btn btn-primary col-md-2"> Next </a>
-                  </div>
-                </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" disabled
-                    data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" 
-                    aria-expanded="false" aria-controls="flush-collapseThree">
-                      #3 Confirme la reservation 
-                    </button>
-                  </h2>
-                  <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                    <div class="col-lg-12 d-flex " *ngIf="reservedChamber != null">
-                      <div class="card w-100">
-                        <div class="card-body p-4">
-            
-                          <div class="card-title">
-                            <div class="row">
-                              <h5 class=" fw-semibold  col-10">Confirme Reservation </h5>
-                              <button (click)="saveReservation()" 
-                                class="btn  btn-danger btn-sm col-md-2"
-                                style="float: right;"> Enregistrer</button>
-                            </div>
-                          </div>
-            
-                          <div class="row mt-3">
-                            <h5 class="card-title fw-semibold mb-4 col-6">Chamber dans la
-                              réservation
-                            </h5>
-                          </div>
-                          <div class="table-responsive">
-                            <table class="table text-nowrap mb-0 align-middle">
-                              <thead class="table-info text-dark fs-4">
-                                <tr>
-            
-                                  <th class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-0">Id</h6>
-                                  </th>
-                                  <th class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-0">Numbero Chamber </h6>
-                                  </th>
-                                  <th class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-0">Type</h6>
-                                  </th>
-                                  <th class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-0">State</h6>
-                                  </th>
-            
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-            
-                                  <td class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-0">{{reservedChamber.idChamber}}</h6></td>
-                                  <td class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-1">{{reservedChamber.numerochamber}}</h6>
-                                  </td>
-                                  <td class="border-bottom-0">
-                                    <p class="mb-0 fw-normal">{{reservedChamber.typeC }}</p>
-                                  </td>
-                                  <td class="border-bottom-0">
-                                    <div class="d-flex align-items-center gap-2">
-                                      <span class="badge bg-primary rounded-3 fw-semibold">{{reservedChamber.etat}}</span>
-                                    </div>
-                                  </td>
-            
-                                </tr>
-            
-                              </tbody>
-                            </table>
-                          </div>
-                          <div class="row mt-6" >
-                            <h5 class="card-title fw-semibold mb-4 col-6">Liste Etudiants
-                            </h5>
-                          </div>
-                          <table class="table  text-nowrap mb-0 align-middle">
-                            <thead class=" table-success text-dark fs-4">
-                              <tr>
-            
-                                <th class="border-bottom-0">
-                                  <h6 class="fw-semibold mb-0">Etudiant Name </h6>
-                                </th>
-                                <th class="border-bottom-0">
-                                  <h6 class="fw-semibold mb-0">Etudiant prenomEt</h6>
-                                </th>
-                                <th class="border-bottom-0">
-                                  <h6 class="fw-semibold mb-0">Email</h6>
-                                </th>
-                                <th class="border-bottom-0">
-                                  <h6 class="fw-semibold mb-0">Cin</h6>
-                                </th>
-            
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr *ngIf="!etudiantsInReservation ">
-                                <td> No Etudiants Selected </td>
-                              </tr>
-                              <tr *ngFor="let etudiant of etudiantsInReservation">
-            
-                                <td class="border-bottom-0">
-                                  <h6 class="fw-semibold mb-1">{{etudiant.nomEt}}</h6>
-                                </td>
-                                <td class="border-bottom-0">
-                                  <h6 class="fw-semibold mb-1">{{etudiant.prenomEt}}</h6>
-                                </td>
-                                <td class="border-bottom-0" *ngIf="etudiant.email != null">
-                                  <p class="mb-0 fw-normal">{{etudiant.email}}</p>
-                                </td>
-            
-                                <td class="border-bottom-0" *ngIf="etudiant.email == null">
-                                  <p
-                                    class="mb-0 fw-normal badge bg-danger rounded-3 fw-semibold">no
-                                    mail for this user</p>
-                                </td>
-                                <td class="border-bottom-0">
-                                  <div class="d-flex align-items-center gap-2">
-                                    <span class="badge bg-primary rounded-3 fw-semibold">{{etudiant.cin}}</span>
-                                  </div>
-                                </td>
-            
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+      <div class="col-lg-12 d-flex ">
+        <div class="card w-100">
+          <div class="card-body p-4">
+            <div class="row">
+              <h5 class="card-title fw-semibold mb-4 col-10">Create Reservation</h5>
+              <a (click)="saveReservation()" class="btn  btn-primary col-2"> Enregistrer</a>
             </div>
+            <h5 class="card-title fw-semibold mb-4 col-10">Liste Chambers </h5>
+            <div class="table-responsive">
+              <table class="table text-nowrap mb-0 align-middle">
+                <thead class="table-info text-dark fs-4">
+                  <tr>
+                    <th class="border-bottom-0">
+                      
+                    </th>
+                    <th class="border-bottom-0">
+                      <h6 class="fw-semibold mb-0">Id</h6>
+                    </th>
+                    <th class="border-bottom-0">
+                      <h6 class="fw-semibold mb-0">Numbero Chamber </h6>
+                    </th>
+                    <th class="border-bottom-0">
+                      <h6 class="fw-semibold mb-0">Type</h6>
+                    </th>
+                    <th class="border-bottom-0">
+                      <h6 class="fw-semibold mb-0">State</h6>
+                    </th>
+                    <th class="border-bottom-0">
+                      <h6 class="fw-semibold mb-0">Price</h6>
+                    </th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let chamber of chambers">
+                    <td class="border-bottom-0">
+                      <input type="radio" name="checkedChamber" (click)="pickReservedChamber(chamber)"></td>
+                    <td class="border-bottom-0">
+                        <h6 class="fw-semibold mb-0">{{chamber.idChamber}}</h6></td>
+                    <td class="border-bottom-0">
+                        <h6 class="fw-semibold mb-1">{{chamber.numerochamber}}</h6>                       
+                    </td>
+                    <td class="border-bottom-0">
+                      <p class="mb-0 fw-normal">{{chamber.typeC }}</p>
+                    </td>
+                    <td class="border-bottom-0">
+                      <div class="d-flex align-items-center gap-2">
+                        <span class="badge bg-primary rounded-3 fw-semibold">{{chamber.etat}}</span>
+                      </div>
+                    </td>
+                    <td class="border-bottom-0">
+                      <h6 class="fw-semibold mb-0 fs-4">$3.9</h6>
+                    </td>
+                  
+                  </tr> 
+                                    
+                </tbody>
+              </table>
+            </div>
+          
+            <table class="table  text-nowrap mb-0 align-middle">
+              <thead class=" table-info text-dark fs-4">
+                <tr>
+                  <th class="border-bottom-0">
+                  
+                  </th>
+                  <th class="border-bottom-0">
+                    <h6 class="fw-semibold mb-0">Etudiant Name </h6>
+                  </th>
+                  <th class="border-bottom-0">
+                    <h6 class="fw-semibold mb-0">Etudiant prenomEt</h6>
+                  </th>
+                  <th class="border-bottom-0">
+                    <h6 class="fw-semibold mb-0">Email</h6>
+                  </th>
+                  <th class="border-bottom-0">
+                    <h6 class="fw-semibold mb-0">Cin</h6>
+                  </th>
+                  <th class="border-bottom-0">
+                    <h6 class="fw-semibold mb-0">Universite</h6>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let etudiant of etudiants">
+                  <td class="border-bottom-0">
+                   <input type="checkbox" (click)="pickEtudiants(etudiant)">
+                  </td>
+                  <td class="border-bottom-0">
+                    <h6 class="fw-semibold mb-1" >{{etudiant.nomEt}}</h6>
+                  </td>
+                  <td class="border-bottom-0">
+                    <h6 class="fw-semibold mb-1">{{etudiant.prenomEt}}</h6>
+                  </td>
+                  <td class="border-bottom-0">
+                    <p class="mb-0 fw-normal">email</p>
+                  </td>
+                  <td class="border-bottom-0">
+                    <div class="d-flex align-items-center gap-2">
+                      <span class="badge bg-primary rounded-3 fw-semibold">{{etudiant.cin}}</span>
+                    </div>
+                  </td>
+                  <td class="border-bottom-0">
+                    <h6 class="fw-semibold mb-0 fs-4">{{etudiant.ecole}}</h6>
+                  </td>
+  
+                </tr>
+  
+              </tbody>
+            </table>
           </div>
         </div>
-
-        
       </div>
+    </div>
     </div>
   </div>
 </div>
+

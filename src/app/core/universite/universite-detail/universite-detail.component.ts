@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 import { Universite } from 'src/app/model/Universite';
 import { UniversiteService } from 'src/app/service/universiteService/universite.service';
 
@@ -13,22 +13,16 @@ import { UniversiteService } from 'src/app/service/universiteService/universite.
 export class UniversiteDetailComponent {
   universite !: Universite ;
   constructor(private serviceUniversite: UniversiteService,
-              private activatedRoute: ActivatedRoute,
-              private router: Router){}
+              private activatedRoute: ActivatedRoute) { }
+
 
 
   ngOnInit(): void {
-    console.log("universite details");
-    
-    this.serviceUniversite.getUniversiteByNomU(this.activatedRoute.snapshot.params['universite']).subscribe((data) => {
-      this.universite = data;
-    });
+    console.log(this.activatedRoute.snapshot.params['id']);
+    this.serviceUniversite.getUniversiteByID(this.activatedRoute.snapshot.params['id']).subscribe(
+      (data) => {
+      console.log(data);
+      this.universite = data ;
+    })
   }
-  redirectToUpdateChamber() {
-    const universite = this.activatedRoute.snapshot.params['universite'];
-    this.router.navigate([this.activatedRoute.snapshot.params['universite']]);
-  }
-
-
-
 }

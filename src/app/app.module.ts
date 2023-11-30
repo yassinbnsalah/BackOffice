@@ -34,10 +34,8 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { AddBlocComponent } from './core/bloc/Add bloc/add-bloc.component';
 import { ListBlocComponent } from './core/bloc/list-bloc/list-bloc.component';
 import { UpdateBlocComponent } from './core/bloc/update-bloc/update-bloc.component';
-import { StepperTestComponent } from './core/stepper-test/stepper-test.component';
-import { AcceptedUniversiteComponent } from './core/universite/accepted-universite/accepted-universite.component';
-import { DemandeListeComponent } from './core/demande-liste/demande-liste.component';
 import { DetailBlocComponent } from './core/bloc/detail-bloc/detail-bloc.component';
+import { ErrorMessageComponent } from './shared/error-message/error-message.component';
 
 
 @NgModule({
@@ -65,16 +63,13 @@ import { DetailBlocComponent } from './core/bloc/detail-bloc/detail-bloc.compone
     UpdatefoyerComponent,
     AddReservationComponent,
     FoyerlisteComponent,
-
-
+    
+    
     AddBlocComponent,
     ListBlocComponent,
     UpdateBlocComponent,
-    StepperTestComponent,
-    AcceptedUniversiteComponent,
-    UniversiteUpdateComponent ,
-    DemandeListeComponent,
-    DetailBlocComponent
+    DetailBlocComponent,
+    ErrorMessageComponent
   ],
   imports: [
     BrowserModule,
@@ -85,6 +80,6 @@ import { DetailBlocComponent } from './core/bloc/detail-bloc/detail-bloc.compone
   ],
   providers: [],
   bootstrap: [AppComponent]
-
+  
 })
 export class AppModule { }

@@ -2,10 +2,10 @@ import {Foyer} from "./Foyer";
 import {Chamber} from "./Chamber";
 
 export class Bloc{
-  idBloc!:number;
-  nomBloc!:string;
-  status!:string;
-  description!:string;
+  idBloc!:Number;
+  nomBloc!:String;
+  status!:String;
+  description!:String;
   capaciteBloc!:number;
   CreatedAt!:Date;
   UpdatedAt!:Date;
