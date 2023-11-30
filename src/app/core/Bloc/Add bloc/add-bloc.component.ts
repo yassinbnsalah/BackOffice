@@ -32,7 +32,7 @@ export class AddBlocComponent {
     });
     const capaciteBlocControl = this.form.get('capaciteBloc');
     if (capaciteBlocControl) {
-      capaciteBlocControl.setValue(0); // Set the desired value
+      capaciteBlocControl.setValue(0);
     }
   }
 
@@ -50,10 +50,10 @@ export class AddBlocComponent {
 
   addChamberControl() {
     const chamberGroup = this.fb.group({
-      numerochamber: [''],
-      typeC: [''],
-      Description: [''],
-      Etat: [''],
+      numerochamber: ['',Validators.required],
+      typeC: ['',Validators.required],
+      Description: ['',Validators.required],
+      Etat: ['',Validators.required],
     });
 
     this.chambers.push(chamberGroup);

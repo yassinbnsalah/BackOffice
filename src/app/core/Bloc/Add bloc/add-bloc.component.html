@@ -8,26 +8,27 @@
 
       <h1 class="title">Ajouter un Bloc</h1>
       <div class="main">
-        <form class="row g-3 needs-validation" [formGroup]="form" (ngSubmit)="addbloc()">
-          <div class="col-md-4">
+        <form class="row g-3 needs-validation" [formGroup]="form" (ngSubmit)="addbloc()" novalidate>
+          <div class="col-md-4 position-relative">
             <label for="nomBloc" class="form-label">Nom bloc</label>
-            <input type="text" class="form-control" id="nomBloc" formControlName="nomBloc" required>
-            <div class="invalid-feedback" *ngIf="form.get('nomBloc')?.invalid && form.get('nomBloc')?.dirty">
-              Nom bloc is required!
+            <input type="text" class="form-control" id="nomBloc" formControlName="nomBloc" [class.is-invalid]="form.get('nomBloc')?.invalid && form.get('nomBloc')?.dirty" required>
+            <div  class="invalid-feedback">
+              <app-error-message [err]="form.get('nomBloc')" [field]="'nom bloc'"></app-error-message>
             </div>
           </div>
+
           <div class="col-md-4">
             <label for="status" class="form-label">Status</label>
-            <input type="text" class="form-control" id="status" formControlName="status" required>
-            <div class="invalid-feedback" *ngIf="form.get('status')?.invalid && form.get('status')?.dirty">
-              Status is required!
+            <input type="text" class="form-control" id="status" formControlName="status" [class.is-invalid]="form.get('status')?.invalid && form.get('status')?.dirty" required>
+            <div  class="invalid-feedback">
+              <app-error-message [err]="form.get('status')" [field]="'status'"></app-error-message>
             </div>
           </div>
           <div class="col-md-5">
             <label for="description" class="form-label">Description</label>
-            <textarea class="form-control" id="description" formControlName="description" required></textarea>
-            <div class="invalid-feedback" *ngIf="form.get('description')?.invalid && form.get('description')?.dirty">
-              Description is required!
+            <textarea class="form-control" id="description" formControlName="description" [class.is-invalid]="form.get('description')?.invalid && form.get('description')?.dirty" required></textarea>
+            <div  class="invalid-feedback">
+              <app-error-message [err]="form.get('description')" [field]="'description'"></app-error-message>
             </div>
           </div>
           <!-- Add other form fields as needed -->
@@ -42,7 +43,10 @@
               <div class="col-md-6">
                 <div class="mb-3">
                   <label for="numerochamber" class="form-label">Numero Chamber</label>
-                  <input type="text" class="form-control" id="numerochamber" formControlName="numerochamber">
+                  <input type="text" class="form-control" id="numerochamber" formControlName="numerochamber" [class.is-invalid]="form.get('numerochamber')?.invalid && form.get('numerochamber')?.dirty" required>
+                  <div class="invalid-feedback">
+                    <app-error-message [err]="form.get('numerochamber')" [field]="'numerochamber'"></app-error-message>
+                  </div>
                 </div>
               </div>
               <div class="col-md-6">
