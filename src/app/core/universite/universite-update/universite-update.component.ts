@@ -40,7 +40,7 @@ export class UniversiteUpdateComponent implements OnInit{
     console.log(this.universite);
     this.serviceUniversite.updateUniversite(this.universite).subscribe((response) => {
       console.log('Universite updated:', response);
-      this.router.navigate(['/admin/updateUniversite', this.universite.idUniversite]);
+    //  this.router.navigate(['/admin/updateUniversite', this.universite.idUniversite]);
     });
   }
 

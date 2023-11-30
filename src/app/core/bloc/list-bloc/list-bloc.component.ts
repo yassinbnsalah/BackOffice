@@ -10,11 +10,12 @@ import {Bloc} from "../../../model/Bloc";
 })
 export class ListBlocComponent implements OnInit{
   blocs!:Bloc[];
+  search:String="";
   constructor(private blocService:BlocService,private activatedRoute:ActivatedRoute,private route:Router) {
 
   }
   ngOnInit() {
-this.getListBloc();
+    this.getListBloc();
   }
   getListBloc(){
     this.blocService.getallBloc().subscribe((data)=>{
@@ -30,10 +31,14 @@ this.getListBloc();
     })
   }
   GoToAdd(){
-      this.route.navigate([this.activatedRoute.snapshot.params["universite"]+"/addBloc/"])
+    this.route.navigate([this.activatedRoute.snapshot.params["universite"]+"/addBloc/"])
   }
   GoToUpdateBloc(bloc:Bloc){
     this.blocService.setBloc(bloc);
     this.route.navigate(["updateBloc"],{queryParams:{bloc:bloc}});
+  }
+  GoToDetail(bloc:Bloc){
+    this.blocService.setBloc(bloc);
+    this.route.navigate(["detailBloc"],{queryParams:{bloc:bloc}})
   }
 }

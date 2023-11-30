@@ -18,16 +18,15 @@ export class UniversiteDetailComponent {
 
 
   ngOnInit(): void {
-    console.log(this.activatedRoute.snapshot.params['id']);
-    this.serviceUniversite.getUniversiteByID(this.activatedRoute.snapshot.params['id']).subscribe(
-      (data) => {
-      console.log(data);
-      this.universite = data ;
-    })
+    console.log("universite details");
+    
+    this.serviceUniversite.getUniversiteByNomU(this.activatedRoute.snapshot.params['universite']).subscribe((data) => {
+      this.universite = data;
+    });
   }
-  redirectToUpdateChamber(id: number) {
+  redirectToUpdateChamber() {
     const universite = this.activatedRoute.snapshot.params['universite'];
-    this.router.navigate([`/admin/updateUniversite/${id}`]);
+    this.router.navigate([this.activatedRoute.snapshot.params['universite']]);
   }
 
 

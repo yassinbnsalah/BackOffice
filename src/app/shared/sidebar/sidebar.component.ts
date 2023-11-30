@@ -26,6 +26,9 @@ export class SidebarComponent {
   GoToReservation() {
     this.router.navigate([this.activatedRoute.snapshot.params['universite'] + "/reservation"])
   }
+  GoToDemande(){
+    this.router.navigate([this.activatedRoute.snapshot.params['universite'] + "/demande"])
+  }
 
   GoToUniversite() {
     this.router.navigate([this.activatedRoute.snapshot.params['universite']])
@@ -33,6 +36,6 @@ export class SidebarComponent {
 
   GoToUniversiteInfo() {
     const universityParam = this.activatedRoute.snapshot.params['universite'];
-    this.router.navigate([`${universityParam}/agentuniversite`]);
+    this.router.navigate([this.activatedRoute.snapshot.params['universite']+"/information"]);
   }
 }
