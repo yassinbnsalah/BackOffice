@@ -37,11 +37,11 @@ export class UniversiteListeComponent implements OnInit {
       }
     );
   }
-  GoToUniversiteDetails(id: any) {
-    this.CurrentUser = this.storage.getUser();
-    if (this.CurrentUser.role[0] == "ADMIN") {
-      this.router.navigate(["admin/universite/", id])
-    }
+  GoToUniversiteDetails(name: any) {
+  //  this.CurrentUser = this.storage.getUser();
+   // if (this.CurrentUser.role[0] == "ADMIN") {
+      this.router.navigate(["admin/universite/", name])
+   // }
   }
 
   cycleStatus(universite: Universite) {

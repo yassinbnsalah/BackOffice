@@ -77,7 +77,7 @@ const routes: Routes = [
   { path: ":universite/information", component: UniversiteDetailComponent },
   { path: ":universite", component: UniversiteUpdateComponent },
   { path: "admin/universite", component: UniversiteListeComponent },
-  { path: "admin/universite/:id", component: UniversiteDetailComponent },
+  { path: "admin/universite/:universite", component: UniversiteDetailComponent },
   { path: "admin/acceptedUniversite", component: AcceptedUniversiteComponent },
   { path: "admin/updateUniversite/:id", component: UniversiteUpdateComponent }
 
