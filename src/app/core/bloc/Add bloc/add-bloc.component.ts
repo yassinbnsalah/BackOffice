@@ -18,7 +18,6 @@ export class AddBlocComponent {
   chamberCount: number[] = [];
 
   constructor(
-    private activatedRoute : ActivatedRoute ,
     private blocService: BlocService,
     private route: ActivatedRoute,
     private router: Router,
@@ -91,7 +90,7 @@ export class AddBlocComponent {
         capaciteBlocControl.setValue(this.capacite);
         console.log("this is capacite = "+this.capacite)// Set the desired value
       }
-      this.blocService.addBloc(this.route.snapshot.params["universite"], this.form.value).subscribe((d) => {
+      this.blocService.addBloc("esprit", this.form.value).subscribe((d) => {
         console.log('this is title' + this.form.get('nomBloc')?.value);
         this.bloc = d;
         console.log(d);

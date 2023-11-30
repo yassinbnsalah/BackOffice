@@ -87,6 +87,5 @@ import { ErrorMessageComponent } from './shared/error-message/error-message.comp
   ],
   providers: [],
   bootstrap: [AppComponent]
-
 })
 export class AppModule { }
