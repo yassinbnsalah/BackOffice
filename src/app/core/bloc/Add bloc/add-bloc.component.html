@@ -1,0 +1,88 @@
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical"
+     data-navbarbg="skin6" data-sidebartype="full"
+     data-sidebar-position="fixed" data-header-position="fixed">
+  <app-sidebar></app-sidebar>
+  <div class="body-wrapper">
+    <app-navbar></app-navbar>
+    <div class="container-fluid">
+
+      <h1 class="title">Ajouter un Bloc</h1>
+      <div class="main">
+        <form class="row g-3 needs-validation" [formGroup]="form" (ngSubmit)="addbloc()" novalidate>
+          <div class="col-md-4 position-relative">
+            <label for="nomBloc" class="form-label">Nom bloc</label>
+            <input type="text" class="form-control" id="nomBloc" formControlName="nomBloc" [class.is-invalid]="form.get('nomBloc')?.invalid && form.get('nomBloc')?.dirty" required>
+            <div  class="invalid-feedback">
+              <app-error-message [err]="form.get('nomBloc')" [field]="'nom bloc'"></app-error-message>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <label for="status" class="form-label">Status</label>
+            <input type="text" class="form-control" id="status" formControlName="status" [class.is-invalid]="form.get('status')?.invalid && form.get('status')?.dirty" required>
+            <div  class="invalid-feedback">
+              <app-error-message [err]="form.get('status')" [field]="'status'"></app-error-message>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" id="description" formControlName="description" [class.is-invalid]="form.get('description')?.invalid && form.get('description')?.dirty" required></textarea>
+            <div  class="invalid-feedback">
+              <app-error-message [err]="form.get('description')" [field]="'description'"></app-error-message>
+            </div>
+          </div>
+          <!-- Add other form fields as needed -->
+
+
+      <div class="mb-3" *ngIf="addChamberPressed==false">
+          <button type="button" class="btn btn-primary" (click)="addChamber()">Add chmabers</button>
+      </div>
+          <div formArrayName="chambers" *ngIf="show == true">
+            <div *ngFor="let control of chambers.controls; let i = index" [formGroupName]="i" class="row">
+              <h2>Chambre {{chamberCount[i]}}</h2>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="numerochamber" class="form-label">Numero Chamber</label>
+                  <input type="text" class="form-control" id="numerochamber" formControlName="numerochamber" [class.is-invalid]="form.get('numerochamber')?.invalid && form.get('numerochamber')?.dirty" required>
+                  <div class="invalid-feedback">
+                    <app-error-message [err]="form.get('numerochamber')" [field]="'numerochamber'"></app-error-message>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label class="form-label">TypeC</label>
+                  <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" formControlName="typeC">
+                    <option selected>Select Type</option>
+                    <option value="Simple">Simple</option>
+                    <option value="Double">Double</option>
+                    <option value="Triple">Triple</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="Description" class="form-label">Description</label>
+                  <input type="text" class="form-control" id="Descriptionch" formControlName="Description">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="Etat" class="form-label">Etat</label>
+                  <input type="text" class="form-control" id="Etat" formControlName="Etat">
+                </div>
+              </div>
+              <div class="mb-3" *ngIf="addChamberPressed==true && chambers.length - 1 === i">
+                <button type="button" class="btn btn-primary" (click)="addChamber()">Add chmabers</button>
+              </div>
+            </div>
+          </div>
+
+
+          <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Add bloc</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

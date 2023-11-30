@@ -1,0 +1,82 @@
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical"
+  data-navbarbg="skin6" data-sidebartype="full"
+  data-sidebar-position="fixed" data-header-position="fixed">
+  <app-sidebar></app-sidebar>
+  <div class="body-wrapper">
+    <app-navbar></app-navbar>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12 d-flex">
+          <div class="card w-100">
+            <div class="card-body p-4">
+              <h5 class="card-title fw-semibold mb-4">Ajouter une chambre</h5>
+          
+                <form (ngSubmit)="onSubmit()" class="php-email-form">
+
+                <div>
+                  <label for="numerochamber">Numéro de chambre</label>
+                  <input
+                    type="number"
+                    name="numerochamber"
+                    [(ngModel)]="chamber.numerochamber"
+                    required
+                    class="form-control"
+                  >
+                </div>
+                <div>
+                  <label 
+                  [hidden]="true"
+                  for="CreatedAt">CreatedAt</label>
+                  <input
+                  [hidden]="true"
+                    type="date"
+                    name="CreatedAt"
+                    [(ngModel)]="chamber.createdAt"
+                    required
+                    class="form-control"
+                  >
+                </div>
+                <br>
+                <div>
+                  <label for="typeC">Type de chambre</label>
+                  <select
+                    name="typeC"
+                    [(ngModel)]="chamber.typeC"
+                    required
+                    class="form-select"
+                  >
+                    <option value="Simple">Simple</option>
+                    <option value="Double">Double</option>
+                    <option value="Triple">Triple</option>
+                  </select>
+                </div>
+                <br>
+                <div>
+                  <label for="description">Description</label>
+                  <textarea
+                    name="description"
+                    [(ngModel)]="chamber.description"
+                    required
+                    class="form-control"
+                  ></textarea>
+                </div>
+              <br>
+                
+                <div>
+                  <label for="image">Image:</label>
+                  <input type="file" id="image" (change)="onFileSelected($event)" required>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary btn-sm">Ajouter</button>
+               
+              </form>
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

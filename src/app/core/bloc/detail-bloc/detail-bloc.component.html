@@ -1,0 +1,69 @@
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical"
+     data-navbarbg="skin6" data-sidebartype="full"
+     data-sidebar-position="fixed" data-header-position="fixed">
+  <app-side></app-side>
+  <div class="body-wrapper">
+    <app-navbar></app-navbar>
+    <div class="container-fluid">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title fw-semibold mb-4">Bloc Details
+            {{storedbloc?.idBloc}}</h5>
+
+          <div class="alert alert-sm alert-primary" role="alert">
+            <p>Nom bloc : {{storedbloc?.nomBloc}}</p>
+            <p>Bloc State : {{storedbloc?.status}}</p>
+            <p>Capacite Bloc : {{storedbloc?.capaciteBloc}}</p>
+            <p>desciption : {{storedbloc?.description}}</p>
+            <p></p>
+          </div>
+
+          <h5 class="card-title fw-semibold mb-4">List des Chambres </h5>
+          <table class="table  text-nowrap mb-0 align-middle">
+            <thead class=" table-info text-dark fs-4">
+            <tr>
+
+              <th class="border-bottom-0">
+                <h6 class="fw-semibold mb-0">Numero Chambre</h6>
+              </th>
+              <th class="border-bottom-0">
+                <h6 class="fw-semibold mb-0">Type</h6>
+              </th>
+              <th class="border-bottom-0">
+                <h6 class="fw-semibold mb-0">description</h6>
+              </th>
+              <th class="border-bottom-0">
+                <h6 class="fw-semibold mb-0">Etat</h6>
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Check if storedbloc has chambers and the array is not empty -->
+
+              <!-- Iterate over the chambers using *ngFor -->
+              <ng-container *ngFor="let chamber of storedbloc?.chambers">
+                <tr>
+                  <td class="border-bottom-0">
+                    <h6 class="fw-semibold mb-0">{{chamber.numerochamber}}</h6>
+                  </td>
+                  <td class="border-bottom-0">
+                    <h6 class="fw-semibold mb-1">{{chamber.typeC}}</h6>
+                  </td>
+                  <td class="border-bottom-0">
+                    <h6 class="fw-semibold mb-1">{{chamber.description}}</h6>
+                  </td>
+                  <td class="border-bottom-0">
+                    <div class="d-flex align-items-center gap-2">
+                      <span class="badge bg-primary rounded-3 fw-semibold">{{chamber.etat}}</span>
+                    </div>
+                  </td>
+                </tr>
+              </ng-container>
+            </tbody>
+
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

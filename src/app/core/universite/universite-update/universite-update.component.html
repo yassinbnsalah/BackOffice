@@ -1,0 +1,88 @@
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical"
+     data-navbarbg="skin6" data-sidebartype="full"
+     data-sidebar-position="fixed" data-header-position="fixed">
+  <app-sidebar></app-sidebar>
+  <div class="body-wrapper">
+    <app-navbar></app-navbar>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12 d-flex">
+          <div class="card w-100">
+            <div class="card-body p-4">
+              <h5 class="card-title fw-semibold mb-4">Update Université</h5>
+              <form (ngSubmit)="updateUniversite()">
+
+                <div class="mb-3">
+                  <label  class="form-label">Nom Université</label>
+                  <input
+                    type="text"
+                    name="nomUniversite"
+                    [(ngModel)]="universite.nomUniversite"
+                    required
+                    class="form-control"
+                  >
+                </div>
+
+                <div class="mb-3">
+                  <label  class="form-label">Adresse Université</label>
+                  <input
+                    type="text"
+                    name="adresse"
+                    [(ngModel)]="universite.adresse"
+                    required
+                    class="form-control"
+                  >
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Description</label>
+                  <textarea
+                    name="description"
+                    [(ngModel)]="universite.description"
+                    required
+                    class="form-control"
+                  ></textarea>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Email de l'agent</label>
+                  <input
+                    type="email"
+                    name="email"
+                    [(ngModel)]="universite.email"
+                    required
+                    class="form-control"
+                  >
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Prénom de l'agent</label>
+                  <input
+                    type="text"
+                    name="firstNameAgent"
+                    [(ngModel)]="universite.firstNameAgent"
+                    required
+                    class="form-control"
+                  >
+                </div>
+
+                <div class="mb-3">
+                  <label  class="form-label">Nom de l'agent</label>
+                  <input
+                    type="text"
+                    name="lastNameAgent"
+                    [(ngModel)]="universite.lastNameAgent"
+                    required
+                    class="form-control"
+                  >
+                </div>
+
+                <button type="submit" class="btn btn-primary">Update Université</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
