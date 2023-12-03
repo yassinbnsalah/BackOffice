@@ -40,5 +40,9 @@ bloc!:Bloc;
     console.log()
     return this.http.put<Bloc>(environment.baseURL+environment.BlocBackendAPIS+"/editBloc",bloc,this.httpOptions);
   }
+  getBlocByChamberId(id:any):Observable<Bloc>{
+    return this.http.get<Bloc>(environment.baseURL+
+      environment.BlocBackendAPIS+"/findBLocByChamber/"+id , this.httpOptions)
+  }
 
 }

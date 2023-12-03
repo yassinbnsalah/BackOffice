@@ -56,7 +56,8 @@ export class LoaderResolver implements
       getAvailabeChamberByUniversiteName(route.params["universite"]);
 
     const etudiantListe = this.userService.
-      getUserbyUniversiteAndRole(route.params["universite"], "ETUDIANT");
+      getUserbyUniversiteAndRole(route.params["universite"],
+       "ETUDIANT");
 
     return forkJoin({
       reservations: reservationsListe,

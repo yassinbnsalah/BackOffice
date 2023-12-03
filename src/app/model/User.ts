@@ -4,6 +4,7 @@ export class User {
     email!: string;
     role!: string;
 
+    inReservation:boolean = false ;
     id !: number ;
     nomEt !: string;
     prenomEt!: string

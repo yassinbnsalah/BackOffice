@@ -7,6 +7,7 @@ export class Reservation {
     dateDebut!: string ;
     dateFin !: string; 
     estValide!: boolean ;
+    anneeUniversitaire !: string ;
     status !: string ; 
     etudiants !: User[] ;
 }

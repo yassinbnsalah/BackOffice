@@ -50,24 +50,29 @@
                               <h6 class="fw-semibold mb-0">Numbero Chamber </h6>
                             </th>
                             <th class="border-bottom-0">
+                              <h6 class="fw-semibold mb-0">Bloc </h6>
+                            </th>
+                            <th class="border-bottom-0">
                               <h6 class="fw-semibold mb-0">Type</h6>
                             </th>
                             <th class="border-bottom-0">
                               <h6 class="fw-semibold mb-0">State</h6>
                             </th>
-                           
-      
                           </tr>
                         </thead>
+
                         <tbody>
                           <tr *ngFor="let chamber of chambers">
                             <td class="border-bottom-0">
-                              <input type="radio" name="checkedChamber"
+                              <input type="radio" name="checkedChamber" 
                                 (click)="pickReservedChamber(chamber)"></td>
                             <td class="border-bottom-0">
                               <h6 class="fw-semibold mb-0">{{chamber.idChamber}}</h6></td>
                             <td class="border-bottom-0">
                               <h6 class="fw-semibold mb-1">{{chamber.numerochamber}}</h6>
+                            </td>
+                            <td class="border-bottom-0">
+                              <h6 class="fw-semibold mb-1">{{chamber.bloc.nomBloc}}</h6>
                             </td>
                             <td class="border-bottom-0">
                               <p class="mb-0 fw-normal">{{chamber.typeC }}</p>
@@ -77,16 +82,13 @@
                                 <span class="badge bg-primary rounded-3 fw-semibold">{{chamber.etat}}</span>
                               </div>
                             </td>
-                          
                           </tr>
                         </tbody>
                       </table>
-                  
-                     
+
                         <a data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" 
                         aria-expanded="false" aria-controls="flush-collapseTwo" class="btn btn-primary col-md-2"> Next </a>
                     
-                      
                     </div>
                   </div>
                 </div>
@@ -129,8 +131,9 @@
                       </thead>
                       <tbody>
                         <tr *ngFor="let etudiant of etudiants">
-                          <td class="border-bottom-0">
-                            <input type="checkbox" (click)="pickEtudiants(etudiant)">
+                          <td class="border-bottom-0 form-check">
+                            <input type="checkbox" 
+                            (click)="pickEtudiants(etudiant)">
                           </td>
                           <td class="border-bottom-0">
                             <h6 class="fw-semibold mb-1">{{etudiant.nomEt}}</h6>

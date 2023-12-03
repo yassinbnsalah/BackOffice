@@ -19,13 +19,12 @@ export class ReservationListeComponent implements OnInit {
     private storage: StorageService,
     private router: Router) { }
   ngOnInit(): void {
-    console.log("reserrvatoijn");
     
     //this.getListeReservation() ; 
     this.currentRouter = this.router.url;
     //console.log(this.currentRouter);
     this.reservations =  this.activatedRoute.snapshot.data['data'].reservations;
-    console.log(this.reservations);
+    //console.log(this.reservations);
     
     this.filterData()
   }
@@ -36,7 +35,7 @@ export class ReservationListeComponent implements OnInit {
     return this.reservations.filter(item => 
       item.idReservation.toLowerCase().includes(this.searchTerm.toLowerCase()) || 
       item.etudiants[0].nomEt.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-      item.etudiants[0].email.toLowerCase().includes(this.searchTerm.toLowerCase()) );
+      item.etudiants[0].email.toLowerCase().includes(this.searchTerm.toLowerCase()));
   }
   GoToAddReservation() { return this.router.navigate([this.activatedRoute.snapshot.params['universite'] + "/reservation/add"]) }
 
@@ -61,6 +60,16 @@ export class ReservationListeComponent implements OnInit {
     } else {
       this.router.navigate([this.activatedRoute.snapshot.params['universite'] + "/reservation/" + id])
     }
-
+  }
+  GetReservationByState(state:any){
+    this.reservations =  this.activatedRoute.snapshot.data['data'].reservations;
+    if(state != "clear"){
+      this.reservations  = this.reservations.filter(item => 
+        item.status === state
+      )
+    }
+    
+    
+    
   }
 }

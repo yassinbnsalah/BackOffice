@@ -1,4 +1,5 @@
-<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical"
+  data-navbarbg="skin6" data-sidebartype="full"
   data-sidebar-position="fixed" data-header-position="fixed">
   <app-side></app-side>
   <div class="body-wrapper">
@@ -11,18 +12,19 @@
             <div class="card-body p-4">
               <h5 class="card-title fw-semibold mb-4">Demande Liste</h5>
               <div class="row g-3">
-                <div class="col-auto">
-                  <input type="text" class="form-control" placeholder="Search by Name">
+                <div class="col-md-9">
+                  <input class="form-control mt-3 mb-3"
+                    placeholder="Recherche Demande" [(ngModel)]='searchTerm'
+                    type="text">
                 </div>
+
               </div>
               <div class="table-responsive">
-                
+
                 <table class="table text-nowrap mb-0 align-middle">
-                  <thead class="text-dark fs-4">
+                  <thead class="table-info  text-dark fs-4">
                     <tr>
-                      <th class="border-bottom-0">
-                        <h6 class="fw-semibold mb-0">Id</h6>
-                      </th>
+
                       <th class="border-bottom-0">
                         <h6 class="fw-semibold mb-0">Nom Etudiant </h6>
                       </th>
@@ -35,7 +37,7 @@
                       <th class="border-bottom-0">
                         <h6 class="fw-semibold mb-0">Date Demande </h6>
                       </th>
-                   
+
                       <th class="border-bottom-0">
                         <h6 class="fw-semibold mb-0">Type Chambre</h6>
                       </th>
@@ -44,12 +46,8 @@
                       </th>
                     </tr>
                   </thead>
-                  <tbody *ngFor="let demande of demandes">
+                  <tbody *ngFor="let demande of filterData()">
                     <tr>
-
-                      <td class="border-bottom-0">
-                        <h6 class="fw-semibold mb-0">{{demande.idDemande}}</h6>
-                      </td>
 
                       <td class="border-bottom-0">
                         <p class="mb-0 fw-normal">{{demande.name}}</p>
@@ -61,27 +59,38 @@
                         <h6 class="fw-semibold mb-1">{{demande.anneeUniversitaire}}</h6>
                       </td>
                       <td class="border-bottom-0">
-                        <h6 class="fw-semibold mb-1">02</h6>
+                        <h6 class="fw-semibold mb-1">{{demande.createdAt | date:
+                          'yyyy-MM'}}</h6>
 
                       </td>
-                    
+
                       <td class="border-bottom-0">
-                        <h6 class="fw-semibold mb-1">{{demande.typeChamber}}</h6>
-                      </td>
-                      <td class="border-bottom-0" *ngIf="demande.state == 'EnCour'">
-                        <a class="btn btn-primary" 
-                        (click)="updateDemandeState('Confirmer',demande.idDemande)">Confirmer</a>
-                        <a class="btn btn-primary"
-                        (click)="updateDemandeState('Refuser',demande.idDemande)">Refuser</a>
-                      </td>
-                      <td class="border-bottom-0" *ngIf="demande.state != 'EnCour'">
-                        <h6 class="fw-semibold mb-1">{{demande.state}}</h6>
-                      </td>
-                    </tr>
+                        <h6 class="mb-1"
+                          [ngClass]="{
+                                  'badge bg-primary rounded-3 fw-semibold': demande.typeChamber === 'Simple',
+                                
+                                  'badge bg-success rounded-3 fw-semibold': demande.typeChamber === 'Triple',
+                                  'badge bg-danger rounded-3 fw-semibold': demande.typeChamber === 'Double',
+                                }">
+                          {{ demande.typeChamber }}
+                        </h6>
 
-                  </tbody>
-                </table>
+                        <td class="border-bottom-0"
+                          *ngIf="demande.state == 'EnCour'">
+                          <a class="btn btn-danger"
+                            (click)="updateDemandeState('Confirmer',demande.idDemande)">Verify</a>
 
+                        </td>
+                        <td class="border-bottom-0"
+                          *ngIf="demande.state != 'EnCour'">
+                          <h6 class="fw-semibold mb-1">{{demande.state}}</h6>
+                        </td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+
+                </div>
               </div>
             </div>
           </div>
@@ -89,4 +98,3 @@
       </div>
     </div>
   </div>
-</div>

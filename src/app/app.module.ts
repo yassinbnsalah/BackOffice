@@ -39,6 +39,7 @@ import { AcceptedUniversiteComponent } from './core/universite/accepted-universi
 import { DemandeListeComponent } from './core/demande-liste/demande-liste.component';
 import { DetailBlocComponent } from './core/bloc/detail-bloc/detail-bloc.component';
 import { ErrorMessageComponent } from './shared/error-message/error-message.component';
+import { NotfoundComponent } from './core/notfound/notfound.component';
 
 
 @NgModule({
@@ -76,7 +77,8 @@ import { ErrorMessageComponent } from './shared/error-message/error-message.comp
     UniversiteUpdateComponent ,
     DemandeListeComponent,
     DetailBlocComponent,
-    ErrorMessageComponent
+    ErrorMessageComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,

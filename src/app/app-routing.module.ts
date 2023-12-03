@@ -28,11 +28,13 @@ import { StepperTestComponent } from './core/stepper-test/stepper-test.component
 import { AcceptedUniversiteComponent } from "./core/universite/accepted-universite/accepted-universite.component";
 import { DemandeListeComponent } from './core/demande-liste/demande-liste.component';
 import { DetailBlocComponent } from './core/bloc/detail-bloc/detail-bloc.component';
+import { NotfoundComponent } from './core/notfound/notfound.component';
+import { DemandeRResolver } from './core/demande-r.resolver';
 
 
 const routes: Routes = [
   //reservation Route 
-  { path: "test", component: StepperTestComponent },
+  { path: "test", component: NotfoundComponent },
   {
     path: "admin/reservation", loadChildren:()=>
     import('./core/Reservation/reservation/reservation.module').then(m=>m.ReservationModule)
@@ -42,9 +44,14 @@ const routes: Routes = [
     import('./core/Reservation/reservation/reservation.module').then(m=>m.ReservationModule)
   },
  
+  { path: "admin/agentuniliste", component: AgentUniListeComponent },
+  { path: "admin/etudiantliste", component: EtudiantListeComponent }, 
 
-
-  { path: ":universite/demande", component: DemandeListeComponent },
+  { path: ":universite/demande", component: DemandeListeComponent, 
+  resolve: {
+    data: DemandeRResolver
+    }
+   },
   //bloc Route
 
   { path: ":universite/addBloc", component: AddBlocComponent },

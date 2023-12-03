@@ -11,7 +11,9 @@
         <form class="row g-3 needs-validation" [formGroup]="form" (ngSubmit)="addbloc()" novalidate>
           <div class="col-md-4 position-relative">
             <label for="nomBloc" class="form-label">Nom bloc</label>
-            <input type="text" class="form-control" id="nomBloc" formControlName="nomBloc" [class.is-invalid]="form.get('nomBloc')?.invalid && form.get('nomBloc')?.dirty" required>
+            <input type="text" class="form-control" id="nomBloc" 
+            formControlName="nomBloc" 
+            [class.is-invalid]="form.get('nomBloc')?.invalid && form.get('nomBloc')?.dirty" required>
             <div  class="invalid-feedback">
               <app-error-message [err]="form.get('nomBloc')" [field]="'nom bloc'"></app-error-message>
             </div>

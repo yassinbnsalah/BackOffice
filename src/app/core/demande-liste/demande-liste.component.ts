@@ -10,10 +10,23 @@ import { DemandeService } from 'src/app/service/demande.service';
 })
 export class DemandeListeComponent implements OnInit {
   demandes !: Demande[]; 
+  searchTerm = '';
   constructor(private demandeService: DemandeService,
     private activatedRoute: ActivatedRoute) { }
   ngOnInit(): void {
-    this.getDemandeListeByUniversite();
+    this.demandes = this.activatedRoute.snapshot.data["data"].demandes ;
+    this.filterData();
+  }
+
+  filterData() {
+    if (this.searchTerm.trim() === '') {
+      return this.demandes;
+    }
+    return this.demandes.filter(item => 
+      item.name.toLowerCase().includes(this.searchTerm.toLowerCase()) || 
+      item.email.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      item.typeChamber.toLowerCase().includes(this.searchTerm.toLowerCase())||
+      item.anneeUniversitaire.toLowerCase().includes(this.searchTerm.toLowerCase()));
   }
 
   getDemandeListeByUniversite() {
