@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import { Universite } from 'src/app/model/Universite';
 import { environment } from 'src/environments/environment.development';
+import {Document} from "../../model/Documents";
 
 
 @Injectable({
@@ -52,6 +53,11 @@ export class UniversiteService {
   findUniversiteByNomUniversiteAndEmail(name: string, email: string): Observable<Universite> {
     const url = `${environment.baseURL}${environment.UniversiteBackendAPIS}/find/${name}/${email}`;
     return this.http.get<Universite>(url, this.httpOptions);
+  }
+
+  getDocuments(id : any): Observable<Document>{
+    const url = `${environment.baseURL}${environment.UniversiteBackendAPIS}/download/${id}`;
+    return this.http.get<Document>(url, this.httpOptions);
   }
 
 }

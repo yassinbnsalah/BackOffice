@@ -67,7 +67,7 @@ import { NotfoundComponent } from './core/notfound/notfound.component';
     UpdatefoyerComponent,
     AddReservationComponent,
     FoyerlisteComponent,
-
+ 
 
     AddBlocComponent,
     ListBlocComponent,

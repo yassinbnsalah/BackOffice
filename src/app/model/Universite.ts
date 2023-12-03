@@ -1,4 +1,6 @@
 import {Foyer} from "./Foyer";
+import {Image} from "./Image";
+import {Document} from "./Documents";
 
 export class Universite {
   idUniversite!: number;
@@ -10,5 +12,7 @@ export class Universite {
   email!:string;
   firstNameAgent!:string;
   lastNameAgent!:string;
-  logo!:File
+  imagebyte!:string ;
+  image?: Image | null;
+  documents ?:Document [] ;
 }

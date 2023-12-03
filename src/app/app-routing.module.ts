@@ -34,7 +34,8 @@ import { DemandeRResolver } from './core/demande-r.resolver';
 
 const routes: Routes = [
   //reservation Route 
-  { path: "test", component: NotfoundComponent },
+  { path: "", component: NotfoundComponent },
+  { path: "test", component: StepperTestComponent },
   {
     path: "admin/reservation", loadChildren:()=>
     import('./core/Reservation/reservation/reservation.module').then(m=>m.ReservationModule)
