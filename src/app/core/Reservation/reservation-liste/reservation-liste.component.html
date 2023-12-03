@@ -47,11 +47,9 @@
                       <a (click)="GoToReservationDetails(reservation.idReservation)">
                         <h6 class="fw-semibold mb-0">{{reservation.idReservation}}</h6></a></td>
                     <td class="border-bottom-0">
-                        <h6 class="fw-semibold mb-1">{{reservation!.etudiants[0].nomEt}}</h6>
-                        <span class="fw-normal">{{reservation!.etudiants[0].email}}</span>                          
-                    </td>
-                    <td class="border-bottom-0">
-                      <p class="mb-0 fw-normal">{{reservation.anneeReservation | date: 'yyyy-MM-dd'}}</p>
+                        <h6 class="fw-semibold mb-1">{{reservation.etudiants[0].nomEt}}</h6>
+
+                        <span class="fw-normal">{{reservation.etudiants[0].email}}</span>                          
                     </td>
                     <td class="border-bottom-0">
                       <div class="d-flex align-items-center gap-2">

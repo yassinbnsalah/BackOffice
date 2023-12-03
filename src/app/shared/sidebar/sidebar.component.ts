@@ -26,6 +26,9 @@ export class SidebarComponent {
   GoToReservation() {
     this.router.navigate([this.activatedRoute.snapshot.params['universite'] + "/reservation"])
   }
+  GoToDemande(){
+    this.router.navigate([this.activatedRoute.snapshot.params['universite'] + "/demande"])
+  }
 
   GoToUniversite() {
     this.router.navigate([this.activatedRoute.snapshot.params['universite']])

@@ -18,7 +18,8 @@ export class UniversiteDetailComponent {
 
 
   ngOnInit(): void {
-
+    console.log("universite details");
+    
     this.serviceUniversite.getUniversiteByNomU(this.activatedRoute.snapshot.params['universite']).subscribe((data) => {
       this.universite = data;
     });

@@ -1,3 +1,4 @@
+import { ReservationModule } from './core/Reservation/reservation/reservation.module';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ReservationListeComponent } from './core/Reservation/reservation-liste/reservation-liste.component';
@@ -24,10 +25,12 @@ import { LoaderResolver } from './core/Data-resolver/loader.resolver';
 import { StepperTestComponent } from './core/stepper-test/stepper-test.component';
 import { AcceptedUniversiteComponent } from "./core/universite/accepted-universite/accepted-universite.component";
 import { DemandeListeComponent } from './core/demande-liste/demande-liste.component';
+
+
+import { DetailBlocComponent } from './core/Bloc/detail-bloc/detail-bloc.component';
 import { AddBlocComponent } from './core/Bloc/add-bloc/add-bloc.component';
 import { ListBlocComponent } from './core/Bloc/list-bloc/list-bloc.component';
 import { UpdateBlocComponent } from './core/Bloc/update-bloc/update-bloc.component';
-import { DetailBlocComponent } from './core/Bloc/detail-bloc/detail-bloc.component';
 
 
 
@@ -35,16 +38,12 @@ const routes: Routes = [
   //reservation Route 
   { path: "test", component: StepperTestComponent },
   {
-    path: "admin/reservation", component: ReservationListeComponent,
-    resolve: {
-      data: LoaderResolver
-    }
+    path: "admin/reservation", loadChildren:()=>
+    import('./core/Reservation/reservation/reservation.module').then(m=>m.ReservationModule)
   },
   {
-    path: "admin/reservation/:id", component: ReservationDetailsComponent,
-    resolve: {
-      data: LoaderResolver
-    }
+    path: ":universite/reservation", loadChildren:()=>
+    import('./core/Reservation/reservation/reservation.module').then(m=>m.ReservationModule)
   },
 
   {
@@ -68,8 +67,9 @@ const routes: Routes = [
 
 
   { path: ":universite/demande", component: DemandeListeComponent },
+  //bloc Route
 
-  { path: ":universite/addBloc", component: AddBlocComponent },
+  { path: ":universite/addBloc", component: AddBlocComponent   },
   { path: ":universite/bloc", component: ListBlocComponent },
   { path: "updateBloc", component: UpdateBlocComponent },
   { path: "detailBloc", component: DetailBlocComponent },
@@ -99,10 +99,9 @@ const routes: Routes = [
   { path: ":universite/information", component: UniversiteDetailComponent },
   { path: ":universite", component: UniversiteUpdateComponent },
   { path: "admin/universite", component: UniversiteListeComponent },
-  { path: "admin/universite/:id", component: UniversiteDetailComponent },
+  { path: "admin/universite/:universite", component: UniversiteDetailComponent },
   { path: "admin/acceptedUniversite", component: AcceptedUniversiteComponent },
   { path: "admin/updateUniversite/:id", component: UniversiteUpdateComponent }
-  //bloc Route
 
 
 ];

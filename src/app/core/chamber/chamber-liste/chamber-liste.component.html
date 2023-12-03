@@ -39,6 +39,9 @@
                       <h6 class="fw-semibold mb-0">Nom Bloc </h6>
                     </th>
                     <th class="border-bottom-0">
+                      <h6 class="fw-semibold mb-0">Etat </h6>
+                    </th>
+                    <th class="border-bottom-0">
                       <h6 class="fw-semibold mb-0">Actions </h6>
                     </th>
                   </tr>
@@ -62,7 +65,9 @@
                       <td class="border-bottom-0">
                         <p class="mb-0 fw-normal">{{chamber.blocname}}</p>
                       </td>
-                   
+                      <td class="border-bottom-0">
+                        <p class="mb-0 fw-normal">{{chamber.etat}}</p>
+                      </td>
                       
                       <td class="border-bottom-0">
                         <a (click)="redirectToUpdateChamber(chamber.idChamber)" routerLinkActive="active" class="btn btn-success mt-3" style="margin-right: 10px;">Update</a>

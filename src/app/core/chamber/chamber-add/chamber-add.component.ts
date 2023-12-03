@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Chamber } from "src/app/model/Chamber";
-import { Bloc } from "src/app/model/Bloc";  // Assurez-vous d'importer le modèle Bloc
+import { Bloc } from "src/app/model/Bloc";  
 import { ChamberService } from "src/app/service/chamber.service";
 
 @Component({
@@ -58,6 +58,7 @@ export class ChamberAddComponent implements OnInit {
   }
 
   onSubmit() {
+      this.chamber.etat = true;
     this.serviceChamber.addChamber(this.chamber).subscribe(
       (response) => {
         console.log('Chamber added:', response);

@@ -29,8 +29,17 @@ export class ChamberDetailsComponent implements OnInit {
     this.serviceChamber.getChamberByID(this.activatedRoute.snapshot.params['id']).subscribe((d) => {
       console.log(d);
       this.chamber = d;
-      
-      if (d.bloc) {
+      this.serviceChamber.getBLocByChamber(this.activatedRoute.snapshot.params['id']).subscribe(
+        (data) => {
+          console.log("data ok");
+          console.log(data.nomBloc);
+          this.chamber.bloc = data
+        },
+        (error) => {
+          console.error('Error getting bloc data:', error);
+        }
+      );
+     /* if (d.bloc) {
         this.bloc = d.bloc;
         console.log('Chamber:', this.chamber);
         console.log('Bloc:', this.bloc);
@@ -38,6 +47,7 @@ export class ChamberDetailsComponent implements OnInit {
       } else {
         console.error('Bloc data is missing.');
       }
+      */
     });
   }
   

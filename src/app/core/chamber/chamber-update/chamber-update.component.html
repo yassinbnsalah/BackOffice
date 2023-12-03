@@ -14,8 +14,8 @@
               <h5 class="card-title fw-semibold mb-4">Modifier la chambre</h5>
               <form (ngSubmit)="updateChamber()">
 
-                <div>
-                  <label for="numerochamber">Numéro chambre</label>
+                <div class="mb-3">
+                  <label for="numerochamber" class="form-label">Numéro de chambre</label>
                   <input
                     type="number"
                     name="numerochamber"
@@ -25,12 +25,12 @@
                   >
                 </div>
            
-                <div>
+                <div class="mb-3">
                   <label 
-                  [hidden]="true"
-                  for="CreatedAt">CreatedAt</label>
+                    [hidden]="true"
+                    for="CreatedAt">CreatedAt</label>
                   <input
-                  [hidden]="true"
+                    [hidden]="true"
                     type="date"
                     name="CreatedAt"
                     [(ngModel)]="chamber.createdAt"
@@ -39,12 +39,12 @@
                   >
                 </div>
            
-                <div>
+                <div class="mb-3">
                   <label 
-                  [hidden]="true"
-                  for="UpdatedAt">UpdatedAt</label>
+                    [hidden]="true"
+                    for="UpdatedAt">UpdatedAt</label>
                   <input
-                  [hidden]="true"
+                    [hidden]="true"
                     type="date"
                     name="UpdatedAt"
                     [(ngModel)]="chamber.updatedAt"
@@ -53,8 +53,8 @@
                   >
                 </div>
                 <br>
-                <div>
-                  <label for="typeC">Type chambre</label>
+                <div class="mb-3">
+                  <label for="typeC" class="form-label">Type de chambre</label>
                   <select
                     name="typeC"
                     [(ngModel)]="chamber.typeC"
@@ -67,8 +67,8 @@
                   </select>
                 </div>
                 <br>
-                <div>
-                  <label for="description">Description</label>
+                <div class="mb-3">
+                  <label for="description" class="form-label">Description</label>
                   <textarea
                     name="description"
                     [(ngModel)]="chamber.description"
@@ -76,21 +76,19 @@
                     class="form-control"
                   ></textarea>
                 </div>
-                <div *ngIf="chamber.bloc">
-                  <div>
-                    <label for="nomBloc">Nom Bloc</label>
-                    <input
-                      type="text"
-                      name="nomBloc"
-                      [(ngModel)]="chamber.bloc.nomBloc"
-                      required
-                      class="form-control"
-                    >
-                  </div>
+               
+                <div class="mb-3">
+                  <label for="selectedBloc" class="form-label">Nom du Bloc</label>
+                  <select class="form-select" [(ngModel)]="chamber.bloc.nomBloc" name="selectedBloc">
+                    <option value="" disabled selected>Choisissez un Bloc</option>
+                    <option *ngFor="let bloc of blocs" [value]="bloc.nomBloc">{{ bloc.nomBloc }}</option>
+                  </select>
                 </div>
-                
+                <div>
+                  <label for="image">Image:</label>
+                  <input type="file" id="image" (change)="onFileSelected($event)" required>
+                </div>
                 <br>
-                
 
                 <button type="submit" class="btn btn-primary">Modifier</button>
               </form>

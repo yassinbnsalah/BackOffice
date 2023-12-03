@@ -26,7 +26,6 @@ export class ChamberListeComponent implements OnInit {
   }
 
 
-
   getListeChamber() {
     this.chamberService.getAllChamber().subscribe(
       (chambers: Chamber[]) => {
@@ -73,10 +72,22 @@ export class ChamberListeComponent implements OnInit {
     const universite = this.activatedRoute.snapshot.params['universite'];
     this.router.navigate([`${universite}/chamber/update/${id}`]);
   }
-  deleteChamber(id:any){
-    this.chamberService.deleteChamber(id).subscribe((data)=>{
-      this.chambers=this.chambers.filter(chamber=>chamber.idChamber!=id);
-      alert("Chaber deleted")
-    })
+  deleteChamber(id: any) {
+    this.chamberService.deleteChamber(id).subscribe((data) => {
+      // Find the chamber in the array
+      const chamberToDelete = this.chambers.find(chamber => chamber.idChamber === id);
+  
+      if (chamberToDelete) {
+        // Update the 'etat' property to false
+        chamberToDelete.etat = false;
+  
+        // Optionally, you can perform additional logic or show a message
+        alert("Chamber marked as deleted");
+      } else {
+        // Handle the case where the chamber is not found
+        console.error("Chamber not found");
+      }
+    });
   }
+  
 }
