@@ -32,6 +32,7 @@ export class UniversiteListeComponent implements OnInit {
       (data) => {
         this.universites = data;
         console.log(data);
+        this.checkAndDisableUniversities();
       },
       (error) => {
         console.error("Error fetching universites: ", error);
@@ -87,6 +88,22 @@ export class UniversiteListeComponent implements OnInit {
     //console.log('Filtered Universities:', this.filteredUniversites);
   }
 
+  currentDate: any;
+  checkAndDisableUniversities() {
+    const currentDate = new Date();
+    const oneMonthAgo = new Date();
+    oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
+
+    this.universites.forEach(universite => {
+      if (
+        universite.statuts === 'En_attente' &&
+        universite.createdAt &&
+        new Date(universite.createdAt) < oneMonthAgo
+      ) {
+        this.updateStatus(universite, 'Disabled');
+      }
+    });
+  }
 
 
 

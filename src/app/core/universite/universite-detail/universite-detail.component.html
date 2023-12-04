@@ -9,16 +9,40 @@
     <div class="row">
         <div class="col-5">
             <div class="project-info-box mt-0">
-              <h5>Les détails de cet université {{universite.idUniversite}}</h5>
-              <p class="mb-0"> Description : {{universite.description}}</p>
+              <h2  style="color: #0099cc;">Univeristy details :</h2>
+              <p class="mb-0"><b> Description : </b>{{universite.description}}</p>
             </div><!-- / project-info-box -->
 
             <div class="project-info-box">
-              <p><b>Adresse :</b>{{universite.adresse}}</p>
-              <p><b>Nom de l'agent:</b>{{universite.firstNameAgent}}</p>
-              <p><b>Prénom de l'agent:</b>{{universite.lastNameAgent}}</p>
-              <p><b>Email : </b>{{universite.email}}</p>
+              <p><b>Adresse : </b>{{universite.adresse}}</p>
+              <p><b>Nom de l'agent :</b>{{universite.firstNameAgent}}</p>
+              <p><b>Prénom de l'agent :</b>{{universite.lastNameAgent}}</p>
+              <p><b>Email :</b>{{universite.email}}</p><br>
+
+              <p style="color: #ff0066;"><b>Attestation : </b></p>
+              <div *ngIf="universite.documents && universite.documents.length > 0">
+                <div *ngFor="let document of universite.documents">
+                  <div *ngIf="document.documentType === 'FICHIER'" class="d-flex justify-content-center">
+                    <button class="btn btn-outline-info" (click)="downloadURL(document)">
+                      <i class="fas fa-download"></i> Download Attestation
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <p style="color: #ff0066;"><b>Justification : </b></p>
+              <div *ngIf="universite.documents && universite.documents.length > 0">
+                <div *ngFor="let document of universite.documents">
+                  <div *ngIf="document.documentType === 'JUSTIFICATION'" class="d-flex justify-content-center">
+                    <button class="btn btn-outline-info" (click)="downloadURL(document)">
+                      <i class="fas fa-download"></i> Download Justification
+                    </button>
+                  </div>
+                </div>
+              </div>
+
             </div><!-- / project-info-box -->
+
 
             <div class="project-info-box mt-0 mb-0">
                 <p class="mb-0">
@@ -26,37 +50,23 @@
             </div><!-- / project-info-box -->
         </div><!-- / column -->
 
-        <div class="col-md-7">
-            <img [src]="'data:' + universite.image?.image_type + ';base64,' + universite.imagebyte" alt="Universite Image" class="rounded">
+     <div class="col-md-7">
+      <div class="image-container">
+        <img [src]="'data:' + universite.image?.image_type + ';base64,' + universite.imagebyte" alt="Universite Image" class="rounded"><br>
 
-        </div><!-- / column -->
-        <div class="col-md-7">
-          <div *ngIf=" universite.documents && universite.documents.length > 0">
-            <div *ngFor="let document of universite.documents">
-              <div *ngIf="document.documentType === 'LOGO'">
-                <img [src]="'data:' + universite.image?.image_type + ';base64,' + document.documentContent"  alt="Universite Image">
-              </div>
+        <p style="color: #ff0066; margin-top: 10px;"><b>University Logo : </b></p>
+        <div *ngIf="universite.documents && universite.documents.length > 0">
+          <div *ngFor="let document of universite.documents">
+            <div *ngIf="document.documentType === 'LOGO'">
+              <img class="rounded-logo" [src]="'data:' + universite.image?.image_type + ';base64,' + document.documentContent" alt="Universite Image">
             </div>
           </div>
-          <div *ngIf=" universite.documents && universite.documents.length > 0">
-            <div *ngFor="let document of universite.documents">
-              <div *ngIf="document.documentType === 'JUSTIFICATION'">
-
-                <button class="btn btn-primary" (click)="downloadURL(document)">Download Justification</button>
-              </div>
-            </div>
-          </div>
-          <div *ngIf=" universite.documents && universite.documents.length > 0">
-            <div *ngFor="let document of universite.documents">
-              <div *ngIf="document.documentType === 'FICHIER'">
-                <button class="btn btn-primary" (click)="downloadURL(document)">Download Attestation</button>
-              </div>
-            </div>
-          </div>
-
         </div>
+      </div>
+    </div><!-- / column -->
 
+</div>
     </div>
 </div>
 </div>
-</div>
+
