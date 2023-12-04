@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit,Output,EventEmitter } from '@angular/core';
 import {BlocService} from "../../../service/BlocService/bloc.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Bloc} from "../../../model/Bloc";
+import { StorageService } from 'src/app/AuthServices/storage.service';
 
 @Component({
   selector: 'app-list-bloc',
@@ -9,36 +10,69 @@ import {Bloc} from "../../../model/Bloc";
   styleUrls: ['./list-bloc.component.css']
 })
 export class ListBlocComponent implements OnInit{
+  
   blocs!:Bloc[];
   search:String="";
-  constructor(private blocService:BlocService,private activatedRoute:ActivatedRoute,private route:Router) {
+  CurrentUser = this.storage.getUser();
+  constructor(private blocService:BlocService,private activatedRoute:ActivatedRoute,private route:Router,private storage: StorageService) {
 
   }
   ngOnInit() {
-    this.getListBloc();
+    if(this.CurrentUser.role[0]=="ADMIN"){
+      this.getallBloc();
+    }else{
+      this.getListBlocByuniversite();
+    }
+    
   }
-  getListBloc(){
-    this.blocService.getallBloc().subscribe((data)=>{
+  getListBlocByuniversite(){
+    this.blocService.getBlocByuniversite(this.activatedRoute.snapshot.params["universite"]).subscribe((data)=>{
       this.blocs=data;
       console.log(this.blocs);
     })
 
   }
+  
+  getallBloc(){
+    this.blocService.getallBloc().subscribe((data)=>{
+      this.blocs=data;
+      console.log(this.blocs);
+    })
+  }
   deleteBloc(id:any){
     this.blocService.deleteBloc(id).subscribe((data)=>{
       this.blocs=this.blocs.filter(bloc=>bloc.idBloc!=id);
-      alert("Bloc deleted")
+
     })
   }
+  
   GoToAdd(){
-    this.route.navigate([this.activatedRoute.snapshot.params["universite"]+"/addBloc/"])
+    if(this.CurrentUser.role[0]=="ADMIN"){
+      this.route.navigate(["admin/bloc"+"/add/"])
+    }else{
+      this.route.navigate([this.activatedRoute.snapshot.params["universite"]+"/bloc"+"/add/"])
+    }
+    
   }
   GoToUpdateBloc(bloc:Bloc){
     this.blocService.setBloc(bloc);
-    this.route.navigate(["updateBloc"],{queryParams:{bloc:bloc}});
+    if(this.CurrentUser.role[0]=="ADMIN"){
+      this.route.navigate(["admin/bloc"+"/updateBloc"],{queryParams:{bloc:bloc}});
+    }else{
+      this.route.navigate([this.activatedRoute.snapshot.params["universite"]+"/bloc"+"/updateBloc"],{queryParams:{bloc:bloc}});
+    }
+    
+  }
+  onBlocAdded(newBloc: Bloc) {
+    this.blocs.push(newBloc);
   }
   GoToDetail(bloc:Bloc){
     this.blocService.setBloc(bloc);
-    this.route.navigate(["detailBloc"],{queryParams:{bloc:bloc}})
+    if(this.CurrentUser.role[0]=="ADMIN"){
+      this.route.navigate(["admin/bloc"+"/detailBloc"],{queryParams:{bloc:bloc}});
+    }else{
+      this.route.navigate([this.activatedRoute.snapshot.params["universite"]+"/bloc"+"/detailBloc"],{queryParams:{bloc:bloc}});
+    }
   }
+ 
 }

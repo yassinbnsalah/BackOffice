@@ -1,6 +1,5 @@
-<div class="page-wrapper" id="main-wrapper" data-layout="vertical"
-     data-navbarbg="skin6" data-sidebartype="full"
-     data-sidebar-position="fixed" data-header-position="fixed">
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+  data-sidebar-position="fixed" data-header-position="fixed">
   <app-sidebar></app-sidebar>
   <div class="body-wrapper">
     <app-navbar></app-navbar>
@@ -13,59 +12,88 @@
 
               <h5 class="card-title fw-semibold mb-4">Bloc Liste</h5>
               <div class="input-group mt-3 mb-3" style="width: 50%">
-                <input type="text" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" [(ngModel)]="search" />
+                <input type="text" class="form-control rounded" placeholder="Search" aria-label="Search"
+                  aria-describedby="search-addon" [(ngModel)]="search" />
 
               </div>
-              <button type="button" class="btn btn-primary" (click)="GoToAdd()">Ajouter un bloc</button>
+              <button *ngIf="CurrentUser.role[0] !== 'ADMIN'" type="button" class="btn btn-primary" (click)="GoToAdd()">Ajouter un bloc</button>
+              
               <div class="table-responsive">
                 <table class="table text-nowrap mb-0 align-middle">
                   <thead class="text-dark fs-4">
-                  <tr>
-                    <th class="border-bottom-0">
-                      <h6 class="fw-semibold mb-0">Id</h6>
-                    </th>
-                    <th class="border-bottom-0">
-                      <h6 class="fw-semibold mb-0">Nom Bloc</h6>
-                    </th>
-                    <th class="border-bottom-0">
-                      <h6 class="fw-semibold mb-0">Capacite Bloc</h6>
-                    </th>
-                    <th class="border-bottom-0">
-                      <h6 class="fw-semibold mb-0">Status</h6>
-                    </th>
-                    <th class="border-bottom-0">
-                      <h6 class="fw-semibold mb-0">Actions</h6>
-                    </th>
-                  </tr>
+                    <tr>
+                      <th class="border-bottom-0">
+                        <h6 class="fw-semibold mb-0">Id</h6>
+                      </th>
+                      <th class="border-bottom-0">
+                        <h6 class="fw-semibold mb-0">Nom Bloc</h6>
+                      </th>
+                      <th class="border-bottom-0">
+                        <h6 class="fw-semibold mb-0">Capacite Bloc</h6>
+                      </th>
+                      <th class="border-bottom-0">
+                        <h6 class="fw-semibold mb-0">Status</h6>
+                      </th>
+                      <th class="border-bottom-0">
+                        <h6 class="fw-semibold mb-0">Actions</h6>
+                      </th>
+                    </tr>
                   </thead>
                   <tbody>
-                  <tr *ngFor="let bloc of blocs">
+                    <tr *ngFor="let bloc of blocs">
 
-                    <ng-container *ngIf="bloc.nomBloc.toLocaleLowerCase().includes(search.toLocaleLowerCase()) || search==''">
-                      <td class="border-bottom-0">
-                        <h6 class="fw-semibold mb-1">{{bloc.idBloc}}</h6>
-                      </td>
-                      <td class="border-bottom-0">
-                        <p class="mb-0 fw-normal">{{bloc.nomBloc}}</p>
-                      </td>
-                      <td class="border-bottom-0">
-                        <p class="mb-0 fw-normal">{{bloc.capaciteBloc}}</p>
-                      </td>
-                      <td class="border-bottom-0">
-                        <p class="mb-0 fw-normal">{{bloc.status}}</p>
-                      </td>
-                      <td class="border-bottom-0">
-                        <button type="button" class="btn btn-success" (click)="GoToUpdateBloc(bloc)" style="margin-right: 10px;">Update</button>
-                        <button type="button" class="btn btn-danger" style="margin-left: 10px;" (click)="deleteBloc(bloc.idBloc)">Delete</button>
-                        <button type="button" class="btn btn-info" style="margin-left: 10px;" (click)="GoToDetail(bloc)">Details</button>
-                      </td>
-                    </ng-container>
+                      <ng-container
+                        *ngIf="bloc.nomBloc.toLocaleLowerCase().includes(search.toLocaleLowerCase()) || search==''">
+                        <td class="border-bottom-0">
+                          <h6 class="fw-semibold mb-1">{{bloc.idBloc}}</h6>
+                        </td>
+                        <td class="border-bottom-0">
+                          <p class="mb-0 fw-normal">{{bloc.nomBloc}}</p>
+                        </td>
+                        <td class="border-bottom-0">
+                          <p class="mb-0 fw-normal">{{bloc.capaciteBloc}}</p>
+                        </td>
+                        <td class="border-bottom-0">
+                          <p class="mb-0 fw-normal">{{bloc.status}}</p>
+                        </td>
+                        <td class="border-bottom-0">
+                          <button *ngIf="CurrentUser.role[0] !== 'ADMIN'" type="button" class="btn btn-success" (click)="GoToUpdateBloc(bloc)"
+                            style="margin-right: 10px;">Update</button>
+                          <button *ngIf="CurrentUser.role[0] !== 'ADMIN'" type="button" class="btn btn-danger" style="margin-left: 10px;"
+                             data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">Delete</button>
+                          <button type="button" class="btn btn-info" style="margin-left: 10px;"
+                            (click)="GoToDetail(bloc)">Details</button>
+                        </td>
+                      </ng-container>
 
-                  </tr>
+                      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="staticBackdropLabel">Delete Bloc</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              Woohoo, are you sure you want to delete this university!
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >No</button>
+                              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="deleteBloc(bloc.idBloc)">Yes</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </tr>
 
                   </tbody>
                 </table>
+                
               </div>
+              
+
             </div>
           </div>
         </div>

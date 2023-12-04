@@ -15,6 +15,9 @@ export class ReservationService {
   constructor(private http: HttpClient) { }
 
   getReservationByUniversiteName(nom: any): Observable<Reservation[]> {
+    console.log(environment.baseURL
+      + environment.ReservationBackendAPIS + "/findReservationByUniversiteName/" + nom);
+    
     return this.http.get<Reservation[]>(environment.baseURL
       + environment.ReservationBackendAPIS + "/findReservationByUniversiteName/" + nom, this.httpOptions)
   }
