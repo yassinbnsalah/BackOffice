@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component,Output,EventEmitter } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Bloc } from 'src/app/model/Bloc';
-import { BlocService } from 'src/app/service/BlocService/bloc.service';
-
-
+import { Bloc } from '../../../model/Bloc';
+import { BlocService } from '../../../service/BlocService/bloc.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
+
 @Component({
   selector: 'app-add-bloc',
   templateUrl: './add-bloc.component.html',
@@ -23,7 +23,8 @@ export class AddBlocComponent {
     private blocService: BlocService,
     private route: ActivatedRoute,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private location: Location
   ) {
     this.form = this.fb.group({
       nomBloc: ['', Validators.required],
@@ -64,6 +65,7 @@ export class AddBlocComponent {
   removeChamberControl(index: number) {
     this.chambers.removeAt(index);
   }
+  
 
   addbloc() {
     const capaciteBlocControl = this.form.get('capaciteBloc');
@@ -96,8 +98,9 @@ export class AddBlocComponent {
         console.log('this is title' + this.form.get('nomBloc')?.value);
         this.bloc = d;
         console.log(d);
+
       });
-      this.router.navigate([":universite/bloc"]);
+      this.location.back();
     } else {
       console.log('form is invalid');
     }

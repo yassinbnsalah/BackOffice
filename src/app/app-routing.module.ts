@@ -1,11 +1,9 @@
-import { ReservationModule } from './core/Reservation/reservation/reservation.module';
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ReservationListeComponent } from './core/Reservation/reservation-liste/reservation-liste.component';
 import { DetailsfoyerComponent } from './core/foyer/detailsfoyer/detailsfoyer.component';
 import { UpdatefoyerComponent } from './core/foyer/updatefoyer/updatefoyer.component';
 import { AddfoyerComponent } from './core/foyer/addfoyer/addfoyer.component';
-import { ReservationDetailsComponent } from './core/Reservation/reservation-details/reservation-details.component';
 import { UniversiteListeComponent } from "./core/universite/universite-liste/universite-liste.component";
 import { UniversiteDetailComponent } from "./core/universite/universite-detail/universite-detail.component";
 import { LoginComponent } from './core/login/login.component';
@@ -19,27 +17,19 @@ import { EtudiantListeComponent } from './core/users/etudiant-liste/etudiant-lis
 import { ChamberListeComponent } from './core/chamber/chamber-liste/chamber-liste.component';
 import { UniversiteUpdateComponent } from './core/universite/universite-update/universite-update.component';
 import { FoyerlisteComponent } from './core/foyer/foyerliste/foyerliste.component';
-import { AddReservationComponent } from './core/Reservation/add-reservation/add-reservation.component';
 
-import { LoaderResolver } from './core/Data-resolver/loader.resolver';
-import { StepperTestComponent } from './core/stepper-test/stepper-test.component';
-import { AcceptedUniversiteComponent } from "./core/universite/accepted-universite/accepted-universite.component";
-import { DemandeListeComponent } from './core/demande-liste/demande-liste.component';
-
-import { NotfoundComponent } from './core/notfound/notfound.component';
 import { DemandeRResolver } from './core/demande-r.resolver';
 import { AddBlocComponent } from './core/bloc/add-bloc/add-bloc.component';
 import { ListBlocComponent } from './core/bloc/list-bloc/list-bloc.component';
 import { UpdateBlocComponent } from './core/bloc/update-bloc/update-bloc.component';
+import { StepperTestComponent } from './core/stepper-test/stepper-test.component';
+import { AcceptedUniversiteComponent } from "./core/universite/accepted-universite/accepted-universite.component";
+import { DemandeListeComponent } from './core/demande-liste/demande-liste.component';
 import { DetailBlocComponent } from './core/bloc/detail-bloc/detail-bloc.component';
-
-
-
 
 
 const routes: Routes = [
   //reservation Route 
-  { path: "", component: NotfoundComponent },
   { path: "test", component: StepperTestComponent },
   {
     path: "admin/reservation", loadChildren:()=>
@@ -49,14 +39,20 @@ const routes: Routes = [
     path: ":universite/reservation", loadChildren:()=>
     import('./core/Reservation/reservation/reservation.module').then(m=>m.ReservationModule)
   },
- 
-
   { path: ":universite/demande", component: DemandeListeComponent, 
   resolve: {
     data: DemandeRResolver
     }
    },
   //bloc Route
+  {
+    path:"admin/bloc",loadChildren:()=>
+    import('./core/bloc/bloc/bloc-admin/bloc-admin.module').then(m=>m.BlocAdminModule)
+  },
+  {
+    path:":universite/bloc",loadChildren:()=>
+    import('./core/bloc/bloc/bloc.module').then(m=>m.BlocModule)
+  },
 
   { path: ":universite/addBloc", component: AddBlocComponent   },
   { path: ":universite/bloc", component: ListBlocComponent },
