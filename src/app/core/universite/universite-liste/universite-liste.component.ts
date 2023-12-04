@@ -17,6 +17,7 @@ export class UniversiteListeComponent implements OnInit {
   CurrentUser: any;
   filteredUniversites: Universite[] = [];
 
+  searchQuery: string = '';
 
   constructor(private universiteService: UniversiteService, private storage: StorageService,
     private router: Router) {
@@ -37,11 +38,13 @@ export class UniversiteListeComponent implements OnInit {
       }
     );
   }
+
   GoToUniversiteDetails(name: any) {
   //  this.CurrentUser = this.storage.getUser();
    // if (this.CurrentUser.role[0] == "ADMIN") {
       this.router.navigate(["admin/universite/", name])
    // }
+
   }
 
   cycleStatus(universite: Universite) {
@@ -75,14 +78,18 @@ export class UniversiteListeComponent implements OnInit {
       }
     );
   }
-    onSearch(searchQuery: string) {
-      // Perform filtering based on the search query
-      this.filteredUniversites = this.universites.filter(universite =>
-        universite.nomUniversite.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-    }
 
-
+  onSearch() {
+    //console.log('Search Query:', this.searchQuery);
+    this.filteredUniversites = this.universites.filter(universite =>
+      universite.nomUniversite.toLowerCase().includes(this.searchQuery.toLowerCase())
+    );
+    //console.log('Filtered Universities:', this.filteredUniversites);
   }
+
+
+
+
+}
 
 

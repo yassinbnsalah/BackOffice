@@ -1,0 +1,10 @@
+<p>paginat works!</p>
+<div>
+  <mat-paginator [length]="totalItems" [pageSize]="pageSize" (page)="getPageData($event)"></mat-paginator>
+</div>
+
+<!-- Display your data here based on the current page -->
+<div *ngFor="let item of paginatedData">
+  <!-- Display your item data here -->
+  {{ item }}
+</div>

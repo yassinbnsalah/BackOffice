@@ -15,6 +15,9 @@ import {Document} from "../../../model/Documents";
 export class UniversiteDetailComponent {
   universite !: Universite ;
   sanitizedDocumentContent!: SafeUrl;
+  otherUniversities: Universite[] = [];
+
+
   constructor(private serviceUniversite: UniversiteService,
               private activatedRoute: ActivatedRoute,
               private router: Router,
@@ -26,7 +29,7 @@ export class UniversiteDetailComponent {
 
   ngOnInit(): void {
     console.log("universite details");
-    
+
     this.serviceUniversite.getUniversiteByNomU(this.activatedRoute.snapshot.params['universite']).subscribe((data) => {
       this.universite = data;
      // this.getDoc();
@@ -41,9 +44,9 @@ export class UniversiteDetailComponent {
       const file = new Blob([byteArray] , {type:'application/pdf'});
       const fileURL = URL.createObjectURL(file);
       let fileName = 'downloaded pdf';
-      let link = document.createElement('a'); 
-      link.download = fileName ; 
-      link.target = '_blank' ; 
+      let link = document.createElement('a');
+      link.download = fileName ;
+      link.target = '_blank' ;
       link.href = fileURL ;
       document.body.appendChild(link);
       link.click();
@@ -59,14 +62,14 @@ export class UniversiteDetailComponent {
     }*/
   }
   getDoc(document:Document){
-   /* 
+   /*
     if (document.documentContent instanceof Blob) {
       console.log("universite details");
       this.sanitizedDocumentContent = this.sanitizer.bypassSecurityTrustUrl(
         URL.createObjectURL(document.documentContent)
       );
       console.log(this.sanitizeDocumentContent);
-      
+
     }
     /*
     const pdfData = URL.createObjectURL(documentContent);

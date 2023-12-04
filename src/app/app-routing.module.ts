@@ -28,31 +28,23 @@ import { StepperTestComponent } from './core/stepper-test/stepper-test.component
 import { AcceptedUniversiteComponent } from "./core/universite/accepted-universite/accepted-universite.component";
 import { DemandeListeComponent } from './core/demande-liste/demande-liste.component';
 import { DetailBlocComponent } from './core/bloc/detail-bloc/detail-bloc.component';
-import { NotfoundComponent } from './core/notfound/notfound.component';
-import { DemandeRResolver } from './core/demande-r.resolver';
 
 
 const routes: Routes = [
-  //reservation Route 
-  { path: "", component: NotfoundComponent },
+  //reservation Route
   { path: "test", component: StepperTestComponent },
   {
     path: "admin/reservation", loadChildren:()=>
-    import('./core/Reservation/reservation/reservation.module').then(m=>m.ReservationModule)
+      import('./core/Reservation/reservation/reservation.module').then(m=>m.ReservationModule)
   },
   {
     path: ":universite/reservation", loadChildren:()=>
-    import('./core/Reservation/reservation/reservation.module').then(m=>m.ReservationModule)
+      import('./core/Reservation/reservation/reservation.module').then(m=>m.ReservationModule)
   },
- 
-  { path: "admin/agentuniliste", component: AgentUniListeComponent },
-  { path: "admin/etudiantliste", component: EtudiantListeComponent }, 
 
-  { path: ":universite/demande", component: DemandeListeComponent, 
-  resolve: {
-    data: DemandeRResolver
-    }
-   },
+
+
+  { path: ":universite/demande", component: DemandeListeComponent },
   //bloc Route
 
   { path: ":universite/addBloc", component: AddBlocComponent },
@@ -60,19 +52,19 @@ const routes: Routes = [
   { path: "updateBloc", component: UpdateBlocComponent },
   { path: "detailBloc", component: DetailBlocComponent },
 
-  // Foyer Route 
+  // Foyer Route
   { path: "admin/foyer", component: FoyerlisteComponent },
   { path: ":universite/foyer", component: FoyerlisteComponent },
   { path: ":universite/addFoyer", component: AddfoyerComponent },
   { path: ":universite/foyer/:id", component: DetailsfoyerComponent },
   { path: ":universite/foyer/update/:id", component: UpdatefoyerComponent },
-  // User Route 
+  // User Route
   { path: "admin/agentuniliste", component: AgentUniListeComponent },
   { path: "admin/etudiantliste", component: EtudiantListeComponent },
-  // Login URLS 
+  // Login URLS
   { path: "login", component: LoginComponent },
   { path: "forgetpassword", component: ForgetPasswordComponent },
-  // chamber URLS 
+  // chamber URLS
   { path: ":universite/chamber", component: ChamberListeComponent },
   { path: ":universite/chamber/add", component: ChamberAddComponent },
   { path: ":universite/chamber/:id", component: ChamberDetailsComponent },
@@ -81,13 +73,24 @@ const routes: Routes = [
   { path: "universite-details/:id", component: UniversiteDetailComponent },
 
 
-  //Universite Route
-  { path: ":universite/information", component: UniversiteDetailComponent },
+ {
+    path: "admin/universite", loadChildren:()=>
+      import('./core/universite/universites/universites.module').then(m=>m.UniversitesModule)
+  },
   { path: ":universite", component: UniversiteUpdateComponent },
-  { path: "admin/universite", component: UniversiteListeComponent },
-  { path: "admin/universite/:universite", component: UniversiteDetailComponent },
-  { path: "admin/acceptedUniversite", component: AcceptedUniversiteComponent },
-  { path: "admin/updateUniversite/:id", component: UniversiteUpdateComponent }
+  {
+    path: ":universite", loadChildren:()=>
+      import('./core/universite/universites/universites.module').then(m=>m.UniversitesModule)
+  },
+
+
+  //Universite Route
+ // { path: ":universite/information", component: UniversiteDetailComponent },
+
+  //{ path: "admin/universite", component: UniversiteListeComponent },
+  //{ path: "admin/universite/:universite", component: UniversiteDetailComponent },
+  //{ path: "admin/universite/acceptedUniversite", component: AcceptedUniversiteComponent },
+  //{ path: "admin/universite/updateUniversite/:id", component: UniversiteUpdateComponent }
 
 
 ];
