@@ -62,14 +62,23 @@
                   ></textarea>
                 </div>
               <br>
-                
+               
                 <div>
                   <label for="image">Image:</label>
                   <input type="file" id="image" (change)="onFileSelected($event)" required>
                 </div>
                 <br>
+              
+                <select class="form-select mr-sm-2" [(ngModel)]="selectedBloc" name="selectedBloc">
+                  <option value="" disabled selected>Choisissez un Bloc</option>
+                  <option *ngFor="let bloc of blocs" [value]="bloc.nomBloc">{{ bloc.nomBloc }}</option>
+                </select>
+                <br>
                 <button type="submit" class="btn btn-primary btn-sm">Ajouter</button>
                
+
+               
+                
               </form>
               
               

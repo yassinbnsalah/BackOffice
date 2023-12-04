@@ -25,9 +25,6 @@ export class ChamberListeComponent implements OnInit {
     this.getListeChamber();
   }
 
-  GoToChamberDetails(id: any) {
-    this.router.navigate(["chamber/", id]);
-  }
 
   getListeChamber() {
     this.chamberService.getAllChamber().subscribe(
@@ -45,7 +42,7 @@ export class ChamberListeComponent implements OnInit {
               console.error('Error getting bloc data:', error);
             }
           );
-        console.log("wiwi ye tahfouna");
+        console.log("LEXPERT");
         console.log(chamber);
         });
 
@@ -70,6 +67,27 @@ export class ChamberListeComponent implements OnInit {
       return this.chambers;
     }
     return this.chambers.filter(item => item.typeC.toLowerCase().includes(this.search.toLowerCase()));
+  }
+  redirectToUpdateChamber(id: number) {
+    const universite = this.activatedRoute.snapshot.params['universite'];
+    this.router.navigate([`${universite}/chamber/update/${id}`]);
+  }
+  deleteChamber(id: any) {
+    this.chamberService.deleteChamber(id).subscribe((data) => {
+      // Find the chamber in the array
+      const chamberToDelete = this.chambers.find(chamber => chamber.idChamber === id);
+  
+      if (chamberToDelete) {
+        // Update the 'etat' property to false
+        chamberToDelete.etat = false;
+  
+        // Optionally, you can perform additional logic or show a message
+        alert("Chamber marked as deleted");
+      } else {
+        // Handle the case where the chamber is not found
+        console.error("Chamber not found");
+      }
+    });
   }
   
 }

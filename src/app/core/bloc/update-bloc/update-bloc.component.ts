@@ -1,9 +1,8 @@
-// update-bloc.component.ts
+
+import { Bloc } from 'src/app/model/Bloc';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { BlocService } from "../../../service/BlocService/bloc.service";
-import { Bloc } from "../../../model/Bloc";
-
+import { BlocService } from 'src/app/service/BlocService/bloc.service';
 @Component({
   selector: 'app-update-bloc',
   templateUrl: './update-bloc.component.html',

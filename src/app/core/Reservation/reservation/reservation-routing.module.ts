@@ -13,7 +13,6 @@ const routes: Routes = [
         data: LoaderResolver
         }
   },
- 
   {
     path:"add", component: AddReservationComponent,
     resolve: {

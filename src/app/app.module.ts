@@ -31,15 +31,20 @@ import { SideComponent } from './shared/side/side.component';
 import { AddReservationComponent } from './core/Reservation/add-reservation/add-reservation.component';
 import { FoyerlisteComponent } from './core/foyer/foyerliste/foyerliste.component';
 import {ReactiveFormsModule} from "@angular/forms";
-import { AddBlocComponent } from './core/bloc/Add bloc/add-bloc.component';
-import { ListBlocComponent } from './core/bloc/list-bloc/list-bloc.component';
-import { UpdateBlocComponent } from './core/bloc/update-bloc/update-bloc.component';
+
 import { StepperTestComponent } from './core/stepper-test/stepper-test.component';
 import { AcceptedUniversiteComponent } from './core/universite/accepted-universite/accepted-universite.component';
 import { DemandeListeComponent } from './core/demande-liste/demande-liste.component';
-import { DetailBlocComponent } from './core/bloc/detail-bloc/detail-bloc.component';
+
 import { ErrorMessageComponent } from './shared/error-message/error-message.component';
 import { NotfoundComponent } from './core/notfound/notfound.component';
+import { AddBlocComponent } from './core/bloc/add-bloc/add-bloc.component';
+import { ListBlocComponent } from './core/bloc/list-bloc/list-bloc.component';
+import { UpdateBlocComponent } from './core/bloc/update-bloc/update-bloc.component';
+import { DetailBlocComponent } from './core/bloc/detail-bloc/detail-bloc.component';
+
+
+
 
 
 @NgModule({
@@ -86,6 +91,7 @@ import { NotfoundComponent } from './core/notfound/notfound.component';
     FormsModule,
     AppRoutingModule,
     ReactiveFormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
