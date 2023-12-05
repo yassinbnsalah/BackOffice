@@ -4,65 +4,136 @@
   <app-side></app-side>
   <div class="body-wrapper">
     <app-navbar></app-navbar>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-12 d-flex">
-          <div class="card w-100">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="card shadow">
             <div class="card-body p-4">
-              <h5 class="card-title fw-semibold mb-4">Update Foyer</h5>
-              <form (ngSubmit)="updateFoyer()">
-              
-                <div>
-                  <label for="nomfoyer">nom Foyer</label>
+              <h5 class="card-title fw-bold mb-4 text-center"></h5><br><br>
+              <form (ngSubmit)="onSubmit()" >
+                <h1 class="card-title fw-bold mb-4 text-center" style="color: blue;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Update Foyer</h1>
+                <div class="mb-3">
+                  <label for="nomFoyer" class="form-label">Nom Foyer</label>
                   <input
                     type="text"
-                    name="nomfoyer"
+                    name="nomFoyer"
                     [(ngModel)]="foyer.nomFoyer"
                     required
+                    [maxlength]="50"
                     class="form-control"
+                    #nomFoyerInput="ngModel"
                   >
+                  <div *ngIf="nomFoyerInput.invalid && (nomFoyerInput.dirty || nomFoyerInput.touched)" class="text-danger">
+                    <div *ngIf="nomFoyerInput.hasError('required')">
+                      Nom Foyer est requis.
+                    </div>
+                    <div *ngIf="nomFoyerInput.hasError('maxlength')">
+                      Le nom du foyer ne peut pas dépasser 50 caractères.
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <label for="capacitefoyer">capacite Foyer</label>
+                <div class="mb-3">
+                  <label for="capaciteFoyer" class="form-label">Capacité Foyer</label>
                   <input
                     type="number"
-                    name="capacitefoyer"
+                    name="capaciteFoyer"
                     [(ngModel)]="foyer.capaciteFoyer"
                     required
+                    min="0" 
                     class="form-control"
+                    #capaciteFoyerNgModel="ngModel" 
                   >
+                  <div *ngIf="capaciteFoyerNgModel.invalid && (capaciteFoyerNgModel.dirty || capaciteFoyerNgModel.touched)" class="text-danger">
+                    <div *ngIf="capaciteFoyerNgModel.hasError('required')">
+                      Capacité Foyer est requise.
+                    </div>
+                    <div *ngIf="capaciteFoyerNgModel.hasError('min')">
+                      Capacité Foyer ne peut pas être négative.
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <label 
-                  [hidden]="true"
-                  for="CreatedAt">CreatedAt</label>
+                <div class="mb-3">
+                  <label for="adresse" class="form-label">Adresse</label>
                   <input
-                  [hidden]="true"
+                    type="text"
+                    name="adresse"
+                    [(ngModel)]="foyer.adresse"
+                    required
+                   
+                    maxlength="100"
+                    class="form-control"
+                    #adresseInput="ngModel"
+                  >
+                  <div *ngIf="adresseInput.invalid && (adresseInput.dirty || adresseInput.touched)" class="text-danger">
+                    <div *ngIf="adresseInput.hasError('required')">
+                      L'adresse est requise.
+                    </div>
+                    <div *ngIf="adresseInput.hasError('maxlength')">
+                      L'adresse ne peut pas dépasser 100 caractères.
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="description" class="form-label">Description</label>
+                  <input
+                    type="text"
+                    name="description"
+                    [(ngModel)]="foyer.description"
+                    required
+                    minlength="20" 
+                    maxlength="250" 
+                    class="form-control"
+                    #descriptionInput="ngModel"
+                  >
+                  <div *ngIf="descriptionInput.invalid && (descriptionInput.dirty || descriptionInput.touched)" class="text-danger">
+                    <div *ngIf="descriptionInput.hasError('required')">
+                      La description est requise.
+                    </div>
+                    <div *ngIf="descriptionInput.hasError('minlength')">
+                      La description doit comporter au moins 20 caractères.
+                    </div>
+                    <div *ngIf="descriptionInput.hasError('maxlength')">
+                      La description ne peut pas dépasser 250 caractères.
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-3" hidden>
+                  <label for="CreatedAt" class="form-label">CreatedAt</label>
+                  <input
                     type="date"
                     name="CreatedAt"
                     [(ngModel)]="foyer.createdAt"
                     required
                     class="form-control"
+                    hidden
                   >
                 </div>
-                <div>
-                  <label 
-                  [hidden]="true"
-                  for="UpdatedAt">UpdatedAt</label>
+                <div class="mb-3" hidden>
+                  <label for="UpdatedAt" class="form-label">UpdatedAt</label>
                   <input
-                  [hidden]="true"
                     type="date"
                     name="UpdatedAt"
                     [(ngModel)]="foyer.updatedAt"
                     required
                     class="form-control"
+                    hidden
                   >
                 </div>
+                <div class="mb-3">
+                  <label for="image" class="form-label">Image</label>
+                  <div class="input-group">
+                    <input type="file" id="image" class="form-control form-control-lg" (change)="onFileSelected($event)"
+                      required>
+                    <label for="image" class="input-group-text"><i class="fas fa-cloud-upload-alt"></i> Choose an Image</label>
+                  </div>
+                </div>
                 
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary btn-lg">Update Foyer</button>
+                  <span style="margin-left: 20px;" > <a (click)="GoBack()" routerLinkActive="active" class="btn btn-secondary btn-lg">Back</a></span>
 
-          
-
-                <button type="submit" class="btn btn-primary">Update Foyer</button>
+                </div>
               </form>
             </div>
           </div>

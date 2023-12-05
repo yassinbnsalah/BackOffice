@@ -29,14 +29,20 @@ const routes: Routes = [
   {path:":universite/reservation" , component:ReservationListeComponent},
   {path:":universite/reservation/add" , component:AddReservationComponent},
   {path:":universite/reservation/:id" , component:ReservationDetailsComponent},
-  
+   
   
   // Foyer Route 
-  {path:"admin/foyer" , component:FoyerlisteComponent },
-  {path:":universite/foyer" , component:FoyerlisteComponent},
-  {path:":universite/addFoyer" , component:AddfoyerComponent},
-  {path:":universite/foyer/:id" , component:DetailsfoyerComponent},
-  {path:":universite/foyer/update/:id" , component:UpdatefoyerComponent},
+  
+ 
+  {
+    path: "/admin/foyer", loadChildren:()=>
+    import('./core/foyer/foyer/foyer.module').then(m=>m.FoyerModule)
+  },
+  {
+    path: ":universite/foyer", loadChildren:()=>
+    import('./core/foyer/foyer/foyer.module').then(m=>m.FoyerModule)
+  },
+
   // User Route 
   {path:"admin/agentuniliste" , component:AgentUniListeComponent},
   {path:"admin/etudiantliste" , component:EtudiantListeComponent},

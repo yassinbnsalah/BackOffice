@@ -1,16 +1,14 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { ReservationListeComponent } from './core/Reservation/reservation-liste/reservation-liste.component';
-import { HttpClientModule } from '@angular/common/http';
+
 import { DetailsfoyerComponent } from './core/foyer/detailsfoyer/detailsfoyer.component';
 import { AddfoyerComponent } from './core/foyer/addfoyer/addfoyer.component';
 import { UpdatefoyerComponent } from './core/foyer/updatefoyer/updatefoyer.component';
-import { FormsModule } from '@angular/forms';
 import { ReservationDetailsComponent } from './core/Reservation/reservation-details/reservation-details.component';
 import { UniversiteDetailComponent } from './core/universite/universite-detail/universite-detail.component';
 import { UniversiteListeComponent } from './core/universite/universite-liste/universite-liste.component';
@@ -31,6 +29,13 @@ import { UniversiteUpdateComponent } from './core/universite/universite-update/u
 import { SideComponent } from './shared/side/side.component';
 import { AddReservationComponent } from './core/Reservation/add-reservation/add-reservation.component';
 import { FoyerlisteComponent } from './core/foyer/foyerliste/foyerliste.component';
+import { ErrorMessageComponent } from './shared/error-message/error-message.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -57,7 +62,8 @@ import { FoyerlisteComponent } from './core/foyer/foyerliste/foyerliste.componen
     AddfoyerComponent,
     UpdatefoyerComponent,
     AddReservationComponent,
-    FoyerlisteComponent
+    FoyerlisteComponent,
+    ErrorMessageComponent
     
     
   ],
@@ -65,7 +71,10 @@ import { FoyerlisteComponent } from './core/foyer/foyerliste/foyerliste.componen
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
