@@ -1,0 +1,113 @@
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical"
+  data-navbarbg="skin6" data-sidebartype="full"
+  data-sidebar-position="fixed" data-header-position="fixed">
+  <app-side></app-side>
+  <div class="body-wrapper">
+    <app-navbar></app-navbar>
+    <div class="container-fluid">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title fw-semibold mb-4">Reservation Details
+            {{reservation.idReservation}}</h5>
+          <p class="mb-0">Reservation Date : {{reservation.anneeReservation|
+            date: 'yyyy-MM-dd'}} </p>
+          <div class="alert alert-sm alert-primary" role="alert">Reservation
+            State : {{reservation.status}}</div>
+          update reservation State ?
+          <select>
+            <option value="confirmed"
+              (click)="updateReservationState('confirmed')"> Confirme </option>
+            <option value="cancel" (click)="updateReservationState('Cancel')">
+              Cancel </option>
+          </select>
+          <h5 class="card-title fw-semibold mb-4">Reservation Owner </h5>
+          <table class="table  text-nowrap mb-0 align-middle">
+            <thead class=" table-info text-dark fs-4">
+              <tr>
+               
+                <th class="border-bottom-0">
+                  <h6 class="fw-semibold mb-0">Etudiant Name </h6>
+                </th>
+                <th class="border-bottom-0">
+                  <h6 class="fw-semibold mb-0">Etudiant prenomEt</h6>
+                </th>
+                <th class="border-bottom-0">
+                  <h6 class="fw-semibold mb-0">Email</h6>
+                </th>
+                <th class="border-bottom-0">
+                  <h6 class="fw-semibold mb-0">Cin</h6>
+                </th>
+                <th class="border-bottom-0">
+                  <h6 class="fw-semibold mb-0">Universite</h6>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let etudiant of etudiants">
+               
+                <td class="border-bottom-0">
+                  <h6 class="fw-semibold mb-1">{{etudiant.nomEt}}</h6>
+                </td>
+                <td class="border-bottom-0">
+                  <h6 class="fw-semibold mb-1">{{etudiant.prenomEt}}</h6>
+                </td>
+                <td class="border-bottom-0">
+                  <p class="mb-0 fw-normal">email</p>
+                </td>
+                <td class="border-bottom-0">
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="badge bg-primary rounded-3 fw-semibold">{{etudiant.cin}}</span>
+                  </div>
+                </td>
+                <td class="border-bottom-0">
+                  <h6 class="fw-semibold mb-0 fs-4">{{etudiant.ecole}}</h6>
+                </td>
+
+              </tr>
+
+            </tbody>
+          </table>
+        <div *ngIf="chamber != null">
+          <h5 class="card-title fw-semibold mb-4">Chambre en Reservation
+            {{chamber.idChamber}}</h5>
+          <table class="table  text-nowrap mb-0 align-middle ">
+            <thead class=" table-info text-dark fs-4">
+              <tr>
+
+                <th class="border-bottom-0">
+                  <h6 class="fw-semibold mb-0">numero chamber </h6>
+                </th>
+                <th class="border-bottom-0">
+                  <h6 class="fw-semibold mb-0">Type Chamber</h6>
+                </th>
+                <th class="border-bottom-0">
+                  <h6 class="fw-semibold mb-0">Options </h6>
+                </th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border-bottom-0">
+
+                  <h6 class="fw-semibold mb-0">{{chamber.numerochamber}}</h6></td>
+                <td class="border-bottom-0">
+                  <h6 class="fw-semibold mb-1">{{chamber.typeC}}</h6>
+
+                </td>
+                <td class="border-bottom-0">
+                  <h6 class="fw-semibold mb-1">SOON</h6>
+
+                </td>
+
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+          More information hne
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

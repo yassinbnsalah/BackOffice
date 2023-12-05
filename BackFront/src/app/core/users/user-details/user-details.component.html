@@ -1,0 +1,28 @@
+<div class="user-details-card">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-title">User Details</h5>
+      <button class="close" (click)="closeCard()">&times;</button>
+    </div>
+    <div class="card-body">
+      <!-- Display user details here -->
+      <p><strong>Name:</strong> {{ user.nomEt }} {{ user.prenomEt }}</p>
+      <p><strong>Email:</strong> {{ user.email }}</p>
+      <p><strong>Date of Birth:</strong> {{ user.dateNaissance | date }}</p>
+      <!-- Add more user details as needed -->
+    </div>
+  </div>
+</div>
+
+<!--<h1 mat-dialog-title>Welcome user</h1>-->
+<!--<div mat-dialog-content>-->
+<!--  <p>What's your favorite animal?</p>-->
+<!--  <mat-form-field>-->
+<!--    <input matInput [(ngModel)]="data.animal">-->
+<!--  </mat-form-field>-->
+<!--</div>-->
+<!--<div mat-dialog-actions>-->
+<!--  <button mat-button (click)="onCancel()">No Thanks</button>-->
+<!--  <button mat-button [mat-dialog-close]="data.animal"-->
+<!--          cdkFocusInitial>Ok</button>-->
+<!--</div>-->

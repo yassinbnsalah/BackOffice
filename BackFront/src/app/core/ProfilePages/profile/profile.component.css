@@ -1,0 +1,53 @@
+.profile-container {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.profile-image-container {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mini-fab {
+  position: absolute;
+  bottom: 0%; /* Adjust the distance from the bottom as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  color: white; /* Button text color */
+}
+
+.profile-details {
+  flex-grow: 1;
+}
+
+.mat-dialog-content {
+  padding: 0;
+}
+
+.mat-dialog-title {
+  background-color: #007bff;
+  color: white;
+  padding: 15px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Style for the dialog actions */
+.mat-dialog-actions {
+  justify-content: flex-end;
+  padding: 15px;
+  background-color: #f0f0f0;
+}
