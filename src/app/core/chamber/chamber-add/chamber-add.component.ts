@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { Chamber } from "src/app/model/Chamber";
 import { Bloc } from "src/app/model/Bloc";  
 import { ChamberService } from "src/app/service/chamber.service";
+import { NgForm } from "@angular/forms";
 
 @Component({
   selector: 'app-chamber-add',
@@ -14,6 +15,7 @@ export class ChamberAddComponent implements OnInit {
   selectedFile: File | null = null;
   selectedBloc: string = '';  // Déclaration de la propriété selectedBloc
   blocs: Bloc[] = [];  // Déclaration de la liste des blocs
+
 
   constructor(private serviceChamber: ChamberService,
               private activatedRoute: ActivatedRoute,
@@ -114,5 +116,10 @@ export class ChamberAddComponent implements OnInit {
         console.error('Erreur lors de l\'ajout de la chambre :', error);
       }
     );
+  }
+
+  test(a:any){
+    console.log(a);
+
   }
 }

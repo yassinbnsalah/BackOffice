@@ -37,6 +37,7 @@ import { DetailBlocComponent } from './core/bloc/detail-bloc/detail-bloc.compone
 
 
 
+
 const routes: Routes = [
   //reservation Route 
   { path: "", component: NotfoundComponent },
@@ -76,14 +77,19 @@ const routes: Routes = [
   // Login URLS 
   { path: "login", component: LoginComponent },
   { path: "forgetpassword", component: ForgetPasswordComponent },
+  
   // chamber URLS 
-  { path: ":universite/chamber", component: ChamberListeComponent },
-  { path: ":universite/chamber/add", component: ChamberAddComponent },
-  { path: ":universite/chamber/:id", component: ChamberDetailsComponent },
-  { path: ":universite/chamber/update/:id", component: ChamberUpdateComponent },
+  {
+    path: ":universite/chamber", loadChildren:()=>
+    import('./core/chamber/chamber/chamber.module').then(m=>m.ChamberModule)
+  },
+
+  {
+    path: "/admin/chamber", loadChildren:()=>
+    import('./core/chamber/chamber/chamber.module').then(m=>m.ChamberModule)
+  },
   //{path:"universite",component:UniversiteListeComponent},
   { path: "universite-details/:id", component: UniversiteDetailComponent },
-
 
   //Universite Route
   { path: ":universite/information", component: UniversiteDetailComponent },
