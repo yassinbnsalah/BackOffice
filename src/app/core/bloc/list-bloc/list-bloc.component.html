@@ -11,12 +11,18 @@
             <div class="card-body p-4">
 
               <h5 class="card-title fw-semibold mb-4">Bloc Liste</h5>
-              <div class="input-group mt-3 mb-3" style="width: 50%">
-                <input type="text" class="form-control rounded" placeholder="Search" aria-label="Search"
-                  aria-describedby="search-addon" [(ngModel)]="search" />
-
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="input-group mt-3 mb-3">
+                      <input type="text" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" [(ngModel)]="search" />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <button *ngIf="CurrentUser.role[0] !== 'ADMIN'" type="button" class="btn btn-primary" (click)="GoToAdd()">Ajouter un bloc</button>
+                  </div>
+                </div>
               </div>
-              <button *ngIf="CurrentUser.role[0] !== 'ADMIN'" type="button" class="btn btn-primary" (click)="GoToAdd()">Ajouter un bloc</button>
               
               <div class="table-responsive">
                 <table class="table text-nowrap mb-0 align-middle">

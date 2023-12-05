@@ -15,6 +15,9 @@ import {Document} from "../../../model/Documents";
 export class UniversiteDetailComponent {
   universite !: Universite ;
   sanitizedDocumentContent!: SafeUrl;
+  otherUniversities: Universite[] = [];
+
+
   constructor(private serviceUniversite: UniversiteService,
               private activatedRoute: ActivatedRoute,
               private router: Router,
@@ -26,7 +29,7 @@ export class UniversiteDetailComponent {
 
   ngOnInit(): void {
     console.log("universite details");
-    
+
     this.serviceUniversite.getUniversiteByNomU(this.activatedRoute.snapshot.params['universite']).subscribe((data) => {
       this.universite = data;
      // this.getDoc();
@@ -41,9 +44,9 @@ export class UniversiteDetailComponent {
       const file = new Blob([byteArray] , {type:'application/pdf'});
       const fileURL = URL.createObjectURL(file);
       let fileName = 'downloaded pdf';
-      let link = document.createElement('a'); 
-      link.download = fileName ; 
-      link.target = '_blank' ; 
+      let link = document.createElement('a');
+      link.download = fileName ;
+      link.target = '_blank' ;
       link.href = fileURL ;
       document.body.appendChild(link);
       link.click();
@@ -59,14 +62,14 @@ export class UniversiteDetailComponent {
     }*/
   }
   getDoc(document:Document){
-   /* 
+   /*
     if (document.documentContent instanceof Blob) {
       console.log("universite details");
       this.sanitizedDocumentContent = this.sanitizer.bypassSecurityTrustUrl(
         URL.createObjectURL(document.documentContent)
       );
       console.log(this.sanitizeDocumentContent);
-      
+
     }
     /*
     const pdfData = URL.createObjectURL(documentContent);
@@ -82,6 +85,37 @@ export class UniversiteDetailComponent {
   redirectToUpdateChamber() {
     const universite = this.activatedRoute.snapshot.params['universite'];
     this.router.navigate([this.activatedRoute.snapshot.params['universite']]);
+  }
+
+  cycleStatus(universite: Universite) {
+    switch (universite.statuts) {
+      case 'En_attente':
+        this.updateStatus(universite, 'Accepté');
+        break;
+      case 'Accepté':
+        this.updateStatus(universite, 'Refusé');
+        break;
+      case 'Refusé':
+        this.updateStatus(universite, 'En_attente');
+        break;
+      default:
+        this.updateStatus(universite, 'En_attente');
+        break;
+    }
+  }
+  updateStatus(universite: Universite, status: string) {
+    this.serviceUniversite.updateStatus(universite.idUniversite, status).subscribe(
+      (updatedUniversite) => {
+        // Handle the response as needed
+        console.log('Status updated successfully:', updatedUniversite);
+
+        // Update the local state to reflect the new status
+        universite.statuts = status;
+      },
+      (error) => {
+        console.error('Error updating status:', error);
+      }
+    );
   }
 
   /*downloadDocument(document: Document): void {

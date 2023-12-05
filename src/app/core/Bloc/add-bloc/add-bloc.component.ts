@@ -36,6 +36,7 @@ export class AddBlocComponent {
     const capaciteBlocControl = this.form.get('capaciteBloc');
     if (capaciteBlocControl) {
       capaciteBlocControl.setValue(0); // Set the desired value
+      
     }
   }
 

@@ -17,6 +17,7 @@ export class UniversiteListeComponent implements OnInit {
   CurrentUser: any;
   filteredUniversites: Universite[] = [];
 
+  searchQuery: string = '';
 
   constructor(private universiteService: UniversiteService, private storage: StorageService,
     private router: Router) {
@@ -31,17 +32,20 @@ export class UniversiteListeComponent implements OnInit {
       (data) => {
         this.universites = data;
         console.log(data);
+        this.checkAndDisableUniversities();
       },
       (error) => {
         console.error("Error fetching universites: ", error);
       }
     );
   }
+
   GoToUniversiteDetails(name: any) {
   //  this.CurrentUser = this.storage.getUser();
    // if (this.CurrentUser.role[0] == "ADMIN") {
       this.router.navigate(["admin/universite/", name])
    // }
+
   }
 
   cycleStatus(universite: Universite) {
@@ -75,14 +79,45 @@ export class UniversiteListeComponent implements OnInit {
       }
     );
   }
-    onSearch(searchQuery: string) {
-      // Perform filtering based on the search query
+
+  onSearch() {
+    if (this.searchQuery && this.searchQuery.trim() !== '') {
       this.filteredUniversites = this.universites.filter(universite =>
-        universite.nomUniversite.toLowerCase().includes(searchQuery.toLowerCase())
+        universite.nomUniversite.toLowerCase().includes(this.searchQuery.toLowerCase())
       );
+    } else {
+      // If search query is empty, display all data
+      this.filteredUniversites = this.universites;
     }
-
-
   }
+
+
+  currentDate: any;
+  checkAndDisableUniversities() {
+    const currentDate = new Date();
+    const oneMonthAgo = new Date();
+    oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
+
+    this.universites.forEach(universite => {
+      if (
+        universite.statuts === 'En_attente' &&
+        universite.createdAt &&
+        new Date(universite.createdAt) < oneMonthAgo
+      ) {
+        this.updateStatus(universite, 'Disabled');
+      }
+    });
+  }
+  search='';
+  filterData() {
+    if (this.search.trim() === '') {
+      return this.universites;
+    }
+    return this.universites.filter(item => item.statuts.toLowerCase().includes(this.search.toLowerCase()));
+  }
+
+}
+
+
 
 

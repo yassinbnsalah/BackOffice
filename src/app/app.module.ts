@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
@@ -14,7 +13,6 @@ import { FormsModule } from '@angular/forms';
 import { ReservationDetailsComponent } from './core/Reservation/reservation-details/reservation-details.component';
 import { UniversiteDetailComponent } from './core/universite/universite-detail/universite-detail.component';
 import { UniversiteListeComponent } from './core/universite/universite-liste/universite-liste.component';
-
 import { LoginComponent } from './core/login/login.component';
 import { ForgetPasswordComponent } from './core/forget-password/forget-password.component';
 import { SidebarAdminComponent } from './shared/sidebar-admin/sidebar-admin.component';
@@ -22,17 +20,13 @@ import { ChamberListeComponent } from './core/chamber/chamber-liste/chamber-list
 import { ChamberDetailsComponent } from './core/chamber/chamber-details/chamber-details.component';
 import { ChamberAddComponent } from './core/chamber/chamber-add/chamber-add.component';
 import { ChamberUpdateComponent } from './core/chamber/chamber-update/chamber-update.component';
-
-
 import { AgentUniListeComponent } from './core/users/agent-uni-liste/agent-uni-liste.component';
 import { EtudiantListeComponent } from './core/users/etudiant-liste/etudiant-liste.component';
 import { UniversiteUpdateComponent } from './core/universite/universite-update/universite-update.component';
 import { SideComponent } from './shared/side/side.component';
 import { AddReservationComponent } from './core/Reservation/add-reservation/add-reservation.component';
 import { FoyerlisteComponent } from './core/foyer/foyerliste/foyerliste.component';
-import {ReactiveFormsModule} from "@angular/forms";
-
-
+import { ReactiveFormsModule } from "@angular/forms";
 import { ErrorMessageComponent } from './shared/error-message/error-message.component';
 import { NotfoundComponent } from './core/notfound/notfound.component';
 import { AddBlocComponent } from './core/bloc/add-bloc/add-bloc.component';
@@ -44,6 +38,10 @@ import { DemandeListeComponent } from './core/demande-liste/demande-liste.compon
 import { DetailBlocComponent } from './core/bloc/detail-bloc/detail-bloc.component';
 import { BlocModule } from './core/bloc/bloc/bloc.module';
 import { BlocAdminModule } from './core/bloc/bloc/bloc-admin/bloc-admin.module';
+import { ListeAgentComponent } from './core/universite/agent-liste/liste-agent/liste-agent.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatPaginatorModule } from "@angular/material/paginator";
+import { PaginatComponent } from './shared/pagi/paginat/paginat.component';
 
 
 
@@ -82,9 +80,12 @@ import { BlocAdminModule } from './core/bloc/bloc/bloc-admin/bloc-admin.module';
     StepperTestComponent,
     AcceptedUniversiteComponent,
     UniversiteUpdateComponent ,
-    DemandeListeComponent,
     DetailBlocComponent,
-    NotfoundComponent
+    ErrorMessageComponent,
+    NotfoundComponent,
+    ListeAgentComponent,
+    PaginatComponent,
+    DemandeListeComponent
   ],
   imports: [
     BrowserModule,
@@ -93,7 +94,9 @@ import { BlocAdminModule } from './core/bloc/bloc/bloc-admin/bloc-admin.module';
     AppRoutingModule,
     ReactiveFormsModule,
     BlocModule,
-    BlocAdminModule
+    BlocAdminModule,
+    MatPaginatorModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

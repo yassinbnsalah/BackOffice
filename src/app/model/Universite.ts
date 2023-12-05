@@ -15,4 +15,6 @@ export class Universite {
   imagebyte!:string ;
   image?: Image | null;
   documents ?:Document [] ;
+  createdAt!:Date;
+  updatedAt!:Date;
 }
