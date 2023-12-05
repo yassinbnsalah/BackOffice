@@ -30,6 +30,7 @@ import { DetailBlocComponent } from './core/bloc/detail-bloc/detail-bloc.compone
 
 const routes: Routes = [
   //reservation Route 
+  {path:"forgetpassword",component:ForgetPasswordComponent},
   { path: "test", component: StepperTestComponent },
   {
     path: "admin/reservation", loadChildren:()=>

@@ -1,4 +1,5 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError, throwError } from 'rxjs';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 
@@ -17,5 +18,16 @@ export class AuthService {
       environment.AuthentificationBackendURL,
       credentials
       , this.httpOptions);
+  }
+  
+  ForgetPassword(email: string) {
+    const params = new HttpParams().set('email', email);
+    return this.http.get(environment.baseURL + 'UserRestController/SendEmail', { params })
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          // Handle forget password errors here
+          return throwError(error);
+        })
+      );
   }
 }

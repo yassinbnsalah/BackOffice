@@ -64,27 +64,27 @@
                           (click)="GoToReservationDetails(reservation.idReservation)">
                           <h6 class="fw-semibold mb-0">{{reservation.idReservation}}</h6></a></td>
                       <td class="border-bottom-0">
-                        <h6 class="fw-semibold mb-1">{{reservation.etudiants[0].nomEt}}</h6>
+                        <h6 class="mb-0 fw-normal">{{reservation.etudiants[0].nomEt}}</h6>
 
-                        <span class="fw-normal">{{reservation.etudiants[0].email}}</span>
+                        <span class="mb-0 fw-normal">{{reservation.etudiants[0].email}}</span>
                       </td>
                       <td class="border-bottom-0">
-                        <h6 class="fw-semibold mb-1">{{reservation.anneeUniversitaire}}</h6>
+                        <h6 class="mb-0 fw-normal">{{reservation.anneeUniversitaire}}</h6>
 
                       </td>
                       <td class="border-bottom-0">
                         <div class="d-flex align-items-center gap-2"
                           *ngIf="reservation.status == 'confirmed'">
-                          <span class="badge bg-primary rounded-3 fw-semibold">{{reservation.status}}</span>
+                          <span class="badge bg-primary rounded-3 mb-0 fw-normal">{{reservation.status}}</span>
                         </div>
                         <div class="d-flex align-items-center gap-2"
                           *ngIf="reservation.status != 'confirmed'">
-                          <span class="badge bg-danger rounded-3 fw-semibold">{{reservation.status}}</span>
+                          <span class="badge bg-danger rounded-3 mb-0 fw-normal">{{reservation.status}}</span>
                         </div>
                       </td>
 
                       <td class="border-bottom-0">
-                        <h6 class="fw-semibold mb-1">{{reservation.anneeReservation | date: 'yyyy-MM-dd'}}</h6>
+                        <h6 class="mb-0 fw-normal">{{reservation.anneeReservation | date: 'yyyy-MM-dd'}}</h6>
 
                       </td>
                     </tr>

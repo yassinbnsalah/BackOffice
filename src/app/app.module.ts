@@ -1,3 +1,4 @@
+import { MatExpansionModule } from '@angular/material/expansion';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -42,8 +43,21 @@ import { ListeAgentComponent } from './core/universite/agent-liste/liste-agent/l
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { PaginatComponent } from './shared/pagi/paginat/paginat.component';
-
-
+import { ChangePasswordComponent } from './core/ProfilePages/change-password/change-password.component';
+import { MyProfileComponent } from './core/ProfilePages/my-profile/my-profile.component';
+import { ProfileComponent } from './core/ProfilePages/profile/profile.component';
+import { EmailChangePasswordComponent } from './core/users/email-change-password/email-change-password.component';
+import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confirmation-dialog.component';
+import {MatTabsModule} from "@angular/material/tabs";
+import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MaterialModule } from './material-module';
+import {  ModifyMyProfileComponent } from './core/ProfilePages/modify-my-profile/modify-my-profile.component';
+import { PopupComponent } from './shared/popup/popup.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +99,14 @@ import { PaginatComponent } from './shared/pagi/paginat/paginat.component';
     NotfoundComponent,
     ListeAgentComponent,
     PaginatComponent,
-    DemandeListeComponent
+    DemandeListeComponent,
+    ChangePasswordComponent,
+    ModifyMyProfileComponent,
+    MyProfileComponent,
+    ProfileComponent,
+    EmailChangePasswordComponent,
+    ConfirmationDialogComponent,
+    PopupComponent
   ],
   imports: [
     BrowserModule,
@@ -96,7 +117,16 @@ import { PaginatComponent } from './shared/pagi/paginat/paginat.component';
     BlocModule,
     BlocAdminModule,
     MatPaginatorModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatTabsModule,
+    MatExpansionModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
