@@ -61,12 +61,14 @@ const routes: Routes = [
   { path: "detailBloc", component: DetailBlocComponent },
 
   // Foyer Route
-  { path: "admin/foyer", component: FoyerlisteComponent },
-
-  { path: ":universite/foyer", component: FoyerlisteComponent },
-  { path: ":universite/foyer/add", component: AddfoyerComponent },
-  { path: ":universite/foyer/:id", component: DetailsfoyerComponent },
-  { path: ":universite/foyer/update/:id", component: UpdatefoyerComponent },
+  {
+    path: "/admin/foyer", loadChildren:()=>
+    import('./core/foyer/foyer/foyer.module').then(m=>m.FoyerModule)
+  },
+  {
+    path: ":universite/foyer", loadChildren:()=>
+    import('./core/foyer/foyer/foyer.module').then(m=>m.FoyerModule)
+  },
   // User Route
   { path: "admin/agentuniliste", component: AgentUniListeComponent },
   { path: "admin/etudiantliste", component: EtudiantListeComponent },
