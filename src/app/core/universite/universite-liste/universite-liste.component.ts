@@ -81,12 +81,16 @@ export class UniversiteListeComponent implements OnInit {
   }
 
   onSearch() {
-    //console.log('Search Query:', this.searchQuery);
-    this.filteredUniversites = this.universites.filter(universite =>
-      universite.nomUniversite.toLowerCase().includes(this.searchQuery.toLowerCase())
-    );
-    //console.log('Filtered Universities:', this.filteredUniversites);
+    if (this.searchQuery && this.searchQuery.trim() !== '') {
+      this.filteredUniversites = this.universites.filter(universite =>
+        universite.nomUniversite.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    } else {
+      // If search query is empty, display all data
+      this.filteredUniversites = this.universites;
+    }
   }
+
 
   currentDate: any;
   checkAndDisableUniversities() {
@@ -104,9 +108,16 @@ export class UniversiteListeComponent implements OnInit {
       }
     });
   }
-
-
+  search='';
+  filterData() {
+    if (this.search.trim() === '') {
+      return this.universites;
+    }
+    return this.universites.filter(item => item.statuts.toLowerCase().includes(this.search.toLowerCase()));
+  }
 
 }
+
+
 
 

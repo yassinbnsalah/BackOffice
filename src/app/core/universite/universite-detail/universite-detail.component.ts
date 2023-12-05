@@ -87,6 +87,37 @@ export class UniversiteDetailComponent {
     this.router.navigate([this.activatedRoute.snapshot.params['universite']]);
   }
 
+  cycleStatus(universite: Universite) {
+    switch (universite.statuts) {
+      case 'En_attente':
+        this.updateStatus(universite, 'Accepté');
+        break;
+      case 'Accepté':
+        this.updateStatus(universite, 'Refusé');
+        break;
+      case 'Refusé':
+        this.updateStatus(universite, 'En_attente');
+        break;
+      default:
+        this.updateStatus(universite, 'En_attente');
+        break;
+    }
+  }
+  updateStatus(universite: Universite, status: string) {
+    this.serviceUniversite.updateStatus(universite.idUniversite, status).subscribe(
+      (updatedUniversite) => {
+        // Handle the response as needed
+        console.log('Status updated successfully:', updatedUniversite);
+
+        // Update the local state to reflect the new status
+        universite.statuts = status;
+      },
+      (error) => {
+        console.error('Error updating status:', error);
+      }
+    );
+  }
+
   /*downloadDocument(document: Document): void {
     const blob = new Blob([document.documentContent], { type: document.documentType });
     const url = URL.createObjectURL(blob);

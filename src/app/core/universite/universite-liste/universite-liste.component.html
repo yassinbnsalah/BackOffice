@@ -1,9 +1,6 @@
 <div class="page-wrapper" id="main-wrapper" data-layout="vertical"
      data-navbarbg="skin6" data-sidebartype="full"
      data-sidebar-position="fixed" data-header-position="fixed">
-  <link rel="stylesheet" href="universite-liste.component.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-ezrInMyv9q3DvOglOf0r1qLXR8wiYxE6wKhyxgTFPI9U12ZjWuBbM5qc62HIJxMbu" crossorigin="anonymous">
-
   <app-sidebar-admin></app-sidebar-admin>
   <div class="body-wrapper">
     <app-navbar></app-navbar>
@@ -20,11 +17,6 @@
                        aria-label="Search" [(ngModel)]="searchQuery" (input)="onSearch()">
               </form>
               <br>
-              <tr *ngIf="searchQuery && filteredUniversites.length === 0">
-                <td colspan="5" class="text-muted">No results found for '{{ searchQuery }}'.</td>
-              </tr> <br>
-
-
               <div class="table-responsive">
                 <table class="table text-nowrap mb-0 align-middle">
                   <thead class=" table-info  text-dark fs-4">
@@ -42,44 +34,20 @@
                       <h6 class="fw-semibold mb-0">Foyer</h6>
                     </th>
                     <th class="border-bottom-0">
+                      <h6 class="fw-semibold mb-0">Created_AT</h6>
+                    </th>
+                    <th class="border-bottom-0">
+                      <h6 class="fw-semibold mb-0">Updated_AT</h6>
+                    </th>
+                    <th class="border-bottom-0">
                       <h6 class="fw-semibold mb-0">Accepté ou Non ?</h6>
                     </th>
                   </tr>
                   </thead>
                   <tbody>
-
-                  <tr *ngFor="let universite of universites">
-                    <td class="border-bottom-0">
-                      <a (click)="GoToUniversiteDetails(universite.idUniversite)">
-                        <h6 class="fw-semibold mb-0">{{ universite.idUniversite }}</h6>
-                      </a>
-                    </td>
-                    <td class="border-bottom-0">
-                      <p class="mb-0 fw-normal"  (click)="GoToUniversiteDetails(universite.nomUniversite)">{{ universite.nomUniversite }}</p>
-                    </td>
-                    <td class="border-bottom-0">
-                      <p class="mb-0 fw-normal">{{ universite.adresse }}</p>
-                    </td>
-                    <td class="border-bottom-0">
-                      <p class="mb-0 fw-normal">Foyer ici</p>
-                    </td>
-                    <!-- ... -->
-                    <td class="border-bottom-0">
-                      <button type="button" class="btn"
-                              [class.btn-success]="universite.statuts === 'Accepté'"
-                              [class.btn-danger]="universite.statuts === 'Refusé'"
-                              [class.btn-warning]="universite.statuts === 'En_attente'"
-                              [class.btn-disabled]="universite.statuts === 'Disabled'"
-
-                      (click)="cycleStatus(universite)">
-                        {{ universite.statuts }}
-                      </button>
-                    </td>
-
-                    <!-- ... -->
-                  </tr>
-
-                  <ng-container *ngIf="filteredUniversites.length > 0; else noData">
+                  <!-- Use ngIf to conditionally render based on the search query -->
+                  <ng-container *ngIf="searchQuery && searchQuery.trim() !== ''; else showAllData">
+                    <!-- If there's a search query, filter the data -->
                     <tr *ngFor="let universite of filteredUniversites">
                       <td class="border-bottom-0">
                         <a (click)="GoToUniversiteDetails(universite.idUniversite)">
@@ -100,14 +68,20 @@
                                 [class.btn-success]="universite.statuts === 'Accepté'"
                                 [class.btn-danger]="universite.statuts === 'Refusé'"
                                 [class.btn-warning]="universite.statuts === 'En_attente'"
-                                [class.btn-disabled]="universite.statuts === 'Disabled'"
                                 (click)="cycleStatus(universite)">
                           {{ universite.statuts }}
                         </button>
                       </td>
+                      <td class="border-bottom-0">
+                        <p class="mb-0 fw-normal">{{universite.createdAt | date:'yy-MM-dd' }}</p>
+                      </td>
+                      <td class="border-bottom-0">
+                        <p class="mb-0 fw-normal">{{universite.updatedAt | date:'yy-MM-dd' }}</p>
+                      </td>
                     </tr>
                   </ng-container>
-                  <ng-template #noData>
+                  <ng-template #showAllData>
+                    <!-- If search query is empty, display all data -->
                     <tr *ngFor="let universite of universites">
                       <td class="border-bottom-0">
                         <a (click)="GoToUniversiteDetails(universite.idUniversite)">
@@ -128,17 +102,23 @@
                                 [class.btn-success]="universite.statuts === 'Accepté'"
                                 [class.btn-danger]="universite.statuts === 'Refusé'"
                                 [class.btn-warning]="universite.statuts === 'En_attente'"
-                                [class.btn-disabled]="universite.statuts === 'Disabled'"
                                 (click)="cycleStatus(universite)">
                           {{ universite.statuts }}
                         </button>
                       </td>
+                      <td class="border-bottom-0">
+                        <p class="mb-0 fw-normal">{{universite.createdAt | date:'yy-MM-dd' }}</p>
+                      </td>
+                      <td class="border-bottom-0">
+                        <p class="mb-0 fw-normal">{{universite.updatedAt | date:'yy-MM-dd' }}</p>
+                      </td>
                     </tr>
-
                   </ng-template>
-
                   </tbody>
                 </table>
+                <div *ngIf="universites.length === 0" class="text-center">
+                  <p class="text-muted">No data found</p>
+                </div>
               </div>
             </div>
           </div>
