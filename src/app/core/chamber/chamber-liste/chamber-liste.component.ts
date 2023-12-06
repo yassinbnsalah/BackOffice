@@ -27,7 +27,7 @@ export class ChamberListeComponent implements OnInit {
 
 
   getListeChamber() {
-    this.chamberService.getAllChamber().subscribe(
+    this.chamberService.getChamberByUniversiteName(this.activatedRoute.snapshot.params["universite"]).subscribe(
       (chambers: Chamber[]) => {
         this.chambers = chambers;
 

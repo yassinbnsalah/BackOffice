@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { Chamber } from "src/app/model/Chamber";
 import { Bloc } from "src/app/model/Bloc";  
 import { ChamberService } from "src/app/service/chamber.service";
+import { BlocService } from "src/app/service/BlocService/bloc.service";
 
 @Component({
   selector: 'app-chamber-add',
@@ -17,6 +18,7 @@ export class ChamberAddComponent implements OnInit {
 
   constructor(private serviceChamber: ChamberService,
               private activatedRoute: ActivatedRoute,
+              private blocService : BlocService,
               private router: Router) {}
 
   ngOnInit() {
@@ -30,7 +32,7 @@ export class ChamberAddComponent implements OnInit {
   }
 
   loadBlocs() {
-    this.serviceChamber.getAllBlocs().subscribe(
+    this.blocService.getBlocByuniversite(this.activatedRoute.snapshot.params["universite"]).subscribe(
       (data) => {
         console.log(data);
         this.blocs = data;

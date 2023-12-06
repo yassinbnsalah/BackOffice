@@ -37,8 +37,8 @@ export class ReservationService {
       + "/updateReservationStatus/" + id + "/" + state, this.httpOptions)
   }
 
-  CreateReservation(numero: any, cin: any): Observable<Reservation[]> {
+  CreateReservation(numero: any, cin: any, autoRenew : any): Observable<Reservation[]> {
     return this.http.post<Reservation[]>(environment.baseURL + environment.ReservationBackendAPIS
-      + "/addReservation/" + numero , cin, this.httpOptions)
+      + "/addReservation/" + numero +"/"+autoRenew, cin, this.httpOptions)
   }
 }

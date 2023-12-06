@@ -14,53 +14,59 @@ import { BlocService } from 'src/app/service/BlocService/bloc.service';
   styleUrls: ['./add-reservation.component.css']
 })
 export class AddReservationComponent implements OnInit {
-  DisplayLoad : boolean = true; 
+  DisplayLoad: boolean = true;
   isChecked: boolean = false;
   chambers !: Chamber[];
-  etudiants !: User[] ;
-  nbAvailable !: number; 
+  etudiants !: User[];
+  nbAvailable !: number;
   etudiantsInReservation !: User[]
   reservedChamber !: Chamber;
-  CinListe:number[]= [];
+  CinListe: number[] = [];
+  autoRenew: boolean = false;
   constructor(private serviceChamber: ChamberService,
-    private serviceReservation : ReservationService, 
+    private serviceReservation: ReservationService,
     private activatedRoute: ActivatedRoute,
-    private router : Router , 
-    private blocService : BlocService ,
-    private storage : StorageService,
+    private router: Router,
+    private blocService: BlocService,
+    private storage: StorageService,
     private userService: UserService) { }
   ngOnInit(): void {
-    this.chambers =  this.activatedRoute.snapshot.data['data'].chambers;
-    this.chambers.forEach((chamber,index) =>{
-      this.blocService.getBlocByChamberId(chamber.idChamber).subscribe((data)=>{
-        this.chambers[index].bloc = data 
+    this.chambers = this.activatedRoute.snapshot.data['data'].chambers;
+    this.chambers.forEach((chamber, index) => {
+      this.blocService.getBlocByChamberId(chamber.idChamber).subscribe((data) => {
+        this.chambers[index].bloc = data
       })
     })
-    this.etudiants =  this.activatedRoute.snapshot.data['data'].etudiants;
+    this.etudiants = this.activatedRoute.snapshot.data['data'].etudiants;
   }
 
-  extractCinList(){
-    this.etudiantsInReservation.forEach(res =>{
+  extractCinList() {
+    this.etudiantsInReservation.forEach(res => {
       this.CinListe.push(res.cin)
     })
   }
-  saveReservation(){
-    if(this.reservedChamber!=null && this.etudiants != null){
-      this.DisplayLoad = false ; 
+  updateAutoRenew(){
+    this.autoRenew = ! this.autoRenew ;
+    console.log(this.autoRenew);
+    
+  }
+  saveReservation() {
+    if (this.reservedChamber != null && this.etudiants != null) {
+      this.DisplayLoad = false;
       this.extractCinList()
+
       this.serviceReservation.CreateReservation(
-        this.reservedChamber.numerochamber, this.CinListe).subscribe(
-          (data)=>{
-            console.log("finaly reservation");
+        this.reservedChamber.numerochamber, this.CinListe , this.autoRenew).subscribe(
+          (data) => {
             console.log(data);
-            this.router.navigate([this.activatedRoute.snapshot.params['universite']+"/reservation"])
+            this.router.navigate([this.activatedRoute.snapshot.params['universite'] + "/reservation"])
           }
         )
     }else{
       console.log("errooor while adding reservation");
-      
+
     }
-   
+
   }
 
   pickReservedChamber(chamber: Chamber) {
@@ -68,24 +74,24 @@ export class AddReservationComponent implements OnInit {
     this.reservedChamber = chamber
     console.log(chamber.res);
     let nbplacePicked = 0;
-    chamber.res.forEach(reservation =>{
-        if(reservation.estValide){
-          nbplacePicked = nbplacePicked +1 
-        }
+    chamber.res.forEach(reservation => {
+      if (reservation.estValide) {
+        nbplacePicked = nbplacePicked + 1
+      }
     })
     console.log(nbplacePicked);
-    
-    if      (chamber.typeC=="Simple")       {this.nbAvailable = 1 - nbplacePicked;}
-    else if (chamber.typeC=="Double")       {this.nbAvailable = 2 - nbplacePicked;}
-    else if (chamber.typeC=="Triple" )      {this.nbAvailable = 3 - nbplacePicked;}
+
+    if (chamber.typeC == "Simple") { this.nbAvailable = 1 - nbplacePicked; }
+    else if (chamber.typeC == "Double") { this.nbAvailable = 2 - nbplacePicked; }
+    else if (chamber.typeC == "Triple") { this.nbAvailable = 3 - nbplacePicked; }
     console.log(this.nbAvailable);
-    
+
     this.etudiantsInReservation = []
   }
 
   pickEtudiants(etudiant: any) {
     const existingIndex = this.etudiantsInReservation.indexOf(etudiant);
-  
+
     if (existingIndex !== -1) {
       // If the student is already in the list, remove them
       this.etudiantsInReservation.splice(existingIndex, 1);
@@ -95,7 +101,7 @@ export class AddReservationComponent implements OnInit {
         this.etudiantsInReservation.push(etudiant);
       }
     }
-  
+
     console.log(this.etudiantsInReservation);
   }
   /*pickEtudiants(etudiant : any){
@@ -116,24 +122,24 @@ export class AddReservationComponent implements OnInit {
   */
   getChamberList() {
     this.serviceChamber.getAvailabeChamberByUniversiteName
-    (this.activatedRoute.snapshot.params['universite']).subscribe(
-      (data) => {
-        console.log(data);
-        
-        this.chambers = data;
-      }
-    )
+      (this.activatedRoute.snapshot.params['universite']).subscribe(
+        (data) => {
+          console.log(data);
+
+          this.chambers = data;
+        }
+      )
   }
 
-  getEtudiantList(){
+  getEtudiantList() {
     this.userService.getUserbyUniversiteAndRole
-    (this.activatedRoute.snapshot.params['universite'],
-    "ETUDIANT").subscribe(
-      (data)=>{
-        console.log(data);
-        this.etudiants=data ;
-      }
-    )
+      (this.activatedRoute.snapshot.params['universite'],
+        "ETUDIANT").subscribe(
+          (data) => {
+            console.log(data);
+            this.etudiants = data;
+          }
+        )
   }
 
 
