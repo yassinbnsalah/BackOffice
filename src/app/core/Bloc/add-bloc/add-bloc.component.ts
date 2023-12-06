@@ -5,6 +5,7 @@ import { BlocService } from '../../../service/BlocService/bloc.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
+
 @Component({
   selector: 'app-add-bloc',
   templateUrl: './add-bloc.component.html',
@@ -17,6 +18,7 @@ export class AddBlocComponent {
   capacite:number=0;
   addChamberPressed:boolean=false;
   chamberCount: number[] = [];
+  @Output() blocAdded = new EventEmitter<Bloc>();
 
   constructor(
     private activatedRoute : ActivatedRoute   ,
@@ -35,7 +37,7 @@ export class AddBlocComponent {
     });
     const capaciteBlocControl = this.form.get('capaciteBloc');
     if (capaciteBlocControl) {
-      capaciteBlocControl.setValue(0); // Set the desired value
+      capaciteBlocControl.setValue(0); 
       
     }
   }
@@ -93,15 +95,16 @@ export class AddBlocComponent {
       }
       if (capaciteBlocControl) {
         capaciteBlocControl.setValue(this.capacite);
-        console.log("this is capacite = "+this.capacite)// Set the desired value
+        console.log("this is capacite = "+this.capacite)
       }
       this.blocService.addBloc(this.route.snapshot.params["universite"], this.form.value).subscribe((d) => {
         console.log('this is title' + this.form.get('nomBloc')?.value);
+        this.blocAdded.emit(d);
         this.bloc = d;
         console.log(d);
 
       });
-      this.location.back();
+     
     } else {
       console.log('form is invalid');
     }

@@ -48,14 +48,14 @@ export class AddReservationComponent implements OnInit {
     if(this.reservedChamber!=null && this.etudiants != null){
       this.DisplayLoad = false ; 
       this.extractCinList()
-     /* this.serviceReservation.CreateReservation(
+      this.serviceReservation.CreateReservation(
         this.reservedChamber.numerochamber, this.CinListe).subscribe(
           (data)=>{
             console.log("finaly reservation");
             console.log(data);
             this.router.navigate([this.activatedRoute.snapshot.params['universite']+"/reservation"])
           }
-        )*/
+        )
     }else{
       console.log("errooor while adding reservation");
       

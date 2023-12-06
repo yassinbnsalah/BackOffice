@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BlocService } from "../../../service/BlocService/bloc.service";
 import { Bloc } from "../../../model/Bloc";
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-detail-bloc',
@@ -9,7 +10,7 @@ import { Bloc } from "../../../model/Bloc";
 })
 export class DetailBlocComponent implements OnInit {
 
-  constructor(private serviceBloc: BlocService) {
+  constructor(private serviceBloc: BlocService,private location: Location) {
   }
 
   storedbloc: Bloc | null = null;
@@ -33,5 +34,8 @@ export class DetailBlocComponent implements OnInit {
       this.stats=d;
       console.log(d);
     })
+  }
+  GoBack(){
+    this.location.back();
   }
 }

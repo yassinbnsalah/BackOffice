@@ -39,4 +39,7 @@ export class UpdateBlocComponent implements OnInit {
       this.location.back();
     })
   }
+  GoBack(){
+    this.location.back();
+  }
 }

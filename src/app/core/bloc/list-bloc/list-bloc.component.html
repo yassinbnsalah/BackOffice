@@ -11,6 +11,7 @@
             <div class="card-body p-4">
 
               <h5 class="card-title fw-semibold mb-4">Bloc Liste</h5>
+              
               <div class="container">
                 <div class="row">
                   <div class="col-md-6">
@@ -19,14 +20,16 @@
                     </div>
                   </div>
                   <div class="col-md-6">
-                    <button *ngIf="CurrentUser.role[0] !== 'ADMIN'" type="button" class="btn btn-primary" (click)="GoToAdd()">Ajouter un bloc</button>
+                    <button *ngIf="CurrentUser.role[0] !== 'ADMIN' && showaddform==false" type="button" class="btn btn-primary" (click)="GoToAdd()">Ajouter un bloc</button>
+                    <button *ngIf="CurrentUser.role[0] !== 'ADMIN' && showaddform==true" type="button" class="btn btn-primary" (click)="hideform()">Hide form</button>
                   </div>
+                  <app-add-bloc *ngIf="showaddform==true" (blocAdded)="onBlocAdded($event)"></app-add-bloc>
                 </div>
               </div>
               
               <div class="table-responsive">
                 <table class="table text-nowrap mb-0 align-middle">
-                  <thead class="text-dark fs-4">
+                  <thead class="table-info  text-dark fs-4">
                     <tr>
                       <th class="border-bottom-0">
                         <h6 class="fw-semibold mb-0">Id</h6>
@@ -83,7 +86,7 @@
                                 aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                              Woohoo, are you sure you want to delete this university!
+                              Woohoo, are you sure you want to delete this Bloc!
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >No</button>
@@ -98,6 +101,7 @@
                 </table>
                 
               </div>
+              
               
 
             </div>

@@ -106,7 +106,8 @@ import { PopupComponent } from './shared/popup/popup.component';
     ProfileComponent,
     EmailChangePasswordComponent,
     ConfirmationDialogComponent,
-    PopupComponent
+    PopupComponent,
+    
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@ import {Component, OnInit,Output,EventEmitter } from '@angular/core';
 import { StorageService } from 'src/app/AuthServices/storage.service';
 import { Bloc } from 'src/app/model/Bloc';
 import { BlocService } from 'src/app/service/BlocService/bloc.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-list-bloc',
@@ -15,7 +16,14 @@ export class ListBlocComponent implements OnInit{
   blocs!:Bloc[];
   search:String="";
   CurrentUser = this.storage.getUser();
-  constructor(private blocService:BlocService,private activatedRoute:ActivatedRoute,private route:Router,private storage: StorageService) {
+  showaddform=false;
+  
+  constructor(private blocService:BlocService,
+    private activatedRoute:ActivatedRoute,
+    private route:Router,
+    private storage: StorageService,
+    private snackBar: MatSnackBar
+    ) {
 
   }
   ngOnInit() {
@@ -25,6 +33,10 @@ export class ListBlocComponent implements OnInit{
       this.getListBlocByuniversite();
     }
     
+  }
+  toastMessage: string | null = null;
+  showToast(message: string): void {
+    this.toastMessage = message;
   }
   getListBlocByuniversite(){
     this.blocService.getBlocByuniversite(this.activatedRoute.snapshot.params["universite"]).subscribe((data)=>{
@@ -47,12 +59,14 @@ export class ListBlocComponent implements OnInit{
     })
   }
   
+  
   GoToAdd(){
-    if(this.CurrentUser.role[0]=="ADMIN"){
-      this.route.navigate(["admin/bloc"+"/add/"])
-    }else{
-      this.route.navigate([this.activatedRoute.snapshot.params["universite"]+"/bloc"+"/add/"])
-    }
+    // if(this.CurrentUser.role[0]=="ADMIN"){
+    //   this.route.navigate(["admin/bloc"+"/add/"])
+    // }else{
+    //   this.route.navigate([this.activatedRoute.snapshot.params["universite"]+"/bloc"+"/add/"])
+    // }
+    this.showaddform=true;
     
   }
   GoToUpdateBloc(bloc:Bloc){
@@ -65,7 +79,12 @@ export class ListBlocComponent implements OnInit{
     
   }
   onBlocAdded(newBloc: Bloc) {
-    this.blocs.push(newBloc);
+    this.blocs.push(newBloc); 
+    this.showaddform=false;
+    this.show("Bloc ajouté");
+  }
+  hideform(){
+    this.showaddform=false;
   }
   GoToDetail(bloc:Bloc){
     this.blocService.setBloc(bloc);
@@ -74,6 +93,14 @@ export class ListBlocComponent implements OnInit{
     }else{
       this.route.navigate([this.activatedRoute.snapshot.params["universite"]+"/bloc"+"/detailBloc"],{queryParams:{bloc:bloc}});
     }
+  }
+  show(message: string, duration: number = 5000): void {
+    this.snackBar.open(message, 'Close', {
+      duration: duration,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+      panelClass: ['custom-snackbar'],
+    });
   }
  
 }
