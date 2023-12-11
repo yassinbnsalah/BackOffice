@@ -8,20 +8,20 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-5">
-            <div class="project-info-box mt-0">
-                <h5>bloc desciption</h5>
-                <p class="mb-0">{{storedbloc?.description}}</p>
-            </div><!-- / project-info-box -->
-
+          <div class="project-info-box mt-0">
+            <h1 class="display-4" style="color: blue;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Detail Bloc</h1>
+          </div>
             <div class="project-info-box">
-                <p><b>Nom bloc :</b> {{storedbloc?.nomBloc}}</p>
-                <p><b>Bloc State:</b> {{storedbloc?.status}}</p>  
-                <p><b>Capacite Bloc:</b>  {{storedbloc?.capaciteBloc}}</p>
-                <p><b>number of chambers:</b>  {{numberOfChambers}}</p>
-                <p><b>number of chambers per type :</b></p>
+                <p class="lead"><b>Nom de bloc :</b> {{storedbloc?.nomBloc}}</p><hr>
+                <p class="lead"><b>Status de Bloc:</b> {{storedbloc?.status}}</p><hr>
+                <p class="lead"><b>Capacite Bloc:</b>  {{storedbloc?.capaciteBloc}}</p><hr>
+                <p class="lead"><b>Desciption de Bloc :</b> {{storedbloc?.description}}</p><hr>
+                <p class="lead"><b>number of chambers:</b>  {{numberOfChambers}}</p>
+                <p class="lead"><b>number of chambers per type :</b></p>
                 <ul>
                   <li *ngFor="let stat of stats">
-                    <b>{{stat[0]}}:</b> {{stat[1]}}
+                    <p class="lead"><b>{{stat[0]}} :</b> {{stat[1]}}</p>
+
                   </li>
                 </ul>
                

@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { BlocService } from "../../../service/BlocService/bloc.service";
 import { Bloc } from "../../../model/Bloc";
 import { Location } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-update-bloc',
@@ -23,7 +24,7 @@ export class UpdateBlocComponent implements OnInit {
     chambers:[]
   };
 
-  constructor(private activatedRoute: ActivatedRoute, private route: Router, private serviceBloc: BlocService,private location: Location) {}
+  constructor(private activatedRoute: ActivatedRoute, private route: Router, private serviceBloc: BlocService,private location: Location, private snackBar: MatSnackBar) {}
 
   ngOnInit() {
     const storedBloc = this.serviceBloc.getBloc();
@@ -34,12 +35,25 @@ export class UpdateBlocComponent implements OnInit {
     console.log(this.bloc);
   }
   updateBloc() {
+    
     this.serviceBloc.updatebloc(this.bloc).subscribe((data)=>{
       console.log(data);
       this.location.back();
+    },(error)=>{
+      this.show("verify the data");
+
     })
   }
   GoBack(){
     this.location.back();
   }
+  show(message: string, duration: number = 5000): void {
+    this.snackBar.open(message, 'Close', {
+      duration: duration,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+      panelClass: ['custom-snackbar'],
+    });
+  }
+
 }
