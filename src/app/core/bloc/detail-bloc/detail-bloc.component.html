@@ -1,69 +1,40 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
 <div class="page-wrapper" id="main-wrapper" data-layout="vertical"
-     data-navbarbg="skin6" data-sidebartype="full"
-     data-sidebar-position="fixed" data-header-position="fixed">
-  <app-side></app-side>
+  data-navbarbg="skin6" data-sidebartype="full"
+  data-sidebar-position="fixed" data-header-position="fixed">
+<app-side></app-side>
   <div class="body-wrapper">
     <app-navbar></app-navbar>
-    <div class="container-fluid">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title fw-semibold mb-4">Bloc Details
-            {{storedbloc?.idBloc}}</h5>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-5">
+            <div class="project-info-box mt-0">
+                <h5>bloc desciption</h5>
+                <p class="mb-0">{{storedbloc?.description}}</p>
+            </div><!-- / project-info-box -->
 
-          <div class="alert alert-sm alert-primary" role="alert">
-            <p>Nom bloc : {{storedbloc?.nomBloc}}</p>
-            <p>Bloc State : {{storedbloc?.status}}</p>
-            <p>Capacite Bloc : {{storedbloc?.capaciteBloc}}</p>
-            <p>desciption : {{storedbloc?.description}}</p>
-            <p></p>
-          </div>
+            <div class="project-info-box">
+                <p><b>Nom bloc :</b> {{storedbloc?.nomBloc}}</p>
+                <p><b>Bloc State:</b> {{storedbloc?.status}}</p>  
+                <p><b>Capacite Bloc:</b>  {{storedbloc?.capaciteBloc}}</p>
+                <p><b>number of chambers:</b>  {{numberOfChambers}}</p>
+                <p><b>number of chambers per type :</b></p>
+                <ul>
+                  <li *ngFor="let stat of stats">
+                    <b>{{stat[0]}}:</b> {{stat[1]}}
+                  </li>
+                </ul>
+               
+            </div><!-- / project-info-box -->
+            <button type="submit" class="btn btn-primary" (click)="GoBack()">Back</button>
 
-          <h5 class="card-title fw-semibold mb-4">List des Chambres </h5>
-          <table class="table  text-nowrap mb-0 align-middle">
-            <thead class=" table-info text-dark fs-4">
-            <tr>
+            
+        </div><!-- / column -->
 
-              <th class="border-bottom-0">
-                <h6 class="fw-semibold mb-0">Numero Chambre</h6>
-              </th>
-              <th class="border-bottom-0">
-                <h6 class="fw-semibold mb-0">Type</h6>
-              </th>
-              <th class="border-bottom-0">
-                <h6 class="fw-semibold mb-0">description</h6>
-              </th>
-              <th class="border-bottom-0">
-                <h6 class="fw-semibold mb-0">Etat</h6>
-              </th>
-            </tr>
-            </thead>
-            <tbody>
-            <!-- Check if storedbloc has chambers and the array is not empty -->
-
-              <!-- Iterate over the chambers using *ngFor -->
-              <ng-container *ngFor="let chamber of storedbloc?.chambers">
-                <tr>
-                  <td class="border-bottom-0">
-                    <h6 class="fw-semibold mb-0">{{chamber.numerochamber}}</h6>
-                  </td>
-                  <td class="border-bottom-0">
-                    <h6 class="fw-semibold mb-1">{{chamber.typeC}}</h6>
-                  </td>
-                  <td class="border-bottom-0">
-                    <h6 class="fw-semibold mb-1">{{chamber.description}}</h6>
-                  </td>
-                  <td class="border-bottom-0">
-                    <div class="d-flex align-items-center gap-2">
-                      <span class="badge bg-primary rounded-3 fw-semibold">{{chamber.etat}}</span>
-                    </div>
-                  </td>
-                </tr>
-              </ng-container>
-            </tbody>
-
-          </table>
-        </div>
-      </div>
+        
+  
     </div>
-  </div>
 </div>
+</div>
+</div>
+

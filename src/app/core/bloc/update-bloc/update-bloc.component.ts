@@ -1,8 +1,9 @@
 // update-bloc.component.ts
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output,EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { BlocService } from "../../../service/BlocService/bloc.service";
 import { Bloc } from "../../../model/Bloc";
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-update-bloc',
@@ -22,7 +23,7 @@ export class UpdateBlocComponent implements OnInit {
     chambers:[]
   };
 
-  constructor(private activatedRoute: ActivatedRoute, private route: Router, private serviceBloc: BlocService) {}
+  constructor(private activatedRoute: ActivatedRoute, private route: Router, private serviceBloc: BlocService,private location: Location) {}
 
   ngOnInit() {
     const storedBloc = this.serviceBloc.getBloc();
@@ -35,7 +36,10 @@ export class UpdateBlocComponent implements OnInit {
   updateBloc() {
     this.serviceBloc.updatebloc(this.bloc).subscribe((data)=>{
       console.log(data);
-      this.route.navigate(["/listBloc"])
+      this.location.back();
     })
+  }
+  GoBack(){
+    this.location.back();
   }
 }

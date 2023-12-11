@@ -1,10 +1,4 @@
-<div class="page-wrapper" id="main-wrapper" data-layout="vertical"
-     data-navbarbg="skin6" data-sidebartype="full"
-     data-sidebar-position="fixed" data-header-position="fixed">
-  <app-sidebar></app-sidebar>
-  <div class="body-wrapper">
-    <app-navbar></app-navbar>
-    <div class="container-fluid">
+
 
       <h1 class="title">Ajouter un Bloc</h1>
       <div class="main">
@@ -45,33 +39,44 @@
               <div class="col-md-6">
                 <div class="mb-3">
                   <label for="numerochamber" class="form-label">Numero Chamber</label>
-                  <input type="text" class="form-control" id="numerochamber" formControlName="numerochamber" [class.is-invalid]="form.get('numerochamber')?.invalid && form.get('numerochamber')?.dirty" required>
+                  <input type="text" class="form-control" id="numerochamber" formControlName="numerochamber" [class.is-invalid]="chambers.controls[i].get('numerochamber')?.invalid && chambers.controls[i].get('numerochamber')?.dirty" required>
                   <div class="invalid-feedback">
-                    <app-error-message [err]="form.get('numerochamber')" [field]="'numerochamber'"></app-error-message>
+                    <app-error-message [err]="chambers.controls[i].get('numerochamber')" [field]="'numero chamber'"></app-error-message>
                   </div>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="mb-3">
                   <label class="form-label">TypeC</label>
-                  <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" formControlName="typeC">
-                    <option selected>Select Type</option>
+                  <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" formControlName="typeC"
+                          [class.is-invalid]="chambers.controls[i].get('typeC')?.invalid && chambers.controls[i].get('typeC')?.dirty" required>
+                    <option value="" selected>Select Type</option>
                     <option value="Simple">Simple</option>
                     <option value="Double">Double</option>
                     <option value="Triple">Triple</option>
                   </select>
+                  <div class="invalid-feedback">
+                    <app-error-message [err]="chambers.controls[i].get('typeC')" [field]="'type chamber'"></app-error-message>
+                  </div>
                 </div>
               </div>
+              
               <div class="col-md-6">
                 <div class="mb-3">
                   <label for="Description" class="form-label">Description</label>
-                  <input type="text" class="form-control" id="Descriptionch" formControlName="Description">
+                  <input type="text" class="form-control" id="Descriptionch" formControlName="Description" [class.is-invalid]="chambers.controls[i].get('Description')?.invalid && chambers.controls[i].get('Description')?.dirty" required>
+                  <div class="invalid-feedback">
+                    <app-error-message [err]="chambers.controls[i].get('Description')" [field]="'Description'"></app-error-message>
+                  </div>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="mb-3">
                   <label for="Etat" class="form-label">Etat</label>
-                  <input type="text" class="form-control" id="Etat" formControlName="Etat">
+                  <input type="text" class="form-control" id="Etat" formControlName="Etat" [class.is-invalid]="chambers.controls[i].get('Etat')?.invalid && chambers.controls[i].get('Etat')?.dirty" required>
+                  <div class="invalid-feedback">
+                    <app-error-message [err]="chambers.controls[i].get('Etat')" [field]="'Etat'"></app-error-message>
+                  </div>
                 </div>
               </div>
               <div class="mb-3" *ngIf="addChamberPressed==true && chambers.length - 1 === i">
@@ -80,11 +85,7 @@
             </div>
           </div>
 
-
-          <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Add bloc</button>
+          <button type="submit" class="btn btn-primary custom-btn " [disabled]="form.invalid">Add bloc</button>
         </form>
       </div>
 
-    </div>
-  </div>
-</div>

@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
+import { Component,Output,EventEmitter } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Bloc } from '../../../model/Bloc';
 import { BlocService } from '../../../service/BlocService/bloc.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-add-bloc',
   templateUrl: './add-bloc.component.html',
-  styleUrls: ['./add-bloc.component.css'],
+  styleUrls: ['./add-bloc.component.css']
 })
 export class AddBlocComponent {
   form: FormGroup;
@@ -16,12 +18,15 @@ export class AddBlocComponent {
   capacite:number=0;
   addChamberPressed:boolean=false;
   chamberCount: number[] = [];
+  @Output() blocAdded = new EventEmitter<Bloc>();
 
   constructor(
+    private activatedRoute : ActivatedRoute   ,
     private blocService: BlocService,
     private route: ActivatedRoute,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private location: Location
   ) {
     this.form = this.fb.group({
       nomBloc: ['', Validators.required],
@@ -32,7 +37,8 @@ export class AddBlocComponent {
     });
     const capaciteBlocControl = this.form.get('capaciteBloc');
     if (capaciteBlocControl) {
-      capaciteBlocControl.setValue(0);
+      capaciteBlocControl.setValue(0); 
+      
     }
   }
 
@@ -50,10 +56,10 @@ export class AddBlocComponent {
 
   addChamberControl() {
     const chamberGroup = this.fb.group({
-      numerochamber: ['',Validators.required],
-      typeC: ['',Validators.required],
-      Description: ['',Validators.required],
-      Etat: ['',Validators.required],
+      numerochamber: [''],
+      typeC: [''],
+      Description: [''],
+      Etat: [''],
     });
 
     this.chambers.push(chamberGroup);
@@ -62,6 +68,7 @@ export class AddBlocComponent {
   removeChamberControl(index: number) {
     this.chambers.removeAt(index);
   }
+  
 
   addbloc() {
     const capaciteBlocControl = this.form.get('capaciteBloc');
@@ -88,14 +95,16 @@ export class AddBlocComponent {
       }
       if (capaciteBlocControl) {
         capaciteBlocControl.setValue(this.capacite);
-        console.log("this is capacite = "+this.capacite)// Set the desired value
+        console.log("this is capacite = "+this.capacite)
       }
-      this.blocService.addBloc("esprit", this.form.value).subscribe((d) => {
+      this.blocService.addBloc(this.route.snapshot.params["universite"], this.form.value).subscribe((d) => {
         console.log('this is title' + this.form.get('nomBloc')?.value);
+        this.blocAdded.emit(d);
         this.bloc = d;
         console.log(d);
+
       });
-      this.router.navigate([":universite/bloc"]);
+     
     } else {
       console.log('form is invalid');
     }
@@ -106,3 +115,4 @@ export class AddBlocComponent {
   }
 
 }
+

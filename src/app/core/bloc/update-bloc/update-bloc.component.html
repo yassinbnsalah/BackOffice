@@ -25,7 +25,8 @@
             <label for="description" class="form-label">Description</label>
             <textarea class="form-control" id="description" [(ngModel)]="bloc.description" required name="description"></textarea>
           </div>
-          <button type="submit" class="btn btn-primary" (click)="updateBloc()" [disabled]="f.invalid">Update bloc</button>
+          <button type="submit" class="btn btn-primary" (click)="updateBloc()"  style="margin-right: 10px;" [disabled]="f.invalid">Update bloc</button>
+          <button type="submit" class="btn btn-primary" (click)="GoBack()" [disabled]="f.invalid">Back</button>
         </form>
       </div>
     </div>

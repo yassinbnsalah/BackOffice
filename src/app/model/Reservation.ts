@@ -10,4 +10,5 @@ export class Reservation {
     anneeUniversitaire !: string ;
     status !: string ; 
     etudiants !: User[] ;
+    autoRenew !: boolean; 
 }

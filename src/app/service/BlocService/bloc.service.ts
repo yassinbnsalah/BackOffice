@@ -33,6 +33,9 @@ bloc!:Bloc;
   getallBloc():Observable<Bloc[]>{
     return this.http.get<Bloc[]>(environment.baseURL+environment.BlocBackendAPIS+"/findAll",this.httpOptions);
   }
+  getBlocByuniversite(nom:String):Observable<Bloc[]>{
+    return this.http.get<Bloc[]>(environment.baseURL+environment.BlocBackendAPIS+"/findAllByuniversite/"+nom,this.httpOptions)
+  }
   deleteBloc(id:any):Observable<Bloc>{
     return this.http.delete<Bloc>(environment.baseURL+environment.BlocBackendAPIS+"/deleteByID/"+id,this.httpOptions);
   }
@@ -44,5 +47,9 @@ bloc!:Bloc;
     return this.http.get<Bloc>(environment.baseURL+
       environment.BlocBackendAPIS+"/findBLocByChamber/"+id , this.httpOptions)
   }
+  countChambersByType(id:any){
+    return this.http.get<Bloc>(environment.baseURL+environment.BlocBackendAPIS+"/countChambersByType/"+id,this.httpOptions)
+  }
+  
 
 }

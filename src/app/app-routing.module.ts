@@ -1,11 +1,9 @@
-import { ReservationModule } from './core/Reservation/reservation/reservation.module';
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ReservationListeComponent } from './core/Reservation/reservation-liste/reservation-liste.component';
 import { DetailsfoyerComponent } from './core/foyer/detailsfoyer/detailsfoyer.component';
 import { UpdatefoyerComponent } from './core/foyer/updatefoyer/updatefoyer.component';
 import { AddfoyerComponent } from './core/foyer/addfoyer/addfoyer.component';
-import { ReservationDetailsComponent } from './core/Reservation/reservation-details/reservation-details.component';
 import { UniversiteListeComponent } from "./core/universite/universite-liste/universite-liste.component";
 import { UniversiteDetailComponent } from "./core/universite/universite-detail/universite-detail.component";
 import { LoginComponent } from './core/login/login.component';
@@ -19,11 +17,11 @@ import { EtudiantListeComponent } from './core/users/etudiant-liste/etudiant-lis
 import { ChamberListeComponent } from './core/chamber/chamber-liste/chamber-liste.component';
 import { UniversiteUpdateComponent } from './core/universite/universite-update/universite-update.component';
 import { FoyerlisteComponent } from './core/foyer/foyerliste/foyerliste.component';
-import { AddReservationComponent } from './core/Reservation/add-reservation/add-reservation.component';
-import { AddBlocComponent } from './core/bloc/Add bloc/add-bloc.component';
+
+import { DemandeRResolver } from './core/demande-r.resolver';
+import { AddBlocComponent } from './core/bloc/add-bloc/add-bloc.component';
 import { ListBlocComponent } from './core/bloc/list-bloc/list-bloc.component';
 import { UpdateBlocComponent } from './core/bloc/update-bloc/update-bloc.component';
-import { LoaderResolver } from './core/Data-resolver/loader.resolver';
 import { StepperTestComponent } from './core/stepper-test/stepper-test.component';
 import { AcceptedUniversiteComponent } from "./core/universite/accepted-universite/accepted-universite.component";
 import { DemandeListeComponent } from './core/demande-liste/demande-liste.component';
@@ -31,7 +29,8 @@ import { DetailBlocComponent } from './core/bloc/detail-bloc/detail-bloc.compone
 
 
 const routes: Routes = [
-  //reservation Route
+  //reservation Route 
+  {path:"forgetpassword",component:ForgetPasswordComponent},
   { path: "test", component: StepperTestComponent },
   {
     path: "admin/reservation", loadChildren:()=>
@@ -41,23 +40,35 @@ const routes: Routes = [
     path: ":universite/reservation", loadChildren:()=>
       import('./core/Reservation/reservation/reservation.module').then(m=>m.ReservationModule)
   },
-
-
-
-  { path: ":universite/demande", component: DemandeListeComponent },
+  { path: ":universite/demande", component: DemandeListeComponent, 
+  resolve: {
+    data: DemandeRResolver
+    }
+   },
   //bloc Route
+  {
+    path:"admin/bloc",loadChildren:()=>
+    import('./core/bloc/bloc/bloc-admin/bloc-admin.module').then(m=>m.BlocAdminModule)
+  },
+  {
+    path:":universite/bloc",loadChildren:()=>
+    import('./core/bloc/bloc/bloc.module').then(m=>m.BlocModule)
+  },
 
-  { path: ":universite/addBloc", component: AddBlocComponent },
+  { path: ":universite/addBloc", component: AddBlocComponent   },
   { path: ":universite/bloc", component: ListBlocComponent },
   { path: "updateBloc", component: UpdateBlocComponent },
   { path: "detailBloc", component: DetailBlocComponent },
 
   // Foyer Route
-  { path: "admin/foyer", component: FoyerlisteComponent },
-  { path: ":universite/foyer", component: FoyerlisteComponent },
-  { path: ":universite/addFoyer", component: AddfoyerComponent },
-  { path: ":universite/foyer/:id", component: DetailsfoyerComponent },
-  { path: ":universite/foyer/update/:id", component: UpdatefoyerComponent },
+  {
+    path: "/admin/foyer", loadChildren:()=>
+    import('./core/foyer/foyer/foyer.module').then(m=>m.FoyerModule)
+  },
+  {
+    path: ":universite/foyer", loadChildren:()=>
+    import('./core/foyer/foyer/foyer.module').then(m=>m.FoyerModule)
+  },
   // User Route
   { path: "admin/agentuniliste", component: AgentUniListeComponent },
   { path: "admin/etudiantliste", component: EtudiantListeComponent },

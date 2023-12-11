@@ -11,5 +11,8 @@ export class User {
     cin!: number;
     ecole!: string;
     dateNaissance!: string;
+    enabled!:boolean;
+    createdAt!:string;
+    imagebyte!:string;
   }
   

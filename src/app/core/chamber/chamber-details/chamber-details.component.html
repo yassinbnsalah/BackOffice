@@ -1,26 +1,99 @@
 <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
   <app-sidebar></app-sidebar>
   <div class="body-wrapper">
-    <app-navbar></app-navbar>
-    <div class="d-flex justify-content-center align-items-center vh-100">
-      <div style="width: 600px; background-color: #f8f9fa; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
-        <h2 class="fw-bold mb-4 text-center">Détails de la Chambre</h2>
-        <div class="row">
-          <div class="col-md-6">
-            <div style="width: 150px; height: 150px; overflow: hidden; border-radius: 10px; margin-bottom: 20px;">
-              <img class="img-fluid" style="width: 100%; height: 100%; object-fit: cover;" [src]="'data:' + chamber.image?.image_type + ';base64,' + chamber.imagebyte" alt="Chambre Image">
-            </div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+
+
+
+    <!-- Contenu principal -->
+    <div class="container-fluid mt-4"> <!-- Augmentez la marge en haut pour déplacer le contenu vers le bas -->
+      <div class="row">
+        <div class="col-6">
+          <div class="project-info-box mt-0">
+            <h3 class="display-4">Details chambre</h3>
           </div>
-          <div class="col-md-6">
-            <p class="fs-5"><strong>Numero Chambre:</strong> {{ chamber.numerochamber }}</p>
-            <p class="fs-5"><strong>Chambre:</strong> {{ chamber.typeC }}</p>
-            <p class="fs-5"><strong>Description:</strong> {{ chamber.description }}</p>
-            <p class="fs-5"><strong>Etat:</strong> {{ chamber.etat }}</p>
-            <p class="fs-5"><strong>Date de Création:</strong> {{ chamber.createdAt | date: 'yyyy-MM-dd' }}</p>
-            <p class="fs-5"><strong>Date de Modification:</strong> {{ chamber.updatedAt | date: 'yyyy-MM-dd' }}</p>
-            <a (click)="redirectToUpdateChamber(chamber.idChamber)" class="btn btn-primary mt-3">Modifier</a>
+          <br>
+          <div class="project-info-box">
+            <p class="lead"><b>Nom Bloc:</b> {{ chamber.bloc.nomBloc }}</p> <hr>
+            <p class="lead"><b>Numero Chambre:</b> {{ chamber.numerochamber }}</p> <hr>
+            <p class="lead"><b>Type chambre:</b> {{ chamber.typeC }}</p> <hr>
+            <p class="lead"><b>Description:</b> {{ chamber.description }}</p> <hr>
+            <p class="lead"><b>Etat:</b> {{ chamber.etat }}</p> <hr>
+            <p class="lead"><b>Date de Création:</b> {{ chamber.createdAt | date: 'yyyy-MM-dd' }}</p> <hr>
+            <p class="lead"><b>Date de Modification:</b> {{ chamber.updatedAt | date: 'yyyy-MM-dd' }}</p>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <img style="width: 600px; height: 450px; object-fit: cover;" class="img-fluid" [src]="'data:' + chamber?.image?.image_type + ';base64,' + chamber?.imagebyte" alt="Chambre Image">
+          <div class="project-info-box">
+
           </div>
         </div>
       </div>
     </div>
-    
+    <div class="container-fluid ">
+      <div class="project-info-box mt-0">
+        <p class="lead"><b>Liste Reservations</b></p> <hr>
+      </div>
+    <div class="table-responsive">
+
+      <table class="table text-nowrap mb-0 align-middle">
+        <thead class="table-info text-dark fs-4">
+          <tr>
+            <th class="border-bottom-0">
+              <h6 class="fw-semibold mb-0">Id</h6>
+            </th>
+            <th class="border-bottom-0">
+              <h6 class="fw-semibold mb-0">Etudiant </h6>
+            </th>
+            <th class="border-bottom-0">
+              <h6 class="fw-semibold mb-0">Année Universitaire</h6>
+            </th>
+            <th class="border-bottom-0">
+              <h6 class="fw-semibold mb-0">State</h6>
+            </th>
+
+            <th class="border-bottom-0">
+              <h6 class="fw-semibold mb-0">Date Reservation </h6>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let reservation of reservations">
+            <td class="border-bottom-0">
+              <a
+                (click)="GoToReservationDetails(reservation.idReservation)">
+                <h6 class="fw-semibold mb-0">{{reservation.idReservation}}</h6></a></td>
+            <td class="border-bottom-0">
+              <h6 class="fw-semibold mb-1">{{reservation.etudiants[0].nomEt}}</h6>
+
+              <span class="fw-normal">{{reservation.etudiants[0].email}}</span>
+            </td>
+            <td class="border-bottom-0">
+              <h6 class="fw-semibold mb-1">{{reservation.anneeUniversitaire}}</h6>
+
+            </td>
+            <td class="border-bottom-0">
+              <div class="d-flex align-items-center gap-2"
+                *ngIf="reservation.status == 'confirmed'">
+                <span class="badge bg-primary rounded-3 fw-semibold">{{reservation.status}}</span>
+              </div>
+              <div class="d-flex align-items-center gap-2"
+                *ngIf="reservation.status != 'confirmed'">
+                <span class="badge bg-danger rounded-3 fw-semibold">{{reservation.status}}</span>
+              </div>
+            </td>
+
+            <td class="border-bottom-0">
+              <h6 class="fw-semibold mb-1">{{reservation.anneeReservation | date: 'yyyy-MM-dd'}}</h6>
+
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+    </div>
+  </div>
+</div>

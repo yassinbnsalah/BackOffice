@@ -1,0 +1,30 @@
+.round-shape {
+    width: 30px;
+    height: 30px;
+    border-radius: 30%;
+    display: inline-block;
+  }
+  
+  .red {
+    background-color: #d95555;
+  }
+  
+  .green {
+    background-color: #41c241;
+  }
+  
+  .hoverable-row:hover {
+    background-color: #f5f5f5; /* Change to the desired hover background color */
+    cursor: pointer; /* Change to pointer cursor on hover */
+  }
+  
+  .form-section {
+    display: flex;
+    flex-direction: row;
+    gap: 16px; /* Adjust the gap as needed */
+  }
+  
+  .example-half-width {
+    width: 50%;
+  }
+  
