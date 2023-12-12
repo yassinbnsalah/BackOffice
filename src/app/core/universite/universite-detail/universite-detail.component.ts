@@ -39,7 +39,9 @@ export class UniversiteDetailComponent {
     //this.universite = this.activatedRoute.snapshot.data["data"].universite ;
     this.serviceUniversite.getUniversiteByNomU(this.activatedRoute.snapshot.params['universite']).subscribe((data) => {
       this.universite = data;
-     // this.getDoc();
+     //onsole.log(this.universite);
+      
+      this.getDoc();
     });
   }
   onUniversitUpdated(newUniversite: Universite) {
@@ -80,7 +82,7 @@ export class UniversiteDetailComponent {
       );
     }*/
   }
-  getDoc(document:Document){
+  getDoc(){
    /*
     if (document.documentContent instanceof Blob) {
       console.log("universite details");
@@ -89,16 +91,14 @@ export class UniversiteDetailComponent {
       );
       console.log(this.sanitizeDocumentContent);
 
-    }
-    /*
-    const pdfData = URL.createObjectURL(documentContent);
-    return this.sanitizer.bypassSecurityTrustResourceUrl(pdfData);
-    /*this.serviceUniversite.getDocuments(this.universite.idUniversite).subscribe(
+    }*/
+   
+   this.serviceUniversite.getDocuments(this.universite.idUniversite).subscribe(
       (data: any)=>{
         this.universite.documents = data;
         console.log(data);
       }
-    )*/
+    )
   }
 
   redirectToUpdateChamber() {
@@ -136,6 +136,7 @@ export class UniversiteDetailComponent {
       }
     );
   }
+   
 
   /*downloadDocument(document: Document): void {
     const blob = new Blob([document.documentContent], { type: document.documentType });

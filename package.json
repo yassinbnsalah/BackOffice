@@ -28,6 +28,7 @@
     "jwt-decode": "^4.0.0",
     "mdb-ui-kit": "^7.0.0",
     "ngx-summernote": "^1.0.0",
+    "ngx-toastr": "^18.0.0",
     "rxjs": "~7.8.0",
     "tinymce": "^6.8.1",
     "tslib": "^2.3.0",

@@ -121,5 +121,5 @@ export class FoyerlisteComponent implements OnInit {
      
         }
       );
-      window.location.reload(); }
+      }
 }

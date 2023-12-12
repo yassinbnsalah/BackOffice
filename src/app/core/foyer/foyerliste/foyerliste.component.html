@@ -42,8 +42,10 @@
                       <td>{{ foyer.createdAt | date:'yy-MM-dd' }}</td>
                       <td>{{foyer.updatedAt | date:'yy-MM-dd'}}</td>
                       <td>
-                        <a (click)="GoToFoyerDetail(foyer.idFoyer)" routerLinkActive="active" class="btn btn-primary btn-sm">See Details</a>
-                        <button (click)="updateFoyerEtat(foyer.idFoyer)" class="btn btn-danger btn-sm ms-2">Delete</button>
+                        <a (click)="GoToFoyerDetail(foyer.idFoyer)" 
+                        routerLinkActive="active" class="btn btn-primary btn-sm">See Details</a>
+                        <a (click)="updateFoyerEtat(foyer.idFoyer)" 
+                        class="btn btn-danger btn-sm ms-2">Delete</a>
                       </td>
                     </tr>
                   </tbody>

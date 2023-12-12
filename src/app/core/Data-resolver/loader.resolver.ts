@@ -33,6 +33,7 @@ export class LoaderResolver implements
      BlocResolver: Bloc[] , 
     universites : Universite [],
     foyerListe : Foyer[] , 
+    chamberListe : Chamber[] ,
   }>> {
   constructor(private reservationService: ReservationService,
     private storage: StorageService,
@@ -48,7 +49,7 @@ export class LoaderResolver implements
       reservations: Reservation[],
       chambers: Chamber[], etudiants: User[],AllUsers : User[] , 
       BlocResolver : Bloc[] , foyerListe : Foyer[]
-      universites : Universite []
+      universites : Universite [] , chamberListe : Chamber[]
     }> {
 
     let chamberByReservation = this.chamberService.
@@ -78,14 +79,7 @@ export class LoaderResolver implements
 
     const AllUserss = this.userService.getUsers() ; 
 
-    let  lisBlocs ;
-    if (this.storage.getUser().role[0] == "ADMIN") {
-      
-      lisBlocs =  this.blocService.getallBloc() ; 
-    } else {
-      lisBlocs = this.blocService.getBlocByuniversite(route.params["universite"]);
-    }
-
+    let  lisBlocs  = this.blocService.getBlocByuniversite(route.params["universite"]);
 
     let foyerListe ; 
     if (this.storage.getUser().role[0] == "ADMIN") {
@@ -95,6 +89,9 @@ export class LoaderResolver implements
       foyerListe = this.foyerService.getFoyerByUniversiteName(route.params["universite"]);
     }
     const allUniversites = this.universiteService.getAllUniversite()
+
+
+    const chamberListess = this.chamberService.getChamberByUniversiteName(route.params["universite"])
     return forkJoin({
       reservations: reservationsListe,
       chambers: chamberListe, etudiants: etudiantListe,
@@ -102,7 +99,8 @@ export class LoaderResolver implements
       AllUsers : AllUserss ,
        BlocResolver : lisBlocs , 
        foyerListe: foyerListe , 
-       universites : allUniversites
+       universites : allUniversites,
+       chamberListe : chamberListess 
     });
     // return this.reservationService.getReservationByUniversiteName(route.params["universite"]);
   }

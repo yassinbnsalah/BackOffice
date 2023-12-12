@@ -61,36 +61,21 @@
                 <label for="image" class="input-group-text"><i class="fas fa-cloud-upload-alt"></i> Choose an Image</label>
               </div>
                 <br>
-               
-              
                 <div>
                   <label for="selectedBloc">Sélectionnez un Bloc</label>
                   <select
                     class="form-select mr-sm-2"
                     formControlName="selectedBloc"
                     name="selectedBloc"
-                    required
-                    
-                  >
+                    required>
                     <option value="" disabled selected>Choisissez un Bloc</option>
                     <option *ngFor="let bloc of blocs" [value]="bloc.nomBloc" (click)="selectBlocName(bloc.nomBloc)">{{ bloc.nomBloc }}</option>
                   </select>
-                
-                 
                 </div>
-                
                 <br>
                 <button type="submit" class="btn btn-primary btn-lg" [disabled]="form.invalid">Ajouter</button>
 
-              
-
-               
-
-               
-                
               </form>
-              
-              
             </div>
           </div>
         </div>

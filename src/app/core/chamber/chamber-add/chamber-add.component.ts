@@ -78,7 +78,7 @@ export class ChamberAddComponent implements OnInit {
     }
   }
   selectBlocName(blocName:any){
-    console.log(blocName)
+    this.selectedBloc = blocName
   }
   onSubmit() {
     this.chamber.etat = true;

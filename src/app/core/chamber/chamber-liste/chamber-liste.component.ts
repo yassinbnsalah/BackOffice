@@ -22,7 +22,7 @@ export class ChamberListeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
+      this.chambers=this.activatedRoute.snapshot.data["data"].chambers ;
       this.getListeChamber();
    
   }

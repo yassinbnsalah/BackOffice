@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Universite} from "../../../model/Universite";
 import {ActivatedRoute, Router} from "@angular/router";
 import {UniversiteService} from "../../../service/universiteService/universite.service";
+import { Toast, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-universite-update',
@@ -30,7 +31,7 @@ export class UniversiteUpdateComponent implements OnInit{
       // Handle the error appropriately
     }
   }
-
+  
   updateUniversite() {
     if (!this.universite) {
       console.error('Invalid id reference: Universite object is null or undefined.');
@@ -41,10 +42,14 @@ export class UniversiteUpdateComponent implements OnInit{
     console.log(this.universite);
     this.serviceUniversite.updateUniversite(this.universite).subscribe((response) => {
       console.log('Universite updated:', response);
+     // this.showToast();
       this.universiteUpdated.emit(response);
     //  this.router.navigate(['/admin/updateUniversite', this.universite.idUniversite]);
     });
   }
-
+/*showToast() {
+    this.toastr.success('Your university request is updated successfully! ', 'Success', {
+      closeButton: true,
+    });    } */
 
 }

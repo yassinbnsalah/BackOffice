@@ -5,9 +5,13 @@ import { ChamberAddComponent } from '../chamber-add/chamber-add.component';
 import { ChamberDetailsComponent } from '../chamber-details/chamber-details.component';
 import { ChamberUpdateComponent } from '../chamber-update/chamber-update.component';
 import { UniversiteDetailComponent } from '../../universite/universite-detail/universite-detail.component';
+import { LoaderResolver } from '../../Data-resolver/loader.resolver';
 
 const routes: Routes = [
-  { path: "", component: ChamberListeComponent },
+  { path: "", component: ChamberListeComponent  ,
+  resolve: {
+    data: LoaderResolver
+  }},
   { path: "add", component: ChamberAddComponent },
   { path: ":id", component: ChamberDetailsComponent },
   { path: "update/:id", component: ChamberUpdateComponent },

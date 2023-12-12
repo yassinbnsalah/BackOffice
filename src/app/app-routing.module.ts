@@ -49,10 +49,10 @@ const routes: Routes = [
     }
   },
   //bloc Route
-  {
+ /* {
     path: "admin/bloc", loadChildren: () =>
       import('./core/bloc/bloc/bloc-admin/bloc-admin.module').then(m => m.BlocAdminModule)
-  },
+  },*/
   {
     path: ":universite/bloc", loadChildren: () =>
       import('./core/bloc/bloc/bloc.module').then(m => m.BlocModule)
