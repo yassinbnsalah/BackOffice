@@ -56,8 +56,17 @@
                 {{ universite.statuts }}
               </button>
               </p><br>
+              
+              <div class="col-md-6">
+                <button *ngIf="CurrentUser.role[0] !== 'ADMIN' && showaddform==false" type="button" class="btn btn-primary" (click)="GoToAdd()">Update Université</button>
+                <button *ngIf="CurrentUser.role[0] !== 'ADMIN' && showaddform==true" type="button" class="btn btn-primary" (click)="hideform()">Hide form</button>
+              </div>
+              <app-universite-update *ngIf="showaddform==true" (universiteUpdated)="onUniversitUpdated($event)"></app-universite-update>
+              
             </div><!-- / project-info-box -->
+            
         </div><!-- / column -->
+        
 
      <div class="col-md-7">
       <div class="image-container">

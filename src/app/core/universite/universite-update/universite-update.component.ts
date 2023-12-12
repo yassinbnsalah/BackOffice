@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Universite} from "../../../model/Universite";
 import {ActivatedRoute, Router} from "@angular/router";
 import {UniversiteService} from "../../../service/universiteService/universite.service";
@@ -10,6 +10,7 @@ import {UniversiteService} from "../../../service/universiteService/universite.s
 })
 export class UniversiteUpdateComponent implements OnInit{
   universite = new Universite();
+  @Output() universiteUpdated = new EventEmitter<Universite>();
 
   constructor(
     private serviceUniversite: UniversiteService,
@@ -40,6 +41,7 @@ export class UniversiteUpdateComponent implements OnInit{
     console.log(this.universite);
     this.serviceUniversite.updateUniversite(this.universite).subscribe((response) => {
       console.log('Universite updated:', response);
+      this.universiteUpdated.emit(response);
     //  this.router.navigate(['/admin/updateUniversite', this.universite.idUniversite]);
     });
   }

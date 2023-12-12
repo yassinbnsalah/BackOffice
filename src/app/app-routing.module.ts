@@ -26,52 +26,59 @@ import { StepperTestComponent } from './core/stepper-test/stepper-test.component
 import { AcceptedUniversiteComponent } from "./core/universite/accepted-universite/accepted-universite.component";
 import { DemandeListeComponent } from './core/demande-liste/demande-liste.component';
 import { DetailBlocComponent } from './core/bloc/detail-bloc/detail-bloc.component';
+import { LoaderResolver } from './core/Data-resolver/loader.resolver';
 
 
 const routes: Routes = [
   //reservation Route 
-  {path:"forgetpassword",component:ForgetPasswordComponent},
+  { path: "forgetpassword", component: ForgetPasswordComponent },
   { path: "test", component: StepperTestComponent },
   {
-    path: "admin/reservation", loadChildren:()=>
-      import('./core/Reservation/reservation/reservation.module').then(m=>m.ReservationModule)
+    path: "admin/reservation", loadChildren: () =>
+      import('./core/Reservation/reservation/reservation.module').then(m => m.ReservationModule)
   },
   {
-    path: ":universite/reservation", loadChildren:()=>
-      import('./core/Reservation/reservation/reservation.module').then(m=>m.ReservationModule)
+    path: ":universite/reservation", loadChildren: () =>
+      import('./core/Reservation/reservation/reservation.module').then(m => m.ReservationModule)
   },
-  { path: ":universite/demande", component: DemandeListeComponent, 
-  resolve: {
-    data: DemandeRResolver
+  {
+    path: ":universite/demande", component: DemandeListeComponent,
+    resolve: {
+      data: DemandeRResolver
     }
-   },
+  },
   //bloc Route
   {
-    path:"admin/bloc",loadChildren:()=>
-    import('./core/bloc/bloc/bloc-admin/bloc-admin.module').then(m=>m.BlocAdminModule)
+    path: "admin/bloc", loadChildren: () =>
+      import('./core/bloc/bloc/bloc-admin/bloc-admin.module').then(m => m.BlocAdminModule)
   },
   {
-    path:":universite/bloc",loadChildren:()=>
-    import('./core/bloc/bloc/bloc.module').then(m=>m.BlocModule)
+    path: ":universite/bloc", loadChildren: () =>
+      import('./core/bloc/bloc/bloc.module').then(m => m.BlocModule)
   },
 
-  { path: ":universite/addBloc", component: AddBlocComponent   },
+  { path: ":universite/addBloc", component: AddBlocComponent },
   { path: ":universite/bloc", component: ListBlocComponent },
   { path: "updateBloc", component: UpdateBlocComponent },
   { path: "detailBloc", component: DetailBlocComponent },
 
   // Foyer Route
   {
-    path: "/admin/foyer", loadChildren:()=>
-    import('./core/foyer/foyer/foyer.module').then(m=>m.FoyerModule)
+    path: "/admin/foyer", loadChildren: () =>
+      import('./core/foyer/foyer/foyer.module').then(m => m.FoyerModule)
   },
   {
-    path: ":universite/foyer", loadChildren:()=>
-    import('./core/foyer/foyer/foyer.module').then(m=>m.FoyerModule)
+    path: ":universite/foyer", loadChildren: () =>
+      import('./core/foyer/foyer/foyer.module').then(m => m.FoyerModule)
   },
   // User Route
   { path: "admin/agentuniliste", component: AgentUniListeComponent },
-  { path: "admin/etudiantliste", component: EtudiantListeComponent },
+  {
+    path: "admin/etudiantliste", component: EtudiantListeComponent,
+    resolve: {
+      data: LoaderResolver
+    }
+  },
   // Login URLS
   { path: "login", component: LoginComponent },
   { path: "forgetpassword", component: ForgetPasswordComponent },
@@ -84,19 +91,19 @@ const routes: Routes = [
   { path: "universite-details/:id", component: UniversiteDetailComponent },
 
 
- {
-    path: "admin/universite", loadChildren:()=>
-      import('./core/universite/universites/universites.module').then(m=>m.UniversitesModule)
+  {
+    path: "admin/universite", loadChildren: () =>
+      import('./core/universite/universites/universites.module').then(m => m.UniversitesModule)
   },
   { path: ":universite", component: UniversiteUpdateComponent },
   {
-    path: ":universite", loadChildren:()=>
-      import('./core/universite/universites/universites.module').then(m=>m.UniversitesModule)
+    path: ":universite", loadChildren: () =>
+      import('./core/universite/universites/universites.module').then(m => m.UniversitesModule)
   },
 
 
   //Universite Route
- // { path: ":universite/information", component: UniversiteDetailComponent },
+  // { path: ":universite/information", component: UniversiteDetailComponent },
 
   //{ path: "admin/universite", component: UniversiteListeComponent },
   //{ path: "admin/universite/:universite", component: UniversiteDetailComponent },

@@ -22,7 +22,8 @@ export class LoaderResolver implements
     reservationDetails: Reservation,
     reservations: Reservation[],
     chambers: Chamber[],
-    etudiants: User[]
+    etudiants: User[],
+    AllUsers : User[]
   }>> {
   constructor(private reservationService: ReservationService,
     private storage: StorageService,
@@ -33,7 +34,7 @@ export class LoaderResolver implements
     Observable<{
       chamberByReservation: Chamber, reservationDetails: Reservation,
       reservations: Reservation[],
-      chambers: Chamber[], etudiants: User[]
+      chambers: Chamber[], etudiants: User[],AllUsers : User[]
     }> {
 
     let chamberByReservation = this.chamberService.
@@ -46,7 +47,7 @@ export class LoaderResolver implements
       reservationsListe = this.reservationService.getAllReservation();
     } else {
       console.log("loading reservation");
-      
+
       reservationsListe = this.reservationService.
         getReservationByUniversiteName(route.params["universite"]);
     }
@@ -55,14 +56,17 @@ export class LoaderResolver implements
     const chamberListe = this.chamberService.
       getAvailabeChamberByUniversiteName(route.params["universite"]);
 
+      
     const etudiantListe = this.userService.
       getUserbyUniversiteAndRole(route.params["universite"],
-       "ETUDIANT");
+        "ETUDIANT");
 
+    const AllUserss = this.userService.getUsers() ; 
     return forkJoin({
       reservations: reservationsListe,
       chambers: chamberListe, etudiants: etudiantListe,
-      reservationDetails: reservationDetails, chamberByReservation: chamberByReservation
+      reservationDetails: reservationDetails, chamberByReservation: chamberByReservation,
+      AllUsers : AllUserss
     });
     // return this.reservationService.getReservationByUniversiteName(route.params["universite"]);
   }

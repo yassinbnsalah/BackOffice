@@ -1,6 +1,7 @@
 
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/model/User';
 import { UserService } from 'src/app/service/user.service';
 import { ConfirmationDialogComponent } from 'src/app/shared/confirmation-dialog/confirmation-dialog.component';
@@ -16,9 +17,11 @@ export class EtudiantListeComponent {
   selectedOption: string = 'All';
   searchValue: string = '';
 
-  constructor(private userService: UserService,private dialog: MatDialog) {}
+  constructor(private userService: UserService,private dialog: MatDialog , 
+    private activatedRoute : ActivatedRoute) {}
 
   ngOnInit() {
+    this.users = this.activatedRoute.snapshot.data["data"].AllUsers ;
     this.fetchUsers();
   }
 
@@ -61,7 +64,7 @@ export class EtudiantListeComponent {
 
   search() {
     const searchTerm = this.searchValue.toLowerCase();
-
+    console.log("searchTerm"+searchTerm)
     if (searchTerm === '') {
       this.fetchUsers();
     } else {
@@ -76,36 +79,35 @@ export class EtudiantListeComponent {
     }
   }
 
-
   filterUsers(users: User[], searchTerm: string): User[] {
     return users.filter(user => {
       return (
-        user.cin === Number(searchTerm)||
-        user.nomEt.toLowerCase().includes(searchTerm) ||
-        user.prenomEt.toLowerCase().includes(searchTerm) ||
-        user.email.toLowerCase().includes(searchTerm) ||
-        user.dateNaissance.toLowerCase().includes(searchTerm)
+        user.cin === Number(searchTerm) ||
+        (user.nomEt?.toLowerCase().includes(searchTerm) || '') ||
+        (user.prenomEt?.toLowerCase().includes(searchTerm) || '') ||
+        (user.email?.toLowerCase().includes(searchTerm) || '') ||
+        (user.dateNaissance?.toLowerCase().includes(searchTerm) || '')
       );
     });
   }
   openConfirmationDialog(userEmail: string): void {
-    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-      data: {
-        email: userEmail,
-        title: 'Confirmation',
-        message: 'Are you sure you want to toggle this user?',
-      },
-    });
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent);
+    dialogRef.componentInstance.email = userEmail;
+    dialogRef.componentInstance.title = 'Confirmation';
+    dialogRef.componentInstance.message = 'Are you sure you want to toggle this user?';
 
-    dialogRef.afterClosed().subscribe(result => {
-      result ? this.toggleUserAction(userEmail) : console.log('User canceled.');
+    dialogRef.componentInstance.dialogResult.subscribe((result: boolean) => {
+      console.log('Dialog result:', result);
+      if (result===true){
+          this.toggleUserAction(userEmail)
+      }
     });
   }
 
   openPopUp(user: any){
     this.dialog.open(PopupComponent,{
         width:'60%',
-        height:'540px',
+        height:'440px',
       data: { user }
     })
   }

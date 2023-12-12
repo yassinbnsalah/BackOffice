@@ -5,6 +5,7 @@ import { Universite } from 'src/app/model/Universite';
 import { UniversiteService } from 'src/app/service/universiteService/universite.service';
 import {DomSanitizer, SafeResourceUrl, SafeUrl} from "@angular/platform-browser";
 import {Document} from "../../../model/Documents";
+import { StorageService } from 'src/app/AuthServices/storage.service';
 
 
 @Component({
@@ -16,12 +17,15 @@ export class UniversiteDetailComponent {
   universite !: Universite ;
   sanitizedDocumentContent!: SafeUrl;
   otherUniversities: Universite[] = [];
+  CurrentUser = this.storage.getUser();
+  showaddform=false;
 
 
   constructor(private serviceUniversite: UniversiteService,
               private activatedRoute: ActivatedRoute,
               private router: Router,
               private sanitizer: DomSanitizer,
+              private storage: StorageService,
               private renderer: Renderer2){
                 this.sanitizeDocumentContent();
               }
@@ -34,6 +38,10 @@ export class UniversiteDetailComponent {
       this.universite = data;
      // this.getDoc();
     });
+  }
+  onUniversitUpdated(newUniversite: Universite) {
+    this.universite=newUniversite;
+    this.showaddform=false;
   }
 
   downloadURL(doc:Document){
@@ -51,6 +59,14 @@ export class UniversiteDetailComponent {
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
+  }
+  GoToAdd(){
+   
+    this.showaddform=true;
+    
+  }
+  hideform(){
+    this.showaddform=false;
   }
 
   private sanitizeDocumentContent(): void {
