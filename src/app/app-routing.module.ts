@@ -79,6 +79,7 @@ const routes: Routes = [
   { path: "forgetpassword", component: ForgetPasswordComponent },
   
   // chamber URLS 
+ 
   {
     path: ":universite/chamber", loadChildren:()=>
     import('./core/chamber/chamber/chamber.module').then(m=>m.ChamberModule)

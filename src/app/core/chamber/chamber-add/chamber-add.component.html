@@ -11,127 +11,75 @@
           <div class="card w-100">
             <div class="card-body p-4">
               <h5 class="card-title fw-semibold mb-4">Ajouter une chambre</h5>
-          
-              <form (ngSubmit)="onSubmit()" class="php-email-form" #myForm="ngForm">
+              <div class="alert alert-success" role="alert" [hidden]="hideDemande">
+                Chamber Ajouter avec success .
+              </div>
+              <form (ngSubmit)="onSubmit()" class="php-email-form" [formGroup]="form" novalidate>
 
                
                     <label for="numerochamber" class="form-label">Numéro de chambre</label>
-                    <input
-                    type="text"
-                    name="numerochamber"
-                    [(ngModel)]="chamber.numerochamber"
-                    required
-                    [maxlength]="3"
-                    pattern="[0-9]+"
-                    class="form-control"
-                    #numerochamberInput="ngModel"
-                  >
-                  <div *ngIf="numerochamberInput.invalid && (numerochamberInput.touched)" class="text-danger">
-                    <div *ngIf="numerochamberInput.hasError('required')">
-                      Numéro chambre est requis.
-                    </div>
-                    <div *ngIf="numerochamberInput.hasError('pattern')">
-                      Numéro chambre doit contenir uniquement des chiffres.
-                    </div>
-                    <div *ngIf="numerochamberInput.hasError('maxlength')">
-                      Numéro chambre ne doit pas dépasser 3 caractères.
-                    </div>
-                  </div>
-                 
-
-              
-                <div>
-                  <label 
-                  [hidden]="true"
-                  for="CreatedAt">CreatedAt</label>
-                  <input
-                  [hidden]="true"
-                    type="date"
-                    name="CreatedAt"
-                    [(ngModel)]="chamber.createdAt"
-               
-                    class="form-control"
-                  >
-                </div>
+                    <input type="number" name="numerochamber"  formControlName="numerochamber"
+                    class="form-control form-control-lg" id="numerochamber" placeholder="Numéro de chambre"
+                    [class.is-invalid]="form.get('numerochamber')?.invalid && form.get('numerochamber')?.dirty" required>
+             <div class="invalid-feedback">
+               <app-error-message [err]="form.get('numerochamber')" [field]="'numerochamber'"></app-error-message>
+             </div>                                             
                 <br>
                 <div>
                   <label for="typeC">Type de chambre</label>
                   <select
                     name="typeC"
-                    [(ngModel)]="chamber.typeC"
+                    formControlName="typeC"
                     required
                     class="form-select"
-                    #typeCInput="ngModel"
-                  >
+                     >
                     <option value="" disabled selected>Choisissez un type de chambre</option>
                     <option value="Simple">Simple</option>
                     <option value="Double">Double</option>
                     <option value="Triple">Triple</option>
-                  </select>
-                
-                  <div *ngIf="typeCInput.invalid && (typeCInput.touched)" class="text-danger">
-                    <div *ngIf="typeCInput.hasError('required')">
-                      Type de chambre est requis.
-                    </div>
-                  </div>
+                  </select>             
                 </div>
                 
                 <br>
                 <div>
                   <label for="description">Description</label>
-                  <textarea
-                    name="description"
-                    [(ngModel)]="chamber.description"
-                    required
-                    minlength="10"
-                    maxlength="200"
-                    class="form-control"
-                    #descriptionInput="ngModel"
-                  ></textarea>
+                  <textarea name="description" formControlName="description"
+                  class="form-control form-control-lg" id="description" placeholder="Enter Description"
+                  [class.is-invalid]="form.get('description')?.invalid && form.get('description')?.dirty" required></textarea>
+                 <div class="invalid-feedback">
+              <app-error-message [err]="form.get('description')" [field]="'description'"></app-error-message>
+              </div>
                 
-                  <div *ngIf="descriptionInput.invalid && (descriptionInput.touched)" class="text-danger">
-                    <div *ngIf="descriptionInput.hasError('required')">
-                      La description est requise.
-                    </div>
-                    <div *ngIf="descriptionInput.hasError('minlength')">
-                      La description doit contenir au moins 10 caractères.
-                    </div>
-                    <div *ngIf="descriptionInput.hasError('maxlength')">
-                      La description ne doit pas dépasser 200 caractères.
-                    </div>
-                  </div>
+                
                 </div>
                 
               <br>
                
-                <div>
-                  <label for="image">Image:</label>
-                  <input type="file" id="image" (change)="onFileSelected($event)" required>
-                </div>
+              <div class="input-group">
+                <input type="file" id="image" class="form-control form-control-lg" (change)="onFileSelected($event)"
+                      required>
+                <label for="image" class="input-group-text"><i class="fas fa-cloud-upload-alt"></i> Choose an Image</label>
+              </div>
                 <br>
               
                 <div>
                   <label for="selectedBloc">Sélectionnez un Bloc</label>
                   <select
                     class="form-select mr-sm-2"
-                    [(ngModel)]="selectedBloc"
+                    formControlName="selectedBloc"
                     name="selectedBloc"
                     required
-                    #selectedBlocInput="ngModel"
+                    
                   >
                     <option value="" disabled selected>Choisissez un Bloc</option>
-                    <option *ngFor="let bloc of blocs" [value]="bloc.nomBloc">{{ bloc.nomBloc }}</option>
+                    <option *ngFor="let bloc of blocs" [value]="bloc.nomBloc" (click)="selectBlocName(bloc.nomBloc)">{{ bloc.nomBloc }}</option>
                   </select>
                 
-                  <div *ngIf="selectedBlocInput.invalid && (selectedBlocInput.touched)" class="text-danger">
-                    <div *ngIf="selectedBlocInput.hasError('required')">
-                      Veuillez sélectionner un Bloc.
-                    </div>
-                  </div>
+                 
                 </div>
                 
                 <br>
-                <button type="submit" class="btn btn-primary btn-sm" [disabled]="myForm.invalid">Ajouter</button>
+                <button type="submit" class="btn btn-primary btn-lg" [disabled]="form.invalid">Ajouter</button>
 
               
 
