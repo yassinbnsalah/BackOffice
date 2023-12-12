@@ -1,9 +1,10 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Chamber } from "src/app/model/Chamber";
 import { Bloc } from "src/app/model/Bloc";  
 import { ChamberService } from "src/app/service/chamber.service";
 import { BlocService } from "src/app/service/BlocService/bloc.service";
+import { AbstractControl, FormBuilder, FormGroup, NgForm, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-chamber-add',
@@ -11,19 +12,37 @@ import { BlocService } from "src/app/service/BlocService/bloc.service";
   styleUrls: ['./chamber-add.component.css']
 })
 export class ChamberAddComponent implements OnInit {
+  form!: FormGroup;
+  hideDemande :Boolean = true ; 
+  @Output()addChamber=new EventEmitter<Chamber>
   chamber = new Chamber();
   selectedFile: File | null = null;
   selectedBloc: string = '';  // Déclaration de la propriété selectedBloc
   blocs: Bloc[] = [];  // Déclaration de la liste des blocs
 
-  constructor(private serviceChamber: ChamberService,
+
+  constructor(private fb:FormBuilder,
+              private serviceChamber: ChamberService,
               private activatedRoute: ActivatedRoute,
               private blocService : BlocService,
               private router: Router) {}
 
   ngOnInit() {
+    this.form=this.fb.group({
+      numerochamber: ['', [Validators.required, this.nonNegativeValidator]],
+      typeC: ['', Validators.required],
+      description: ['',[Validators.required,Validators.minLength(20)]],
+    
+    }) 
     // Chargez la liste des blocs lors de l'initialisation du composant
     this.loadBlocs();
+  }
+  nonNegativeValidator(control: AbstractControl): { [key: string]: any } | null {
+    const value = control.value;
+    if (value !== null && value < 0) {
+      return { 'negativeValue': true };
+    }
+    return null;
   }
 
   onFileSelected(event: any) {
@@ -58,23 +77,23 @@ export class ChamberAddComponent implements OnInit {
       );
     }
   }
-
+  selectBlocName(blocName:any){
+    console.log(blocName)
+  }
   onSubmit() {
-      this.chamber.etat = true;
-    this.serviceChamber.addChamber(this.chamber).subscribe(
+    this.chamber.etat = true;
+      if (this.form.valid) {
+      
+    this.serviceChamber.addChamber(this.form.value).subscribe(
       (response) => {
         console.log('Chamber added:', response);
-  
         // Obtenez le nom du bloc sélectionné
         const selectedBlocName = this.selectedBloc;
-  
         // Recherchez le bloc correspondant dans la liste des blocs
         const selectedBloc = this.blocs.find(bloc => bloc.nomBloc === selectedBlocName);
-  
         if (selectedBloc) {
           // Obtenez l'id du bloc
           const idBloc = selectedBloc.idBloc;
-    
           // Appelez la méthode pour affecter le bloc à la chambre
           this.serviceChamber.affecterBlocAChambre(response.idChamber, idBloc).subscribe(
     
@@ -100,6 +119,13 @@ export class ChamberAddComponent implements OnInit {
       }
     );
   }
+
+
+  else{
+    this.hideDemande = false
+    console.log("bara 3abi les champs")
+  }
+}
   
 
   saveChamber(chamberFormValue: Chamber) {
@@ -116,5 +142,10 @@ export class ChamberAddComponent implements OnInit {
         console.error('Erreur lors de l\'ajout de la chambre :', error);
       }
     );
+  }
+
+  test(a:any){
+    console.log(a);
+
   }
 }

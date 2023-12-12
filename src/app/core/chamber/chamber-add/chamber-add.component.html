@@ -11,71 +11,79 @@
           <div class="card w-100">
             <div class="card-body p-4">
               <h5 class="card-title fw-semibold mb-4">Ajouter une chambre</h5>
-          
-                <form (ngSubmit)="onSubmit()" class="php-email-form">
+              <div class="alert alert-success" role="alert" [hidden]="hideDemande">
+                Chamber Ajouter avec success .
+              </div>
+              <form (ngSubmit)="onSubmit()" class="php-email-form" [formGroup]="form" novalidate>
 
-                <div>
-                  <label for="numerochamber">Numéro de chambre</label>
-                  <input
-                    type="number"
-                    name="numerochamber"
-                    [(ngModel)]="chamber.numerochamber"
-                    required
-                    class="form-control"
-                  >
-                </div>
-                <div>
-                  <label 
-                  [hidden]="true"
-                  for="CreatedAt">CreatedAt</label>
-                  <input
-                  [hidden]="true"
-                    type="date"
-                    name="CreatedAt"
-                    [(ngModel)]="chamber.createdAt"
-                    required
-                    class="form-control"
-                  >
-                </div>
+               
+                    <label for="numerochamber" class="form-label">Numéro de chambre</label>
+                    <input type="number" name="numerochamber"  formControlName="numerochamber"
+                    class="form-control form-control-lg" id="numerochamber" placeholder="Numéro de chambre"
+                    [class.is-invalid]="form.get('numerochamber')?.invalid && form.get('numerochamber')?.dirty" required>
+             <div class="invalid-feedback">
+               <app-error-message [err]="form.get('numerochamber')" [field]="'numerochamber'"></app-error-message>
+             </div>                                             
                 <br>
                 <div>
                   <label for="typeC">Type de chambre</label>
                   <select
                     name="typeC"
-                    [(ngModel)]="chamber.typeC"
+                    formControlName="typeC"
                     required
                     class="form-select"
-                  >
+                     >
+                    <option value="" disabled selected>Choisissez un type de chambre</option>
                     <option value="Simple">Simple</option>
                     <option value="Double">Double</option>
                     <option value="Triple">Triple</option>
-                  </select>
+                  </select>             
                 </div>
+                
                 <br>
                 <div>
                   <label for="description">Description</label>
-                  <textarea
-                    name="description"
-                    [(ngModel)]="chamber.description"
-                    required
-                    class="form-control"
-                  ></textarea>
-                </div>
-              <br>
+                  <textarea name="description" formControlName="description"
+                  class="form-control form-control-lg" id="description" placeholder="Enter Description"
+                  [class.is-invalid]="form.get('description')?.invalid && form.get('description')?.dirty" required></textarea>
+                 <div class="invalid-feedback">
+              <app-error-message [err]="form.get('description')" [field]="'description'"></app-error-message>
+              </div>
                 
-                <div>
-                  <label for="image">Image:</label>
-                  <input type="file" id="image" (change)="onFileSelected($event)" required>
+                
                 </div>
+                
+              <br>
+               
+              <div class="input-group">
+                <input type="file" id="image" class="form-control form-control-lg" (change)="onFileSelected($event)"
+                      required>
+                <label for="image" class="input-group-text"><i class="fas fa-cloud-upload-alt"></i> Choose an Image</label>
+              </div>
                 <br>
                
               
-                <select class="form-select mr-sm-2" [(ngModel)]="selectedBloc" name="selectedBloc">
-                  <option value="" disabled selected>Choisissez un Bloc</option>
-                  <option *ngFor="let bloc of blocs" [value]="bloc.nomBloc">{{ bloc.nomBloc }}</option>
-                </select>
+                <div>
+                  <label for="selectedBloc">Sélectionnez un Bloc</label>
+                  <select
+                    class="form-select mr-sm-2"
+                    formControlName="selectedBloc"
+                    name="selectedBloc"
+                    required
+                    
+                  >
+                    <option value="" disabled selected>Choisissez un Bloc</option>
+                    <option *ngFor="let bloc of blocs" [value]="bloc.nomBloc" (click)="selectBlocName(bloc.nomBloc)">{{ bloc.nomBloc }}</option>
+                  </select>
+                
+                 
+                </div>
+                
                 <br>
-                <button type="submit" class="btn btn-primary btn-sm">Ajouter</button>
+                <button type="submit" class="btn btn-primary btn-lg" [disabled]="form.invalid">Ajouter</button>
+
+              
+
                
 
                
