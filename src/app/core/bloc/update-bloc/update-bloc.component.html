@@ -11,22 +11,34 @@
         <form #f="ngForm">
           <div class="mb-3">
             <label for="nomBloc" class="form-label">Nom bloc</label>
-            <input type="text" class="form-control" id="nomBloc" [(ngModel)]="bloc.nomBloc" required name="nomBloc">
+            <input type="text" class="form-control" id="nomBloc" [(ngModel)]="bloc.nomBloc" required name="nomBloc" #nomBloc="ngModel">
+            <div *ngIf="nomBloc.invalid && nomBloc.dirty" class="invalid-feedback">
+              <app-error-message [err]="nomBloc.errors" [field]="'Nom bloc'"></app-error-message>
+            </div>
           </div>
           <div class="mb-3">
             <label for="capaciteBloc" class="form-label">Capacite bloc</label>
-            <input type="number" class="form-control" id="capaciteBloc" [(ngModel)]="bloc.capaciteBloc" required name="capaciteBloc">
+            <input type="number" class="form-control" id="capaciteBloc" [(ngModel)]="bloc.capaciteBloc" required name="capaciteBloc" #capaciteBloc="ngModel">
+            <div *ngIf="capaciteBloc.invalid && capaciteBloc.dirty" class="invalid-feedback">
+              <app-error-message [err]="capaciteBloc.errors" [field]="'Capacite bloc'"></app-error-message>
+            </div>
           </div>
           <div class="mb-3">
             <label for="status" class="form-label">Status</label>
-            <input type="text" class="form-control" id="status" [(ngModel)]="bloc.status" required name="status">
+            <input type="text" class="form-control" id="status" [(ngModel)]="bloc.status" required name="status" #status="ngModel">
+            <div *ngIf="status.invalid && status.dirty" class="invalid-feedback">
+              <app-error-message [err]="status.errors" [field]="'Status'"></app-error-message>
+            </div>
           </div>
           <div class="mb-3">
             <label for="description" class="form-label">Description</label>
-            <textarea class="form-control" id="description" [(ngModel)]="bloc.description" required name="description"></textarea>
+            <textarea class="form-control" id="description" [(ngModel)]="bloc.description" required name="description" #description="ngModel"></textarea>
+            <div *ngIf="description.invalid && description.dirty" class="invalid-feedback">
+              <app-error-message [err]="description.errors" [field]="'Description'"></app-error-message>
+            </div>
           </div>
           <button type="submit" class="btn btn-primary" (click)="updateBloc()"  style="margin-right: 10px;" [disabled]="f.invalid">Update bloc</button>
-          <button type="submit" class="btn btn-primary" (click)="GoBack()" [disabled]="f.invalid">Back</button>
+          <button type="submit" class="btn btn-primary" (click)="GoBack()">Back</button>
         </form>
       </div>
     </div>

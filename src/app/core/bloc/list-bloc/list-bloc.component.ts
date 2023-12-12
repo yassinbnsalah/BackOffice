@@ -17,6 +17,7 @@ export class ListBlocComponent implements OnInit{
   search:String="";
   CurrentUser = this.storage.getUser();
   showaddform=false;
+  id:any;
   
   constructor(private blocService:BlocService,
     private activatedRoute:ActivatedRoute,
@@ -32,7 +33,9 @@ export class ListBlocComponent implements OnInit{
     }else{
       this.getListBlocByuniversite();
     }
-    
+  }
+  setid(id:any){
+    this.id=id;
   }
   toastMessage: string | null = null;
   showToast(message: string): void {
@@ -52,9 +55,10 @@ export class ListBlocComponent implements OnInit{
       console.log(this.blocs);
     })
   }
-  deleteBloc(id:any){
-    this.blocService.deleteBloc(id).subscribe((data)=>{
-      this.blocs=this.blocs.filter(bloc=>bloc.idBloc!=id);
+  deleteBloc(){
+    this.blocService.deleteBloc(this.id).subscribe((data)=>{
+      console.log("eeeeeeeeeee")
+      this.blocs=this.blocs.filter(bloc=>bloc.idBloc!=this.id);
 
     })
   }

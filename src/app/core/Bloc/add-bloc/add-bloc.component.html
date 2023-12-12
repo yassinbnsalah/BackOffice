@@ -79,6 +79,14 @@
                   </div>
                 </div>
               </div>
+              <div  class="mb-3">
+                <label for="image" class="form-label">Image:</label>
+                <input  class="form-control" type="file" id="image" (change)="onFileSelected($event,i)" required>
+              </div>
+              <br>
+             
+            
+            
               <div class="mb-3" *ngIf="addChamberPressed==true && chambers.length - 1 === i">
                 <button type="button" class="btn btn-primary" (click)="addChamber()">Add chmabers</button>
               </div>
