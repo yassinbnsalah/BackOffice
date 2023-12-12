@@ -1,70 +1,62 @@
-<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-  data-sidebar-position="fixed" data-header-position="fixed">
-  <app-side></app-side>
-  <div class="body-wrapper">
-    <app-navbar></app-navbar>
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-8">
-          <div class="card shadow">
-            <div class="card-body p-5">
-              <h5 class="card-title fw-bold mb-4 text-center"></h5><br>
-              <form (ngSubmit)="onSubmit()" class="php-email-form" [formGroup]="form" novalidate>
-                <div class="mb-3">
-                  <h1 class="card-title fw-bold mb-4 text-center" style="color: blue;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Add New Foyer</h1>
-                  <div class="alert alert-success" role="alert" [hidden]="hideDemande">
-                    Foyer Ajouter avec success . Tu peut consulter 
-                    Votre List <a (click)="GoBack()" routerLinkActive="active">ici</a>
-                  </div>
-                  <label for="nomFoyer" class="form-label">Foyer Name</label>
-                  <input type="text" name="nomFoyer" formControlName="nomFoyer"
-                         class="form-control form-control-lg" id="nomFoyer" placeholder="Enter Foyer Name"
-                         [class.is-invalid]="form.get('nomFoyer')?.invalid && form.get('nomFoyer')?.dirty" required>
-                  <div class="invalid-feedback">
-                    <app-error-message [err]="form.get('nomFoyer')" [field]="'nomFoyer'"></app-error-message>
-                  </div>
-                </div>
-                <div class="mb-3">
-                  <label for="capaciteFoyer" class="form-label">Capacity</label>
-                  <input type="number" name="capaciteFoyer" formControlName="capaciteFoyer"
-                         class="form-control form-control-lg" id="capaciteFoyer" placeholder="Enter Capacity"
-                         [class.is-invalid]="form.get('capaciteFoyer')?.invalid && form.get('capaciteFoyer')?.dirty" required>
-                  <div class="invalid-feedback">
-                    <app-error-message [err]="form.get('capaciteFoyer')" [field]="'capaciteFoyer'"></app-error-message>
-                  </div>
-                </div>
-                <div class="mb-3">
-                  <label for="adresse" class="form-label">Address</label>
-                  <input type="text" name="adresse" formControlName="adresse" class="form-control form-control-lg"
-                         id="adresse" placeholder="Enter Address" required>
-                </div> 
-                <div class="mb-3">
-                  <label for="description" class="form-label">Description</label>
-                  <textarea name="description" formControlName="description"
-                            class="form-control form-control-lg" id="description" placeholder="Enter Foyer Description"
-                            [class.is-invalid]="form.get('description')?.invalid && form.get('description')?.dirty" required></textarea>
-                  <div class="invalid-feedback">
-                    <app-error-message [err]="form.get('description')" [field]="'description'"></app-error-message>
-                  </div>
-                </div>
-                
-                <div class="mb-3">
-                  <label for="image" class="form-label">Image</label>
-                  <div class="input-group">
-                    <input type="file" id="image" class="form-control form-control-lg" (change)="onFileSelected($event)"
-                          required>
-                    <label for="image" class="input-group-text"><i class="fas fa-cloud-upload-alt"></i> Choose an Image</label>
-                  </div>
-                </div>
-           
-              
-                <div class="text-center">
-                  <button type="submit" class="btn btn-primary btn-lg" [disabled]="form.invalid">Create New Foyer</button>
-                  <a (click)="GoBack()" routerLinkActive="active" class="btn btn-secondary btn-lg ms-3">Back</a>
-                </div>
-              </form>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card shadow">
+        <div class="card-body p-5">
+         
+          <form (ngSubmit)="onSubmit()" class="php-email-form" [formGroup]="form" novalidate>
+            <div class="mb-3">
+              <h1 class="card-title fw-bold mb-4 text-center" style="color: blue;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Add New Foyer</h1>
+              <div class="alert alert-success" role="alert" [hidden]="hideDemande">
+                Foyer Ajouter avec success .
+              </div>
+              <label for="nomFoyer" class="form-label">Foyer Name</label>
+              <input type="text" name="nomFoyer" formControlName="nomFoyer"
+                     class="form-control form-control-lg" id="nomFoyer" placeholder="Enter Foyer Name"
+                     [class.is-invalid]="form.get('nomFoyer')?.invalid && form.get('nomFoyer')?.dirty" required>
+              <div class="invalid-feedback">
+                <app-error-message [err]="form.get('nomFoyer')" [field]="'nomFoyer'"></app-error-message>
+              </div>
             </div>
-          </div>
+            <div class="mb-3">
+              <label for="capaciteFoyer" class="form-label">Capacity</label>
+              <input type="number" name="capaciteFoyer" formControlName="capaciteFoyer"
+                     class="form-control form-control-lg" id="capaciteFoyer" placeholder="Enter Capacity"
+                     [class.is-invalid]="form.get('capaciteFoyer')?.invalid && form.get('capaciteFoyer')?.dirty" required>
+              <div class="invalid-feedback">
+                <app-error-message [err]="form.get('capaciteFoyer')" [field]="'capaciteFoyer'"></app-error-message>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="adresse" class="form-label">Address</label>
+              <input type="text" name="adresse" formControlName="adresse" class="form-control form-control-lg"
+                     id="adresse" placeholder="Enter Address" required>
+            </div> 
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label>
+              <textarea name="description" formControlName="description"
+                        class="form-control form-control-lg" id="description" placeholder="Enter Foyer Description"
+                        [class.is-invalid]="form.get('description')?.invalid && form.get('description')?.dirty" required></textarea>
+              <div class="invalid-feedback">
+                <app-error-message [err]="form.get('description')" [field]="'description'"></app-error-message>
+              </div>
+            </div>
+            
+            <div class="mb-3">
+              <label for="image" class="form-label">Image</label>
+              <div class="input-group">
+                <input type="file" id="image" class="form-control form-control-lg" (change)="onFileSelected($event)"
+                      required>
+                <label for="image" class="input-group-text"><i class="fas fa-cloud-upload-alt"></i> Choose an Image</label>
+              </div>
+            </div>
+       
+          
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary btn-lg" [disabled]="form.invalid">Create New Foyer</button>
+             <!-- <a (click)="GoBack()" routerLinkActive="active" class="btn btn-secondary btn-lg ms-3">Back</a> -->
+            </div>
+          </form>
         </div>
       </div>
     </div>

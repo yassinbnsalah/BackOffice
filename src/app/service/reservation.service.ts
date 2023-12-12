@@ -23,6 +23,8 @@ export class ReservationService {
   }
 
   getAllReservation(): Observable<Reservation[]> {
+    console.log("fetch All Reservation ");
+    
     return this.http.get<Reservation[]>(environment.baseURL
       + environment.ReservationBackendAPIS + "/findAllReservation", this.httpOptions)
   }

@@ -29,8 +29,10 @@ export class ListBlocComponent implements OnInit{
   }
   ngOnInit() {
     if(this.CurrentUser.role[0]=="ADMIN"){
+      this.blocs=this.activatedRoute.snapshot.data["data"].BlocResolver ;
       this.getallBloc();
     }else{
+      this.blocs=this.activatedRoute.snapshot.data["data"].BlocResolver ;
       this.getListBlocByuniversite();
     }
   }

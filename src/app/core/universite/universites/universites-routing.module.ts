@@ -4,14 +4,22 @@ import { UniversiteListeComponent } from "../universite-liste/universite-liste.c
 import { AcceptedUniversiteComponent } from "../accepted-universite/accepted-universite.component";
 import { UniversiteUpdateComponent } from "../universite-update/universite-update.component";
 import { UniversiteDetailComponent } from "../universite-detail/universite-detail.component";
+import { LoaderResolver } from '../../Data-resolver/loader.resolver';
 
 
 const routes: Routes = [
   {
     path: "", component: UniversiteListeComponent,
-
+    resolve: {
+      data: LoaderResolver
+    }
   },
-  { path: "information", component: UniversiteDetailComponent },
+  {
+    path: "information", component: UniversiteDetailComponent,
+    resolve: {
+      data: LoaderResolver
+    }
+  },
   {
     path: "acceptedUniversite", component: AcceptedUniversiteComponent,
 

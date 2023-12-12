@@ -20,8 +20,10 @@ export class UniversiteDetailComponent {
   CurrentUser = this.storage.getUser();
   showaddform=false;
 
-
+  role : any ; 
   constructor(private serviceUniversite: UniversiteService,
+    
+          private storageService: StorageService,
               private activatedRoute: ActivatedRoute,
               private router: Router,
               private sanitizer: DomSanitizer,
@@ -32,8 +34,9 @@ export class UniversiteDetailComponent {
 
 
   ngOnInit(): void {
-    console.log("universite details");
-
+    this.CurrentUser = this.storageService.getUser()!;
+    this.role = this.CurrentUser.role[0];
+    //this.universite = this.activatedRoute.snapshot.data["data"].universite ;
     this.serviceUniversite.getUniversiteByNomU(this.activatedRoute.snapshot.params['universite']).subscribe((data) => {
       this.universite = data;
      // this.getDoc();

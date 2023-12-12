@@ -15,6 +15,7 @@ export class FoyerlisteComponent implements OnInit {
   foyers !: Foyer[] ; 
   idFoyer!: number; 
   search='';
+  showAddFoyer:Boolean=false;
   role!:string;
   CurrentUser!:any;
   newEtat!: true; 
@@ -27,16 +28,18 @@ export class FoyerlisteComponent implements OnInit {
   constructor(private foyerService : FoyerService,
     private storageService: StorageService,
     private activatedRoute : ActivatedRoute  ,
+  
     private router:Router){}
   ngOnInit(): void {
-   
+    this.foyers = this.activatedRoute.snapshot.data["data"].foyerListe ;
+    this.CurrentUser = this.storageService.getUser()!;
+    console.log('Current user:', this.CurrentUser); // Vérifiez si les données utilisateur sont récupérées correctement
+
+    this.role = this.CurrentUser.role[0];
+    console.log('Role:', this.role);
     this.loadData();
     this.setInitialPageSize();
-    this.CurrentUser = this.storageService.getUser()!;
-console.log('Current user:', this.CurrentUser); // Vérifiez si les données utilisateur sont récupérées correctement
-
-this.role = this.CurrentUser.role[0];
-console.log('Role:', this.role);
+   
    
   }
   
@@ -57,8 +60,14 @@ console.log('Role:', this.role);
   }
    
   }
+  onFoyerAdded(newFoyer: Foyer) {
+   this.paginatedData.push(newFoyer); 
+    this.showAddFoyer=false;
+  }
+
   GoToAddFoyer(){
-        this.router.navigate([this.activatedRoute.snapshot.params["universite"]+'/foyer/addFoyer'])
+    this.showAddFoyer=true;    
+    //this.router.navigate([this.activatedRoute.snapshot.params["universite"]+'/foyer/addFoyer'])
   }
 
   GoToFoyerDetail(id:any){

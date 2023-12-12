@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Reservation } from "../../../model/Reservation";
 import { Universite } from "../../../model/Universite";
 import { ReservationService } from "../../../service/reservation.service";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { UniversiteService } from "../../../service/universiteService/universite.service";
 import { StorageService } from 'src/app/AuthServices/storage.service';
 
@@ -20,10 +20,12 @@ export class UniversiteListeComponent implements OnInit {
   searchQuery: string = '';
 
   constructor(private universiteService: UniversiteService, private storage: StorageService,
-    private router: Router) {
+    private router: Router , private activatedRoute : ActivatedRoute ) {
     this.universite.statuts = 'En attente';
   }
   ngOnInit() {
+    this.universites = this.activatedRoute.snapshot.data["data"].universites ;
+    
     this.getListeUniversite();
   }
 

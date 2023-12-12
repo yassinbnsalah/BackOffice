@@ -40,11 +40,15 @@
                   </div>
                 </div>
               </div>
-
+              <div class="col-md-6">
+                <button *ngIf="CurrentUser.role[0] !== 'ADMIN' && showaddform==false" type="button" class="btn btn-primary" (click)="GoToAdd()">Update Université</button>
+                <button *ngIf="CurrentUser.role[0] !== 'ADMIN' && showaddform==true" type="button" class="btn btn-primary" (click)="hideform()">Hide form</button>
+              </div>
+              <app-universite-update *ngIf="showaddform==true" (universiteUpdated)="onUniversitUpdated($event)"></app-universite-update>
+             
             </div><!-- / project-info-box -->
 
-
-          <div class="project-info-box mt-0 mb-0 ml-auto">
+          <div class="project-info-box mt-0 mb-0 ml-auto" *ngIf="role == 'ADMIN'">
               <p><b>Accepté ou Non ? :              </b>
               <button type="button" class="btn"
                       [class.btn-success]="universite.statuts === 'Accepté'"
@@ -57,17 +61,13 @@
               </button>
               </p><br>
               
-              <div class="col-md-6">
-                <button *ngIf="CurrentUser.role[0] !== 'ADMIN' && showaddform==false" type="button" class="btn btn-primary" (click)="GoToAdd()">Update Université</button>
-                <button *ngIf="CurrentUser.role[0] !== 'ADMIN' && showaddform==true" type="button" class="btn btn-primary" (click)="hideform()">Hide form</button>
-              </div>
-              <app-universite-update *ngIf="showaddform==true" (universiteUpdated)="onUniversitUpdated($event)"></app-universite-update>
+            
               
             </div><!-- / project-info-box -->
-            
+      
         </div><!-- / column -->
         
-
+       
      <div class="col-md-7">
       <div class="image-container">
         <img [src]="'data:' + universite.image?.image_type + ';base64,' + universite.imagebyte" alt="Universite Image" class="rounded"><br>

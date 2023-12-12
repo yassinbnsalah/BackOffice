@@ -15,16 +15,19 @@
                 </div>
               </div>
               <div class="table-responsive">
-                <div class="d-flex justify-content-end mb-3" *ngIf="role!='ADMIN'">
-                  <a (click)="GoToAddFoyer()" routerLinkActive="active" class="btn btn-primary">Add Foyer</a>
+                <div class="d-flex justify-content-end mb-3" >
+                  <a (click)="GoToAddFoyer()" routerLinkActive="active" class="btn btn-primary"
+                  [hidden]="role != 'AGENTUNIVERSITE'"
+                  >Add Foyer</a>
                 </div>
+                <app-addfoyer *ngIf="showAddFoyer==true" (addFoyer)="onFoyerAdded($event)"></app-addfoyer>
                 <table class="table table-bordered text-center align-middle">
                   <thead class="bg-primary text-light">
                     <tr>
                       <th scope="col">Image</th>
                       <th scope="col">Nom Foyer</th>
                       <th scope="col">Adresse</th>
-                      <th scope="col">Capacité Foyer</th>
+                      <th scope="col">CapacitÃ© Foyer</th>
                       <th scope="col">Created At</th>
                       <th scope="col">Updated At</th>
                       <th scope="col">Details</th>

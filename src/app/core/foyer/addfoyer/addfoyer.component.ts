@@ -66,7 +66,8 @@ export class AddfoyerComponent {
     this.foyerService.addFoyer(this.activatedRoute.snapshot.params['universite'], this.form.value).subscribe(
       (response) => {
         console.log('Foyer added:', response);
-        this.uploadImage(response.idFoyer)
+        this.uploadImage(response.idFoyer);
+        this.addFoyer.emit(response);
         this.router.navigateByUrl(this.router.createUrlTree([this.activatedRoute.snapshot.params['universite']+"/foyer"]))
           .then(() => {
             window.location.reload();
@@ -86,10 +87,9 @@ export class AddfoyerComponent {
   }
  
   
-  GoBack(){
-    this.router.navigate([this.activatedRoute.snapshot.params["universite"]+'/foyer'])
-  }
+ // GoBack(){
+ //   this.router.navigate([this.activatedRoute.snapshot.params["universite"]+'/foyer'])
+ // }
 
   
 }
-
