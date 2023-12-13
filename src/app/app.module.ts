@@ -58,6 +58,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MaterialModule } from './material-module';
 import {  ModifyMyProfileComponent } from './core/ProfilePages/modify-my-profile/modify-my-profile.component';
 import { PopupComponent } from './shared/popup/popup.component';
+import { Toast } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -110,6 +111,7 @@ import { PopupComponent } from './shared/popup/popup.component';
     
   ],
   imports: [
+    Toast,
     BrowserModule,
     HttpClientModule,
     FormsModule,

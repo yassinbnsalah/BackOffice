@@ -29,8 +29,8 @@ export class ListBlocComponent implements OnInit{
   }
   ngOnInit() {
 
-    //  this.blocs=this.activatedRoute.snapshot.data["data"].BlocResolver ;
-      this.getListBlocByuniversite();
+    // this.blocs=this.activatedRoute.snapshot.data["data"].BlocResolver ;
+       this.getListBlocByuniversite();
 
   }
   setid(id:any){

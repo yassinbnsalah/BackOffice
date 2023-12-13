@@ -30,14 +30,14 @@ export class LoaderResolver implements
     chambers: Chamber[],
     etudiants: User[],
     AllUsers : User[] , 
-     BlocResolver: Bloc[] , 
+    // BlocResolver: Bloc[] , 
     universites : Universite [],
     foyerListe : Foyer[] , 
     chamberListe : Chamber[] ,
   }>> {
   constructor(private reservationService: ReservationService,
     private storage: StorageService,
-    private blocService : BlocService ,
+   // private blocService : BlocService ,
     private chamberService: ChamberService,
     private universiteService : UniversiteService , 
     private foyerService : FoyerService , 
@@ -48,7 +48,8 @@ export class LoaderResolver implements
       chamberByReservation: Chamber, reservationDetails: Reservation,
       reservations: Reservation[],
       chambers: Chamber[], etudiants: User[],AllUsers : User[] , 
-      BlocResolver : Bloc[] , foyerListe : Foyer[]
+     // BlocResolver : Bloc[] , 
+      foyerListe : Foyer[]
       universites : Universite [] , chamberListe : Chamber[]
     }> {
 
@@ -79,7 +80,7 @@ export class LoaderResolver implements
 
     const AllUserss = this.userService.getUsers() ; 
 
-    let  lisBlocs  = this.blocService.getBlocByuniversite(route.params["universite"]);
+   // let  lisBlocs  = this.blocService.getBlocByuniversite(route.params["universite"]);
 
     let foyerListe ; 
     if (this.storage.getUser().role[0] == "ADMIN") {
@@ -97,7 +98,7 @@ export class LoaderResolver implements
       chambers: chamberListe, etudiants: etudiantListe,
       reservationDetails: reservationDetails, chamberByReservation: chamberByReservation,
       AllUsers : AllUserss ,
-       BlocResolver : lisBlocs , 
+      // BlocResolver : lisBlocs , 
        foyerListe: foyerListe , 
        universites : allUniversites,
        chamberListe : chamberListess 
