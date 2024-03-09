@@ -19,13 +19,9 @@ import { UniversiteUpdateComponent } from './core/universite/universite-update/u
 import { FoyerlisteComponent } from './core/foyer/foyerliste/foyerliste.component';
 
 import { DemandeRResolver } from './core/demande-r.resolver';
-import { AddBlocComponent } from './core/bloc/add-bloc/add-bloc.component';
-import { ListBlocComponent } from './core/bloc/list-bloc/list-bloc.component';
-import { UpdateBlocComponent } from './core/bloc/update-bloc/update-bloc.component';
 import { StepperTestComponent } from './core/stepper-test/stepper-test.component';
 import { AcceptedUniversiteComponent } from "./core/universite/accepted-universite/accepted-universite.component";
 import { DemandeListeComponent } from './core/demande-liste/demande-liste.component';
-import { DetailBlocComponent } from './core/bloc/detail-bloc/detail-bloc.component';
 import { LoaderResolver } from './core/Data-resolver/loader.resolver';
 
 
@@ -53,15 +49,7 @@ const routes: Routes = [
     path: "admin/bloc", loadChildren: () =>
       import('./core/bloc/bloc/bloc-admin/bloc-admin.module').then(m => m.BlocAdminModule)
   },*/
-  {
-    path: ":universite/bloc", loadChildren: () =>
-      import('./core/bloc/bloc/bloc.module').then(m => m.BlocModule)
-  },
 
-  { path: ":universite/addBloc", component: AddBlocComponent },
-  { path: ":universite/bloc", component: ListBlocComponent },
-  { path: "updateBloc", component: UpdateBlocComponent },
-  { path: "detailBloc", component: DetailBlocComponent },
 
   // Foyer Route
   {
