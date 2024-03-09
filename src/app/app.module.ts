@@ -59,9 +59,10 @@ import { MaterialModule } from './material-module';
 import {  ModifyMyProfileComponent } from './core/ProfilePages/modify-my-profile/modify-my-profile.component';
 import { PopupComponent } from './shared/popup/popup.component';
 import { Toast } from 'ngx-toastr';
-
+import { MatDividerModule } from '@angular/material/divider';
 @NgModule({
   declarations: [
+    MatDividerModule,
     AppComponent,
     SidebarComponent,
     NavbarComponent,
