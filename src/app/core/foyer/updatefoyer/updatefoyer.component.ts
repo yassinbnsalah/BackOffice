@@ -27,33 +27,20 @@ export class UpdatefoyerComponent implements OnInit {
     console.log(this.foyer);
     this.serviceFoyer.updateFoyer(this.foyer).subscribe((response) => {
       console.log('foyer updated:', response);
-      this.router.navigate([this.activatedRoute.snapshot.params["universite"]+'/foyer/' + this.foyer.idFoyer]);
+      this.router.navigate(['/admin/foyer/' + this.foyer.idFoyer]);
     });
   }
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
     console.log(this.selectedFile);
   }
-  uploadImage(idFoyer:any){
-    if (this.selectedFile) {
-      console.log("ENTER");
-      let formData = new FormData();
-      formData.append('file', this.selectedFile,this.selectedFile.name);
-      formData.forEach((value, key) => {
-        console.log(key, value);
-      });
-      this.serviceFoyer.uploadImg(formData,idFoyer).subscribe(
-        (data) =>{
-          console.log(data);
-        }
-      )
-    }}
+  
     onSubmit() {
       this.serviceFoyer.updateFoyer(this.foyer).subscribe(
         (response) => {
           console.log('Foyer added:', response);
-          this.uploadImage(response.idFoyer)
-          this.router.navigateByUrl(this.router.createUrlTree([this.activatedRoute.snapshot.params['universite']+"/foyer"]))
+ 
+          this.router.navigateByUrl(this.router.createUrlTree(["/admin/foyer"]))
           .then(() => {
             window.location.reload();
           });
@@ -64,6 +51,6 @@ export class UpdatefoyerComponent implements OnInit {
       );
     }
     GoBack(){
-      this.router.navigate([this.activatedRoute.snapshot.params["universite"]+'/foyer'])
+      this.router.navigate(['/admin/foyer'])
     }
 }

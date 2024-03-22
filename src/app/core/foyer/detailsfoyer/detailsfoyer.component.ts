@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Bloc } from 'src/app/model/Bloc';
+
 import { Foyer } from 'src/app/model/Foyer';
-import { Universite } from 'src/app/model/Universite';
 import { FoyerService } from 'src/app/service/foyer.service';
 
 @Component({
@@ -12,14 +11,12 @@ import { FoyerService } from 'src/app/service/foyer.service';
 })
 export class DetailsfoyerComponent implements OnInit {
   foyer !: Foyer ;
-  blocs !: Bloc [];
-  universites !: Universite[];
+
   constructor(private foyerService: FoyerService,
     private activatedRoute: ActivatedRoute,
     private router: Router) { }
   ngOnInit(): void {
-    this.GetBloc();
-    this.GetUniversite();
+   
     console.log(this.activatedRoute.snapshot.params['id']);
     this.foyerService.getFoyerByID(this.activatedRoute.snapshot.params['id']).subscribe((d) => {
       console.log(d);
@@ -28,26 +25,16 @@ export class DetailsfoyerComponent implements OnInit {
     })
   }
 GoBack(){
-  this.router.navigate([this.activatedRoute.snapshot.params["universite"]+'/foyer'])
+  this.router.navigate(['admin/foyer'])
 }
-GetBloc(){
-  this.foyerService.getBLocByFoyer(this.activatedRoute.snapshot.params['id']).subscribe((d)=>{
-    console.log(d);
-    this.blocs=d;
-  })
-}
-GetUniversite(){
-  this.foyerService.getUniversiteByFoyer(this.activatedRoute.snapshot.params['id']).subscribe((d)=>{
-    console.log(d);
-    this.universites=d;
-  })
-}
+
+
 GoToFoyerDetails(id:any){
-    this.router.navigate(["foyer/",id])
+    this.router.navigate(["admin/foyer/",id])
 } 
 
 redirectToUpdateFoyer(id: number) {
-  this.router.navigate([this.activatedRoute.snapshot.params["universite"]+'/foyer/update/'+id])
+  this.router.navigate(['admin/foyer/update/'+id])
 }
 
 }

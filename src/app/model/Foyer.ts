@@ -1,5 +1,4 @@
-import { Image } from "./Image";
-import { Universite } from "./Universite";
+
 
 export class Foyer {
     idFoyer !: number;
@@ -10,7 +9,5 @@ export class Foyer {
     etat!:boolean;
     createdAt!:Date;
     updatedAt!:Date;
-    universite !: Universite ;
-    imagebyte!:string ;
-    image?: Image | null;
+
 } 

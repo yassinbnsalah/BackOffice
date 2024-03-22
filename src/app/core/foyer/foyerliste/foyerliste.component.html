@@ -1,8 +1,6 @@
 <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
   data-sidebar-position="fixed" data-header-position="fixed">
-  <app-side></app-side>
   <div class="body-wrapper">
-    <app-navbar></app-navbar>
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
@@ -18,10 +16,10 @@
                 <div class="d-flex justify-content-end mb-3" *ngIf="role!='ADMIN'">
                   <a (click)="GoToAddFoyer()" routerLinkActive="active" class="btn btn-primary">Add Foyer</a>
                 </div>
+                <app-addfoyer *ngIf="showAddFoyer==true" (addFoyer)="onFoyerAdded($event)"></app-addfoyer>
                 <table class="table table-bordered text-center align-middle">
                   <thead class="bg-primary text-light">
                     <tr>
-                      <th scope="col">Image</th>
                       <th scope="col">Nom Foyer</th>
                       <th scope="col">Adresse</th>
                       <th scope="col">Capacité Foyer</th>
@@ -31,8 +29,7 @@
                     </tr>
                   </thead>
                   <tbody *ngFor="let foyer of paginatedData">
-                    <tr *ngIf="foyer.etat === false">
-                      <td><img style="width: 100px; height: 100px;" [src]="'data:' + foyer.image?.image_type + ';base64,' + foyer.imagebyte" alt="Universite Image"></td>
+                    <tr >
                       <td>{{foyer.nomFoyer}}</td>
                       <td>{{foyer.adresse}}</td>
                       <td>{{foyer.capaciteFoyer}}</td>
@@ -40,7 +37,7 @@
                       <td>{{foyer.updatedAt | date:'yy-MM-dd'}}</td>
                       <td>
                         <a (click)="GoToFoyerDetail(foyer.idFoyer)" routerLinkActive="active" class="btn btn-primary btn-sm">See Details</a>
-                        <button (click)="updateFoyerEtat(foyer.idFoyer)" class="btn btn-danger btn-sm ms-2">Delete</button>
+            
                       </td>
                     </tr>
                   </tbody>

@@ -1,9 +1,7 @@
 <div class="page-wrapper" id="main-wrapper" data-layout="vertical"
   data-navbarbg="skin6" data-sidebartype="full"
   data-sidebar-position="fixed" data-header-position="fixed">
-  <app-side></app-side>
   <div class="body-wrapper">
-    <app-navbar></app-navbar>
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-8">
@@ -120,14 +118,7 @@
                     hidden
                   >
                 </div>
-                <div class="mb-3">
-                  <label for="image" class="form-label">Image</label>
-                  <div class="input-group">
-                    <input type="file" id="image" class="form-control form-control-lg" (change)="onFileSelected($event)"
-                      required>
-                    <label for="image" class="input-group-text"><i class="fas fa-cloud-upload-alt"></i> Choose an Image</label>
-                  </div>
-                </div>
+                
                 
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary btn-lg">Update Foyer</button>

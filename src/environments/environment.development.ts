@@ -1,11 +1,5 @@
 export const environment = {
-    ReservationBackendAPIS : "ReservationRestController",
-    UniversiteBackendAPIS : "UniversiteRestController",
-    baseURL : "http://localhost:8081/",
-    ChamberBackendAPIS : "ChamberRestController",
-    AuthentificationBackendURL : "auth/login",
-    FoyerBackendAPIS : "FoyerRestController",
-    BlocBackendAPIS: "BlocRestController"
-
+    baseURL : "http://172.16.5.155:8050/",
+    FoyerBackendAPIS : "FoyerController",
 };
 
