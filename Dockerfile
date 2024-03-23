@@ -1,5 +1,5 @@
 # Use an official Node.js runtime as the base image
-FROM node:14 as builder
+FROM node:latest as builder
 
 # Set the working directory in the container
 WORKDIR /app
@@ -17,7 +17,7 @@ RUN npm install
 COPY . .
 
 # Build the Angular app
-RUN ng build --prod
+RUN ng build
 
 # Use Nginx as a web server
 FROM nginx:alpine
